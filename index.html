@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外出支援 KATAOKAサービス</title>
+
+<style>
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  color: #333;
+  line-height: 1.9;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/* =========================
+   COLOR SYSTEM (실사이트 기준)
+========================= */
+:root {
+  --main: #1f5c73;
+  --sub: #e9f2f5;
+  --dark: #0f3f52;
+  --gray: #f7f7f7;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  background: var(--main);
+  color: #fff;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 16px;
+  text-align: center;
+}
+
+.header-inner h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+/* =========================
+   NAV
+========================= */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav li {
+  margin: 0 22px;
+}
+
+nav a {
+  display: block;
+  padding: 14px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  background:
+    linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1600")
+    center / cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 110px 16px;
+}
+
+.hero h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  font-size: 16px;
+}
+
+/* =========================
+   SECTION COMMON
+========================= */
+section {
+  padding: 80px 16px;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.section-title h3 {
+  font-size: 25px;
+  color: var(--main);
+  font-weight: 600;
+}
+
+/* =========================
+   SERVICE
+========================= */
+.services {
+  background: var(--sub);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.service-item {
+  background: #fff;
+  padding: 34px 26px;
+  border-radius: 4px;
+}
+
+.service-item h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--main);
+}
+
+/* =========================
+   FLOW
+========================= */
+.flow-list {
+  max-width: 720px;
+  margin: auto;
+}
+
+.flow-item {
+  background: #fff;
+  padding: 22px 24px;
+  margin-bottom: 16px;
+  border-left: 6px solid var(--main);
+  font-size: 15px;
+}
+
+/* =========================
+   PRICE
+========================= */
+.price {
+  background: var(--gray);
+  text-align: center;
+}
+
+.price-box {
+  display: inline-block;
+  background: #fff;
+  padding: 36px 60px;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* =========================
+   EXAMPLE
+========================= */
+.example p {
+  max-width: 820px;
+  margin: auto;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact {
+  background: var(--main);
+  color: #fff;
+  text-align: center;
+}
+
+.contact p {
+  font-size: 16px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background: var(--dark);
+  color: #fff;
+  text-align: center;
+  padding: 22px;
+  font-size: 13px;
+}
+
+/* =================================================
+   📱 MOBILE (실제 KATAOKA 모바일 기준)
+================================================= */
+@media (max-width: 768px) {
+
+  header .header-inner h1 {
+    font-size: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li {
+    margin: 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .hero {
+    padding: 80px 14px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 60px 14px;
+  }
+
+  .section-title {
+    margin-bottom: 36px;
+  }
+
+  .section-title h3 {
+    font-size: 22px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-item {
+    padding: 26px 20px;
+  }
+
+  .price-box {
+    padding: 28px 32px;
+    font-size: 22px;
+  }
+
+  .flow-item {
+    font-size: 14px;
+  }
+
+  .example p {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>外出支援 KATAOKAサービス</h1>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">BLOG 一覧</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <h2>あなたの「したい」を支えます</h2>
+  <p>介護保険では対応できない外出支援</p>
+</section>
+
+<section class="services">
+  <div class="inner">
+    <div class="section-title">
+      <h3>KATAOKAサービスが選ばれる理由</h3>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-item">
+        <h4>柔軟な外出支援</h4>
+        <p>通院・買い物・旅行など幅広く対応。</p>
+      </div>
+      <div class="service-item">
+        <h4>迅速対応</h4>
+        <p>急なご依頼にも可能な限り対応。</p>
+      </div>
+      <div class="service-item">
+        <h4>専門スタッフ</h4>
+        <p>介護福祉士が同行し安心を提供。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="section-title">
+      <h3>ご利用の流れ</h3>
+    </div>
+
+    <div class="flow-list">
+      <div class="flow-item">STEP1｜お問い合わせ</div>
+      <div class="flow-item">STEP2｜同行支援</div>
+      <div class="flow-item">STEP3｜お支払い</div>
+    </div>
+  </div>
+</section>
+
+<section class="price">
+  <div class="inner">
+    <div class="section-title">
+      <h3>基本料金</h3>
+    </div>
+    <div class="price-box">
+      4,000円 / 1時間（税込）
+    </div>
+  </div>
+</section>
+
+<section class="example">
+  <div class="inner">
+    <div class="section-title">
+      <h3>ご利用例</h3>
+    </div>
+    <p>
+      通院付き添い・外食・日帰り旅行など、
+      日常から特別な外出まで対応します。
+    </p>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="inner">
+    <div class="section-title">
+      <h3>お問い合わせ</h3>
+    </div>
+    <p>KATAOKAservice@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  © 2025 外出支援 KATAOKAサービス
+</footer>
+
+</body>
+</html>

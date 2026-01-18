@@ -69,7 +69,7 @@ nav a {
   text-decoration: none;
 }
 
-/* ================= HERO (사진 원본 그대로) ================= */
+/* ================= HERO (이미지만) ================= */
 .hero {
   width: 100%;
   max-width: 1024px;
@@ -80,25 +80,6 @@ nav a {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-  color: #fff;
-}
-
-/* 텍스트가 사진 위에 올라가므로 가독성 필요하면
-   나중에 text-shadow만 추가하면 됨 */
-.hero h2 {
-  font-size: 32px;
-  margin-bottom: 14px;
-}
-
-.hero p {
-  font-size: 16px;
 }
 
 /* ================= SECTION COMMON ================= */
@@ -142,34 +123,6 @@ section {
   margin-bottom: 10px;
 }
 
-/* ================= FLOW ================= */
-.flow-list {
-  max-width: 720px;
-  margin: auto;
-}
-
-.flow-item {
-  background: #fff;
-  padding: 22px 24px;
-  margin-bottom: 16px;
-  border-left: 6px solid var(--main);
-}
-
-/* ================= PRICE ================= */
-.price {
-  background: var(--gray);
-  text-align: center;
-}
-
-.price-box {
-  display: inline-block;
-  background: #fff;
-  padding: 36px 60px;
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--dark);
-}
-
 /* ================= CONTACT ================= */
 .contact {
   background: var(--main);
@@ -177,6 +130,7 @@ section {
   text-align: center;
 }
 
+/* ================= FOOTER ================= */
 footer {
   background: var(--dark);
   color: #fff;
@@ -189,14 +143,6 @@ footer {
 @media (max-width: 768px) {
   .hero {
     max-width: 100%;
-  }
-
-  .hero h2 {
-    font-size: 24px;
-  }
-
-  .hero p {
-    font-size: 14px;
   }
 
   .service-grid {
@@ -221,10 +167,8 @@ footer {
   </ul>
 </nav>
 
-<section class="hero">
-  <h2>あなたの「したい」を支えます</h2>
-  <p>介護保険では対応できない外出支援</p>
-</section>
+<!-- HERO : 이미지 전용 -->
+<section class="hero"></section>
 
 <section class="services">
   <div class="inner">

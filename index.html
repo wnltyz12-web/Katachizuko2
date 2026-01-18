@@ -6,18 +6,12 @@
 <title>外出支援 KATAOKAサービス</title>
 
 <style>
-/* =========================
-   RESET
-========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-   BASE
-========================= */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
@@ -25,14 +19,6 @@ body {
   line-height: 1.9;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* =========================
-   COLOR SYSTEM
-========================= */
 :root {
   --main: #1f5c73;
   --sub: #e9f2f5;
@@ -40,9 +26,7 @@ a {
   --gray: #f7f7f7;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 header {
   background: var(--main);
   color: #fff;
@@ -58,20 +42,12 @@ header {
 .header-inner h1 {
   font-size: 24px;
   font-weight: 600;
-  letter-spacing: .05em;
 }
 
-/* =========================
-   NAV
-========================= */
+/* ================= NAV ================= */
 nav {
   background: #fff;
   border-bottom: 1px solid #ddd;
-}
-
-.nav-inner {
-  max-width: 1100px;
-  margin: auto;
 }
 
 nav ul {
@@ -90,23 +66,34 @@ nav a {
   font-size: 14px;
   font-weight: 600;
   color: var(--main);
+  text-decoration: none;
 }
 
-/* =========================
-   HERO (기존 크기 방식)
-========================= */
+/* ================= HERO (사진 원본 그대로) ================= */
 .hero {
-  background:
-    linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-    url("Image.png") center / cover no-repeat;
-  color: #fff;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  aspect-ratio: 1024 / 1536;
+
+  background-image: url("Image.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   text-align: center;
-  padding: 110px 16px;
+  color: #fff;
 }
 
+/* 텍스트가 사진 위에 올라가므로 가독성 필요하면
+   나중에 text-shadow만 추가하면 됨 */
 .hero h2 {
   font-size: 32px;
-  font-weight: 600;
   margin-bottom: 14px;
 }
 
@@ -114,9 +101,7 @@ nav a {
   font-size: 16px;
 }
 
-/* =========================
-   SECTION COMMON
-========================= */
+/* ================= SECTION COMMON ================= */
 section {
   padding: 80px 16px;
 }
@@ -134,12 +119,9 @@ section {
 .section-title h3 {
   font-size: 25px;
   color: var(--main);
-  font-weight: 600;
 }
 
-/* =========================
-   SERVICE
-========================= */
+/* ================= SERVICE ================= */
 .services {
   background: var(--sub);
 }
@@ -153,18 +135,14 @@ section {
 .service-item {
   background: #fff;
   padding: 34px 26px;
-  border-radius: 4px;
 }
 
 .service-item h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
   color: var(--main);
+  margin-bottom: 10px;
 }
 
-/* =========================
-   FLOW
-========================= */
+/* ================= FLOW ================= */
 .flow-list {
   max-width: 720px;
   margin: auto;
@@ -175,12 +153,9 @@ section {
   padding: 22px 24px;
   margin-bottom: 16px;
   border-left: 6px solid var(--main);
-  font-size: 15px;
 }
 
-/* =========================
-   PRICE
-========================= */
+/* ================= PRICE ================= */
 .price {
   background: var(--gray);
   text-align: center;
@@ -195,32 +170,13 @@ section {
   color: var(--dark);
 }
 
-/* =========================
-   EXAMPLE
-========================= */
-.example p {
-  max-width: 820px;
-  margin: auto;
-  text-align: center;
-  font-size: 15px;
-}
-
-/* =========================
-   CONTACT
-========================= */
+/* ================= CONTACT ================= */
 .contact {
   background: var(--main);
   color: #fff;
   text-align: center;
 }
 
-.contact p {
-  font-size: 16px;
-}
-
-/* =========================
-   FOOTER
-========================= */
 footer {
   background: var(--dark);
   color: #fff;
@@ -229,69 +185,22 @@ footer {
   font-size: 13px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-
-  header .header-inner h1 {
-    font-size: 20px;
-  }
-
-  nav ul {
-    flex-direction: column;
-  }
-
-  nav li {
-    margin: 0;
-    border-bottom: 1px solid #eee;
-  }
-
   .hero {
-    padding: 80px 14px;
+    max-width: 100%;
   }
 
   .hero h2 {
     font-size: 24px;
-    line-height: 1.5;
   }
 
   .hero p {
     font-size: 14px;
   }
 
-  section {
-    padding: 60px 14px;
-  }
-
-  .section-title {
-    margin-bottom: 36px;
-  }
-
-  .section-title h3 {
-    font-size: 22px;
-  }
-
   .service-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .service-item {
-    padding: 26px 20px;
-  }
-
-  .price-box {
-    padding: 28px 32px;
-    font-size: 22px;
-  }
-
-  .flow-item {
-    font-size: 14px;
-  }
-
-  .example p {
-    font-size: 14px;
   }
 }
 </style>
@@ -306,12 +215,10 @@ footer {
 </header>
 
 <nav>
-  <div class="nav-inner">
-    <ul>
-      <li><a href="#">HOME</a></li>
-      <li><a href="#">BLOG 一覧</a></li>
-    </ul>
-  </div>
+  <ul>
+    <li><a href="#">HOME</a></li>
+    <li><a href="#">BLOG 一覧</a></li>
+  </ul>
 </nav>
 
 <section class="hero">
@@ -339,43 +246,6 @@ footer {
         <p>介護福祉士が同行し安心を提供。</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="inner">
-    <div class="section-title">
-      <h3>ご利用の流れ</h3>
-    </div>
-
-    <div class="flow-list">
-      <div class="flow-item">STEP1｜お問い合わせ</div>
-      <div class="flow-item">STEP2｜同行支援</div>
-      <div class="flow-item">STEP3｜お支払い</div>
-    </div>
-  </div>
-</section>
-
-<section class="price">
-  <div class="inner">
-    <div class="section-title">
-      <h3>基本料金</h3>
-    </div>
-    <div class="price-box">
-      4,000円 / 1時間（税込）
-    </div>
-  </div>
-</section>
-
-<section class="example">
-  <div class="inner">
-    <div class="section-title">
-      <h3>ご利用例</h3>
-    </div>
-    <p>
-      通院付き添い・外食・日帰り旅行など、
-      日常から特別な外出まで対応します。
-    </p>
   </div>
 </section>
 

@@ -20,6 +20,20 @@
     }
 
     /* ==============================
+       상단 아이보리 바
+    ============================== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: #f0e0c1;
+      z-index: 2;
+    }
+    }
+
+    /* ==============================
        전체 오나먼트 배경
     ============================== */
     .ornament-bg {
@@ -37,6 +51,17 @@
        페이지 래퍼
     ============================== */
     .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      padding: 220px 40px 220px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* spacer for top bar */
+
       position: relative;
       z-index: 1;
       min-height: 100vh;
@@ -158,6 +183,9 @@
   </style>
 </head>
 <body>
+
+  <!-- 상단 아이보리 바 -->
+  <div class="top-bar"></div>
 
   <!-- 전체 배경 오나먼트 -->
   <div class="ornament-bg"></div>

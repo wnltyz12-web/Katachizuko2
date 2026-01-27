@@ -6,9 +6,6 @@
   <title>カタオカサービス</title>
 
   <style>
-    /* =========================
-       Reset
-    ========================= */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; }
 
@@ -19,25 +16,19 @@
     }
 
     :root{
-      --ivory: #f0e0c1;         /* 기존 아이보리 */
-      --paper: rgba(255,255,255,.72);
-      --ink: #2f2a22;
-      --muted: #6a5f4a;
-
-      /* 버튼 (3번째 사진 톤) */
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
-      /* PC에서도 모바일처럼 보이게 */
+      /* ✅ PC에서도 모바일처럼 보이게 */
       --mobile-max: 520px;
 
       --shadow: 0 20px 55px rgba(0,0,0,.16);
       --shadow2: 0 12px 35px rgba(0,0,0,.12);
+
+      --ink: #2f2a22;
+      --muted: rgba(47,42,34,.72);
     }
 
-    /* =========================
-       Background Ornament (repeat)
-    ========================= */
     .ornament-bg{
       position: fixed;
       inset: 0;
@@ -48,9 +39,7 @@
       background-size: 260px 260px;
     }
 
-    /* =========================
-       1) Top Header
-    ========================= */
+    /* header */
     .topbar{
       position: sticky;
       top: 0;
@@ -110,9 +99,7 @@
     }
     .brand-title b{ font-weight: 900; }
 
-    /* =========================
-       Layout (PC도 모바일처럼)
-    ========================= */
+    /* layout */
     .page{
       position: relative;
       z-index: 1;
@@ -123,44 +110,25 @@
     .container{
       width: 100%;
       max-width: var(--mobile-max);
-      padding: 18px 16px 110px;
+      padding: 18px 16px 120px;
     }
 
-    /* =========================================================
-       ✅ 너가 처음 보낸 코드 스타일: "반투명 프레임 + 오나먼트가 더 크게"
-       - 새창 느낌 X
-       - frame 내부에서 ornament.png를 크게 깔아줌
-       - 배경 repeat 오나먼트보다 크게 보이게
-    ========================================================= */
+    /* ornament frame */
     .orn-frame{
       position: relative;
       margin-top: 18px;
-
       padding: 46px 22px 40px;
       border-radius: 22px;
 
       background-color: rgba(255,255,255,.72);
       backdrop-filter: blur(1px);
 
-      /* ✅ 프레임 안 오나먼트: 배경보다 "크고" + 중앙 */
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 145% auto;   /* 🔥 핵심: 배경보다 더 크게 */
+      background-size: 145% auto;
 
       box-shadow: var(--shadow);
-    }
-
-    /* 프레임 상단 아이보리 띠(원하면 유지) */
-    .orn-frame::before{
-      content:"";
-      position:absolute;
-      left:0; right:0; top:0;
-      height: 18px;
-      background: rgba(240,224,193,.75);
-      border-top-left-radius: 22px;
-      border-top-right-radius: 22px;
-      pointer-events: none;
     }
 
     .orn-title{
@@ -174,30 +142,27 @@
       font-weight: 800;
       line-height: 1.9;
     }
-    .orn-title .divider{
-      width: 72%;
-      height: 1px;
-      margin: 18px auto 0;
-      background: rgba(0,0,0,.12);
+
+    /* CTA */
+    .cta-section{
+      margin-top: 18px;
     }
 
-    /* =========================
-       Buttons (3번째 사진 톤)
-    ========================= */
-    .cta-section{
-      margin-top: 22px;
-    }
+    /* ✅ 버튼 양옆 박스 크기 줄이기 */
     .cta-row{
       display: flex;
       flex-direction: column;
       gap: 12px;
+      align-items: center; /* 가운데 정렬 */
     }
+
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
 
-      width: 100%;
+      /* ✅ 여기서 폭을 줄임 */
+      width: min(320px, 100%);  /* 🔥 핵심 */
       height: 56px;
 
       background: linear-gradient(#b9a48d, var(--btn));
@@ -228,6 +193,19 @@
       box-shadow: 0 10px 28px rgba(0,0,0,.12);
     }
 
+    /* ✅ 버튼 아래 문구 */
+    .cta-message{
+      margin-top: 18px;
+      text-align: center;
+
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      color: var(--muted);
+
+      font-size: 15px;
+      line-height: 1.9;
+      letter-spacing: .08em;
+    }
+
     /* reveal */
     .reveal{
       opacity: 0;
@@ -244,7 +222,6 @@
 <body>
   <div class="ornament-bg"></div>
 
-  <!-- Header -->
   <header class="topbar">
     <div class="wrap">
       <div class="logo">
@@ -258,20 +235,23 @@
   <main class="page">
     <div class="container">
 
-      <!-- ✅ 새창 X, 처음 코드처럼 "반투명 + 큰 오나먼트 프레임" -->
       <section class="orn-frame">
         <div class="orn-title">
           <div class="line">おひとりさまの方へ</div>
           <div class="line">子供や孫に迷惑をかけたくない方へ</div>
-          <div class="divider"></div>
         </div>
       </section>
 
-      <!-- Buttons appear on scroll -->
       <section class="cta-section reveal" id="cta">
         <div class="cta-row">
           <button class="cta-btn" type="button">身元保証</button>
           <button class="cta-btn" type="button">生活支援</button>
+        </div>
+
+        <!-- ✅ 이미지 문구 넣는 부분 -->
+        <div class="cta-message">
+          皆さまの想いをかなえるために<br/>
+          私たちが一生涯のご支援をお約束致します
         </div>
       </section>
 

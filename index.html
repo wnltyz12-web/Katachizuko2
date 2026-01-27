@@ -34,7 +34,7 @@
     }
 
     /* =========================
-       Background Ornament (Responsive) + Gradient Fade
+       Background Ornament + Bottom Fade
     ========================= */
     .ornament-bg{
       position: fixed;
@@ -62,7 +62,9 @@
       );
     }
 
-    /* header */
+    /* =========================
+       Header
+    ========================= */
     .topbar{
       position: sticky;
       top: 0;
@@ -114,7 +116,9 @@
     }
     .brand-title b{ font-weight: 900; }
 
-    /* layout */
+    /* =========================
+       Layout
+    ========================= */
     .page{
       position: relative;
       z-index: 1;
@@ -128,21 +132,49 @@
       padding: 18px 16px 140px;
     }
 
-    /* hero */
+    /* =========================
+       HERO (✅ 중앙만 오나먼트 보이게 그라디언트)
+    ========================= */
     .orn-frame{
       position: relative;
+      overflow: hidden; /* ✅ 중요 */
       margin-top: 18px;
       padding: 46px 22px 40px;
       border-radius: 22px;
+
       background-color: var(--paper);
       backdrop-filter: blur(1px);
+
+      /* 오나먼트 깔기 */
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: 145% auto;
+
       box-shadow: var(--shadow);
     }
+
+    /* ✅ 중앙만 보이게 눌러주는 오버레이 */
+    .orn-frame::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+
+      /* 위/아래는 하얗게, 중앙만 투명하게 */
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.70) 22%,
+        rgba(255,255,255,0.18) 50%,
+        rgba(255,255,255,0.70) 78%,
+        rgba(255,255,255,0.92) 100%
+      );
+    }
+
     .orn-title{
+      position: relative; /* ✅ overlay 위로 */
+      z-index: 2;         /* ✅ overlay 위로 */
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
@@ -154,10 +186,10 @@
       line-height: 1.9;
     }
 
-    /* ✅ Illustration: 흰색 배경(카드) 제거, 창 크기에 맞게(가로 꽉) + 그림자 살짝 */
-    .illus-wrap{
-      margin-top: 16px;
-    }
+    /* =========================
+       Illustration
+    ========================= */
+    .illus-wrap{ margin-top: 16px; }
     .illus-inner{
       display: grid;
       place-items: center;
@@ -176,11 +208,7 @@
       width: 100%;
       height: auto;
       display: block;
-
-      /* ✅ 흰색 카드 제거: radius만 살짝(원하면 0으로) */
       border-radius: 14px;
-
-      /* ✅ 살짝 그림자 */
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
     .illus-caption{
@@ -191,7 +219,9 @@
       color: rgba(47,42,34,.70);
     }
 
-    /* CTA */
+    /* =========================
+       CTA Buttons
+    ========================= */
     .cta-section{
       margin-top: 18px;
       display: flex;
@@ -264,7 +294,9 @@
       user-select: none;
     }
 
-    /* details panels */
+    /* =========================
+       Panels
+    ========================= */
     .details{
       margin-top: 18px;
       display: grid;
@@ -303,7 +335,6 @@
     .panel-body{ background: rgba(255,255,255,.55); }
     .panel-inner{ padding: 14px 14px 18px; }
 
-    /* cards */
     .cards{
       display: grid;
       gap: 10px;
@@ -386,15 +417,13 @@
         </div>
       </section>
 
-      <!-- ✅ 이미지 섹션: 카드 배경 제거 + 화면 폭에 맞게 -->
       <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
 
-          <!-- ✅ 파일명만 네 repo랑 맞춰 -->
+          <!-- ✅ 파일명 맞추기 -->
           <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
 
-          <!-- ✅ 줄바꿈/띄어쓰기(요청대로) -->
           <div class="illus-caption">
             不安をひとつずつ整理し、<br/>
             必要な手続きや支援をわかりやすくご案内します。

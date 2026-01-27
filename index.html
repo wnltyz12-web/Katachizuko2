@@ -16,7 +16,7 @@
     }
 
     :root{
-      --btn: #b7a18a;     /* 버튼 색(단색으로) */
+      --btn: #b7a18a;
       --btn-text: #ffffff;
 
       --mobile-max: 520px;
@@ -139,30 +139,15 @@
       justify-content: center;
     }
 
-    .cta-box{
-      width: 260px;
-      padding: 14px 12px 16px;
-      border-radius: 18px;
-
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 16px 45px rgba(0,0,0,.10);
-
-      /* CTA 박스 ornament는 유지(원하면 이것도 제거 가능) */
-      background-image: url("ornament.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 155% auto;
-    }
-
+    /* ✅ 버튼 뒤 네모박스 삭제 → row를 바로 사용 */
     .cta-row{
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       align-items: center;
+      width: 100%;
     }
 
-    /* ✅ 버튼 배경 노이즈 제거 = 단색 */
     .cta-btn{
       appearance: none;
       border: none;
@@ -171,10 +156,10 @@
       width: 230px;
       height: 62px;
 
-      background: var(--btn); /* 🔥 단색 */
+      background: var(--btn);
       color: var(--btn-text);
 
-      border-radius: 12px;
+      border-radius: 16px;
       box-shadow: var(--shadow2);
       letter-spacing: .16em;
 
@@ -200,14 +185,19 @@
       box-shadow: 0 9px 24px rgba(0,0,0,.14);
     }
 
+    /* ✅ 문구 한 줄 */
     .cta-message{
-      margin-top: 12px;
+      margin-top: 14px;
       text-align: center;
+
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       color: rgba(47,42,34,.70);
-      font-size: 13px;
-      line-height: 1.8;
+
+      font-size: 14px;
+      line-height: 1.9;
       letter-spacing: .06em;
+
+      white-space: nowrap; /* ✅ 무조건 한줄 */
     }
 
     .reveal{
@@ -221,8 +211,8 @@
     }
 
     @media (max-width: 360px){
-      .cta-box{ width: 240px; }
       .cta-btn{ width: 210px; font-size: 20px; }
+      .cta-message{ font-size: 12px; letter-spacing: .04em; }
     }
   </style>
 </head>
@@ -250,15 +240,13 @@
       </section>
 
       <section class="cta-section reveal" id="cta">
-        <div class="cta-box">
-          <div class="cta-row">
-            <button class="cta-btn" type="button">身元保証</button>
-            <button class="cta-btn" type="button">生活支援</button>
-          </div>
+        <div class="cta-row">
+          <button class="cta-btn" type="button">身元保証</button>
+          <button class="cta-btn" type="button">生活支援</button>
 
+          <!-- ✅ 띄어쓰기 + 한 줄 -->
           <div class="cta-message">
-            皆さまの想いをかなえるために<br/>
-            私たちが一生涯のご支援をお約束致します
+            皆さまの想いをかなえる ために 私たちが一生涯のご支援をお約束致します
           </div>
         </div>
       </section>

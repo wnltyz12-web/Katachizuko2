@@ -90,7 +90,6 @@
     .frame{
       position: relative;
       padding: 88px 64px 96px;
-
       background-color: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(1px);
 
@@ -112,99 +111,157 @@
     }
 
     /* =========================================================
-       Ornament Line Button (정확한 형태)
-       - 버튼은 투명
-       - 위 장식 + 아래 장식 2개의 레이어를 실제 요소로 둠
-       - 텍스트 중앙 정렬
+       CSS Ornament Line Button (NO IMAGE)
+       - exactly like your sample
     ========================================================= */
     .line-btn{
       position: relative;
       width: 460px;
-      height: 150px;
+      height: 160px;
       border: none;
       background: transparent;
-      padding: 0;
       cursor: pointer;
-    }
-
-    .line-btn .orn-top,
-    .line-btn .orn-bot{
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 56px;
-      background-image: url("Untitled-1.png");
-      background-repeat: no-repeat;
-      background-size: 120% auto;
-      opacity: 0.95;
-      pointer-events: none;
-    }
-
-    /* ✅ 네가 준 샘플처럼 "윗줄"만 나오게 */
-    .line-btn .orn-top{
-      top: 10px;
-      background-position: center 26%;
-    }
-
-    /* ✅ 네가 준 샘플처럼 "아랫줄"만 나오게 */
-    .line-btn .orn-bot{
-      bottom: 10px;
-      background-position: center 74%;
+      padding: 0;
     }
 
     .line-btn .label{
       position: relative;
-      z-index: 2;
+      z-index: 3;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
 
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: 28px;
-      font-weight: 700;
+      font-size: 30px;
       letter-spacing: 0.12em;
+      font-weight: 700;
       color: #2f2a22;
     }
 
-    .line-btn:hover .orn-top,
-    .line-btn:hover .orn-bot{
+    /* GOLD COLOR */
+    :root{
+      --gold: #d8bb73;
+      --gold2: rgba(216,187,115,0.75);
+    }
+
+    /* Top double lines */
+    .line-btn .top-lines,
+    .line-btn .bot-lines{
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      height: 48px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .line-btn .top-lines{ top: 18px; }
+    .line-btn .bot-lines{ bottom: 18px; }
+
+    /* double line bars */
+    .line-btn .top-lines::before,
+    .line-btn .top-lines::after,
+    .line-btn .bot-lines::before,
+    .line-btn .bot-lines::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      height:2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .line-btn .top-lines::before{ top: 10px; opacity: 0.95; }
+    .line-btn .top-lines::after { top: 20px; opacity: 0.75; }
+
+    .line-btn .bot-lines::before{ bottom: 20px; opacity: 0.95; }
+    .line-btn .bot-lines::after { bottom: 10px; opacity: 0.75; }
+
+    /* center flourish */
+    .line-btn .flourish{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 64px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .line-btn .flourish::before,
+    .line-btn .flourish::after{
+      content:"";
+      position:absolute;
+      top: 50%;
+      width: 62px;
+      height: 22px;
+      border: 2px solid var(--gold);
+      border-color: var(--gold) transparent transparent transparent;
+      border-radius: 999px;
+      opacity: 0.95;
+    }
+
+    .line-btn .flourish::before{
+      left: 0;
+      transform: translateY(-50%) rotate(0deg);
+    }
+    .line-btn .flourish::after{
+      right: 0;
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* diamonds on sides */
+    .line-btn .dia{
+      position:absolute;
+      width: 14px;
+      height: 14px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .line-btn .dia.tl{ left: 3.2%; top: 22px; }
+    .line-btn .dia.tr{ right: 3.2%; top: 22px; }
+    .line-btn .dia.bl{ left: 3.2%; bottom: 22px; }
+    .line-btn .dia.br{ right: 3.2%; bottom: 22px; }
+
+    /* hover */
+    .line-btn:hover .label{ color:#201c16; }
+    .line-btn:hover .top-lines::before,
+    .line-btn:hover .bot-lines::before{
       opacity: 1;
     }
 
-    /* =========================
-       Responsive
-    ========================= */
     @media (max-width: 1000px){
       .line-btn{ width: 420px; }
-      .line-btn .label{ font-size: 26px; }
+      .line-btn .label{ font-size: 28px; }
     }
-
     @media (max-width: 768px){
       .frame{
         padding: 72px 32px 88px;
         background-size: 140% auto;
       }
-
       .button-row{
         flex-direction: column;
         gap: 18px;
       }
-
       .line-btn{
         width: 100%;
         max-width: 520px;
-        height: 150px;
       }
     }
-
     @media (max-width: 480px){
       .page{ padding: 64px 16px 96px; }
       .frame{ padding: 64px 24px 80px; }
       .japanese-title .subtitle{ font-size: 16px; }
 
-      .line-btn{ height: 140px; }
-      .line-btn .label{ font-size: 24px; }
+      .line-btn{ height: 150px; }
+      .line-btn .label{ font-size: 25px; }
     }
   </style>
 </head>
@@ -225,15 +282,21 @@
       <section class="frame">
         <div class="button-row">
 
-          <button class="line-btn" type="button" aria-label="身元保証">
-            <span class="orn-top"></span>
-            <span class="orn-bot"></span>
+          <button class="line-btn" type="button">
+            <span class="top-lines"></span>
+            <span class="bot-lines"></span>
+            <span class="flourish"></span>
+            <span class="dia tl"></span><span class="dia tr"></span>
+            <span class="dia bl"></span><span class="dia br"></span>
             <span class="label">身元保証</span>
           </button>
 
-          <button class="line-btn" type="button" aria-label="生活支援">
-            <span class="orn-top"></span>
-            <span class="orn-bot"></span>
+          <button class="line-btn" type="button">
+            <span class="top-lines"></span>
+            <span class="bot-lines"></span>
+            <span class="flourish"></span>
+            <span class="dia tl"></span><span class="dia tr"></span>
+            <span class="dia bl"></span><span class="dia br"></span>
             <span class="label">生活支援</span>
           </button>
 

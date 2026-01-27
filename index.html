@@ -19,7 +19,6 @@
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
-      /* ✅ PC에서도 모바일처럼 보이게 */
       --mobile-max: 520px;
 
       --shadow: 0 20px 55px rgba(0,0,0,.16);
@@ -39,7 +38,6 @@
       background-size: 260px 260px;
     }
 
-    /* header */
     .topbar{
       position: sticky;
       top: 0;
@@ -99,7 +97,6 @@
     }
     .brand-title b{ font-weight: 900; }
 
-    /* layout */
     .page{
       position: relative;
       z-index: 1;
@@ -113,13 +110,11 @@
       padding: 18px 16px 120px;
     }
 
-    /* ornament frame */
     .orn-frame{
       position: relative;
       margin-top: 18px;
       padding: 46px 22px 40px;
       border-radius: 22px;
-
       background-color: rgba(255,255,255,.72);
       backdrop-filter: blur(1px);
 
@@ -143,32 +138,28 @@
       line-height: 1.9;
     }
 
-    /* CTA */
-    .cta-section{
-      margin-top: 18px;
-    }
+    .cta-section{ margin-top: 18px; }
 
-    /* ✅ 버튼 양옆 박스 크기 줄이기 */
     .cta-row{
       display: flex;
       flex-direction: column;
       gap: 12px;
-      align-items: center; /* 가운데 정렬 */
+      align-items: center;
     }
 
+    /* ✅ 버튼 크기: 두번째 샘플처럼 작게 */
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
 
-      /* ✅ 여기서 폭을 줄임 */
-      width: min(320px, 100%);  /* 🔥 핵심 */
-      height: 56px;
+      width: min(280px, 100%); /* 🔥 가로 축소 */
+      height: 48px;            /* 🔥 세로 축소 */
 
       background: linear-gradient(#b9a48d, var(--btn));
       color: var(--btn-text);
 
-      border-radius: 10px;
+      border-radius: 10px;     /* 🔥 pill 말고 둥근 네모 */
       box-shadow: var(--shadow2);
       letter-spacing: .16em;
 
@@ -182,6 +173,7 @@
 
       transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
+
     .cta-btn:hover{
       transform: translateY(-1px);
       filter: brightness(1.02);
@@ -193,20 +185,16 @@
       box-shadow: 0 10px 28px rgba(0,0,0,.12);
     }
 
-    /* ✅ 버튼 아래 문구 */
     .cta-message{
       margin-top: 18px;
       text-align: center;
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       color: var(--muted);
-
       font-size: 15px;
       line-height: 1.9;
       letter-spacing: .08em;
     }
 
-    /* reveal */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -248,7 +236,6 @@
           <button class="cta-btn" type="button">生活支援</button>
         </div>
 
-        <!-- ✅ 이미지 문구 넣는 부분 -->
         <div class="cta-message">
           皆さまの想いをかなえるために<br/>
           私たちが一生涯のご支援をお約束致します

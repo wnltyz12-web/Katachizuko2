@@ -59,6 +59,7 @@
         0 40px 120px rgba(0,0,0,0.25),
         inset 0 0 0 1px rgba(0,0,0,0.08);
       overflow: hidden;
+      will-change: transform;
     }
 
     /* 프레임 바깥 오나먼트 */
@@ -134,6 +135,17 @@
       .page {
         padding: 120px 20px 160px;
       }
+
+      .frame {
+        padding: 48px 28px;
+        box-shadow: none; /* 모바일 box-shadow 비활성 */
+        filter: drop-shadow(0 24px 60px rgba(0,0,0,0.35)); /* 모바일용 그림자 */
+      }
+
+      .title {
+        margin-bottom: 64px;
+      }
+    }
 
       .frame {
         padding: 48px 28px;

@@ -178,7 +178,6 @@
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
 
-    /* ✅ 고급스럽게: 밝기보다 shadow 중심 + 미세 이동 */
     .cta-btn:hover{
       transform: translateY(-0.5px);
       box-shadow: 0 14px 34px rgba(0,0,0,.17);
@@ -202,7 +201,7 @@
       letter-spacing: .06em;
     }
 
-    /* ✅ 섹션 구분선 + 다이아 */
+    /* separator */
     .section-sep{
       margin: 22px 0 6px;
       width: 100%;
@@ -224,7 +223,7 @@
     }
 
     /* =========================
-       Detail Sections (scroll + expand)
+       Always-open Sections
     ========================= */
     .details{
       margin-top: 18px;
@@ -246,14 +245,9 @@
     }
 
     .panel-head{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
       padding: 16px 16px;
-      cursor: pointer;
-      user-select: none;
       background: rgba(255,255,255,.65);
+      border-bottom: 1px solid rgba(0,0,0,.06);
     }
 
     .panel-title{
@@ -262,110 +256,39 @@
       font-weight: 900;
       letter-spacing: .12em;
       color: var(--ink);
+      text-align: center;
     }
-
-    .chev{
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,.12);
-      display: grid;
-      place-items: center;
-      color: rgba(47,42,34,.65);
-      background: rgba(255,255,255,.5);
-      transition: transform .2s ease;
-      flex: 0 0 auto;
-    }
-    .panel.is-open .chev{ transform: rotate(180deg); }
 
     .panel-body{
-      height: 0;
-      overflow: hidden;
-      transition: height .28s ease;
       background: rgba(255,255,255,.55);
-      border-top: 1px solid rgba(0,0,0,.06);
     }
     .panel-inner{
       padding: 16px 16px 18px;
     }
 
-    .cards{
+    /* bullet list (as your images) */
+    .bullets{
+      margin-top: 6px;
+      padding-left: 18px;
       display: grid;
       gap: 10px;
-      margin-top: 10px;
+      list-style: disc;
     }
-    .card{
-      border-radius: 14px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(0,0,0,.06);
-      padding: 12px 12px;
-    }
-    .card h4{
+    .bullets li{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 900;
-      letter-spacing: .10em;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .card p{
-      font-size: 13px;
-      line-height: 1.8;
-      color: rgba(47,42,34,.75);
+      letter-spacing: .06em;
+      line-height: 1.5;
+      color: rgba(47,42,34,.90);
     }
 
-    .mini{
+    .note{
       margin-top: 12px;
-      display: grid;
-      gap: 8px;
-    }
-    .mini .row{
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      line-height: 1.8;
-      color: rgba(47,42,34,.78);
-    }
-    .tag{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-weight: 900;
-      letter-spacing: .10em;
-      color: rgba(47,42,34,.85);
-      white-space: nowrap;
-    }
-
-    /* contact button */
-    .contact{
-      margin-top: 14px;
-      display: grid;
-      place-items: center;
-    }
-    .contact a{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 230px;
-      height: 46px;
-      border-radius: 14px;
-      text-decoration: none;
-
-      background: rgba(47,42,34,.92);
-      color: #fff;
-
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-weight: 900;
-      letter-spacing: .14em;
-      box-shadow: 0 12px 28px rgba(0,0,0,.16);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .contact a:hover{
-      transform: translateY(-0.5px);
-      box-shadow: 0 16px 34px rgba(0,0,0,.18);
-    }
-    .contact a:active{
-      transform: translateY(0);
-      box-shadow: 0 10px 22px rgba(0,0,0,.14);
+      text-align: center;
+      font-size: 12px;
+      color: rgba(47,42,34,.60);
+      letter-spacing: .04em;
     }
 
     /* reveal */
@@ -382,7 +305,7 @@
     @media (max-width: 360px){
       .cta-btn{ width: 210px; font-size: 20px; }
       .cta-message{ font-size: 12px; letter-spacing: .04em; }
-      .contact a{ width: 210px; }
+      .bullets li{ font-size: 16px; }
     }
   </style>
 </head>
@@ -411,8 +334,8 @@
 
       <section class="cta-section reveal" id="cta">
         <div class="cta-row">
-          <button class="cta-btn" type="button" data-target="panel-guarantee">身元保証</button>
-          <button class="cta-btn" type="button" data-target="panel-support">生活支援</button>
+          <button class="cta-btn" type="button" onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">身元保証</button>
+          <button class="cta-btn" type="button" onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">生活支援</button>
 
           <div class="cta-message">
             皆さまの想いをかなえる ために<br/>
@@ -427,168 +350,53 @@
         </div>
       </section>
 
-      <!-- 아래로 내려가며 펼쳐지는 섹션 -->
+      <!-- ✅ 클릭하면 펼쳐지는게 아니라, 항상 펼쳐진 상태 -->
       <section class="details" id="details">
+
         <!-- 身元保証 -->
         <article class="panel" id="panel-guarantee">
-          <div class="panel-head" role="button" tabindex="0" aria-expanded="false">
+          <div class="panel-head">
             <div class="panel-title">身元保証</div>
-            <div class="chev" aria-hidden="true">⌄</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
-              <div class="cards">
-                <div class="card">
-                  <h4>保証人のご相談</h4>
-                  <p>入院・施設入居などで必要となる保証人について、状況に合わせてご案内します。</p>
-                </div>
-                <div class="card">
-                  <h4>手続きサポート</h4>
-                  <p>必要書類や流れを整理し、安心して進められるように支援します。</p>
-                </div>
-                <div class="card">
-                  <h4>緊急時の連絡体制</h4>
-                  <p>いざという時の連絡先・対応方針を事前に整えます。</p>
-                </div>
-              </div>
-
-              <div class="mini">
-                <div class="row"><span class="tag">目安</span><span>内容により変動（初回ヒアリング後にご提案）</span></div>
-                <div class="row"><span class="tag">対象</span><span>おひとりさま／ご家族に負担をかけたくない方</span></div>
-              </div>
-
-              <div class="contact">
-                <a href="#contact">お問い合わせ</a>
-              </div>
+              <ul class="bullets">
+                <li>身元保証人代行</li>
+                <li>緊急連絡先代行</li>
+                <li>身元引受人代行</li>
+                <li>死後事務委任</li>
+              </ul>
             </div>
           </div>
         </article>
 
         <!-- 生活支援 -->
         <article class="panel" id="panel-support">
-          <div class="panel-head" role="button" tabindex="0" aria-expanded="false">
+          <div class="panel-head">
             <div class="panel-title">生活支援</div>
-            <div class="chev" aria-hidden="true">⌄</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
-              <div class="cards">
-                <div class="card">
-                  <h4>外出・通院の同行</h4>
-                  <p>通院や買い物など、日常の外出を安全にサポートします。</p>
-                </div>
-                <div class="card">
-                  <h4>生活の見守り</h4>
-                  <p>定期的な連絡・確認で、安心できる暮らしを支えます。</p>
-                </div>
-                <div class="card">
-                  <h4>手配・連絡代行</h4>
-                  <p>必要な連絡や予約など、負担を減らすお手伝いをします。</p>
-                </div>
-              </div>
-
-              <div class="mini">
-                <div class="row"><span class="tag">目安</span><span>時間・頻度で調整（ご希望に合わせて）</span></div>
-                <div class="row"><span class="tag">対応</span><span>松戸周辺（応相談）</span></div>
-              </div>
-
-              <div class="contact">
-                <a href="#contact">お問い合わせ</a>
-              </div>
+              <ul class="bullets">
+                <li>通院同行</li>
+                <li>買物同行</li>
+                <li>役所手続き同行</li>
+              </ul>
             </div>
           </div>
         </article>
 
-        <!-- Contact anchor -->
-        <div id="contact" style="height:1px;"></div>
       </section>
 
     </div>
   </main>
 
   <script>
-    // reveal
     const revealEl = document.querySelector('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) revealEl.classList.add('is-on'); });
     }, { threshold: 0.18 });
     io.observe(revealEl);
-
-    // accordion helpers
-    function closePanel(panel){
-      panel.classList.remove('is-open');
-      const head = panel.querySelector('.panel-head');
-      const body = panel.querySelector('.panel-body');
-      head.setAttribute('aria-expanded', 'false');
-      body.style.height = '0px';
-    }
-
-    function openPanel(panel){
-      panel.classList.add('is-open');
-      const head = panel.querySelector('.panel-head');
-      const body = panel.querySelector('.panel-body');
-      head.setAttribute('aria-expanded', 'true');
-
-      // set explicit height for smooth animation
-      const inner = panel.querySelector('.panel-inner');
-      body.style.height = inner.scrollHeight + 'px';
-    }
-
-    function togglePanel(panel){
-      const isOpen = panel.classList.contains('is-open');
-      const panels = document.querySelectorAll('.panel');
-      panels.forEach(p => { if (p !== panel) closePanel(p); });
-      if (isOpen) closePanel(panel);
-      else openPanel(panel);
-    }
-
-    // click on panel heads
-    document.querySelectorAll('.panel').forEach(panel => {
-      const head = panel.querySelector('.panel-head');
-      head.addEventListener('click', () => togglePanel(panel));
-      head.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          togglePanel(panel);
-        }
-      });
-    });
-
-    // buttons: scroll + open
-    document.querySelectorAll('.cta-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-target');
-        const panel = document.getElementById(id);
-        if (!panel) return;
-
-        // scroll into view first
-        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // open after short delay to allow scroll start
-        setTimeout(() => {
-          togglePanel(panel);
-          // recompute height after images/fonts settle
-          setTimeout(() => {
-            if (panel.classList.contains('is-open')) {
-              const body = panel.querySelector('.panel-body');
-              const inner = panel.querySelector('.panel-inner');
-              body.style.height = inner.scrollHeight + 'px';
-            }
-          }, 200);
-        }, 250);
-      });
-    });
-
-    // keep height correct on resize
-    window.addEventListener('resize', () => {
-      document.querySelectorAll('.panel.is-open').forEach(panel => {
-        const body = panel.querySelector('.panel-body');
-        const inner = panel.querySelector('.panel-inner');
-        body.style.height = inner.scrollHeight + 'px';
-      });
-    });
   </script>
 </body>
 </html>

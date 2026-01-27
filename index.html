@@ -6,9 +6,6 @@
   <title>カタオカサービス</title>
 
   <style>
-    /* =========================
-       Reset
-    ========================= */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; }
     body{
@@ -18,26 +15,23 @@
     }
 
     :root{
-      --ivory: #f0e0c1;      /* 너가 쓰던 아이보리 */
+      --ivory: #f0e0c1;
       --paper: #ffffff;
       --ink: #2f2a22;
       --muted: #6a5f4a;
 
-      /* 버튼(3번째 사진 톤) */
       --btn: #b7a18a;
-      --btn-dark: #a8927b;
       --btn-text: #ffffff;
 
       --shadow: 0 20px 55px rgba(0,0,0,.16);
       --shadow2: 0 12px 35px rgba(0,0,0,.12);
       --radius: 18px;
+
+      /* ✅ "모바일이 기준" 스케일(PC에서도 이 느낌 유지) */
+      --mobile-max: 520px;   /* PC에서도 이 폭으로 고정 */
     }
 
-    /* =========================
-       Background Ornament (optional)
-       - 너 ornament.png 쓰고 있으면 유지
-       - 없으면 그냥 단색처럼 보임
-    ========================= */
+    /* Background */
     .ornament-bg{
       position: fixed;
       inset: 0;
@@ -46,110 +40,93 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: 260px 260px;
-      opacity: 1;
     }
 
-    /* =========================
-       1) Top Header (첫번째 사진 스타일)
-    ========================= */
+    /* ✅ PC에서도 모바일처럼 중앙에 '얇은 폭'만 보이게 */
+    .page{
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .container{
+      width: 100%;
+      max-width: var(--mobile-max); /* ✅ 핵심 */
+      padding: 18px 16px 110px;     /* ✅ 모바일 느낌 유지 */
+    }
+
+    /* 1) Top Header */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 50;
-      height: 72px;
-      background: #ded4c8; /* 첫번째 사진 비슷한 베이지 */
+      height: 68px;                 /* ✅ 모바일 기준으로 고정 */
+      background: #ded4c8;
       border-bottom: 1px solid rgba(0,0,0,.06);
       display: flex;
       align-items: center;
+      justify-content: center;
     }
-
     .topbar .wrap{
       width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 22px;
+      max-width: var(--mobile-max); /* ✅ PC에서도 같은 폭 */
+      padding: 0 16px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
-
     .logo{
       display: flex;
       align-items: center;
       gap: 10px;
-      min-width: 220px;
     }
-
     .logo-mark{
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: 2px solid rgba(0,0,0,.85);
       display: grid;
       place-items: center;
       background: rgba(255,255,255,.35);
+      flex: 0 0 auto;
     }
     .logo-mark span{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 800;
-      font-size: 16px;
+      font-size: 15px;
       letter-spacing: .04em;
     }
-
     .logo-sub{
       font-size: 10px;
       letter-spacing: .18em;
       opacity: .75;
       margin-top: 2px;
     }
-
     .brand-title{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 20px;
-      letter-spacing: .08em;
+      font-size: 16px;      /* ✅ 모바일 크기로 고정 */
+      letter-spacing: .06em;
       color: #1f1b16;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+    .brand-title b{ font-weight: 900; }
 
-    .brand-title b{
-      font-weight: 900;
-    }
-
-    /* =========================
-       Layout
-    ========================= */
-    .page{
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-    }
-    .container{
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 22px 120px;
-    }
-
-    /* =========================
-       2) Hero: "새창 같은" 카드 + 그림자
-    ========================= */
+    /* 2) Hero "window" */
     .hero{
       margin-top: 18px;
-      display: grid;
-      place-items: center;
-      padding: 42px 0 10px;
+      padding: 18px 0 10px;
     }
-
     .window-card{
-      width: min(920px, 100%);
+      width: 100%;
       background: rgba(255,255,255,.90);
       border-radius: 20px;
       box-shadow: var(--shadow);
       border: 1px solid rgba(0,0,0,.06);
       overflow: hidden;
     }
-
-    /* macOS/브라우저 창 느낌의 상단 바 */
     .window-top{
       height: 42px;
       background: linear-gradient(#f7f3ec, #f0e9df);
@@ -174,57 +151,43 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .window-body{
-      padding: 34px 26px 36px;
+      padding: 26px 18px 28px; /* ✅ 모바일 기준 */
       text-align: center;
     }
-
     .window-body .line{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       color: var(--ink);
       letter-spacing: .10em;
       line-height: 1.9;
-      font-size: 18px;
+      font-size: 16px;     /* ✅ 모바일 기준 */
       font-weight: 700;
     }
-
-    .window-body .line + .line{
-      margin-top: 8px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    /* 살짝 장식 라인 */
+    .window-body .line + .line{ margin-top: 8px; }
     .window-divider{
-      width: 62%;
+      width: 80%;
       height: 1px;
       margin: 18px auto 0;
       background: rgba(0,0,0,.12);
     }
 
-    /* =========================
-       3) Buttons section (3번째 사진 느낌)
-       - 스크롤 내려오면 나타나는 연출
-    ========================= */
+    /* 3) Buttons (모바일 느낌 유지) */
     .cta-section{
-      margin-top: 38px;
-      padding-top: 26px;
+      margin-top: 28px;
+      padding-top: 6px;
     }
-
     .cta-row{
       display: flex;
-      justify-content: center;
-      gap: 26px;
-      flex-wrap: wrap;
+      flex-direction: column; /* ✅ PC에서도 세로(모바일처럼) */
+      gap: 12px;
+      align-items: stretch;
     }
-
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
 
-      min-width: 260px;
+      width: 100%;
       height: 56px;
 
       background: linear-gradient(#b9a48d, var(--btn));
@@ -244,7 +207,6 @@
 
       transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
-
     .cta-btn:hover{
       transform: translateY(-1px);
       filter: brightness(1.02);
@@ -256,7 +218,7 @@
       box-shadow: 0 10px 28px rgba(0,0,0,.12);
     }
 
-    /* 스크롤 등장 애니메이션 */
+    /* reveal */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -267,29 +229,9 @@
       transform: translateY(0);
     }
 
-    /* =========================
-       Small helper spacing (hero 아래 조금 더 스크롤 유도)
-    ========================= */
-    .spacer{
-      height: 26px;
-    }
-
-    /* =========================
-       Responsive
-    ========================= */
-    @media (max-width: 900px){
-      .brand-title{ font-size: 18px; }
-      .logo{ min-width: unset; }
-      .window-body{ padding: 28px 18px 30px; }
-      .window-body .line{ font-size: 17px; }
-    }
-
-    @media (max-width: 520px){
-      .topbar{ height: 68px; }
-      .logo-mark{ width: 40px; height: 40px; }
-      .brand-title{ font-size: 16px; letter-spacing: .06em; }
-      .cta-btn{ min-width: 240px; width: 100%; max-width: 420px; }
-      .window-body .line{ font-size: 16px; }
+    /* ✅ PC에서 모바일과 동일하게 보이게: 더 큰 화면에서도 절대 레이아웃 바꾸지 않음 */
+    @media (min-width: 521px){
+      /* intentionally empty: PC에서도 모바일 그대로 */
     }
   </style>
 </head>
@@ -297,7 +239,6 @@
 <body>
   <div class="ornament-bg"></div>
 
-  <!-- 1) 첫번째 사진처럼 맨 윗줄 -->
   <header class="topbar">
     <div class="wrap">
       <div class="logo">
@@ -306,18 +247,13 @@
           <div class="logo-sub">KATAOKA</div>
         </div>
       </div>
-
-      <!-- 일본어로 변경 -->
-      <div class="brand-title">
-        <b>外出支援</b>　カタオカサービス
-      </div>
+      <div class="brand-title"><b>外出支援</b>　カタオカサービス</div>
     </div>
   </header>
 
   <main class="page">
     <div class="container">
 
-      <!-- 2) 사진 대신 "새창 같은" 카드 + 글 -->
       <section class="hero">
         <div class="window-card">
           <div class="window-top">
@@ -333,9 +269,6 @@
         </div>
       </section>
 
-      <div class="spacer"></div>
-
-      <!-- 3) 스크롤 내려오면 새창 밑에 버튼 등장 -->
       <section class="cta-section reveal" id="cta">
         <div class="cta-row">
           <button class="cta-btn" type="button">身元保証</button>
@@ -347,7 +280,6 @@
   </main>
 
   <script>
-    // 버튼 섹션이 화면에 들어오면 나타나게
     const el = document.querySelector('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {

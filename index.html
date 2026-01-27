@@ -63,58 +63,174 @@
     }
 
     /* =========================
-       Header
+       Header (Refined + CTA + Shrink on scroll)
     ========================= */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 50;
-      height: 68px;
-      background: #ded4c8;
-      border-bottom: 1px solid rgba(0,0,0,.06);
+
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      backdrop-filter: blur(6px);
+
+      transition: height .22s ease, box-shadow .22s ease;
     }
-    .topbar .wrap{
+    .topbar.is-compact{
+      height: 64px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+
+    .topbar-inner{
       width: 100%;
       max-width: var(--mobile-max);
       padding: 0 16px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
     }
-    .logo{
-      display: flex;
+
+    .brand{
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      flex: 0 0 auto;
+      gap: 12px;
+      text-decoration: none;
+      color: #1f1b16;
+      min-width: 0;
     }
-    .logo-mark{
-      width: 40px;
-      height: 40px;
+
+    .brand-mark{
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
-      border: 2px solid rgba(0,0,0,.85);
+
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,.35);
-    }
-    .logo-mark span{
+
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-weight: 800;
-      font-size: 15px;
-      letter-spacing: .04em;
-    }
-    .brand-title{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-weight: 900;
       font-size: 16px;
-      letter-spacing: .06em;
-      color: #1f1b16;
+      letter-spacing: .04em;
+
+      border: 1.5px solid rgba(0,0,0,.78);
+      background: rgba(255,255,255,.38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+
+      transition: width .22s ease, height .22s ease, transform .22s ease;
+      flex: 0 0 auto;
+    }
+    .topbar.is-compact .brand-mark{
+      width: 38px;
+      height: 38px;
+      transform: translateY(-.5px);
+    }
+
+    .brand-text{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .brand-eyebrow{
+      font-size: 12px;
+      letter-spacing: .18em;
+      color: rgba(31,27,22,.78);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .brand-title b{ font-weight: 900; }
+
+    .brand-name{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      color: #1f1b16;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      transition: font-size .22s ease, letter-spacing .22s ease;
+    }
+    .topbar.is-compact .brand-name{
+      font-size: 16px;
+      letter-spacing: .08em;
+    }
+
+    /* Header CTA */
+    .header-actions{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .hbtn{
+      border: 1px solid rgba(0,0,0,.14);
+      background: rgba(255,255,255,.40);
+      color: rgba(31,27,22,.92);
+      border-radius: 999px;
+      height: 38px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: .10em;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .hbtn:hover{
+      transform: translateY(-0.5px);
+      background: rgba(255,255,255,.52);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
+    }
+    .hbtn:active{
+      transform: translateY(0px);
+      background: rgba(255,255,255,.46);
+      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    .hbtn.primary{
+      background: rgba(183,161,138,.92);
+      color: #fff;
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    }
+    .hbtn.primary:hover{
+      background: rgba(183,161,138,.98);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    }
+
+    .hbtn .ico{
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+    }
+
+    /* 작은 화면에서는 1개만 보이게 */
+    @media (max-width: 420px){
+      .header-actions .hbtn.secondary{ display: none; }
+    }
+    @media (max-width: 360px){
+      .topbar{ height: 72px; }
+      .topbar.is-compact{ height: 60px; }
+      .brand-name{ font-size: 16px; }
+      .hbtn{ height: 36px; padding: 0 11px; }
+    }
 
     /* =========================
        Layout
@@ -133,11 +249,11 @@
     }
 
     /* =========================
-       HERO (✅ 중앙만 오나먼트 보이게 그라디언트)
+       HERO (center ornament fade)
     ========================= */
     .orn-frame{
       position: relative;
-      overflow: hidden; /* ✅ 중요 */
+      overflow: hidden;
       margin-top: 18px;
       padding: 46px 22px 40px;
       border-radius: 22px;
@@ -145,7 +261,6 @@
       background-color: var(--paper);
       backdrop-filter: blur(1px);
 
-      /* 오나먼트 깔기 */
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
@@ -153,15 +268,11 @@
 
       box-shadow: var(--shadow);
     }
-
-    /* ✅ 중앙만 보이게 눌러주는 오버레이 */
     .orn-frame::after{
       content:"";
       position:absolute;
       inset:0;
       pointer-events:none;
-
-      /* 위/아래는 하얗게, 중앙만 투명하게 */
       background: linear-gradient(
         to bottom,
         rgba(255,255,255,0.92) 0%,
@@ -171,10 +282,9 @@
         rgba(255,255,255,0.92) 100%
       );
     }
-
     .orn-title{
-      position: relative; /* ✅ overlay 위로 */
-      z-index: 2;         /* ✅ overlay 위로 */
+      position: relative;
+      z-index: 2;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
@@ -273,7 +383,6 @@
       letter-spacing: .06em;
     }
 
-    /* separator */
     .section-sep{
       margin: 22px 0 6px;
       width: 100%;
@@ -386,24 +495,39 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    @media (max-width: 360px){
-      .cta-btn{ width: 210px; font-size: 20px; }
-      .cta-message{ font-size: 12px; letter-spacing: .04em; }
-      .card h3{ font-size: 15px; }
-    }
   </style>
 </head>
 
 <body>
   <div class="ornament-bg"></div>
 
-  <header class="topbar">
-    <div class="wrap">
-      <div class="logo">
-        <div class="logo-mark" aria-hidden="true"><span>片</span></div>
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#" aria-label="カタオカサービス トップ">
+        <span class="brand-mark" aria-hidden="true">片</span>
+        <span class="brand-text">
+          <span class="brand-eyebrow">外出支援</span>
+          <span class="brand-name">カタオカサービス</span>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <!-- ✅ 전화번호 있으면 여기 href를 tel:로 바꾸면 됨 -->
+        <a class="hbtn secondary" href="#details" aria-label="サービスを見る">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 6h16M4 12h10M4 18h16"></path>
+          </svg>
+          サービス
+        </a>
+
+        <a class="hbtn primary" href="#cta" aria-label="お問い合わせへ">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16v16H4z"></path>
+            <path d="M22 6l-10 7L2 6"></path>
+          </svg>
+          お問い合わせ
+        </a>
       </div>
-      <div class="brand-title"><b>外出支援</b>　カタオカサービス</div>
     </div>
   </header>
 
@@ -420,10 +544,7 @@
       <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
-
-          <!-- ✅ 파일명 맞추기 -->
           <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
-
           <div class="illus-caption">
             不安をひとつずつ整理し、<br/>
             必要な手続きや支援をわかりやすくご案内します。
@@ -526,11 +647,30 @@
   </main>
 
   <script>
+    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
+
+    // ✅ 헤더 축소(스크롤)
+    const topbar = document.getElementById('topbar');
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        if (y > 12) topbar.classList.add('is-compact');
+        else topbar.classList.remove('is-compact');
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   </script>
 </body>
 </html>

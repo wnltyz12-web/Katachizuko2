@@ -3,214 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welfare Design Archive</title>
+  <title>Welfare Design</title>
 
   <style>
-    * { box-sizing: border-box; }
-
-    html, body {
+    /* =========================
+       Reset
+    ========================= */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html, body {
       width: 100%;
       height: 100%;
+      font-family: "Noto Sans JP", sans-serif;
       background-color: #f4f1ea;
-      font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
-      color: #1a1a1a;
     }
 
-    /* ==============================
-       상단 아이보리 바
-    ============================== */
-    .top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 64px;
-      background-color: #f0e0c1;
-      z-index: 3;
-    }
-
-    /* ==============================
-       전체 오나먼트 배경
-    ============================== */
+    /* =========================
+       Background Ornament
+    ========================= */
     .ornament-bg {
       position: fixed;
       inset: 0;
       z-index: 0;
+      background-color: #f4f1ea;
       background-image: url("ornament.png");
       background-repeat: repeat;
-      background-size: 560px 560px;
-      opacity: 1;
+      background-size: 220px 220px;
     }
 
-    /* ==============================
-       페이지 래퍼
-    ============================== */
+    /* =========================
+       Top Ivory Bar
+    ========================= */
+    .top-bar {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 64px;
+      background-color: #f0e0c1;
+    }
+
+    /* =========================
+       Page Wrapper
+    ========================= */
     .page {
       position: relative;
       z-index: 1;
       min-height: 100vh;
-      padding: 200px 40px 220px;
+      padding: 80px 24px 120px;
       display: flex;
       justify-content: center;
     }
 
-    /* ==============================
-       상단 안내 문구
-    ============================== */
-    .intro-text {
-      position: absolute;
-      top: 96px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.9;
-      letter-spacing: 0.18em;
-      color: rgba(0,0,0,0.75);
-      z-index: 2;
-      white-space: nowrap;
-    }
-
-    /* ==============================
-       오나먼트 프레임
-    ============================== */
-    .frame {
-      position: relative;
+    .container {
       width: 100%;
-      max-width: 1200px;
-      padding: 96px 88px 104px;
-      background-color: #f7f5ef;
-      box-shadow:
-        0 40px 120px rgba(0,0,0,0.22),
-        inset 0 0 0 1px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-
-    .frame::before {
-      content: "";
-      position: absolute;
-      inset: -48px;
-      background-image: url("ornament.png");
-      background-repeat: repeat;
-      background-size: 560px 560px;
-      background-attachment: fixed;
-      z-index: -1;
-      transform: translateZ(0);
-    }
-
-    .frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(0,0,0,0.12);
-      pointer-events: none;
-    }
-
-    /* ==============================
-       타이틀
-    ============================== */
-    .title {
+      max-width: 1100px;
       text-align: center;
-      margin-bottom: 88px;
     }
 
-    .title h1 {
-      margin: 0 0 14px;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: 0.38em;
-    }
-
-    .title p {
-      margin: 0;
-      font-size: 12px;
-      letter-spacing: 0.42em;
-      opacity: 0.55;
-    }
-
-    /* ==============================
-       메인 비주얼 영역
-    ============================== */
-    .content {
-      width: 100%;
-      aspect-ratio: 1024 / 1536;
-      background: #1a1a1a;
-      border-radius: 14px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.28);
-    }
-
-    /* ==============================
-       모바일 대응
-    ============================== */
-    @media (max-width: 640px) {
-      .top-bar {
-        height: 56px;
-      }
-
-      .page {
-        padding: 160px 20px 180px;
-      }
-
-      .intro-text {
-        top: 76px;
-        font-size: 13px;
-        letter-spacing: 0.14em;
-        white-space: normal;
-      }
-
-      .frame {
-        padding: 48px 28px 56px;
-        box-shadow: none;
-        filter: drop-shadow(0 20px 48px rgba(0,0,0,0.3));
-      }
-
-      .title {
-        margin-bottom: 64px;
-      }
-
-      .content {
-        aspect-ratio: 3 / 4;
-      }
-    }
-      .main-title {
-      text-align: center;
-      margin-bottom: 56px;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: 36px;
-      line-height: 1.6;
-      letter-spacing: 0.12em;
-      color: #2f2a22;
-    }
-
-    .main-title span {
-      display: block;
-      margin-top: 12px;
-      font-size: 22px;
-      letter-spacing: 0.18em;
-      color: #6a5f4a;
-    }
-
-    @media (max-width: 640px) {
-      .main-title {
-        font-size: 26px;
-      }
-
-      .main-title span {
-        font-size: 18px;
-      }
-    }
-
-  </style>
-  <style>
+    /* =========================
+       Japanese Intro Text
+    ========================= */
     .japanese-title {
-      position: relative;
-      margin-bottom: 32px;
-      text-align: center;
-      color: #3a342a;
+      margin-bottom: 48px;
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      color: #3a342a;
       letter-spacing: 0.08em;
+      word-break: keep-all;
     }
 
     .japanese-title .subtitle {
@@ -220,46 +82,110 @@
     }
 
     .japanese-title .divider {
-      display: block;
       width: 40px;
       height: 1px;
       margin: 14px auto;
       background-color: #b9a77a;
     }
+
+    /* =========================
+       Main Frame
+    ========================= */
+    .frame {
+      position: relative;
+      padding: 96px 64px 112px;
+      background-color: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(1px);
+
+      background-image: url("ornament.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 120% auto;
+
+      border-radius: 24px;
+      filter: drop-shadow(0 25px 60px rgba(0,0,0,0.25));
+    }
+
+    /* =========================
+       Main Title
+    ========================= */
+    .main-title {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 36px;
+      line-height: 1.7;
+      letter-spacing: 0.12em;
+      color: #2f2a22;
+      margin-bottom: 32px;
+      word-break: keep-all;
+    }
+
+    .main-title span {
+      display: block;
+      margin-top: 0.4em;
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      line-height: 1.6;
+      color: #6a5f4a;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @media (max-width: 768px) {
+      .frame {
+        padding: 72px 32px 88px;
+        background-size: 160% auto;
+      }
+
+      .main-title {
+        font-size: 28px;
+      }
+
+      .main-title span {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 64px 16px 96px;
+      }
+
+      .frame {
+        padding: 64px 24px 80px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <div class="top-bar"></div>
+  <!-- Background -->
   <div class="ornament-bg"></div>
 
+  <!-- Top Bar -->
+  <div class="top-bar"></div>
+
+  <!-- Page -->
   <main class="page">
+    <div class="container">
 
-    <div class="japanese-title">
-      <span class="subtitle">おひとりさまの方へ</span>
-      <span class="divider"></span>
-      <span class="subtitle">子供や孫に迷惑をかけたくない方へ</span>
-    </div>
+      <!-- Intro Text -->
+      <div class="japanese-title">
+        <span class="subtitle">おひとりさまの方へ</span>
+        <span class="divider"></span>
+        <span class="subtitle">子供や孫に迷惑をかけたくない方へ</span>
+      </div>
 
-    <div class="intro-text">
-      おひとりさまの方へ<br>
-      子供や孫に迷惑をかけたくない方へ
-    </div>
-
-    <section class="frame">
-
-      <header class="title">
-        <h1>WELFARE DESIGN</h1>
-        <p>ARCHIVE — 2026</p>
-      </header>
-
-      <section class="content">
-
-        <h1 class="main-title">人生の最期まで、
+      <!-- Frame -->
+      <section class="frame">
+        <h1 class="main-title">
+          人生の最期まで、
           <span>安心できる選択を。</span>
-        </h1></section>
+        </h1>
+      </section>
 
-    </section>
+    </div>
   </main>
 
 </body>

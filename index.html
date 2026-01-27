@@ -6,7 +6,14 @@
   <title>Welfare Design</title>
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* =========================
+       Reset
+    ========================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     html, body {
       width: 100%;
@@ -15,6 +22,9 @@
       background-color: #f4f1ea;
     }
 
+    /* =========================
+       Background Ornament
+    ========================= */
     .ornament-bg {
       position: fixed;
       inset: 0;
@@ -25,6 +35,9 @@
       background-size: 260px 260px;
     }
 
+    /* =========================
+       Top Ivory Bar
+    ========================= */
     .top-bar {
       position: relative;
       z-index: 2;
@@ -33,6 +46,9 @@
       background-color: #f0e0c1;
     }
 
+    /* =========================
+       Page Wrapper
+    ========================= */
     .page {
       position: relative;
       z-index: 1;
@@ -48,6 +64,9 @@
       text-align: center;
     }
 
+    /* =========================
+       Japanese Intro Text
+    ========================= */
     .japanese-title {
       margin-bottom: 48px;
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
@@ -61,8 +80,8 @@
       gap: 14px;
     }
 
-    /* ✅ 하이라이트 라인(박스X, 그림자X) */
-    .subtitle {
+    /* ✅ 고급 하이라이트 */
+    .japanese-title .subtitle {
       display: inline-block;
       font-size: 17px;
       font-weight: 900;
@@ -71,7 +90,6 @@
       white-space: nowrap;
       line-height: 1.4;
 
-      /* 핵심: 텍스트 뒤로 은은한 아이보리 띠 */
       padding: 2px 10px;
       background: linear-gradient(
         transparent 55%,
@@ -81,7 +99,7 @@
       border-radius: 10px;
     }
 
-    .divider {
+    .japanese-title .divider {
       width: 40px;
       height: 1px;
       margin: 0 auto;
@@ -89,9 +107,12 @@
       opacity: 0.95;
     }
 
+    /* =========================
+       Main Frame
+    ========================= */
     .frame {
       position: relative;
-      padding: 96px 64px 112px;
+      padding: 88px 64px 96px;
 
       background-color: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(1px);
@@ -105,59 +126,125 @@
       filter: drop-shadow(0 25px 60px rgba(0,0,0,0.25));
     }
 
-    .main-title {
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: 36px;
-      line-height: 1.7;
-      letter-spacing: 0.12em;
-      color: #2f2a22;
-      margin-bottom: 32px;
-      word-break: keep-all;
+    /* =========================
+       Buttons Section (NEW)
+    ========================= */
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      margin-top: 10px;
     }
 
-    .main-title span {
-      display: block;
-      margin-top: 0.4em;
-      font-size: 22px;
-      letter-spacing: 0.18em;
-      line-height: 1.6;
-      color: #6a5f4a;
+    .pill-btn {
+      width: 320px;
+      height: 74px;
+      border-radius: 999px;
+      background-color: #fff5b8; /* ✅ 사진 같은 아이보리/노랑톤 */
+      border: none;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      color: #2f2a22;
+      font-weight: 800;
+
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.2);
+    }
+
+    .pill-btn:active {
+      transform: translateY(0px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @media (max-width: 900px) {
+      .pill-btn {
+        width: 280px;
+      }
     }
 
     @media (max-width: 768px) {
-      .frame { padding: 72px 32px 88px; background-size: 140% auto; }
-      .main-title { font-size: 28px; }
-      .main-title span { font-size: 18px; }
-      .subtitle { padding: 2px 9px; }
+      .frame {
+        padding: 72px 32px 88px;
+        background-size: 140% auto;
+      }
+
+      .button-row {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .pill-btn {
+        width: 100%;
+        max-width: 360px;
+      }
     }
 
     @media (max-width: 480px) {
-      .page { padding: 64px 16px 96px; }
-      .frame { padding: 64px 24px 80px; }
-      .subtitle { font-size: 16px; }
+      .page {
+        padding: 64px 16px 96px;
+      }
+
+      .frame {
+        padding: 64px 24px 80px;
+      }
+
+      .japanese-title .subtitle {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Background Ornament -->
   <div class="ornament-bg"></div>
+
+  <!-- Top Bar -->
   <div class="top-bar"></div>
 
+  <!-- Page -->
   <main class="page">
     <div class="container">
+
+      <!-- Intro Text -->
       <div class="japanese-title">
         <span class="subtitle">おひとりさまの方へ</span>
         <span class="divider"></span>
         <span class="subtitle">子供や孫に迷惑をかけたくない方へ</span>
       </div>
 
+      <!-- Frame -->
       <section class="frame">
-        <h1 class="main-title">
-          人生の最期まで、
-          <span>安心できる選択を。</span>
-        </h1>
+
+        <!-- ✅ 여기서 "人生の最期まで、" 부분 삭제됨 -->
+
+        <!-- ✅ 사진처럼 양쪽 버튼 2개 -->
+        <div class="button-row">
+          <button class="pill-btn">【身元保証】</button>
+          <button class="pill-btn">【生活支援】</button>
+        </div>
+
       </section>
+
     </div>
   </main>
+
 </body>
 </html>

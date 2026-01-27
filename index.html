@@ -111,6 +111,29 @@
     }
 
     /* ==============================
+       상단 안내 문구
+    ============================== */
+    .intro-text {
+      position: absolute;
+      top: 96px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.8;
+      letter-spacing: 0.12em;
+      color: rgba(0,0,0,0.75);
+      z-index: 2;
+    }
+
+    @media (max-width: 640px) {
+      .intro-text {
+        top: 84px;
+        font-size: 13px;
+      }
+    }
+
+    /* ==============================
        타이틀 영역
     ============================== */
     .title {
@@ -192,6 +215,11 @@
 
   <!-- 페이지 -->
   <main class="page">
+
+    <!-- 상단 안내 문구 -->
+    <div class="intro-text">
+      <p>おひとりさまの方へ<br>子供や孫に迷惑をかけたくない方へ</p>
+    </div>
     <section class="frame">
 
       <header class="title">

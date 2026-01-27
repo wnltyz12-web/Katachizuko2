@@ -111,11 +111,9 @@
       margin-top: 10px;
     }
 
-    /* =========================================================
-       FIX: Ornament image split into TOP + BOTTOM layers
-       - No more line cutting through the text
-       - Uses the same Untitled-1.png (no need to edit image)
-    ========================================================= */
+    /* =========================
+       Ornament Button (FIXED)
+    ========================= */
     .orn-btn{
       position: relative;
       width: 460px;
@@ -132,34 +130,49 @@
       transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
     }
 
-    /* TOP ornament */
+    /* ✅ 위 장식 / 아래 장식 따로 */
     .orn-btn .orn-top,
     .orn-btn .orn-bot{
       position: absolute;
       left: 0;
       right: 0;
-      height: 60%;
-      background-image: url("Untitled-1.png"); /* ✅ 경로 맞추기 */
+      height: 55%;
+      background-image: url("Untitled-1.png"); /* ✅ 지금 네 repo에 존재 */
       background-repeat: no-repeat;
-      background-size: 140% auto;
+      background-size: 135% auto;
       pointer-events: none;
       z-index: 1;
       opacity: 1;
     }
 
+    /* 위 라인 */
     .orn-btn .orn-top{
-      top: -8px;
-      /* 이미지 안에서 "윗줄 장식"이 있는 영역으로 포커스 */
-      background-position: center 26%;
+      top: -10px;
+      background-position: center 25%;
     }
 
+    /* 아래 라인 */
     .orn-btn .orn-bot{
-      bottom: -8px;
-      /* 이미지 안에서 "아랫줄 장식"이 있는 영역으로 포커스 */
-      background-position: center 74%;
+      bottom: -10px;
+      background-position: center 75%;
     }
 
-    /* text */
+    /* 글로우 */
+    .orn-btn .glow{
+      position: absolute;
+      inset: -30%;
+      z-index: 2;
+      background: radial-gradient(circle at 50% 50%,
+        rgba(214,182,120,0.14) 0%,
+        rgba(214,182,120,0.05) 38%,
+        rgba(0,0,0,0) 70%
+      );
+      opacity: 0.9;
+      pointer-events: none;
+      transition: opacity 0.16s ease;
+    }
+
+    /* 텍스트 */
     .orn-btn .label{
       position: relative;
       z-index: 3;
@@ -177,21 +190,6 @@
       text-shadow:
         0 1px 0 rgba(0,0,0,0.75),
         0 0 16px rgba(214,182,120,0.18);
-    }
-
-    /* glow layer (behind text, above bg) */
-    .orn-btn .glow{
-      position: absolute;
-      inset: -30%;
-      z-index: 2;
-      background: radial-gradient(circle at 50% 50%,
-        rgba(214,182,120,0.14) 0%,
-        rgba(214,182,120,0.05) 38%,
-        rgba(0,0,0,0) 70%
-      );
-      opacity: 0.9;
-      pointer-events: none;
-      transition: opacity 0.16s ease;
     }
 
     .orn-btn:hover{
@@ -262,14 +260,14 @@
       <section class="frame">
         <div class="button-row">
 
-          <button class="orn-btn" type="button" aria-label="身元保証">
+          <button class="orn-btn" type="button">
             <span class="orn-top"></span>
             <span class="orn-bot"></span>
             <span class="glow"></span>
             <span class="label">身元保証</span>
           </button>
 
-          <button class="orn-btn" type="button" aria-label="生活支援">
+          <button class="orn-btn" type="button">
             <span class="orn-top"></span>
             <span class="orn-bot"></span>
             <span class="glow"></span>

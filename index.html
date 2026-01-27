@@ -3,289 +3,358 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welfare Design x DOUEN Style</title>
+  <title>カタオカサービス</title>
 
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{width:100%;height:100%;font-family:"Noto Sans JP",sans-serif;background:#f4f1ea;color:#2f2a22}
+    /* =========================
+       Reset
+    ========================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; }
+    body{
+      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
+      background: #f4f1ea;
+      color: #2f2a22;
+    }
 
     :root{
-      --ivory:#f0e0c1;
-      --paper:rgba(255,255,255,.78);
-      --ink:#2f2a22;
-      --muted:#6a5f4a;
-      --gold:#d8bb73;
-      --goldSoft:rgba(216,187,115,.7);
+      --ivory: #f0e0c1;      /* 너가 쓰던 아이보리 */
+      --paper: #ffffff;
+      --ink: #2f2a22;
+      --muted: #6a5f4a;
+
+      /* 버튼(3번째 사진 톤) */
+      --btn: #b7a18a;
+      --btn-dark: #a8927b;
+      --btn-text: #ffffff;
+
+      --shadow: 0 20px 55px rgba(0,0,0,.16);
+      --shadow2: 0 12px 35px rgba(0,0,0,.12);
+      --radius: 18px;
     }
 
+    /* =========================
+       Background Ornament (optional)
+       - 너 ornament.png 쓰고 있으면 유지
+       - 없으면 그냥 단색처럼 보임
+    ========================= */
     .ornament-bg{
-      position:fixed;inset:0;z-index:0;
-      background:#f4f1ea url("ornament.png") repeat;
-      background-size:260px 260px;
-    }
-    .top-bar{position:relative;z-index:2;height:64px;background:var(--ivory)}
-    .page{position:relative;z-index:1;min-height:100vh;padding:64px 24px 110px;display:flex;justify-content:center}
-    .container{width:100%;max-width:1100px}
-
-    .frame{
-      background:var(--paper);
-      border-radius:24px;
-      padding:64px 56px 56px;
-      filter:drop-shadow(0 25px 60px rgba(0,0,0,.18));
-      backdrop-filter: blur(1px);
-      background-image:url("ornament.png");
-      background-repeat:no-repeat;
-      background-position:center;
-      background-size:110% auto;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-color: #f4f1ea;
+      background-image: url("ornament.png");
+      background-repeat: repeat;
+      background-size: 260px 260px;
+      opacity: 1;
     }
 
-    /* HERO */
+    /* =========================
+       1) Top Header (첫번째 사진 스타일)
+    ========================= */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 72px;
+      background: #ded4c8; /* 첫번째 사진 비슷한 베이지 */
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar .wrap{
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    .logo-mark{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.85);
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.35);
+    }
+    .logo-mark span{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: .04em;
+    }
+
+    .logo-sub{
+      font-size: 10px;
+      letter-spacing: .18em;
+      opacity: .75;
+      margin-top: 2px;
+    }
+
+    .brand-title{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 20px;
+      letter-spacing: .08em;
+      color: #1f1b16;
+      white-space: nowrap;
+    }
+
+    .brand-title b{
+      font-weight: 900;
+    }
+
+    /* =========================
+       Layout
+    ========================= */
+    .page{
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+    }
+    .container{
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 22px 120px;
+    }
+
+    /* =========================
+       2) Hero: "새창 같은" 카드 + 그림자
+    ========================= */
     .hero{
-      text-align:center;
-      font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
-      letter-spacing:.08em;
-    }
-    .hero .kicker{
-      display:inline-block;
-      font-size:16px;
-      font-weight:800;
-      padding:3px 10px;
-      border-radius:10px;
-      background:linear-gradient(transparent 55%, rgba(240,224,193,.95) 55%);
-    }
-    .hero h1{
-      margin-top:18px;
-      font-size:34px;
-      line-height:1.7;
-      color:var(--ink);
-    }
-    .hero p{
-      margin:14px auto 0;
-      max-width:760px;
-      font-size:16px;
-      line-height:1.9;
-      color:var(--muted);
-      font-family:"Noto Sans JP",sans-serif;
-      letter-spacing:.02em;
+      margin-top: 18px;
+      display: grid;
+      place-items: center;
+      padding: 42px 0 10px;
     }
 
-    /* CTA Buttons */
+    .window-card{
+      width: min(920px, 100%);
+      background: rgba(255,255,255,.90);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.06);
+      overflow: hidden;
+    }
+
+    /* macOS/브라우저 창 느낌의 상단 바 */
+    .window-top{
+      height: 42px;
+      background: linear-gradient(#f7f3ec, #f0e9df);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.14);
+    }
+    .window-top .title{
+      margin-left: 10px;
+      font-size: 12px;
+      letter-spacing: .06em;
+      color: rgba(47,42,34,.7);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .window-body{
+      padding: 34px 26px 36px;
+      text-align: center;
+    }
+
+    .window-body .line{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      color: var(--ink);
+      letter-spacing: .10em;
+      line-height: 1.9;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .window-body .line + .line{
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* 살짝 장식 라인 */
+    .window-divider{
+      width: 62%;
+      height: 1px;
+      margin: 18px auto 0;
+      background: rgba(0,0,0,.12);
+    }
+
+    /* =========================
+       3) Buttons section (3번째 사진 느낌)
+       - 스크롤 내려오면 나타나는 연출
+    ========================= */
+    .cta-section{
+      margin-top: 38px;
+      padding-top: 26px;
+    }
+
     .cta-row{
-      margin-top:34px;
-      display:flex;
-      justify-content:center;
-      gap:34px;
-      flex-wrap:wrap;
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
     }
 
-    .orn-line-btn{
-      position:relative;
-      width:460px;
-      height:150px;
-      border:none;
-      background:transparent;
-      cursor:pointer;
-      padding:0;
-      display:grid;
-      place-items:center;
+    .cta-btn{
+      appearance: none;
+      border: none;
+      cursor: pointer;
+
+      min-width: 260px;
+      height: 56px;
+
+      background: linear-gradient(#b9a48d, var(--btn));
+      color: var(--btn-text);
+
+      border-radius: 10px;
+      box-shadow: var(--shadow2);
+      letter-spacing: .16em;
+
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 18px;
+      font-weight: 800;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
 
-    /* 텍스트 보호(오나먼트 절대 침범 X) */
-    .orn-line-btn .label{
-      position:relative;
-      z-index:3;
-      font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size:30px;
-      font-weight:700;
-      letter-spacing:.12em;
-      color:var(--ink);
-      background:rgba(255,255,255,.92);
-      padding:12px 24px;
-      border-radius:12px;
-      box-shadow:0 0 0 8px rgba(255,255,255,.75);
-      line-height:1;
+    .cta-btn:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+      box-shadow: 0 16px 40px rgba(0,0,0,.14);
+    }
+    .cta-btn:active{
+      transform: translateY(0px);
+      filter: brightness(.99);
+      box-shadow: 0 10px 28px rgba(0,0,0,.12);
     }
 
-    .orn-line-btn svg{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      z-index:1;
-      pointer-events:none;
+    /* 스크롤 등장 애니메이션 */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.is-on{
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .orn-line-btn:hover .label{background:rgba(255,255,255,.96)}
-    .orn-line-btn:hover svg{filter:drop-shadow(0 1px 0 rgba(0,0,0,.05))}
-
-    /* Sections */
-    .section{margin-top:54px}
-    .section h2{
-      font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size:22px;
-      letter-spacing:.10em;
-      text-align:center;
-      margin-bottom:18px;
-      color:var(--ink);
-    }
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:18px;
-    }
-    .card{
-      background:rgba(255,255,255,.82);
-      border-radius:18px;
-      padding:18px 18px 16px;
-      border:1px solid rgba(216,187,115,.22);
-      box-shadow:0 10px 30px rgba(0,0,0,.06);
-    }
-    .card .title{
-      font-weight:800;
-      color:var(--ink);
-      margin-bottom:8px;
-    }
-    .card .desc{
-      color:var(--muted);
-      line-height:1.8;
-      font-size:14px;
+    /* =========================
+       Small helper spacing (hero 아래 조금 더 스크롤 유도)
+    ========================= */
+    .spacer{
+      height: 26px;
     }
 
-    @media (max-width: 980px){
-      .frame{padding:54px 22px 46px}
-      .cards{grid-template-columns:1fr}
-      .orn-line-btn{width:100%; max-width:520px}
+    /* =========================
+       Responsive
+    ========================= */
+    @media (max-width: 900px){
+      .brand-title{ font-size: 18px; }
+      .logo{ min-width: unset; }
+      .window-body{ padding: 28px 18px 30px; }
+      .window-body .line{ font-size: 17px; }
+    }
+
+    @media (max-width: 520px){
+      .topbar{ height: 68px; }
+      .logo-mark{ width: 40px; height: 40px; }
+      .brand-title{ font-size: 16px; letter-spacing: .06em; }
+      .cta-btn{ min-width: 240px; width: 100%; max-width: 420px; }
+      .window-body .line{ font-size: 16px; }
     }
   </style>
 </head>
 
 <body>
   <div class="ornament-bg"></div>
-  <div class="top-bar"></div>
+
+  <!-- 1) 첫번째 사진처럼 맨 윗줄 -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"><span>片</span></div>
+        <div>
+          <div class="logo-sub">KATAOKA</div>
+        </div>
+      </div>
+
+      <!-- 일본어로 변경 -->
+      <div class="brand-title">
+        <b>外出支援</b>　カタオカサービス
+      </div>
+    </div>
+  </header>
 
   <main class="page">
     <div class="container">
-      <section class="frame">
 
-        <!-- HERO (DOUEN 카피 흐름) -->
-        <header class="hero">
-          <span class="kicker">あなたの”したい”をサポートします―</span>
-          <h1>介護保険では対応できない<br/>旅行 や 暮らしのケア まで</h1>
-          <p>
-            ひとりひとりに合わせ対応します。外食・旅行・買い物の付き添い・役所手続きなど、
-            “したい”を実現できるサポートを。
-          </p>
-        </header>
-
-        <!-- CTA (우리 오나먼트 버튼) -->
-        <div class="cta-row">
-          <button class="orn-line-btn" type="button" aria-label="身元保証">
-            <svg viewBox="0 0 460 150" aria-hidden="true">
-              <!-- top split lines (center gap) -->
-              <line x1="34" y1="44" x2="188" y2="44" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="44" x2="426" y2="44" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="34" y1="52" x2="188" y2="52" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="52" x2="426" y2="52" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-
-              <!-- bottom split lines -->
-              <line x1="34" y1="98" x2="188" y2="98" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="98" x2="426" y2="98" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="34" y1="106" x2="188" y2="106" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="106" x2="426" y2="106" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-
-              <!-- small center flourish (kept away from label by gap) -->
-              <path d="M230 45 c-14 0 -20 6 -20 12 c0 6 6 10 11 10 c6 0 10-4 10-8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M230 45 c14 0 20 6 20 12 c0 6-6 10-11 10 c-6 0-10-4-10-8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-
-              <path d="M230 105 c-14 0 -20 -6 -20 -12 c0 -6 6 -10 11 -10 c6 0 10 4 10 8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M230 105 c14 0 20 -6 20 -12 c0 -6 -6 -10 -11 -10 c-6 0-10 4-10 8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-
-              <!-- side curls -->
-              <path d="M34 52 c-16 0 -20 -16 -7 -20 c7 -2 12 4 9 9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M426 52 c16 0 20 -16 7 -20 c-7 -2 -12 4 -9 9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M34 98 c-16 0 -20 16 -7 20 c7 2 12 -4 9 -9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M426 98 c16 0 20 16 7 20 c-7 2 -12 -4 -9 -9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-
-              <!-- diamonds -->
-              <polygon points="64,32 72,44 64,56 56,44" fill="var(--gold)"/>
-              <polygon points="84,40 89,46 84,52 79,46" fill="var(--goldSoft)"/>
-              <polygon points="396,32 404,44 396,56 388,44" fill="var(--gold)"/>
-              <polygon points="376,40 381,46 376,52 371,46" fill="var(--goldSoft)"/>
-
-              <polygon points="64,86 72,98 64,110 56,98" fill="var(--gold)"/>
-              <polygon points="84,94 89,100 84,106 79,100" fill="var(--goldSoft)"/>
-              <polygon points="396,86 404,98 396,110 388,98" fill="var(--gold)"/>
-              <polygon points="376,94 381,100 376,106 371,100" fill="var(--goldSoft)"/>
-            </svg>
-            <span class="label">身元保証</span>
-          </button>
-
-          <button class="orn-line-btn" type="button" aria-label="生活支援">
-            <!-- 동일 SVG -->
-            <svg viewBox="0 0 460 150" aria-hidden="true">
-              <line x1="34" y1="44" x2="188" y2="44" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="44" x2="426" y2="44" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="34" y1="52" x2="188" y2="52" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="52" x2="426" y2="52" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-
-              <line x1="34" y1="98" x2="188" y2="98" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="98" x2="426" y2="98" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="34" y1="106" x2="188" y2="106" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="272" y1="106" x2="426" y2="106" stroke="var(--goldSoft)" stroke-width="2" stroke-linecap="round"/>
-
-              <path d="M230 45 c-14 0 -20 6 -20 12 c0 6 6 10 11 10 c6 0 10-4 10-8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M230 45 c14 0 20 6 20 12 c0 6-6 10-11 10 c-6 0-10-4-10-8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-
-              <path d="M230 105 c-14 0 -20 -6 -20 -12 c0 -6 6 -10 11 -10 c6 0 10 4 10 8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M230 105 c14 0 20 -6 20 -12 c0 -6 -6 -10 -11 -10 c-6 0-10 4-10 8"
-                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-
-              <path d="M34 52 c-16 0 -20 -16 -7 -20 c7 -2 12 4 9 9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M426 52 c16 0 20 -16 7 -20 c-7 -2 -12 4 -9 9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M34 98 c-16 0 -20 16 -7 20 c7 2 12 -4 9 -9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M426 98 c16 0 20 16 7 20 c-7 2 -12 -4 -9 -9" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-
-              <polygon points="64,32 72,44 64,56 56,44" fill="var(--gold)"/>
-              <polygon points="84,40 89,46 84,52 79,46" fill="var(--goldSoft)"/>
-              <polygon points="396,32 404,44 396,56 388,44" fill="var(--gold)"/>
-              <polygon points="376,40 381,46 376,52 371,46" fill="var(--goldSoft)"/>
-
-              <polygon points="64,86 72,98 64,110 56,98" fill="var(--gold)"/>
-              <polygon points="84,94 89,100 84,106 79,100" fill="var(--goldSoft)"/>
-              <polygon points="396,86 404,98 396,110 388,98" fill="var(--gold)"/>
-              <polygon points="376,94 381,100 376,106 371,100" fill="var(--goldSoft)"/>
-            </svg>
-            <span class="label">生活支援</span>
-          </button>
-        </div>
-
-        <!-- DOUEN식 “3つの理由” 섹션 시작(카피 구조 유지) -->
-        <section class="section">
-          <h2>DOUENサービスが選ばれる ３つの理由</h2>
-          <div class="cards">
-            <div class="card">
-              <div class="title">利便性</div>
-              <div class="desc">旅行や外食、通院、役所での手続き等、様々なご依頼に対応。</div>
-            </div>
-            <div class="card">
-              <div class="title">迅速な対応</div>
-              <div class="desc">急なご依頼でも当日からご利用可能。（当日割り増し料金なし）</div>
-            </div>
-            <div class="card">
-              <div class="title">安心感</div>
-              <div class="desc">介護福祉士資格スタッフが同行。車椅子貸し出し・福祉車両も可。</div>
-            </div>
+      <!-- 2) 사진 대신 "새창 같은" 카드 + 글 -->
+      <section class="hero">
+        <div class="window-card">
+          <div class="window-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="title">カタオカサービス</span>
           </div>
-        </section>
 
+          <div class="window-body">
+            <div class="line">おひとりさまの方へ</div>
+            <div class="line">子供や孫に迷惑をかけたくない方へ</div>
+            <div class="window-divider"></div>
+          </div>
+        </div>
       </section>
+
+      <div class="spacer"></div>
+
+      <!-- 3) 스크롤 내려오면 새창 밑에 버튼 등장 -->
+      <section class="cta-section reveal" id="cta">
+        <div class="cta-row">
+          <button class="cta-btn" type="button">身元保証</button>
+          <button class="cta-btn" type="button">生活支援</button>
+        </div>
+      </section>
+
     </div>
   </main>
+
+  <script>
+    // 버튼 섹션이 화면에 들어오면 나타나게
+    const el = document.querySelector('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) el.classList.add('is-on');
+      });
+    }, { threshold: 0.18 });
+    io.observe(el);
+  </script>
 </body>
 </html>

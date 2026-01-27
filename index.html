@@ -112,9 +112,9 @@
     }
 
     /* =========================================================
-       Ornament Button FIXED
-       ✅ 너가 올린 파일명 그대로 사용: Untitled-1.png
-       ✅ 1024x1024 큰 이미지에서 "라인이 보이게" 포지션/스케일 조정
+       FIX: Ornament image split into TOP + BOTTOM layers
+       - No more line cutting through the text
+       - Uses the same Untitled-1.png (no need to edit image)
     ========================================================= */
     .orn-btn{
       position: relative;
@@ -132,42 +132,37 @@
       transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
     }
 
-    /* ✅ 오나먼트 라인(너가 준 그림) */
-    .orn-btn::before{
-      content: "";
+    /* TOP ornament */
+    .orn-btn .orn-top,
+    .orn-btn .orn-bot{
       position: absolute;
-      inset: 0;
-      background-image: url("Untitled-1.png"); /* ✅ 여기 중요 */
+      left: 0;
+      right: 0;
+      height: 60%;
+      background-image: url("Untitled-1.png"); /* ✅ 경로 맞추기 */
       background-repeat: no-repeat;
-
-      /* 핵심: 이미지 안 라인이 아래쪽/중간에 몰려있어서 위치를 내림 */
-      background-position: center 62%;
-
-      /* 핵심: 버튼에 맞게 더 크게 확대해서 라인이 보이게 */
       background-size: 140% auto;
-
+      pointer-events: none;
+      z-index: 1;
       opacity: 1;
-      pointer-events: none;
     }
 
-    /* ✅ 살짝 금빛 글로우 */
-    .orn-btn::after{
-      content: "";
-      position: absolute;
-      inset: -30%;
-      background: radial-gradient(circle at 50% 50%,
-        rgba(214,182,120,0.14) 0%,
-        rgba(214,182,120,0.05) 38%,
-        rgba(0,0,0,0) 70%
-      );
-      opacity: 0.9;
-      pointer-events: none;
-      transition: opacity 0.16s ease;
+    .orn-btn .orn-top{
+      top: -8px;
+      /* 이미지 안에서 "윗줄 장식"이 있는 영역으로 포커스 */
+      background-position: center 26%;
     }
 
+    .orn-btn .orn-bot{
+      bottom: -8px;
+      /* 이미지 안에서 "아랫줄 장식"이 있는 영역으로 포커스 */
+      background-position: center 74%;
+    }
+
+    /* text */
     .orn-btn .label{
       position: relative;
-      z-index: 2;
+      z-index: 3;
       height: 100%;
       display: flex;
       align-items: center;
@@ -184,12 +179,27 @@
         0 0 16px rgba(214,182,120,0.18);
     }
 
+    /* glow layer (behind text, above bg) */
+    .orn-btn .glow{
+      position: absolute;
+      inset: -30%;
+      z-index: 2;
+      background: radial-gradient(circle at 50% 50%,
+        rgba(214,182,120,0.14) 0%,
+        rgba(214,182,120,0.05) 38%,
+        rgba(0,0,0,0) 70%
+      );
+      opacity: 0.9;
+      pointer-events: none;
+      transition: opacity 0.16s ease;
+    }
+
     .orn-btn:hover{
       transform: translateY(-2px);
       filter: brightness(1.03);
       box-shadow: 0 24px 62px rgba(0,0,0,0.28);
     }
-    .orn-btn:hover::after{ opacity: 1; }
+    .orn-btn:hover .glow{ opacity: 1; }
 
     .orn-btn:active{
       transform: translateY(0px);
@@ -251,13 +261,21 @@
 
       <section class="frame">
         <div class="button-row">
+
           <button class="orn-btn" type="button" aria-label="身元保証">
+            <span class="orn-top"></span>
+            <span class="orn-bot"></span>
+            <span class="glow"></span>
             <span class="label">身元保証</span>
           </button>
 
           <button class="orn-btn" type="button" aria-label="生活支援">
+            <span class="orn-top"></span>
+            <span class="orn-bot"></span>
+            <span class="glow"></span>
             <span class="label">生活支援</span>
           </button>
+
         </div>
       </section>
 

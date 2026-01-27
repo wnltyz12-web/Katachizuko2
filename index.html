@@ -33,7 +33,9 @@
       --card-border: rgba(0,0,0,.06);
     }
 
-    /* background */
+    /* =========================
+       Background Ornament (Responsive)
+    ========================= */
     .ornament-bg{
       position: fixed;
       inset: 0;
@@ -41,7 +43,16 @@
       background-color: #f4f1ea;
       background-image: url("ornament.png");
       background-repeat: repeat;
-      background-size: 260px 260px;
+
+      /* ✅ 기본(모바일~태블릿) */
+      background-size: 320px 320px;
+    }
+
+    /* ✅ PC에서는 더 크게 */
+    @media (min-width: 900px){
+      .ornament-bg{
+        background-size: 420px 420px;
+      }
     }
 
     /* header */
@@ -215,7 +226,6 @@
       display: grid;
       gap: 14px;
     }
-
     .panel{
       border-radius: 18px;
       background: rgba(255,255,255,.72);
@@ -247,15 +257,10 @@
       color: rgba(47,42,34,.62);
       letter-spacing: .06em;
     }
+    .panel-body{ background: rgba(255,255,255,.55); }
+    .panel-inner{ padding: 14px 14px 18px; }
 
-    .panel-body{
-      background: rgba(255,255,255,.55);
-    }
-    .panel-inner{
-      padding: 14px 14px 18px;
-    }
-
-    /* ✅ cards (no bullets) */
+    /* cards */
     .cards{
       display: grid;
       gap: 10px;
@@ -284,7 +289,6 @@
       text-align: left;
     }
 
-    /* mini footer line inside panel */
     .mini-hr{
       margin: 14px 0 10px;
       height: 1px;
@@ -364,16 +368,12 @@
         </div>
       </section>
 
-      <!-- ✅ 항상 펼쳐진 상태 + 키워드가 대주제(카드 제목) -->
       <section class="details" id="details">
-
-        <!-- 身元保証 -->
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証</div>
             <div class="panel-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
@@ -381,17 +381,14 @@
                   <h3>身元保証人代行</h3>
                   <p>入院・施設入居などで必要となる保証人について、条件や流れを整理し、安心して手続きできるよう支援します。</p>
                 </div>
-
                 <div class="card">
                   <h3>緊急連絡先代行</h3>
-                  <p>緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、万が一に備えます。</p>
+                  <p>緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、万が一에備えます。</p>
                 </div>
-
                 <div class="card">
                   <h3>身元引受人代行</h3>
-                  <p>退院・退所などの場面で求められる「引受」に関する対応を、状況に合わせてサポートします。</p>
+                  <p>退院・退所などの場면で求められる「引受」に関する対応を、状況に合わせてサポートします。</p>
                 </div>
-
                 <div class="card">
                   <h3>死後事務委任</h3>
                   <p>万一の後に必要となる事務（各種連絡や手続き等）について、希望を伺い、準備を進めます。</p>
@@ -406,13 +403,11 @@
           </div>
         </article>
 
-        <!-- 生活支援 -->
         <article class="panel" id="panel-support">
           <div class="panel-head">
             <div class="panel-title">生活支援</div>
             <div class="panel-sub">外出・手続きなど日常の「困った」を、必要な分だけお手伝いします</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
@@ -420,12 +415,10 @@
                   <h3>通院同行</h3>
                   <p>通院時の移動や受付などを同行支援します。無理のないペースで、安全に外出できるよう配慮します。</p>
                 </div>
-
                 <div class="card">
                   <h3>買物同行</h3>
-                  <p>日用品の買い出しや必要な購入をサポートします。重い荷物や移動が不安な方にも対応します。</p>
+                  <p>日用品の買い出しや必要な購入을サポートします。重い荷物や移動が不安な方にも対応します。</p>
                 </div>
-
                 <div class="card">
                   <h3>役所手続き同行</h3>
                   <p>役所での手続きに同行し、必要書類や流れの確認をお手伝いします。初めてでも安心して進められます。</p>
@@ -439,7 +432,6 @@
             </div>
           </div>
         </article>
-
       </section>
 
     </div>

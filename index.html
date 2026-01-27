@@ -43,19 +43,11 @@
       background-color: #f4f1ea;
       background-image: url("ornament.png");
       background-repeat: repeat;
-
-      /* ✅ 모바일 기본 */
       background-size: 320px 320px;
     }
-
-    /* ✅ PC에서는 더 크게 */
     @media (min-width: 900px){
-      .ornament-bg{
-        background-size: 420px 420px;
-      }
+      .ornament-bg{ background-size: 420px 420px; }
     }
-
-    /* ✅ 아래로 갈수록 하얀색으로 사라지는 그라디언트 */
     .ornament-bg::after{
       content:"";
       position: absolute;
@@ -162,18 +154,11 @@
       line-height: 1.9;
     }
 
-    /* ✅ Illustration section */
+    /* ✅ Illustration: 흰색 배경(카드) 제거, 창 크기에 맞게(가로 꽉) + 그림자 살짝 */
     .illus-wrap{
       margin-top: 16px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.72);
-      backdrop-filter: blur(1px);
-      box-shadow: 0 18px 46px rgba(0,0,0,.12);
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,.05);
     }
     .illus-inner{
-      padding: 18px 16px 16px;
       display: grid;
       place-items: center;
       gap: 12px;
@@ -187,17 +172,17 @@
       font-size: 14px;
       line-height: 1.7;
     }
-
-    /* ✅ 새 이미지용 (배경 포함이라 그림자 약하게) */
     .illus-img{
       width: 100%;
-      max-width: 460px;
       height: auto;
       display: block;
-      border-radius: 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.10);
-    }
 
+      /* ✅ 흰색 카드 제거: radius만 살짝(원하면 0으로) */
+      border-radius: 14px;
+
+      /* ✅ 살짝 그림자 */
+      box-shadow: 0 14px 34px rgba(0,0,0,.12);
+    }
     .illus-caption{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 13px;
@@ -375,7 +360,6 @@
       .cta-btn{ width: 210px; font-size: 20px; }
       .cta-message{ font-size: 12px; letter-spacing: .04em; }
       .card h3{ font-size: 15px; }
-      .illus-img{ max-width: 340px; }
     }
   </style>
 </head>
@@ -402,16 +386,18 @@
         </div>
       </section>
 
-      <!-- ✅ 새 이미지 (배경 포함 버전) -->
+      <!-- ✅ 이미지 섹션: 카드 배경 제거 + 화면 폭에 맞게 -->
       <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
 
-          <!-- ✅ 여기 사진만 교체 -->
+          <!-- ✅ 파일명만 네 repo랑 맞춰 -->
           <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
 
+          <!-- ✅ 줄바꿈/띄어쓰기(요청대로) -->
           <div class="illus-caption">
-            不安をひとつずつ整理し、必要な手続きや支援をわかりやすくご案内します。
+            不安をひとつずつ整理し、<br/>
+            必要な手続きや支援をわかりやすくご案内します。
           </div>
         </div>
       </section>
@@ -454,17 +440,14 @@
                   <h3>身元保証人代行</h3>
                   <p>入院・施設入居などで必要となる保証人について、条件や流れを整理し、安心して手続きできるよう支援します。</p>
                 </div>
-
                 <div class="card">
                   <h3>緊急連絡先代行</h3>
                   <p>緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、万が一に備えます。</p>
                 </div>
-
                 <div class="card">
                   <h3>身元引受人代行</h3>
                   <p>退院・退所などの場面で求められる「引受」に関する対応を、状況に合わせてサポートします。</p>
                 </div>
-
                 <div class="card">
                   <h3>死後事務委任</h3>
                   <p>万一の後に必要となる事務（各種連絡や手続き等）について、希望を伺い、準備を進めます。</p>
@@ -491,12 +474,10 @@
                   <h3>通院同行</h3>
                   <p>通院時の移動や受付などを同行支援します。無理のないペースで、安全に外出できるよう配慮します。</p>
                 </div>
-
                 <div class="card">
                   <h3>買物同行</h3>
                   <p>日用品の買い出しや必要な購入をサポートします。重い荷物や移動が不安な方にも対応します。</p>
                 </div>
-
                 <div class="card">
                   <h3>役所手続き同行</h3>
                   <p>役所での手続きに同行し、必要書類や流れの確認をお手伝いします。初めてでも安心して進められます。</p>

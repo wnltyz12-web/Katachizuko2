@@ -17,6 +17,7 @@
 
     :root{
       --btn: #b7a18a;
+      --btn2: #ad967e;
       --btn-text: #ffffff;
 
       --mobile-max: 520px;
@@ -38,6 +39,7 @@
       background-size: 260px 260px;
     }
 
+    /* header */
     .topbar{
       position: sticky;
       top: 0;
@@ -78,12 +80,6 @@
       font-weight: 800;
       font-size: 15px;
       letter-spacing: .04em;
-    }
-    .logo-sub{
-      font-size: 10px;
-      letter-spacing: .18em;
-      opacity: .75;
-      margin-top: 2px;
     }
 
     .brand-title{
@@ -138,7 +134,28 @@
       line-height: 1.9;
     }
 
-    .cta-section{ margin-top: 18px; }
+    /* ✅ 버튼 박스 전체를 정사각형 느낌으로 작게 */
+    .cta-section{
+      margin-top: 20px;
+      display: flex;
+      justify-content: center; /* 가운데 고정 */
+    }
+
+    /* ✅ "네모 박스" */
+    .cta-box{
+      width: 260px;                 /* 🔥 전체 박스 폭 */
+      padding: 14px 12px 16px;
+      border-radius: 18px;
+
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 16px 45px rgba(0,0,0,.10);
+
+      background-image: url("ornament.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 155% auto;
+    }
 
     .cta-row{
       display: flex;
@@ -147,25 +164,25 @@
       align-items: center;
     }
 
-    /* ✅ 버튼 크기: 두번째 샘플처럼 작게 */
+    /* ✅ 버튼 자체도 더 작게 */
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
 
-      width: min(280px, 100%); /* 🔥 가로 축소 */
-      height: 48px;            /* 🔥 세로 축소 */
+      width: 230px;       /* 🔥 딱 작게 */
+      height: 62px;       /* 🔥 좀 두껍게 */
 
-      background: linear-gradient(#b9a48d, var(--btn));
+      background: linear-gradient(var(--btn), var(--btn2));
       color: var(--btn-text);
 
-      border-radius: 10px;     /* 🔥 pill 말고 둥근 네모 */
-      box-shadow: var(--shadow2);
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.16);
       letter-spacing: .16em;
 
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 18px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 900;
 
       display: inline-flex;
       align-items: center;
@@ -177,22 +194,22 @@
     .cta-btn:hover{
       transform: translateY(-1px);
       filter: brightness(1.02);
-      box-shadow: 0 16px 40px rgba(0,0,0,.14);
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
     }
     .cta-btn:active{
       transform: translateY(0px);
       filter: brightness(.99);
-      box-shadow: 0 10px 28px rgba(0,0,0,.12);
+      box-shadow: 0 9px 24px rgba(0,0,0,.14);
     }
 
     .cta-message{
-      margin-top: 18px;
+      margin-top: 12px;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.9;
-      letter-spacing: .08em;
+      color: rgba(47,42,34,.70);
+      font-size: 13px;
+      line-height: 1.8;
+      letter-spacing: .06em;
     }
 
     .reveal{
@@ -204,6 +221,11 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    @media (max-width: 360px){
+      .cta-box{ width: 240px; }
+      .cta-btn{ width: 210px; font-size: 20px; }
+    }
   </style>
 </head>
 
@@ -214,7 +236,6 @@
     <div class="wrap">
       <div class="logo">
         <div class="logo-mark" aria-hidden="true"><span>片</span></div>
-        <div><div class="logo-sub">KATAOKA</div></div>
       </div>
       <div class="brand-title"><b>外出支援</b>　カタオカサービス</div>
     </div>
@@ -230,15 +251,18 @@
         </div>
       </section>
 
+      <!-- ✅ 네모 박스 형태 -->
       <section class="cta-section reveal" id="cta">
-        <div class="cta-row">
-          <button class="cta-btn" type="button">身元保証</button>
-          <button class="cta-btn" type="button">生活支援</button>
-        </div>
+        <div class="cta-box">
+          <div class="cta-row">
+            <button class="cta-btn" type="button">身元保証</button>
+            <button class="cta-btn" type="button">生活支援</button>
+          </div>
 
-        <div class="cta-message">
-          皆さまの想いをかなえるために<br/>
-          私たちが一生涯のご支援をお約束致します
+          <div class="cta-message">
+            皆さまの想いをかなえるために<br/>
+            私たちが一生涯のご支援をお約束致します
+          </div>
         </div>
       </section>
 

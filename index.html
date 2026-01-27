@@ -28,8 +28,12 @@
       --muted: rgba(47,42,34,.72);
       --line: rgba(47,42,34,.16);
       --paper: rgba(255,255,255,.70);
+
+      --card: rgba(255,255,255,.78);
+      --card-border: rgba(0,0,0,.06);
     }
 
+    /* background */
     .ornament-bg{
       position: fixed;
       inset: 0;
@@ -60,7 +64,6 @@
       align-items: center;
       gap: 12px;
     }
-
     .logo{
       display: flex;
       align-items: center;
@@ -82,7 +85,6 @@
       font-size: 15px;
       letter-spacing: .04em;
     }
-
     .brand-title{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 16px;
@@ -94,6 +96,7 @@
     }
     .brand-title b{ font-weight: 900; }
 
+    /* layout */
     .page{
       position: relative;
       z-index: 1;
@@ -107,24 +110,20 @@
       padding: 18px 16px 140px;
     }
 
-    /* hero ornament frame */
+    /* hero */
     .orn-frame{
       position: relative;
       margin-top: 18px;
       padding: 46px 22px 40px;
       border-radius: 22px;
-
       background-color: var(--paper);
       backdrop-filter: blur(1px);
-
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: 145% auto;
-
       box-shadow: var(--shadow);
     }
-
     .orn-title{
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
@@ -143,7 +142,6 @@
       display: flex;
       justify-content: center;
     }
-
     .cta-row{
       display: flex;
       flex-direction: column;
@@ -151,33 +149,25 @@
       align-items: center;
       width: 100%;
     }
-
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
-
       width: 230px;
       height: 62px;
-
       background: var(--btn);
       color: var(--btn-text);
-
       border-radius: 16px;
       box-shadow: var(--shadow2);
       letter-spacing: .16em;
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 22px;
       font-weight: 900;
-
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
-
     .cta-btn:hover{
       transform: translateY(-0.5px);
       box-shadow: 0 14px 34px rgba(0,0,0,.17);
@@ -188,14 +178,11 @@
       box-shadow: 0 9px 24px rgba(0,0,0,.14);
       filter: saturate(1);
     }
-
     .cta-message{
       margin-top: 14px;
       text-align: center;
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       color: var(--muted);
-
       font-size: 14px;
       line-height: 1.9;
       letter-spacing: .06em;
@@ -222,9 +209,7 @@
       user-select: none;
     }
 
-    /* =========================
-       Always-open Sections
-    ========================= */
+    /* details panels */
     .details{
       margin-top: 18px;
       display: grid;
@@ -237,7 +222,6 @@
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
       overflow: hidden;
-
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
@@ -248,47 +232,70 @@
       padding: 16px 16px;
       background: rgba(255,255,255,.65);
       border-bottom: 1px solid rgba(0,0,0,.06);
+      text-align: center;
     }
-
     .panel-title{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 18px;
       font-weight: 900;
       letter-spacing: .12em;
       color: var(--ink);
-      text-align: center;
+    }
+    .panel-sub{
+      margin-top: 6px;
+      font-size: 12px;
+      color: rgba(47,42,34,.62);
+      letter-spacing: .06em;
     }
 
     .panel-body{
       background: rgba(255,255,255,.55);
     }
     .panel-inner{
-      padding: 16px 16px 18px;
+      padding: 14px 14px 18px;
     }
 
-    /* bullet list (as your images) */
-    .bullets{
-      margin-top: 6px;
-      padding-left: 18px;
+    /* ✅ cards (no bullets) */
+    .cards{
       display: grid;
       gap: 10px;
-      list-style: disc;
+      margin-top: 6px;
     }
-    .bullets li{
+    .card{
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      padding: 12px 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    }
+    .card h3{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 900;
-      letter-spacing: .06em;
-      line-height: 1.5;
-      color: rgba(47,42,34,.90);
+      letter-spacing: .10em;
+      color: rgba(47,42,34,.92);
+      margin-bottom: 6px;
+      text-align: left;
+    }
+    .card p{
+      font-size: 13px;
+      line-height: 1.85;
+      color: rgba(47,42,34,.75);
+      text-align: left;
     }
 
-    .note{
-      margin-top: 12px;
+    /* mini footer line inside panel */
+    .mini-hr{
+      margin: 14px 0 10px;
+      height: 1px;
+      background: rgba(47,42,34,.12);
+    }
+    .mini-note{
       text-align: center;
       font-size: 12px;
       color: rgba(47,42,34,.60);
-      letter-spacing: .04em;
+      letter-spacing: .05em;
+      line-height: 1.8;
     }
 
     /* reveal */
@@ -305,7 +312,7 @@
     @media (max-width: 360px){
       .cta-btn{ width: 210px; font-size: 20px; }
       .cta-message{ font-size: 12px; letter-spacing: .04em; }
-      .bullets li{ font-size: 16px; }
+      .card h3{ font-size: 15px; }
     }
   </style>
 </head>
@@ -334,8 +341,15 @@
 
       <section class="cta-section reveal" id="cta">
         <div class="cta-row">
-          <button class="cta-btn" type="button" onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">身元保証</button>
-          <button class="cta-btn" type="button" onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">生活支援</button>
+          <button class="cta-btn" type="button"
+            onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+            身元保証
+          </button>
+
+          <button class="cta-btn" type="button"
+            onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+            生活支援
+          </button>
 
           <div class="cta-message">
             皆さまの想いをかなえる ために<br/>
@@ -350,22 +364,44 @@
         </div>
       </section>
 
-      <!-- ✅ 클릭하면 펼쳐지는게 아니라, 항상 펼쳐진 상태 -->
+      <!-- ✅ 항상 펼쳐진 상태 + 키워드가 대주제(카드 제목) -->
       <section class="details" id="details">
 
         <!-- 身元保証 -->
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証</div>
+            <div class="panel-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
           </div>
+
           <div class="panel-body">
             <div class="panel-inner">
-              <ul class="bullets">
-                <li>身元保証人代行</li>
-                <li>緊急連絡先代行</li>
-                <li>身元引受人代行</li>
-                <li>死後事務委任</li>
-              </ul>
+              <div class="cards">
+                <div class="card">
+                  <h3>身元保証人代行</h3>
+                  <p>入院・施設入居などで必要となる保証人について、条件や流れを整理し、安心して手続きできるよう支援します。</p>
+                </div>
+
+                <div class="card">
+                  <h3>緊急連絡先代行</h3>
+                  <p>緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、万が一に備えます。</p>
+                </div>
+
+                <div class="card">
+                  <h3>身元引受人代行</h3>
+                  <p>退院・退所などの場面で求められる「引受」に関する対応を、状況に合わせてサポートします。</p>
+                </div>
+
+                <div class="card">
+                  <h3>死後事務委任</h3>
+                  <p>万一の後に必要となる事務（各種連絡や手続き等）について、希望を伺い、準備を進めます。</p>
+                </div>
+              </div>
+
+              <div class="mini-hr"></div>
+              <div class="mini-note">
+                ※内容はご状況により異なります。まずはヒアリングの上で最適な形をご案内します。
+              </div>
             </div>
           </div>
         </article>
@@ -374,14 +410,32 @@
         <article class="panel" id="panel-support">
           <div class="panel-head">
             <div class="panel-title">生活支援</div>
+            <div class="panel-sub">外出・手続きなど日常の「困った」を、必要な分だけお手伝いします</div>
           </div>
+
           <div class="panel-body">
             <div class="panel-inner">
-              <ul class="bullets">
-                <li>通院同行</li>
-                <li>買物同行</li>
-                <li>役所手続き同行</li>
-              </ul>
+              <div class="cards">
+                <div class="card">
+                  <h3>通院同行</h3>
+                  <p>通院時の移動や受付などを同行支援します。無理のないペースで、安全に外出できるよう配慮します。</p>
+                </div>
+
+                <div class="card">
+                  <h3>買物同行</h3>
+                  <p>日用品の買い出しや必要な購入をサポートします。重い荷物や移動が不安な方にも対応します。</p>
+                </div>
+
+                <div class="card">
+                  <h3>役所手続き同行</h3>
+                  <p>役所での手続きに同行し、必要書類や流れの確認をお手伝いします。初めてでも安心して進められます。</p>
+                </div>
+              </div>
+
+              <div class="mini-hr"></div>
+              <div class="mini-note">
+                ※対応範囲・頻度はご希望に合わせて調整可能です（松戸周辺：応相談）。
+              </div>
             </div>
           </div>
         </article>

@@ -16,17 +16,15 @@
     }
 
     :root{
-      --btn: #b7a18a;
-      --btn2: #ad967e;
+      --btn: #b7a18a;     /* 버튼 색(단색으로) */
       --btn-text: #ffffff;
 
       --mobile-max: 520px;
 
       --shadow: 0 20px 55px rgba(0,0,0,.16);
-      --shadow2: 0 12px 35px rgba(0,0,0,.12);
+      --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
       --ink: #2f2a22;
-      --muted: rgba(47,42,34,.72);
     }
 
     .ornament-bg{
@@ -134,16 +132,15 @@
       line-height: 1.9;
     }
 
-    /* ✅ 버튼 박스 전체를 정사각형 느낌으로 작게 */
+    /* CTA */
     .cta-section{
       margin-top: 20px;
       display: flex;
-      justify-content: center; /* 가운데 고정 */
+      justify-content: center;
     }
 
-    /* ✅ "네모 박스" */
     .cta-box{
-      width: 260px;                 /* 🔥 전체 박스 폭 */
+      width: 260px;
       padding: 14px 12px 16px;
       border-radius: 18px;
 
@@ -151,6 +148,7 @@
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 16px 45px rgba(0,0,0,.10);
 
+      /* CTA 박스 ornament는 유지(원하면 이것도 제거 가능) */
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
@@ -164,20 +162,20 @@
       align-items: center;
     }
 
-    /* ✅ 버튼 자체도 더 작게 */
+    /* ✅ 버튼 배경 노이즈 제거 = 단색 */
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
 
-      width: 230px;       /* 🔥 딱 작게 */
-      height: 62px;       /* 🔥 좀 두껍게 */
+      width: 230px;
+      height: 62px;
 
-      background: linear-gradient(var(--btn), var(--btn2));
+      background: var(--btn); /* 🔥 단색 */
       color: var(--btn-text);
 
       border-radius: 12px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.16);
+      box-shadow: var(--shadow2);
       letter-spacing: .16em;
 
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
@@ -193,8 +191,8 @@
 
     .cta-btn:hover{
       transform: translateY(-1px);
-      filter: brightness(1.02);
-      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+      filter: brightness(1.03);
+      box-shadow: 0 14px 34px rgba(0,0,0,.16);
     }
     .cta-btn:active{
       transform: translateY(0px);
@@ -251,7 +249,6 @@
         </div>
       </section>
 
-      <!-- ✅ 네모 박스 형태 -->
       <section class="cta-section reveal" id="cta">
         <div class="cta-box">
           <div class="cta-row">

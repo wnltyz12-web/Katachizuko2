@@ -139,7 +139,6 @@
       justify-content: center;
     }
 
-    /* ✅ 버튼 뒤 네모박스 삭제 → row를 바로 사용 */
     .cta-row{
       display: flex;
       flex-direction: column;
@@ -185,7 +184,7 @@
       box-shadow: 0 9px 24px rgba(0,0,0,.14);
     }
 
-    /* ✅ 문구 한 줄 */
+    /* ✅ 문구 2줄 처리 */
     .cta-message{
       margin-top: 14px;
       text-align: center;
@@ -196,8 +195,6 @@
       font-size: 14px;
       line-height: 1.9;
       letter-spacing: .06em;
-
-      white-space: nowrap; /* ✅ 무조건 한줄 */
     }
 
     .reveal{
@@ -244,9 +241,9 @@
           <button class="cta-btn" type="button">身元保証</button>
           <button class="cta-btn" type="button">生活支援</button>
 
-          <!-- ✅ 띄어쓰기 + 한 줄 -->
           <div class="cta-message">
-            皆さまの想いをかなえる ために 私たちが一生涯のご支援をお約束致します
+            皆さまの想いをかなえる ために<br/>
+            私たちが一生涯のご支援をお約束致します
           </div>
         </div>
       </section>

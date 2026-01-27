@@ -15,6 +15,7 @@
       background-color: #f4f1ea;
     }
 
+    /* Background Ornament */
     .ornament-bg{
       position: fixed;
       inset: 0;
@@ -25,6 +26,7 @@
       background-size: 260px 260px;
     }
 
+    /* Top bar */
     .top-bar{
       position: relative;
       z-index: 2;
@@ -48,6 +50,7 @@
       text-align: center;
     }
 
+    /* Intro */
     .japanese-title{
       margin-bottom: 48px;
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
@@ -87,6 +90,7 @@
       opacity: 0.95;
     }
 
+    /* Frame */
     .frame{
       position: relative;
       padding: 88px 64px 96px;
@@ -110,11 +114,17 @@
       margin-top: 10px;
     }
 
-    /* =========================================================
-       CSS Ornament Line Button (NO IMAGE)
-       - exactly like your sample
-    ========================================================= */
-    .line-btn{
+    /* =========================
+       Ornament Line Button (SVG)
+    ========================= */
+    :root{
+      /* 샘플이랑 비슷한 금색 */
+      --gold: #d8bb73;
+      --gold-soft: rgba(216,187,115,0.75);
+      --ink: #2f2a22;
+    }
+
+    .orn-line-btn{
       position: relative;
       width: 460px;
       height: 160px;
@@ -122,124 +132,38 @@
       background: transparent;
       cursor: pointer;
       padding: 0;
+      display: grid;
+      place-items: center;
     }
 
-    .line-btn .label{
-      position: relative;
-      z-index: 3;
+    .orn-line-btn svg{
+      position: absolute;
+      inset: 0;
+      width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      pointer-events: none;
+    }
 
+    .orn-line-btn .label{
+      position: relative;
+      z-index: 2;
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
       font-size: 30px;
-      letter-spacing: 0.12em;
       font-weight: 700;
-      color: #2f2a22;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      line-height: 1;
+      transform: translateY(1px);
     }
 
-    /* GOLD COLOR */
-    :root{
-      --gold: #d8bb73;
-      --gold2: rgba(216,187,115,0.75);
-    }
+    /* hover: 살짝만 강조 */
+    .orn-line-btn:hover .label{ color:#201c16; }
+    .orn-line-btn:hover svg{ filter: drop-shadow(0 1px 0 rgba(0,0,0,0.04)); }
 
-    /* Top double lines */
-    .line-btn .top-lines,
-    .line-btn .bot-lines{
-      position: absolute;
-      left: 6%;
-      right: 6%;
-      height: 48px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .line-btn .top-lines{ top: 18px; }
-    .line-btn .bot-lines{ bottom: 18px; }
-
-    /* double line bars */
-    .line-btn .top-lines::before,
-    .line-btn .top-lines::after,
-    .line-btn .bot-lines::before,
-    .line-btn .bot-lines::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      height:2px;
-      background: var(--gold);
-      border-radius: 2px;
-    }
-
-    .line-btn .top-lines::before{ top: 10px; opacity: 0.95; }
-    .line-btn .top-lines::after { top: 20px; opacity: 0.75; }
-
-    .line-btn .bot-lines::before{ bottom: 20px; opacity: 0.95; }
-    .line-btn .bot-lines::after { bottom: 10px; opacity: 0.75; }
-
-    /* center flourish */
-    .line-btn .flourish{
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform: translate(-50%, -50%);
-      width: 140px;
-      height: 64px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .line-btn .flourish::before,
-    .line-btn .flourish::after{
-      content:"";
-      position:absolute;
-      top: 50%;
-      width: 62px;
-      height: 22px;
-      border: 2px solid var(--gold);
-      border-color: var(--gold) transparent transparent transparent;
-      border-radius: 999px;
-      opacity: 0.95;
-    }
-
-    .line-btn .flourish::before{
-      left: 0;
-      transform: translateY(-50%) rotate(0deg);
-    }
-    .line-btn .flourish::after{
-      right: 0;
-      transform: translateY(-50%) rotate(180deg);
-    }
-
-    /* diamonds on sides */
-    .line-btn .dia{
-      position:absolute;
-      width: 14px;
-      height: 14px;
-      background: var(--gold);
-      transform: rotate(45deg);
-      opacity: 0.95;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .line-btn .dia.tl{ left: 3.2%; top: 22px; }
-    .line-btn .dia.tr{ right: 3.2%; top: 22px; }
-    .line-btn .dia.bl{ left: 3.2%; bottom: 22px; }
-    .line-btn .dia.br{ right: 3.2%; bottom: 22px; }
-
-    /* hover */
-    .line-btn:hover .label{ color:#201c16; }
-    .line-btn:hover .top-lines::before,
-    .line-btn:hover .bot-lines::before{
-      opacity: 1;
-    }
-
+    /* Responsive */
     @media (max-width: 1000px){
-      .line-btn{ width: 420px; }
-      .line-btn .label{ font-size: 28px; }
+      .orn-line-btn{ width: 420px; height: 155px; }
+      .orn-line-btn .label{ font-size: 28px; }
     }
     @media (max-width: 768px){
       .frame{
@@ -250,7 +174,7 @@
         flex-direction: column;
         gap: 18px;
       }
-      .line-btn{
+      .orn-line-btn{
         width: 100%;
         max-width: 520px;
       }
@@ -259,9 +183,8 @@
       .page{ padding: 64px 16px 96px; }
       .frame{ padding: 64px 24px 80px; }
       .japanese-title .subtitle{ font-size: 16px; }
-
-      .line-btn{ height: 150px; }
-      .line-btn .label{ font-size: 25px; }
+      .orn-line-btn{ height: 145px; }
+      .orn-line-btn .label{ font-size: 25px; }
     }
   </style>
 </head>
@@ -282,21 +205,118 @@
       <section class="frame">
         <div class="button-row">
 
-          <button class="line-btn" type="button">
-            <span class="top-lines"></span>
-            <span class="bot-lines"></span>
-            <span class="flourish"></span>
-            <span class="dia tl"></span><span class="dia tr"></span>
-            <span class="dia bl"></span><span class="dia br"></span>
+          <!-- Button 1 -->
+          <button class="orn-line-btn" type="button" aria-label="身元保証">
+            <!-- SVG ornament (drawn) -->
+            <svg viewBox="0 0 460 160" aria-hidden="true">
+              <!-- top double lines -->
+              <line x1="48" y1="42" x2="412" y2="42" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="48" y1="50" x2="412" y2="50" stroke="var(--gold-soft)" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- bottom double lines -->
+              <line x1="48" y1="110" x2="412" y2="110" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="48" y1="118" x2="412" y2="118" stroke="var(--gold-soft)" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- center flourish (top) -->
+              <path d="M230 44
+                       c-18 0 -26 7 -26 14
+                       c0 7 7 12 14 12
+                       c7 0 12-5 12-10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M230 44
+                       c18 0 26 7 26 14
+                       c0 7-7 12-14 12
+                       c-7 0-12-5-12-10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- center flourish (bottom, mirrored) -->
+              <path d="M230 116
+                       c-18 0 -26 -7 -26 -14
+                       c0 -7 7 -12 14 -12
+                       c7 0 12 5 12 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M230 116
+                       c18 0 26 -7 26 -14
+                       c0 -7 -7 -12 -14 -12
+                       c-7 0-12 5-12 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- side curls (top left / top right) -->
+              <path d="M48 50
+                       c-18 0 -22 -18 -8 -22
+                       c8 -2 14 4 10 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M412 50
+                       c18 0 22 -18 8 -22
+                       c-8 -2 -14 4 -10 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- side curls (bottom left / bottom right) -->
+              <path d="M48 110
+                       c-18 0 -22 18 -8 22
+                       c8 2 14 -4 10 -10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M412 110
+                       c18 0 22 18 8 22
+                       c-8 2 -14 -4 -10 -10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- diamonds (top left / top right) -->
+              <polygon points="76,28 86,42 76,56 66,42" fill="var(--gold)"/>
+              <polygon points="96,36 102,44 96,52 90,44" fill="var(--gold-soft)"/>
+              <polygon points="384,28 394,42 384,56 374,42" fill="var(--gold)"/>
+              <polygon points="364,36 370,44 364,52 358,44" fill="var(--gold-soft)"/>
+
+              <!-- diamonds (bottom left / bottom right) -->
+              <polygon points="76,104 86,118 76,132 66,118" fill="var(--gold)"/>
+              <polygon points="96,112 102,120 96,128 90,120" fill="var(--gold-soft)"/>
+              <polygon points="384,104 394,118 384,132 374,118" fill="var(--gold)"/>
+              <polygon points="364,112 370,120 364,128 358,120" fill="var(--gold-soft)"/>
+            </svg>
+
             <span class="label">身元保証</span>
           </button>
 
-          <button class="line-btn" type="button">
-            <span class="top-lines"></span>
-            <span class="bot-lines"></span>
-            <span class="flourish"></span>
-            <span class="dia tl"></span><span class="dia tr"></span>
-            <span class="dia bl"></span><span class="dia br"></span>
+          <!-- Button 2 -->
+          <button class="orn-line-btn" type="button" aria-label="生活支援">
+            <svg viewBox="0 0 460 160" aria-hidden="true">
+              <line x1="48" y1="42" x2="412" y2="42" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="48" y1="50" x2="412" y2="50" stroke="var(--gold-soft)" stroke-width="2" stroke-linecap="round"/>
+
+              <line x1="48" y1="110" x2="412" y2="110" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="48" y1="118" x2="412" y2="118" stroke="var(--gold-soft)" stroke-width="2" stroke-linecap="round"/>
+
+              <path d="M230 44 c-18 0 -26 7 -26 14 c0 7 7 12 14 12 c7 0 12-5 12-10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M230 44 c18 0 26 7 26 14 c0 7-7 12-14 12 c-7 0-12-5-12-10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <path d="M230 116 c-18 0 -26 -7 -26 -14 c0 -7 7 -12 14 -12 c7 0 12 5 12 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M230 116 c18 0 26 -7 26 -14 c0 -7 -7 -12 -14 -12 c-7 0-12 5-12 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <path d="M48 50 c-18 0 -22 -18 -8 -22 c8 -2 14 4 10 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M412 50 c18 0 22 -18 8 -22 c-8 -2 -14 4 -10 10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <path d="M48 110 c-18 0 -22 18 -8 22 c8 2 14 -4 10 -10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M412 110 c18 0 22 18 8 22 c-8 2 -14 -4 -10  -10"
+                    fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+
+              <polygon points="76,28 86,42 76,56 66,42" fill="var(--gold)"/>
+              <polygon points="96,36 102,44 96,52 90,44" fill="var(--gold-soft)"/>
+              <polygon points="384,28 394,42 384,56 374,42" fill="var(--gold)"/>
+              <polygon points="364,36 370,44 364,52 358,44" fill="var(--gold-soft)"/>
+
+              <polygon points="76,104 86,118 76,132 66,118" fill="var(--gold)"/>
+              <polygon points="96,112 102,120 96,128 90,120" fill="var(--gold-soft)"/>
+              <polygon points="384,104 394,118 384,132 374,118" fill="var(--gold)"/>
+              <polygon points="364,112 370,120 364,128 358,120" fill="var(--gold-soft)"/>
+            </svg>
+
             <span class="label">生活支援</span>
           </button>
 

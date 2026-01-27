@@ -80,7 +80,6 @@
       gap: 14px;
     }
 
-    /* ✅ 고급 하이라이트 */
     .japanese-title .subtitle {
       display: inline-block;
       font-size: 17px;
@@ -127,7 +126,7 @@
     }
 
     /* =========================
-       Buttons Section
+       Buttons
     ========================= */
     .button-row {
       display: flex;
@@ -137,16 +136,22 @@
       margin-top: 10px;
     }
 
-    .pill-btn {
-      width: 320px;
-      height: 74px;
+    /* ✅ 오나먼트풍 버튼 */
+    .ornament-btn {
+      position: relative;
+      width: 330px;
+      height: 82px;
       border-radius: 999px;
+      border: 1px solid rgba(185, 167, 122, 0.9);
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.55) 0%,
+        rgba(240,224,193,0.95) 45%,
+        rgba(240,224,193,1) 100%
+      );
 
-      /* ✅ 기존 아이보리 색상으로 통일 */
-      background-color: #f0e0c1;
-
-      border: none;
       cursor: pointer;
+      overflow: hidden;
 
       display: flex;
       align-items: center;
@@ -154,31 +159,68 @@
 
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
       font-size: 20px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: #2f2a22;
-      font-weight: 800;
+      font-weight: 900;
 
-      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow:
+        0 18px 38px rgba(0,0,0,0.18),
+        inset 0 2px 0 rgba(255,255,255,0.75),
+        inset 0 -2px 0 rgba(0,0,0,0.06);
+
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
     }
 
-    .pill-btn:hover {
+    /* ✅ 안쪽 라인(이중테두리 느낌) */
+    .ornament-btn::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(185, 167, 122, 0.55);
+      pointer-events: none;
+    }
+
+    /* ✅ 오나먼트 느낌 살짝: 은은한 패턴 오버레이 */
+    .ornament-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("ornament.png");
+      background-repeat: repeat;
+      background-size: 320px 320px;
+      opacity: 0.10; /* 핵심: 과하면 구림 */
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    .ornament-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 22px 50px rgba(0,0,0,0.2);
+      box-shadow:
+        0 24px 55px rgba(0,0,0,0.22),
+        inset 0 2px 0 rgba(255,255,255,0.8),
+        inset 0 -2px 0 rgba(0,0,0,0.05);
     }
 
-    .pill-btn:active {
+    .ornament-btn:active {
       transform: translateY(0px);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+      box-shadow:
+        0 16px 35px rgba(0,0,0,0.18),
+        inset 0 2px 0 rgba(255,255,255,0.7),
+        inset 0 -2px 0 rgba(0,0,0,0.08);
+    }
+
+    /* 버튼 글자 위에 패턴 올라오니까 글자 보호 */
+    .ornament-btn span {
+      position: relative;
+      z-index: 2;
     }
 
     /* =========================
        Responsive
     ========================= */
     @media (max-width: 900px) {
-      .pill-btn {
-        width: 280px;
-      }
+      .ornament-btn { width: 290px; }
     }
 
     @media (max-width: 768px) {
@@ -192,56 +234,40 @@
         gap: 18px;
       }
 
-      .pill-btn {
+      .ornament-btn {
         width: 100%;
-        max-width: 360px;
+        max-width: 380px;
       }
     }
 
     @media (max-width: 480px) {
-      .page {
-        padding: 64px 16px 96px;
-      }
-
-      .frame {
-        padding: 64px 24px 80px;
-      }
-
-      .japanese-title .subtitle {
-        font-size: 16px;
-      }
+      .page { padding: 64px 16px 96px; }
+      .frame { padding: 64px 24px 80px; }
+      .japanese-title .subtitle { font-size: 16px; }
+      .ornament-btn { height: 78px; font-size: 19px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Background Ornament -->
   <div class="ornament-bg"></div>
-
-  <!-- Top Bar -->
   <div class="top-bar"></div>
 
-  <!-- Page -->
   <main class="page">
     <div class="container">
 
-      <!-- Intro Text -->
       <div class="japanese-title">
         <span class="subtitle">おひとりさまの方へ</span>
         <span class="divider"></span>
         <span class="subtitle">子供や孫に迷惑をかけたくない方へ</span>
       </div>
 
-      <!-- Frame -->
       <section class="frame">
-
-        <!-- ✅ 사진처럼 양쪽 버튼 2개 -->
         <div class="button-row">
-          <button class="pill-btn">【身元保証】</button>
-          <button class="pill-btn">【生活支援】</button>
+          <button class="ornament-btn"><span>【身元保証】</span></button>
+          <button class="ornament-btn"><span>【生活支援】</span></button>
         </div>
-
       </section>
 
     </div>

@@ -80,7 +80,6 @@
       gap: 14px;
     }
 
-    /* ✅ 고급 하이라이트 유지 */
     .japanese-title .subtitle {
       display: inline-block;
       font-size: 17px;
@@ -127,7 +126,7 @@
     }
 
     /* =========================
-       Buttons (NEW SIMPLE)
+       Buttons
     ========================= */
     .button-row {
       display: flex;
@@ -137,15 +136,22 @@
       margin-top: 10px;
     }
 
-    /* ✅ 이미지처럼: 브라운 배경 + 화이트 텍스트 */
+    /* ✅ 너가 준 이미지 톤 기반 (차분한 베이지브라운) */
     .simple-btn {
       width: 320px;
-      height: 74px;
+      height: 76px;
 
       border: none;
       border-radius: 18px;
 
-      background-color: #b99c87; /* ✅ 이미지 같은 브라운톤 */
+      /* 핵심: 이미지 느낌 나는 톤 */
+      background: linear-gradient(
+        180deg,
+        #bfa38f 0%,
+        #b09480 55%,
+        #a98b77 100%
+      );
+
       color: #ffffff;
 
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
@@ -154,17 +160,32 @@
       letter-spacing: 0.12em;
 
       cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+
+      /* ✅ 너무 과하지 않은 입체감 */
+      box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
     }
 
     .simple-btn:hover {
       transform: translateY(-2px);
-      opacity: 0.95;
+      filter: brightness(1.03);
+      box-shadow:
+        0 20px 44px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.38);
     }
 
     .simple-btn:active {
       transform: translateY(0px);
-      opacity: 0.9;
+      filter: brightness(0.98);
+      box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.18),
+        inset 0 2px 6px rgba(0, 0, 0, 0.12);
     }
 
     /* =========================
@@ -229,25 +250,4 @@
     <div class="container">
 
       <!-- Intro Text -->
-      <div class="japanese-title">
-        <span class="subtitle">おひとりさまの方へ</span>
-        <span class="divider"></span>
-        <span class="subtitle">子供や孫に迷惑をかけたくない方へ</span>
-      </div>
-
-      <!-- Frame -->
-      <section class="frame">
-
-        <!-- ✅ 버튼 2개 -->
-        <div class="button-row">
-          <button class="simple-btn">身元保証</button>
-          <button class="simple-btn">生活支援</button>
-        </div>
-
-      </section>
-
-    </div>
-  </main>
-
-</body>
-</html>
+      <div

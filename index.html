@@ -16,11 +16,21 @@
     }
 
     :root{
-      --mobile-max: 520px;
-      --brown: rgba(120, 92, 60, .95);
+      --btn: #b7a18a;
+      --btn-text: #ffffff;
 
-      --shadow-soft: 0 10px 22px rgba(0,0,0,.08);
-      --shadow: 0 16px 34px rgba(0,0,0,.10);
+      --mobile-max: 520px;
+
+      --shadow: 0 20px 55px rgba(0,0,0,.16);
+      --shadow2: 0 10px 26px rgba(0,0,0,.14);
+
+      --ink: #2f2a22;
+      --muted: rgba(47,42,34,.72);
+      --line: rgba(47,42,34,.16);
+      --paper: rgba(255,255,255,.70);
+
+      --card: rgba(255,255,255,.78);
+      --card-border: rgba(0,0,0,.06);
     }
 
     /* =========================
@@ -53,23 +63,29 @@
     }
 
     /* =========================
-       Header
+       Header (Refined + CTA + Shrink on scroll)
     ========================= */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 50;
+
       height: 78px;
       display: flex;
       align-items: center;
       justify-content: center;
+
       background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       backdrop-filter: blur(6px);
-      transition: height .22s ease;
+
+      transition: height .22s ease, box-shadow .22s ease;
     }
-    .topbar.is-compact{ height: 64px; }
+    .topbar.is-compact{
+      height: 64px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
 
     .topbar-inner{
       width: 100%;
@@ -94,15 +110,26 @@
       width: 44px;
       height: 44px;
       border-radius: 999px;
+
       display: grid;
       place-items: center;
+
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
       font-size: 16px;
+      letter-spacing: .04em;
+
       border: 1.5px solid rgba(0,0,0,.78);
       background: rgba(255,255,255,.38);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+
+      transition: width .22s ease, height .22s ease, transform .22s ease;
       flex: 0 0 auto;
+    }
+    .topbar.is-compact .brand-mark{
+      width: 38px;
+      height: 38px;
+      transform: translateY(-.5px);
     }
 
     .brand-text{
@@ -128,11 +155,19 @@
       font-weight: 900;
       letter-spacing: .10em;
       color: #1f1b16;
+
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      transition: font-size .22s ease, letter-spacing .22s ease;
+    }
+    .topbar.is-compact .brand-name{
+      font-size: 16px;
+      letter-spacing: .08em;
     }
 
+    /* Header CTA */
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -149,17 +184,52 @@
       padding: 0 12px;
       display: inline-flex;
       align-items: center;
+      gap: 8px;
       text-decoration: none;
       font-size: 12px;
       letter-spacing: .10em;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      user-select: none;
       white-space: nowrap;
     }
+    .hbtn:hover{
+      transform: translateY(-0.5px);
+      background: rgba(255,255,255,.52);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
+    }
+    .hbtn:active{
+      transform: translateY(0px);
+      background: rgba(255,255,255,.46);
+      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
     .hbtn.primary{
       background: rgba(183,161,138,.92);
       color: #fff;
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    }
+    .hbtn.primary:hover{
+      background: rgba(183,161,138,.98);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    }
+
+    .hbtn .ico{
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+    }
+
+    /* 작은 화면에서는 1개만 보이게 */
+    @media (max-width: 420px){
+      .header-actions .hbtn.secondary{ display: none; }
+    }
+    @media (max-width: 360px){
+      .topbar{ height: 72px; }
+      .topbar.is-compact{ height: 60px; }
+      .brand-name{ font-size: 16px; }
+      .hbtn{ height: 36px; padding: 0 11px; }
     }
 
     /* =========================
@@ -179,77 +249,70 @@
     }
 
     /* =========================
-       HERO
+       HERO (center ornament fade)
     ========================= */
-    .hero-text{
-      margin-top: 22px;
+    .orn-frame{
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      padding: 46px 22px 40px;
+      border-radius: 22px;
+
+      background-color: var(--paper);
+      backdrop-filter: blur(1px);
+
+      background-image: url("ornament.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 145% auto;
+
+      box-shadow: var(--shadow);
+    }
+    .orn-frame::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.70) 22%,
+        rgba(255,255,255,0.18) 50%,
+        rgba(255,255,255,0.70) 78%,
+        rgba(255,255,255,0.92) 100%
+      );
+    }
+    .orn-title{
+      position: relative;
+      z-index: 2;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
-      color: var(--brown);
-      padding: 0 4px;
+      color: var(--ink);
     }
-    .hero-text .line{
+    .orn-title .line{
       font-size: 16px;
-      font-weight: 900;
-      line-height: 1.95;
+      font-weight: 800;
+      line-height: 1.9;
     }
-
-    .tag-box{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin: 14px auto 18px;
-      padding: 5px 14px;
-      border: 2px solid rgba(120, 92, 60, .55);
-      border-radius: 3px;
-      background: transparent;
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-weight: 900;
-      font-size: 14px;
-      letter-spacing: .24em;
-      line-height: 1.2;
-      color: var(--brown);
-    }
-
-    .hero-actions{
-      margin-top: 8px;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      padding: 0 4px;
-    }
-
-    .hero-btn{
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      height: 44px;
-      padding: 0 16px;
-      border-radius: 12px;
-      color: #fff;
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-weight: 900;
-      font-size: 16px;
-      letter-spacing: .12em;
-      box-shadow: 0 12px 24px rgba(0,0,0,.14);
-      transition: transform .18s ease, box-shadow .18s ease;
-      white-space: nowrap;
-      flex: 0 0 auto;
-    }
-    .hero-btn:hover{ transform: translateY(-0.5px); }
-    .hero-btn.guarantee{ background: #968444; }
-    .hero-btn.support{ background: #497790; }
 
     /* =========================
-       Illustration + Copy (✅ 여기로 고정)
+       Illustration
     ========================= */
-    .illus-wrap{ margin-top: 18px; }
+    .illus-wrap{ margin-top: 16px; }
     .illus-inner{
       display: grid;
       place-items: center;
       gap: 12px;
       text-align: center;
+    }
+    .illus-kicker{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-weight: 900;
+      letter-spacing: .10em;
+      color: rgba(47,42,34,.88);
+      font-size: 14px;
+      line-height: 1.7;
     }
     .illus-img{
       width: 100%;
@@ -258,167 +321,179 @@
       border-radius: 14px;
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
-
-    /* ✅ 네가 표시한 저 문구 블록: 섹션 시작 전에 여기서 끝남 */
-    .lead-copy{
-      margin-top: 10px;
-      text-align: center;
+    .illus-caption{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      letter-spacing: .08em;
-      color: rgba(47,42,34,.82);
-    }
-    .lead-copy .kicker{
-      font-weight: 900;
-      font-size: 16px;
+      font-size: 13px;
+      letter-spacing: .06em;
       line-height: 1.9;
-      margin-bottom: 8px;
-    }
-    .lead-copy .desc{
-      font-size: 14px;
-      line-height: 1.9;
-      color: rgba(47,42,34,.72);
-    }
-    .lead-copy .desc b{
-      font-weight: 900;
-      color: rgba(47,42,34,.92);
+      color: rgba(47,42,34,.70);
     }
 
     /* =========================
-       Section
+       CTA Buttons
     ========================= */
-    .section{
+    .cta-section{
       margin-top: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.55);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(0,0,0,.06);
-      overflow: hidden;
-    }
-
-    .section-head{
-      padding: 18px 16px 12px;
-      text-align: center;
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      position: relative;
-    }
-
-    /* ✅ 어제 있던 다이아 구분선 */
-    .ornament-divider{
       display: flex;
+      justify-content: center;
+    }
+    .cta-row{
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      width: 100%;
+    }
+    .cta-btn{
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      width: 230px;
+      height: 62px;
+      background: var(--btn);
+      color: var(--btn-text);
+      border-radius: 16px;
+      box-shadow: var(--shadow2);
+      letter-spacing: .16em;
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 22px;
+      font-weight: 900;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin: 6px auto;
-      max-width: 360px;
-      color: rgba(150,132,68,.78);
+      transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
-    .ornament-divider::before,
-    .ornament-divider::after{
-      content:"";
-      height: 1px;
-      flex: 1;
-      background: linear-gradient(
-        to right,
-        rgba(150,132,68,0),
-        rgba(150,132,68,.55),
-        rgba(150,132,68,0)
-      );
+    .cta-btn:hover{
+      transform: translateY(-0.5px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.17);
+      filter: saturate(1.02);
     }
-    .ornament-divider .dia{
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      border: 1.5px solid rgba(150,132,68,.70);
-      background: rgba(255,255,255,.35);
-      border-radius: 1px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.06);
+    .cta-btn:active{
+      transform: translateY(0px);
+      box-shadow: 0 9px 24px rgba(0,0,0,.14);
+      filter: saturate(1);
     }
-
-    .section-title{
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: .14em;
-      color: rgba(47,42,34,.92);
-      margin: 6px 0;
-    }
-
-    .section-sub{
-      margin-top: 10px;
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(0,0,0,.06);
-      font-size: 13px;
+    .cta-message{
+      margin-top: 14px;
+      text-align: center;
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
       letter-spacing: .06em;
-      color: rgba(47,42,34,.72);
-      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
     }
 
-    .cards{
-      padding: 14px 14px 18px;
+    .section-sep{
+      margin: 22px 0 6px;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      gap: 10px;
+    }
+    .section-sep .line{
+      width: 92%;
+      height: 1px;
+      background: var(--line);
+    }
+    .section-sep .diamond{
+      font-size: 12px;
+      color: rgba(47,42,34,.35);
+      transform: translateY(-2px);
+      letter-spacing: .2em;
+      user-select: none;
+    }
+
+    /* =========================
+       Panels
+    ========================= */
+    .details{
+      margin-top: 18px;
       display: grid;
       gap: 14px;
     }
-
-    .card{
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(0,0,0,.07);
-      border-radius: 16px;
-      padding: 18px 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-      position: relative;
+    .panel{
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
       overflow: hidden;
-    }
-
-    /* 카드 안 오나먼트 중앙만 */
-    .card::before{
-      content:"";
-      position: absolute;
-      inset: 0;
       background-image: url("ornament.png");
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 160% auto;
-      opacity: .14;
-      mask-image: radial-gradient(circle at 50% 45%,
-        rgba(0,0,0,1) 0%,
-        rgba(0,0,0,.75) 28%,
-        rgba(0,0,0,.20) 55%,
-        rgba(0,0,0,0) 72%
-      );
-      pointer-events: none;
+      background-size: 140% auto;
     }
+    .panel-head{
+      padding: 16px 16px;
+      background: rgba(255,255,255,.65);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      text-align: center;
+    }
+    .panel-title{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      color: var(--ink);
+    }
+    .panel-sub{
+      margin-top: 6px;
+      font-size: 12px;
+      color: rgba(47,42,34,.62);
+      letter-spacing: .06em;
+    }
+    .panel-body{ background: rgba(255,255,255,.55); }
+    .panel-inner{ padding: 14px 14px 18px; }
 
+    .cards{
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .card{
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      padding: 12px 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    }
     .card h3{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 900;
       letter-spacing: .10em;
       color: rgba(47,42,34,.92);
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 6px;
+      text-align: left;
     }
-
     .card p{
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.85;
-      letter-spacing: .03em;
-      color: rgba(47,42,34,.76);
-      position: relative;
-      z-index: 1;
+      color: rgba(47,42,34,.75);
+      text-align: left;
     }
 
-    .section-foot{
-      padding: 14px 16px 18px;
+    .mini-hr{
+      margin: 14px 0 10px;
+      height: 1px;
+      background: rgba(47,42,34,.12);
+    }
+    .mini-note{
       text-align: center;
-      color: rgba(47,42,34,.60);
       font-size: 12px;
-      line-height: 1.7;
-      letter-spacing: .04em;
-      border-top: 1px solid rgba(0,0,0,.07);
-      background: rgba(255,255,255,.42);
+      color: rgba(47,42,34,.60);
+      letter-spacing: .05em;
+      line-height: 1.8;
+    }
+
+    /* reveal */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.is-on{
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -435,8 +510,23 @@
           <span class="brand-name">カタオカサービス</span>
         </span>
       </a>
+
       <div class="header-actions">
-        <a class="hbtn primary" href="#guarantee">お問い合わせ</a>
+        <!-- ✅ 전화번호 있으면 여기 href를 tel:로 바꾸면 됨 -->
+        <a class="hbtn secondary" href="#details" aria-label="サービスを見る">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 6h16M4 12h10M4 18h16"></path>
+          </svg>
+          サービス
+        </a>
+
+        <a class="hbtn primary" href="#cta" aria-label="お問い合わせへ">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16v16H4z"></path>
+            <path d="M22 6l-10 7L2 6"></path>
+          </svg>
+          お問い合わせ
+        </a>
       </div>
     </div>
   </header>
@@ -444,122 +534,140 @@
   <main class="page">
     <div class="container">
 
-      <!-- HERO -->
-      <section class="hero-text">
-        <div class="line">おひとりさまの方へ</div>
-        <div class="line">子供や孫に迷惑をかけたくない方へ</div>
-        <div class="tag-box">地域密着型</div>
-
-        <div class="hero-actions">
-          <button class="hero-btn guarantee" type="button" onclick="location.href='#guarantee'">身元保証</button>
-          <button class="hero-btn support" type="button" onclick="location.href='#support'">生活支援</button>
+      <section class="orn-frame">
+        <div class="orn-title">
+          <div class="line">おひとりさまの方へ</div>
+          <div class="line">子供や孫に迷惑をかけたくない方へ</div>
         </div>
       </section>
 
-      <!-- Illustration -->
-      <section class="illus-wrap" id="why">
+      <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
-          <img class="illus-img" src="illustration.png" alt="イラスト" />
-
-          <!-- ✅ 네가 화살표로 찍은 그 문구: 여기 배치 -->
-          <div class="lead-copy">
-            <div class="kicker">「もしもの時」に備えて、今できることを。</div>
-            <div class="desc">
-              <b>不安</b>をひとつずつ整理し、<br/>
-              <b>必要</b>な<b>手続き</b>や<b>支援</b>をわかりやすくご案内します。
-            </div>
+          <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
+          <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
+          <div class="illus-caption">
+            不安をひとつずつ整理し、<br/>
+            必要な手続きや支援をわかりやすくご案内します。
           </div>
         </div>
       </section>
 
-      <!-- 身元保証 -->
-      <section class="section" id="guarantee">
-        <div class="section-head">
-          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
-          <div class="section-title">身元保証</div>
-          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
-          <div class="section-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
-        </div>
+      <section class="cta-section reveal" id="cta">
+        <div class="cta-row">
+          <button class="cta-btn" type="button"
+            onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+            身元保証
+          </button>
 
-        <div class="cards">
-          <article class="card">
-            <h3>身元保証人代行</h3>
-            <p>
-              入院・施設入居などで必要となる保証人について、条件や流れを整理し、
-              安心して手続きできるよう支援します。
-            </p>
-          </article>
+          <button class="cta-btn" type="button"
+            onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+            生活支援
+          </button>
 
-          <article class="card">
-            <h3>緊急連絡先代行</h3>
-            <p>
-              緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、
-              万が一に備えます。
-            </p>
-          </article>
+          <div class="cta-message">
+            皆さまの想いをかなえる ために<br/>
+            私たちが一生涯のご支援をお約束致します
+          </div>
 
-          <article class="card">
-            <h3>身元引受人代行</h3>
-            <p>
-              退院・退所などの場面で求められる「引受」に関する対応を、
-              状況に合わせてサポートします。
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>死後事務委任</h3>
-            <p>
-              万一の後に必要となる事務（各種連絡や手続き等）について、
-              希望を伺い、準備を進めます。
-            </p>
-          </article>
-        </div>
-
-        <div class="section-foot">
-          ※内容はご状況により異なります。まずはヒアリングの上で最適な形をご案内します。
+          <div class="section-sep" aria-hidden="true">
+            <div class="line"></div>
+            <div class="diamond">◆</div>
+            <div class="line"></div>
+          </div>
         </div>
       </section>
 
-      <!-- 生活支援 -->
-      <section class="section" id="support" style="margin-top:14px;">
-        <div class="section-head">
-          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
-          <div class="section-title">生活支援</div>
-          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
-          <div class="section-sub">日常の外出や手続きの同行を、やさしくサポートします</div>
-        </div>
+      <section class="details" id="details">
+        <article class="panel" id="panel-guarantee">
+          <div class="panel-head">
+            <div class="panel-title">身元保証</div>
+            <div class="panel-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-inner">
+              <div class="cards">
+                <div class="card">
+                  <h3>身元保証人代行</h3>
+                  <p>入院・施設入居などで必要となる保証人について、条件や流れを整理し、安心して手続きできるよう支援します。</p>
+                </div>
+                <div class="card">
+                  <h3>緊急連絡先代行</h3>
+                  <p>緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、万が一に備えます。</p>
+                </div>
+                <div class="card">
+                  <h3>身元引受人代行</h3>
+                  <p>退院・退所などの場面で求められる「引受」に関する対応を、状況に合わせてサポートします。</p>
+                </div>
+                <div class="card">
+                  <h3>死後事務委任</h3>
+                  <p>万一の後に必要となる事務（各種連絡や手続き等）について、希望を伺い、準備を進めます。</p>
+                </div>
+              </div>
 
-        <div class="cards">
-          <article class="card">
-            <h3>通院同行</h3>
-            <p>病院への移動・受付・受診までの流れを一緒に確認し、落ち着いて通院できるようサポートします。</p>
-          </article>
+              <div class="mini-hr"></div>
+              <div class="mini-note">
+                ※内容はご状況により異なります。まずはヒアリングの上で最適な形をご案内します。
+              </div>
+            </div>
+          </div>
+        </article>
 
-          <article class="card">
-            <h3>買い物同行</h3>
-            <p>必要な買い物の計画から移動・購入までを支援します。重い荷物や移動の不安も軽減します。</p>
-          </article>
+        <article class="panel" id="panel-support">
+          <div class="panel-head">
+            <div class="panel-title">生活支援</div>
+            <div class="panel-sub">外出・手続きなど日常の「困った」を、必要な分だけお手伝いします</div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-inner">
+              <div class="cards">
+                <div class="card">
+                  <h3>通院同行</h3>
+                  <p>通院時の移動や受付などを同行支援します。無理のないペースで、安全に外出できるよう配慮します。</p>
+                </div>
+                <div class="card">
+                  <h3>買物同行</h3>
+                  <p>日用品の買い出しや必要な購入をサポートします。重い荷物や移動が不安な方にも対応します。</p>
+                </div>
+                <div class="card">
+                  <h3>役所手続き同行</h3>
+                  <p>役所での手続きに同行し、必要書類や流れの確認をお手伝いします。初めてでも安心して進められます。</p>
+                </div>
+              </div>
 
-          <article class="card">
-            <h3>役所手続き同行</h3>
-            <p>役所での申請や必要書類の確認など、手続きのポイントを整理しながら同行します。</p>
-          </article>
-        </div>
-
-        <div class="section-foot">
-          ※ご希望と状況に合わせて内容を調整します。お気軽にご相談ください。
-        </div>
+              <div class="mini-hr"></div>
+              <div class="mini-note">
+                ※対応範囲・頻度はご希望に合わせて調整可能です（松戸周辺：応相談）。
+              </div>
+            </div>
+          </div>
+        </article>
       </section>
 
     </div>
   </main>
 
   <script>
+    // reveal
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
+    }, { threshold: 0.14 });
+    els.forEach(el => io.observe(el));
+
+    // ✅ 헤더 축소(스크롤)
     const topbar = document.getElementById('topbar');
+    let ticking = false;
+
     const onScroll = () => {
-      const y = window.scrollY || 0;
-      if (y > 12) topbar.classList.add('is-compact');
-      else topbar.classList.remove('is-compact');
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        if (y > 12) topbar.classList.add('is-compact');
+        else topbar.classList.remove('is-compact');
+        ticking = false;
+      });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

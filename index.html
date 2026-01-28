@@ -192,32 +192,32 @@
       line-height: 1.95;
     }
 
-    /* ✅ 라벨 더 키움 + 여백 */
+    /* ✅ 라벨: 박스만 줄임 (폰트 14px 유지) */
     .tag-box{
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      margin: 14px auto 18px; /* ✅ 아래 간격 더 줌 */
-      padding: 8px 22px;      /* ✅ 크기 증가 */
+      margin: 14px auto 18px;
+
+      /* ✅ 박스 크기만 줄이는 핵심 */
+      padding: 5px 14px;
 
       border: 2px solid rgba(120, 92, 60, .55);
       border-radius: 3px;
-
       background: transparent;
 
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
 
-      font-size: 14px;        /* ✅ 크기 증가 */
-      letter-spacing: .24em;  /* ✅ 답답함 줄임 */
+      font-size: 14px;       /* ✅ 그대로 유지 */
+      letter-spacing: .24em;
       line-height: 1.2;
       color: rgba(120, 92, 60, .95);
     }
 
-    /* ✅ 라벨-버튼 간격 조금 벌림 */
     .hero-actions{
-      margin-top: 6px; /* ✅ 추가 */
+      margin-top: 6px;
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -250,7 +250,6 @@
       box-shadow: 0 16px 30px rgba(0,0,0,.16);
     }
 
-    /* 버튼 색상 유지 */
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
 

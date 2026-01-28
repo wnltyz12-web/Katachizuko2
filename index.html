@@ -18,7 +18,6 @@
     :root{
       --mobile-max: 520px;
       --ink: #2f2a22;
-      --line: rgba(47,42,34,.16);
     }
 
     /* =========================
@@ -177,52 +176,53 @@
     }
 
     /* =========================
-       TOP TEXT
+       TOP TEXT (✅ 색상 변경)
     ========================= */
     .hero-text{
       margin-top: 22px;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
-      color: var(--ink);
+
+      /* ✅ 사진 느낌 브라운 톤 */
+      color: rgba(120, 92, 60, .95);
+
       padding: 0 4px;
     }
     .hero-text .line{
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.95;
     }
 
-    /* ✅ 라벨: 더 작게 + 배경 없애고 stroke만 + 사진톤 색 */
+    /* ✅ 라벨: 크기 다시 키움 (scale 제거) */
     .tag-box{
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      /* 사진처럼 라벨이 너무 튀지 않게 */
-      margin: 12px auto 14px; /* 텍스트 아래 / 버튼 위 */
-      padding: 4px 10px;      /* ✅ 작게 */
-      border: 2px solid rgba(120, 92, 60, .55); /* ✅ stroke */
-      border-radius: 2px;
+      margin: 12px auto 14px;
+      padding: 6px 16px;
 
-      background: transparent; /* ✅ 배경 제거 */
-      color: rgba(120, 92, 60, .95); /* ✅ 브라운 톤 */
+      border: 2px solid rgba(120, 92, 60, .55);
+      border-radius: 3px;
+
+      background: transparent;
 
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
-      font-size: 12px;         /* ✅ 작게 */
-      letter-spacing: .26em;
-      line-height: 1.2;
 
-      transform: scale(.68);   /* ✅ 전체 1.5배 정도 줄이는 느낌(약 68%) */
-      transform-origin: center;
+      font-size: 13px;       /* ✅ 업 */
+      letter-spacing: .22em;
+      line-height: 1.2;
+      color: rgba(120, 92, 60, .95);
     }
 
     /* =========================
        Buttons (색상 유지)
     ========================= */
     .hero-actions{
-      margin-top: 0; /* ✅ 라벨 아래 딱 붙게 */
+      margin-top: 0;
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -255,7 +255,6 @@
       box-shadow: 0 16px 30px rgba(0,0,0,.16);
     }
 
-    /* ✅ 버튼 색상은 그대로 유지 */
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
 
@@ -328,7 +327,6 @@
         <div class="line">おひとりさまの方へ</div>
         <div class="line">子供や孫に迷惑をかけたくない方へ</div>
 
-        <!-- ✅ 라벨: 작게 + stroke만 + 브라운 글자 -->
         <div class="tag-box">地域密着型</div>
 
         <div class="hero-actions">

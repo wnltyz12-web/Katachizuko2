@@ -19,7 +19,6 @@
       --mobile-max: 520px;
       --brown: rgba(120, 92, 60, .95);
 
-      --card-bg: rgba(255,255,255,.78);
       --shadow-soft: 0 10px 22px rgba(0,0,0,.08);
       --shadow: 0 16px 34px rgba(0,0,0,.10);
     }
@@ -201,7 +200,7 @@
       align-items: center;
       justify-content: center;
       margin: 14px auto 18px;
-      padding: 5px 14px;  /* 박스만 줄임 */
+      padding: 5px 14px;
       border: 2px solid rgba(120, 92, 60, .55);
       border-radius: 3px;
       background: transparent;
@@ -243,7 +242,49 @@
     .hero-btn.support{ background: #497790; }
 
     /* =========================
-       Section + Cards
+       Illustration + Copy (✅ 여기로 고정)
+    ========================= */
+    .illus-wrap{ margin-top: 18px; }
+    .illus-inner{
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .illus-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.12);
+    }
+
+    /* ✅ 네가 표시한 저 문구 블록: 섹션 시작 전에 여기서 끝남 */
+    .lead-copy{
+      margin-top: 10px;
+      text-align: center;
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      letter-spacing: .08em;
+      color: rgba(47,42,34,.82);
+    }
+    .lead-copy .kicker{
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 8px;
+    }
+    .lead-copy .desc{
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(47,42,34,.72);
+    }
+    .lead-copy .desc b{
+      font-weight: 900;
+      color: rgba(47,42,34,.92);
+    }
+
+    /* =========================
+       Section
     ========================= */
     .section{
       margin-top: 18px;
@@ -261,15 +302,15 @@
       position: relative;
     }
 
-    /* ✅ 어제 있던 다이아몬드 구분선 */
+    /* ✅ 어제 있던 다이아 구분선 */
     .ornament-divider{
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      margin: 8px auto;
-      color: rgba(150,132,68,.78);
+      margin: 6px auto;
       max-width: 360px;
+      color: rgba(150,132,68,.78);
     }
     .ornament-divider::before,
     .ornament-divider::after{
@@ -294,11 +335,11 @@
     }
 
     .section-title{
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: .14em;
       color: rgba(47,42,34,.92);
-      margin-top: 2px;
+      margin: 6px 0;
     }
 
     .section-sub{
@@ -330,6 +371,7 @@
       overflow: hidden;
     }
 
+    /* 카드 안 오나먼트 중앙만 */
     .card::before{
       content:"";
       position: absolute;
@@ -378,45 +420,6 @@
       border-top: 1px solid rgba(0,0,0,.07);
       background: rgba(255,255,255,.42);
     }
-
-    /* =========================
-       Illustration
-    ========================= */
-    .illus-wrap{ margin-top: 18px; }
-    .illus-inner{
-      display: grid;
-      place-items: center;
-      gap: 12px;
-      text-align: center;
-    }
-    .illus-img{
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 14px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.12);
-    }
-    .illus-kicker{
-      margin-top: 6px;
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-weight: 900;
-      letter-spacing: .10em;
-      color: rgba(47,42,34,.88);
-      font-size: 14px;
-      line-height: 1.75;
-    }
-    .illus-caption{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 13px;
-      letter-spacing: .06em;
-      line-height: 1.9;
-      color: rgba(47,42,34,.70);
-      text-align: center;
-    }
-    .illus-caption b{
-      font-weight: 900;
-      color: rgba(47,42,34,.92);
-    }
   </style>
 </head>
 
@@ -432,11 +435,8 @@
           <span class="brand-name">カタオカサービス</span>
         </span>
       </a>
-
       <div class="header-actions">
-        <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
-          お問い合わせ
-        </a>
+        <a class="hbtn primary" href="#guarantee">お問い合わせ</a>
       </div>
     </div>
   </header>
@@ -448,7 +448,6 @@
       <section class="hero-text">
         <div class="line">おひとりさまの方へ</div>
         <div class="line">子供や孫に迷惑をかけたくない方へ</div>
-
         <div class="tag-box">地域密着型</div>
 
         <div class="hero-actions">
@@ -461,24 +460,24 @@
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illustration.png" alt="イラスト" />
-          <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
 
-          <div class="illus-caption">
-            <b>不安</b>をひとつずつ整理し、<br/>
-            <b>必要</b>な<b>手続き</b>や<b>支援</b>をわかりやすくご案内します。
+          <!-- ✅ 네가 화살표로 찍은 그 문구: 여기 배치 -->
+          <div class="lead-copy">
+            <div class="kicker">「もしもの時」に備えて、今できることを。</div>
+            <div class="desc">
+              <b>不安</b>をひとつずつ整理し、<br/>
+              <b>必要</b>な<b>手続き</b>や<b>支援</b>をわかりやすくご案内します。
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ✅ Divider 포함한 섹션 헤더 -->
+      <!-- 身元保証 -->
       <section class="section" id="guarantee">
         <div class="section-head">
           <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
-
           <div class="section-title">身元保証</div>
-
-          <div class="ornament-divider" aria-hidden="true" style="margin-top:10px;"><span class="dia"></span></div>
-
+          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
           <div class="section-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
         </div>
 
@@ -521,37 +520,29 @@
         </div>
       </section>
 
+      <!-- 生活支援 -->
       <section class="section" id="support" style="margin-top:14px;">
         <div class="section-head">
           <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
-
           <div class="section-title">生活支援</div>
-
-          <div class="ornament-divider" aria-hidden="true" style="margin-top:10px;"><span class="dia"></span></div>
-
+          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
           <div class="section-sub">日常の外出や手続きの同行を、やさしくサポートします</div>
         </div>
 
         <div class="cards">
           <article class="card">
             <h3>通院同行</h3>
-            <p>
-              病院への移動・受付・受診までの流れを一緒に確認し、落ち着いて通院できるようサポートします。
-            </p>
+            <p>病院への移動・受付・受診までの流れを一緒に確認し、落ち着いて通院できるようサポートします。</p>
           </article>
 
           <article class="card">
             <h3>買い物同行</h3>
-            <p>
-              必要な買い物の計画から移動・購入までを支援します。重い荷物や移動の不安も軽減します。
-            </p>
+            <p>必要な買い物の計画から移動・購入までを支援します。重い荷物や移動の不安も軽減します。</p>
           </article>
 
           <article class="card">
             <h3>役所手続き同行</h3>
-            <p>
-              役所での申請や必要書類の確認など、手続きのポイントを整理しながら同行します。
-            </p>
+            <p>役所での申請や必要書類の確認など、手続きのポイントを整理しながら同行します。</p>
           </article>
         </div>
 

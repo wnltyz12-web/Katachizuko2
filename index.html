@@ -17,13 +17,11 @@
 
     :root{
       --mobile-max: 520px;
-
       --brown: rgba(120, 92, 60, .95);
 
       --card-bg: rgba(255,255,255,.78);
-      --card-stroke: rgba(0,0,0,.08);
-      --shadow: 0 16px 34px rgba(0,0,0,.10);
       --shadow-soft: 0 10px 22px rgba(0,0,0,.08);
+      --shadow: 0 16px 34px rgba(0,0,0,.10);
     }
 
     /* =========================
@@ -182,7 +180,7 @@
     }
 
     /* =========================
-       HERO (라벨/버튼)
+       HERO
     ========================= */
     .hero-text{
       margin-top: 22px;
@@ -202,19 +200,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
       margin: 14px auto 18px;
-
-      /* 박스만 줄인 상태 + 폰트 그대로 */
-      padding: 5px 14px;
-
+      padding: 5px 14px;  /* 박스만 줄임 */
       border: 2px solid rgba(120, 92, 60, .55);
       border-radius: 3px;
       background: transparent;
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
-
       font-size: 14px;
       letter-spacing: .24em;
       line-height: 1.2;
@@ -233,30 +225,25 @@
       appearance: none;
       border: none;
       cursor: pointer;
-
       height: 44px;
       padding: 0 16px;
-
       border-radius: 12px;
       color: #fff;
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
       font-size: 16px;
       letter-spacing: .12em;
-
       box-shadow: 0 12px 24px rgba(0,0,0,.14);
       transition: transform .18s ease, box-shadow .18s ease;
       white-space: nowrap;
       flex: 0 0 auto;
     }
     .hero-btn:hover{ transform: translateY(-0.5px); }
-
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
 
     /* =========================
-       Detail Section (✅ 어제 만든 카드 UI 복구)
+       Section + Cards
     ========================= */
     .section{
       margin-top: 18px;
@@ -274,11 +261,44 @@
       position: relative;
     }
 
+    /* ✅ 어제 있던 다이아몬드 구분선 */
+    .ornament-divider{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px auto;
+      color: rgba(150,132,68,.78);
+      max-width: 360px;
+    }
+    .ornament-divider::before,
+    .ornament-divider::after{
+      content:"";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(
+        to right,
+        rgba(150,132,68,0),
+        rgba(150,132,68,.55),
+        rgba(150,132,68,0)
+      );
+    }
+    .ornament-divider .dia{
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      border: 1.5px solid rgba(150,132,68,.70);
+      background: rgba(255,255,255,.35);
+      border-radius: 1px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
+    }
+
     .section-title{
       font-size: 26px;
       font-weight: 900;
       letter-spacing: .14em;
       color: rgba(47,42,34,.92);
+      margin-top: 2px;
     }
 
     .section-sub{
@@ -310,7 +330,6 @@
       overflow: hidden;
     }
 
-    /* 카드 안 오나먼트가 "중앙만 미세하게" 보이게 */
     .card::before{
       content:"";
       position: absolute;
@@ -320,7 +339,6 @@
       background-position: center;
       background-size: 160% auto;
       opacity: .14;
-      filter: saturate(.9);
       mask-image: radial-gradient(circle at 50% 45%,
         rgba(0,0,0,1) 0%,
         rgba(0,0,0,.75) 28%,
@@ -362,7 +380,7 @@
     }
 
     /* =========================
-       Illustration (아래 문구 포함)
+       Illustration
     ========================= */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{
@@ -442,7 +460,6 @@
       <!-- Illustration -->
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
-          <!-- 네 파일명이 illustration.png면 그대로, 아니면 맞춰서 변경 -->
           <img class="illus-img" src="illustration.png" alt="イラスト" />
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
 
@@ -453,10 +470,15 @@
         </div>
       </section>
 
-      <!-- ✅ 어제 만든 상세 섹션 복구 (身元保証) -->
+      <!-- ✅ Divider 포함한 섹션 헤더 -->
       <section class="section" id="guarantee">
         <div class="section-head">
+          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
+
           <div class="section-title">身元保証</div>
+
+          <div class="ornament-divider" aria-hidden="true" style="margin-top:10px;"><span class="dia"></span></div>
+
           <div class="section-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
         </div>
 
@@ -499,10 +521,14 @@
         </div>
       </section>
 
-      <!-- 생활지원 섹션도 원하면 같은 스타일로 바로 이어서 추가 가능 -->
       <section class="section" id="support" style="margin-top:14px;">
         <div class="section-head">
+          <div class="ornament-divider" aria-hidden="true"><span class="dia"></span></div>
+
           <div class="section-title">生活支援</div>
+
+          <div class="ornament-divider" aria-hidden="true" style="margin-top:10px;"><span class="dia"></span></div>
+
           <div class="section-sub">日常の外出や手続きの同行を、やさしくサポートします</div>
         </div>
 

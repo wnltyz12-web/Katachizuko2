@@ -17,7 +17,13 @@
 
     :root{
       --mobile-max: 520px;
-      --ink: #2f2a22;
+
+      --brown: rgba(120, 92, 60, .95);
+
+      --card-bg: rgba(255,255,255,.78);
+      --card-stroke: rgba(0,0,0,.08);
+      --shadow: 0 16px 34px rgba(0,0,0,.10);
+      --shadow-soft: 0 10px 22px rgba(0,0,0,.08);
     }
 
     /* =========================
@@ -64,7 +70,7 @@
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       backdrop-filter: blur(6px);
-      transition: height .22s ease, box-shadow .22s ease;
+      transition: height .22s ease;
     }
     .topbar.is-compact{ height: 64px; }
 
@@ -176,14 +182,14 @@
     }
 
     /* =========================
-       TOP TEXT
+       HERO (라벨/버튼)
     ========================= */
     .hero-text{
       margin-top: 22px;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
-      color: rgba(120, 92, 60, .95);
+      color: var(--brown);
       padding: 0 4px;
     }
     .hero-text .line{
@@ -192,7 +198,6 @@
       line-height: 1.95;
     }
 
-    /* ✅ 라벨: 박스만 줄임 (폰트 14px 유지) */
     .tag-box{
       display: inline-flex;
       align-items: center;
@@ -200,7 +205,7 @@
 
       margin: 14px auto 18px;
 
-      /* ✅ 박스 크기만 줄이는 핵심 */
+      /* 박스만 줄인 상태 + 폰트 그대로 */
       padding: 5px 14px;
 
       border: 2px solid rgba(120, 92, 60, .55);
@@ -210,14 +215,14 @@
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
 
-      font-size: 14px;       /* ✅ 그대로 유지 */
+      font-size: 14px;
       letter-spacing: .24em;
       line-height: 1.2;
-      color: rgba(120, 92, 60, .95);
+      color: var(--brown);
     }
 
     .hero-actions{
-      margin-top: 6px;
+      margin-top: 8px;
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -245,15 +250,120 @@
       white-space: nowrap;
       flex: 0 0 auto;
     }
-    .hero-btn:hover{
-      transform: translateY(-0.5px);
-      box-shadow: 0 16px 30px rgba(0,0,0,.16);
-    }
+    .hero-btn:hover{ transform: translateY(-0.5px); }
 
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
 
-    /* Illustration */
+    /* =========================
+       Detail Section (✅ 어제 만든 카드 UI 복구)
+    ========================= */
+    .section{
+      margin-top: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.55);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,.06);
+      overflow: hidden;
+    }
+
+    .section-head{
+      padding: 18px 16px 12px;
+      text-align: center;
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      position: relative;
+    }
+
+    .section-title{
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      color: rgba(47,42,34,.92);
+    }
+
+    .section-sub{
+      margin-top: 10px;
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.06);
+      font-size: 13px;
+      letter-spacing: .06em;
+      color: rgba(47,42,34,.72);
+      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
+    }
+
+    .cards{
+      padding: 14px 14px 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .card{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 16px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 카드 안 오나먼트가 "중앙만 미세하게" 보이게 */
+    .card::before{
+      content:"";
+      position: absolute;
+      inset: 0;
+      background-image: url("ornament.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 160% auto;
+      opacity: .14;
+      filter: saturate(.9);
+      mask-image: radial-gradient(circle at 50% 45%,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,.75) 28%,
+        rgba(0,0,0,.20) 55%,
+        rgba(0,0,0,0) 72%
+      );
+      pointer-events: none;
+    }
+
+    .card h3{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      color: rgba(47,42,34,.92);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p{
+      font-size: 14px;
+      line-height: 1.85;
+      letter-spacing: .03em;
+      color: rgba(47,42,34,.76);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-foot{
+      padding: 14px 16px 18px;
+      text-align: center;
+      color: rgba(47,42,34,.60);
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: .04em;
+      border-top: 1px solid rgba(0,0,0,.07);
+      background: rgba(255,255,255,.42);
+    }
+
+    /* =========================
+       Illustration (아래 문구 포함)
+    ========================= */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{
       display: grid;
@@ -316,6 +426,7 @@
   <main class="page">
     <div class="container">
 
+      <!-- HERO -->
       <section class="hero-text">
         <div class="line">おひとりさまの方へ</div>
         <div class="line">子供や孫に迷惑をかけたくない方へ</div>
@@ -323,13 +434,15 @@
         <div class="tag-box">地域密着型</div>
 
         <div class="hero-actions">
-          <button class="hero-btn guarantee" type="button">身元保証</button>
-          <button class="hero-btn support" type="button">生活支援</button>
+          <button class="hero-btn guarantee" type="button" onclick="location.href='#guarantee'">身元保証</button>
+          <button class="hero-btn support" type="button" onclick="location.href='#support'">生活支援</button>
         </div>
       </section>
 
+      <!-- Illustration -->
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
+          <!-- 네 파일명이 illustration.png면 그대로, 아니면 맞춰서 변경 -->
           <img class="illus-img" src="illustration.png" alt="イラスト" />
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
 
@@ -337,6 +450,87 @@
             <b>不安</b>をひとつずつ整理し、<br/>
             <b>必要</b>な<b>手続き</b>や<b>支援</b>をわかりやすくご案内します。
           </div>
+        </div>
+      </section>
+
+      <!-- ✅ 어제 만든 상세 섹션 복구 (身元保証) -->
+      <section class="section" id="guarantee">
+        <div class="section-head">
+          <div class="section-title">身元保証</div>
+          <div class="section-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>身元保証人代行</h3>
+            <p>
+              入院・施設入居などで必要となる保証人について、条件や流れを整理し、
+              安心して手続きできるよう支援します。
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>緊急連絡先代行</h3>
+            <p>
+              緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、
+              万が一に備えます。
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>身元引受人代行</h3>
+            <p>
+              退院・退所などの場面で求められる「引受」に関する対応を、
+              状況に合わせてサポートします。
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>死後事務委任</h3>
+            <p>
+              万一の後に必要となる事務（各種連絡や手続き等）について、
+              希望を伺い、準備を進めます。
+            </p>
+          </article>
+        </div>
+
+        <div class="section-foot">
+          ※内容はご状況により異なります。まずはヒアリングの上で最適な形をご案内します。
+        </div>
+      </section>
+
+      <!-- 생활지원 섹션도 원하면 같은 스타일로 바로 이어서 추가 가능 -->
+      <section class="section" id="support" style="margin-top:14px;">
+        <div class="section-head">
+          <div class="section-title">生活支援</div>
+          <div class="section-sub">日常の外出や手続きの同行を、やさしくサポートします</div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>通院同行</h3>
+            <p>
+              病院への移動・受付・受診までの流れを一緒に確認し、落ち着いて通院できるようサポートします。
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>買い物同行</h3>
+            <p>
+              必要な買い物の計画から移動・購入までを支援します。重い荷物や移動の不安も軽減します。
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>役所手続き同行</h3>
+            <p>
+              役所での申請や必要書類の確認など、手続きのポイントを整理しながら同行します。
+            </p>
+          </article>
+        </div>
+
+        <div class="section-foot">
+          ※ご希望と状況に合わせて内容を調整します。お気軽にご相談ください。
         </div>
       </section>
 

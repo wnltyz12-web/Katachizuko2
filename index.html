@@ -31,8 +31,9 @@
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      --card-veil: rgba(255,255,255,.20);     /* 카드 안쪽 글자 가독성 */
-      --panel-veil: rgba(255,255,255,.24);    /* 패널(큰 박스) 가독성 */
+      /* ✅ 하얀 느낌 줄이기 (핵심) */
+      --card-veil: rgba(255,255,255,.06);     /* 기존 .20 -> .06 */
+      --panel-veil: rgba(255,255,255,.08);    /* 기존 .24 -> .08 */
     }
 
     /* =========================
@@ -386,8 +387,8 @@
 
     /* =========================
        Panels
-       ✅ 큰 흰박스(패널)도 "안쪽에 오나먼트" 보이게
-       ✅ 작은 흰박스(카드)도 "안쪽에 오나먼트" 보이게
+       ✅ 네모 박스는 유지
+       ✅ 하얀 덮개(veil)만 줄여서 오나먼트가 더 보이게
     ========================= */
     .details{
       margin-top: 18px;
@@ -395,7 +396,6 @@
       gap: 14px;
     }
 
-    /* 큰 패널 자체가 오나먼트가 보이도록 */
     .panel{
       position: relative;
       border-radius: 18px;
@@ -405,12 +405,12 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
 
       /* 유리 */
-      background: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.08); /* 기존 .10 -> .08 (조금 더 투명) */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ✅ 패널 안쪽 오나먼트 (뒷배경과 동일한 무늬가 '안에서' 보이게) */
+    /* ✅ 패널 안쪽 오나먼트 (조금 더 선명하게 보이도록 조정) */
     .panel::before{
       content:"";
       position:absolute;
@@ -418,8 +418,8 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .28;
-      filter: blur(1.0px);
+      opacity: .34;          /* 기존 .28 -> .34 (무늬 조금 더 보이게) */
+      filter: blur(.8px);    /* 기존 1.0px -> 0.8px (덜 뿌옇게) */
       transform: scale(1.05);
       pointer-events:none;
       z-index: 0;
@@ -428,7 +428,7 @@
       .panel::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* 가독성 베일 */
+    /* ✅ 하얀 덮개는 변수로 얇게 */
     .panel::after{
       content:"";
       position:absolute;
@@ -444,7 +444,7 @@
       padding: 16px 16px;
       text-align: center;
 
-      background: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.14); /* 기존 .16 -> .14 (약간 줄임) */
       border-bottom: 1px solid rgba(0,0,0,.06);
 
       backdrop-filter: blur(10px);
@@ -467,7 +467,7 @@
     }
 
     .panel-body{
-      background: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.08); /* 기존 .10 -> .08 */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -479,7 +479,6 @@
       margin-top: 6px;
     }
 
-    /* ✅ 작은 카드(소메뉴 하얀 박스) 안쪽에도 오나먼트가 보이게 */
     .card{
       position: relative;
       border-radius: 14px;
@@ -487,13 +486,14 @@
       padding: 12px 12px;
       overflow: hidden;
 
-      background: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.07); /* 기존 .10 -> .07 */
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
 
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
 
+    /* ✅ 카드 안쪽 오나먼트도 더 보이게 */
     .card::before{
       content:"";
       position:absolute;
@@ -501,8 +501,8 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .34;
-      filter: blur(1.15px);
+      opacity: .40;         /* 기존 .34 -> .40 */
+      filter: blur(.9px);   /* 기존 1.15px -> 0.9px */
       transform: scale(1.06);
       pointer-events:none;
       z-index: 0;
@@ -511,6 +511,7 @@
       .card::before{ background-size: var(--orn-size-lg); }
     }
 
+    /* ✅ 하얀 덮개는 변수로 얇게 */
     .card::after{
       content:"";
       position:absolute;

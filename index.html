@@ -30,14 +30,15 @@
 
       --paper: rgba(255,255,255,.70);
 
-      /* cards */
-      --card: rgba(255,255,255,.42);            /* ✅ 더 투명 */
       --card-border: rgba(0,0,0,.06);
 
       --label-stroke: rgba(150,132, 68, .75);
       --label-text: rgba(150,132, 68, .92);
 
       --hero-text: rgba(84,74,58,.92);
+
+      --orn-size: 320px 320px;
+      --orn-size-lg: 420px 420px;
     }
 
     /* =========================
@@ -50,10 +51,10 @@
       background-color: #f4f1ea;
       background-image: url("ornament.png");
       background-repeat: repeat;
-      background-size: 320px 320px;
+      background-size: var(--orn-size);
     }
     @media (min-width: 900px){
-      .ornament-bg{ background-size: 420px 420px; }
+      .ornament-bg{ background-size: var(--orn-size-lg); }
     }
     .ornament-bg::after{
       content:"";
@@ -473,39 +474,61 @@
       margin-top: 6px;
     }
 
-    /* ✅ 카드 안에서 배경(오나먼트)이 비치게: 블러 + 투명 */
+    /* ✅ 네모(카드) 안에도 오나먼트가 확실히 보이게 */
     .card{
       position: relative;
       border-radius: 14px;
-      border: 1px solid var(--card-border);
+      border: 1px solid rgba(0,0,0,.07);
       padding: 12px 12px;
       overflow: hidden;
 
-      background: rgba(255,255,255,.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      /* 완전 흰색 느낌 제거 */
+      background: rgba(255,255,255,.10);
+
+      /* 뒤 배경(오나먼트) 블러로 비치게 */
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
-    /* 오나먼트가 카드 안에서도 느껴지게 */
+
+    /* 카드 자체에 오나먼트 레이어 추가(확실하게 보이게) */
     .card::before{
       content:"";
       position:absolute;
-      inset:-18px;
+      inset:-28px;
+
       background-image: url("ornament.png");
       background-repeat: repeat;
-      background-size: 320px 320px;
-      opacity: .22;
-      filter: blur(1.5px);
-      transform: scale(1.03);
+      background-size: var(--orn-size);
+
+      opacity: .30;                 /* ✅ 더 진하게 */
+      filter: blur(1.2px);
+      transform: scale(1.05);
+
       pointer-events:none;
       z-index: 0;
     }
+    @media (min-width: 900px){
+      .card::before{ background-size: var(--orn-size-lg); }
+    }
+
     /* 내용은 위로 */
     .card > *{ position: relative; z-index: 1; }
 
-    @media (min-width: 900px){
-      .card::before{ background-size: 420px 420px; }
+    /* 텍스트 가독성용 얇은 베일(오나먼트는 보이되 글자는 선명) */
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,.30),
+        rgba(255,255,255,.22)
+      );
+      pointer-events:none;
+      z-index: 0;
+      mix-blend-mode: normal;
     }
 
     .card h3{
@@ -706,14 +729,12 @@
   </main>
 
   <script>
-    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
-    // header shrink
     const topbar = document.getElementById('topbar');
     let ticking = false;
 

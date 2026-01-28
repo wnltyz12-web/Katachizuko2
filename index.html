@@ -189,28 +189,12 @@
       user-select: none;
       white-space: nowrap;
     }
-    .hbtn:hover{
-      transform: translateY(-0.5px);
-      background: rgba(255,255,255,.52);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
-    }
-    .hbtn:active{
-      transform: translateY(0px);
-      background: rgba(255,255,255,.46);
-      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.55);
-    }
-
     .hbtn.primary{
       background: rgba(183,161,138,.92);
       color: #fff;
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
     }
-    .hbtn.primary:hover{
-      background: rgba(183,161,138,.98);
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
-    }
-
     .hbtn .ico{ width: 18px; height: 18px; display: inline-block; }
 
     @media (max-width: 420px){
@@ -234,12 +218,11 @@
     }
 
     /* =========================
-       TOP TEXT (✅ 하얀 박스 제거)
-       - 사진 느낌처럼 그냥 텍스트만
+       TOP TEXT (✅ 가운데 정렬)
     ========================= */
     .hero-text{
       margin-top: 22px;
-      text-align: left;
+      text-align: center; /* ✅ 변경 */
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
       color: var(--ink);
@@ -252,13 +235,13 @@
     }
 
     /* =========================
-       Two Buttons inline (✅ 색상 지정 / 직렬)
+       Two Buttons inline (✅ 버튼도 가운데)
     ========================= */
     .hero-actions{
       margin-top: 14px;
       display: flex;
       gap: 12px;
-      justify-content: flex-start;
+      justify-content: center; /* ✅ 변경 */
       padding: 0 4px;
     }
 
@@ -284,26 +267,8 @@
       flex: 0 0 auto;
     }
 
-    .hero-btn:hover{
-      transform: translateY(-0.5px);
-      box-shadow: 0 16px 30px rgba(0,0,0,.16);
-      filter: saturate(1.03);
-    }
-    .hero-btn:active{
-      transform: translateY(0px);
-      box-shadow: 0 10px 20px rgba(0,0,0,.12);
-      filter: saturate(1);
-    }
-
-    /* ✅ 사용자가 준 색상 */
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
-
-    /* 작은 화면에서 2개가 너무 크면 */
-    @media (max-width: 360px){
-      .hero-actions{ gap: 10px; }
-      .hero-btn{ height: 42px; padding: 0 14px; font-size: 15px; }
-    }
 
     /* =========================
        Illustration
@@ -323,7 +288,7 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
 
-    /* ✅ 요청: "もしもの時〜" 를 일러스트 아래로 */
+    /* ✅ 'もしもの時〜' 아래 배치 */
     .illus-kicker{
       margin-top: 6px;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
@@ -343,107 +308,10 @@
       text-align: center;
     }
 
-    /* separator */
-    .section-sep{
-      margin: 18px 0 6px;
-      width: 100%;
-      display: grid;
-      place-items: center;
-      gap: 10px;
-    }
-    .section-sep .line{
-      width: 92%;
-      height: 1px;
-      background: var(--line);
-    }
-    .section-sep .diamond{
-      font-size: 12px;
-      color: rgba(47,42,34,.35);
-      transform: translateY(-2px);
-      letter-spacing: .2em;
-      user-select: none;
-    }
-
-    /* =========================
-       Panels
-    ========================= */
-    .details{
-      margin-top: 18px;
-      display: grid;
-      gap: 14px;
-    }
-    .panel{
-      border-radius: 18px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 14px 34px rgba(0,0,0,.10);
-      overflow: hidden;
-      background-image: url("ornament.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 140% auto;
-    }
-    .panel-head{
-      padding: 16px 16px;
-      background: rgba(255,255,255,.65);
-      border-bottom: 1px solid rgba(0,0,0,.06);
-      text-align: center;
-    }
-    .panel-title{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 18px;
+    /* ✅ 중요 키워드 볼드 */
+    .illus-caption b{
       font-weight: 900;
-      letter-spacing: .12em;
-      color: var(--ink);
-    }
-    .panel-sub{
-      margin-top: 6px;
-      font-size: 12px;
-      color: rgba(47,42,34,.62);
-      letter-spacing: .06em;
-    }
-    .panel-body{ background: rgba(255,255,255,.55); }
-    .panel-inner{ padding: 14px 14px 18px; }
-
-    .cards{
-      display: grid;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .card{
-      border-radius: 14px;
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      padding: 12px 12px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-    }
-    .card h3{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: .10em;
       color: rgba(47,42,34,.92);
-      margin-bottom: 6px;
-      text-align: left;
-    }
-    .card p{
-      font-size: 13px;
-      line-height: 1.85;
-      color: rgba(47,42,34,.75);
-      text-align: left;
-    }
-
-    .mini-hr{
-      margin: 14px 0 10px;
-      height: 1px;
-      background: rgba(47,42,34,.12);
-    }
-    .mini-note{
-      text-align: center;
-      font-size: 12px;
-      color: rgba(47,42,34,.60);
-      letter-spacing: .05em;
-      line-height: 1.8;
     }
 
     /* reveal */
@@ -473,13 +341,6 @@
       </a>
 
       <div class="header-actions">
-        <a class="hbtn secondary" href="#details" aria-label="サービスを見る">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 6h16M4 12h10M4 18h16"></path>
-          </svg>
-          サービス
-        </a>
-
         <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16v16H4z"></path>
@@ -494,126 +355,45 @@
   <main class="page">
     <div class="container">
 
-      <!-- ✅ 하얀 박스 제거: 그냥 텍스트만 -->
       <section class="hero-text">
         <div class="line">おひとりさまの方へ</div>
         <div class="line">子供や孫に迷惑をかけたくない方へ</div>
 
-        <!-- ✅ 버튼 직렬 + 색상 적용 -->
         <div class="hero-actions">
-          <button class="hero-btn guarantee" type="button"
-            onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+          <button class="hero-btn guarantee" type="button">
             身元保証
           </button>
 
-          <button class="hero-btn support" type="button"
-            onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+          <button class="hero-btn support" type="button">
             生活支援
           </button>
         </div>
       </section>
 
-      <!-- ✅ 일러스트 + 아래에 'もしもの時〜' -->
       <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
-          <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
-
+          <img class="illus-img" src="illustration.png" alt="イラスト" />
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
 
           <div class="illus-caption">
-            不安をひとつずつ整理し、<br/>
-            必要な手続きや支援をわかりやすくご案内します。
+            <b>不安</b>をひとつずつ整理し、<br/>
+            <b>必要</b>な<b>手続き</b>や<b>支援</b>をわかりやすくご案内します。
           </div>
         </div>
-
-        <div class="section-sep" aria-hidden="true">
-          <div class="line"></div>
-          <div class="diamond">◆</div>
-          <div class="line"></div>
-        </div>
-      </section>
-
-      <section class="details" id="details">
-        <article class="panel" id="panel-guarantee">
-          <div class="panel-head">
-            <div class="panel-title">身元保証</div>
-            <div class="panel-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
-          </div>
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-                <div class="card">
-                  <h3>身元保証人代行</h3>
-                  <p>入院・施設入居などで必要となる保証人について、条件や流れを整理し、安心して手続きできるよう支援します。</p>
-                </div>
-                <div class="card">
-                  <h3>緊急連絡先代行</h3>
-                  <p>緊急時に連絡が取れる体制を整えます。連絡方法・優先順位を事前に確認し、万が一に備えます。</p>
-                </div>
-                <div class="card">
-                  <h3>身元引受人代行</h3>
-                  <p>退院・退所などの場面で求められる「引受」に関する対応を、状況に合わせてサポートします。</p>
-                </div>
-                <div class="card">
-                  <h3>死後事務委任</h3>
-                  <p>万一の後に必要となる事務（各種連絡や手続き等）について、希望を伺い、準備を進めます。</p>
-                </div>
-              </div>
-
-              <div class="mini-hr"></div>
-              <div class="mini-note">
-                ※内容はご状況により異なります。まずはヒアリングの上で最適な形をご案内します。
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel" id="panel-support">
-          <div class="panel-head">
-            <div class="panel-title">生活支援</div>
-            <div class="panel-sub">外出・手続きなど日常の「困った」を、必要な分だけお手伝いします</div>
-          </div>
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-                <div class="card">
-                  <h3>通院同行</h3>
-                  <p>通院時の移動や受付などを同行支援します。無理のないペースで、安全に外出できるよう配慮します。</p>
-                </div>
-                <div class="card">
-                  <h3>買物同行</h3>
-                  <p>日用品の買い出しや必要な購入をサポートします。重い荷物や移動が不安な方にも対応します。</p>
-                </div>
-                <div class="card">
-                  <h3>役所手続き同行</h3>
-                  <p>役所での手続きに同行し、必要書類や流れの確認をお手伝いします。初めてでも安心して進められます。</p>
-                </div>
-              </div>
-
-              <div class="mini-hr"></div>
-              <div class="mini-note">
-                ※対応範囲・頻度はご希望に合わせて調整可能です（松戸周辺：応相談）。
-              </div>
-            </div>
-          </div>
-        </article>
       </section>
 
     </div>
   </main>
 
   <script>
-    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
-    // header shrink on scroll
     const topbar = document.getElementById('topbar');
     let ticking = false;
-
     const onScroll = () => {
       if (ticking) return;
       ticking = true;

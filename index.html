@@ -30,13 +30,10 @@
 
       --paper: rgba(255,255,255,.70);
 
+      --card: rgba(255,255,255,.40);
       --card-border: rgba(0,0,0,.06);
 
-      --label-stroke: rgba(150,132, 68, .75);
-      --label-text: rgba(150,132, 68, .92);
-
-      --hero-text: rgba(84,74,58,.92);
-
+      /* ornament size */
       --orn-size: 320px 320px;
       --orn-size-lg: 420px 420px;
     }
@@ -71,7 +68,7 @@
     }
 
     /* =========================
-       Header
+       Header (Refined + CTA + Shrink on scroll)
     ========================= */
     .topbar{
       position: sticky;
@@ -175,6 +172,7 @@
       letter-spacing: .08em;
     }
 
+    /* Header CTA */
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -251,37 +249,79 @@
     }
 
     /* =========================
-       HERO
+       HERO (ornament fade)
     ========================= */
-    .hero{
-      margin-top: 20px;
-      text-align: center;
+    .orn-frame{
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      padding: 34px 22px 20px;
+      border-radius: 22px;
+
+      background-color: rgba(255,255,255,.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      background-image: url("ornament.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 145% auto;
+
+      box-shadow: var(--shadow);
     }
-    .hero-title{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      letter-spacing: .10em;
-      color: var(--hero-text);
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
-      line-height: 1.95;
-      font-weight: 900;
-      font-size: 16px;
+    .orn-frame::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.60) 30%,
+        rgba(255,255,255,0.18) 52%,
+        rgba(255,255,255,0.68) 78%,
+        rgba(255,255,255,0.92) 100%
+      );
     }
 
+    .orn-title{
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      letter-spacing: .10em;
+      color: rgba(96,84,64,.92);
+    }
+    .orn-title .line{
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.9;
+    }
+
+    /* =========================
+       Label
+    ========================= */
+    .hero-label-wrap{
+      position: relative;
+      z-index: 2;
+      margin-top: 12px;
+      display: grid;
+      place-items: center;
+    }
     .hero-label{
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      margin-top: 14px;
-      border: 2px solid var(--label-stroke);
-      color: var(--label-text);
+      padding: 8px 18px;
+      border-radius: 4px;
 
-      padding: 5px 14px;
-      border-radius: 2px;
+      border: 2px solid rgba(155,122,52,.70);
+      color: rgba(155,122,52,.92);
 
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 13px;
       font-weight: 900;
+      font-size: 13px;
       letter-spacing: .22em;
 
       background: transparent;
@@ -289,27 +329,31 @@
     }
 
     /* =========================
-       CTA Buttons
+       CTA Buttons row
     ========================= */
     .cta-section{
+      position: relative;
+      z-index: 2;
       margin-top: 18px;
       display: flex;
       justify-content: center;
     }
+
     .cta-row{
       width: 100%;
       display: grid;
       place-items: center;
       gap: 12px;
     }
-    .cta-row-buttons{
+
+    .cta-buttons{
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
+      gap: 16px;
       width: 100%;
-      margin-top: 6px;
+      flex-wrap: wrap;
+      margin-top: 2px;
     }
 
     .cta-btn{
@@ -317,8 +361,8 @@
       border: none;
       cursor: pointer;
 
-      width: 188px;
-      height: 54px;
+      width: 180px;
+      height: 52px;
 
       background: var(--btn);
       color: var(--btn-text);
@@ -326,7 +370,7 @@
       border-radius: 14px;
       box-shadow: var(--shadow2);
 
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 20px;
       font-weight: 900;
@@ -334,47 +378,29 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
-      transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
+      transition: box-shadow .18s ease, transform .18s ease;
     }
+
     .cta-btn:hover{
       transform: translateY(-0.5px);
       box-shadow: 0 14px 34px rgba(0,0,0,.17);
-      filter: saturate(1.02);
     }
     .cta-btn:active{
       transform: translateY(0px);
       box-shadow: 0 9px 24px rgba(0,0,0,.14);
-      filter: saturate(1);
-    }
-
-    .cta-message{
-      margin-top: 12px;
-      text-align: center;
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      color: rgba(47,42,34,.70);
-      font-size: 14px;
-      line-height: 1.95;
-      letter-spacing: .06em;
-    }
-
-    .simple-sep{
-      width: 92%;
-      height: 1px;
-      background: rgba(47,42,34,.14);
-      margin: 10px auto 0;
     }
 
     /* =========================
        Illustration
     ========================= */
-    .illus-wrap{ margin-top: 18px; }
+    .illus-wrap{ margin-top: 16px; }
     .illus-inner{
       display: grid;
       place-items: center;
       gap: 12px;
       text-align: center;
     }
+
     .illus-img{
       width: 100%;
       height: auto;
@@ -382,6 +408,7 @@
       border-radius: 14px;
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
+
     .illus-kicker{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
@@ -389,8 +416,8 @@
       color: rgba(47,42,34,.88);
       font-size: 14px;
       line-height: 1.7;
-      margin-top: 4px;
     }
+
     .illus-caption{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 13px;
@@ -400,13 +427,13 @@
     }
     .illus-caption strong{
       font-weight: 900;
-      color: rgba(47,42,34,.92);
+      color: rgba(47,42,34,.94);
     }
 
-    /* Diamond Separator under caption */
+    /* Diamond separator under caption */
     .diamond-sep{
       width: 100%;
-      margin-top: 14px;
+      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -422,36 +449,52 @@
       width: 10px;
       height: 10px;
       transform: rotate(45deg);
-      border: 1.5px solid rgba(150,132,68,.65);
+      border: 1.5px solid rgba(155,122,52,.65);
       background: rgba(255,255,255,.55);
       box-shadow: 0 4px 10px rgba(0,0,0,.05);
     }
 
     /* =========================
-       Panels
+       Panels (KEEP structure)
     ========================= */
     .details{
       margin-top: 18px;
       display: grid;
       gap: 14px;
     }
+
     .panel{
       border-radius: 18px;
-      background: rgba(255,255,255,.72);
+      overflow: hidden;
+
+      /* ✅ panel도 완전 흰색 제거 + 유리효과 */
+      background: rgba(255,255,255,.22);
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
-      overflow: hidden;
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      /* ✅ panel 내부에도 ornament 보이게 */
       background-image: url("ornament.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 140% auto;
+      background-repeat: repeat;
+      background-size: var(--orn-size);
     }
+    @media (min-width: 900px){
+      .panel{ background-size: var(--orn-size-lg); }
+    }
+
     .panel-head{
       padding: 16px 16px;
-      background: rgba(255,255,255,.65);
-      border-bottom: 1px solid rgba(0,0,0,.06);
       text-align: center;
+
+      /* ✅ header도 투명하게 */
+      background: rgba(255,255,255,.25);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
+
     .panel-title{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 18px;
@@ -459,13 +502,21 @@
       letter-spacing: .12em;
       color: var(--ink);
     }
+
     .panel-sub{
       margin-top: 6px;
       font-size: 12px;
       color: rgba(47,42,34,.62);
       letter-spacing: .06em;
     }
-    .panel-body{ background: rgba(255,255,255,.55); }
+
+    .panel-body{
+      /* ✅ body도 배경 비치게 */
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
     .panel-inner{ padding: 14px 14px 18px; }
 
     .cards{
@@ -474,7 +525,7 @@
       margin-top: 6px;
     }
 
-    /* ✅ 네모(카드) 안에도 오나먼트가 확실히 보이게 */
+    /* ✅ 카드 안에도 오나먼트 보이게 (정답) */
     .card{
       position: relative;
       border-radius: 14px;
@@ -482,30 +533,27 @@
       padding: 12px 12px;
       overflow: hidden;
 
-      /* 완전 흰색 느낌 제거 */
-      background: rgba(255,255,255,.10);
+      /* 완전 흰색 삭제 */
+      background: rgba(255,255,255,.12);
 
-      /* 뒤 배경(오나먼트) 블러로 비치게 */
+      /* 유리 효과 */
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
 
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
 
-    /* 카드 자체에 오나먼트 레이어 추가(확실하게 보이게) */
+    /* 카드 자체 ornament overlay */
     .card::before{
       content:"";
       position:absolute;
-      inset:-28px;
-
+      inset:-32px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-
-      opacity: .30;                 /* ✅ 더 진하게 */
+      opacity: .32;
       filter: blur(1.2px);
-      transform: scale(1.05);
-
+      transform: scale(1.06);
       pointer-events:none;
       z-index: 0;
     }
@@ -513,23 +561,21 @@
       .card::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* 내용은 위로 */
-    .card > *{ position: relative; z-index: 1; }
-
-    /* 텍스트 가독성용 얇은 베일(오나먼트는 보이되 글자는 선명) */
+    /* 글자 가독성 유지 */
     .card::after{
       content:"";
       position:absolute;
       inset:0;
       background: linear-gradient(
         to bottom,
-        rgba(255,255,255,.30),
+        rgba(255,255,255,.33),
         rgba(255,255,255,.22)
       );
       pointer-events:none;
       z-index: 0;
-      mix-blend-mode: normal;
     }
+
+    .card > *{ position: relative; z-index: 1; }
 
     .card h3{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
@@ -608,17 +654,19 @@
   <main class="page">
     <div class="container">
 
-      <section class="hero" aria-label="対象の方へ">
-        <div class="hero-title">
-          おひとりさまの方へ<br/>
-          子供や孫に迷惑をかけたくない方へ
+      <section class="orn-frame">
+        <div class="orn-title">
+          <div class="line">おひとりさまの方へ</div>
+          <div class="line">子供や孫に迷惑をかけたくない方へ</div>
         </div>
 
-        <div class="hero-label">地域密着型</div>
+        <div class="hero-label-wrap">
+          <div class="hero-label">地域密着型</div>
+        </div>
 
-        <div class="cta-section" id="cta">
+        <section class="cta-section" id="cta">
           <div class="cta-row">
-            <div class="cta-row-buttons">
+            <div class="cta-buttons">
               <button class="cta-btn" type="button"
                 onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
                 身元保証
@@ -629,23 +677,14 @@
                 生活支援
               </button>
             </div>
-
-            <div class="cta-message">
-              皆さまの想いをかなえる ために<br/>
-              私たちが一生涯のご支援をお約束致します
-            </div>
-
-            <div class="simple-sep" aria-hidden="true"></div>
           </div>
-        </div>
+        </section>
       </section>
 
       <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
-
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
-
           <div class="illus-caption">
             <strong>不安</strong>をひとつずつ整理し、<br/>
             <strong>必要</strong>な手続きや支援をわかりやすくご案内します。
@@ -729,12 +768,14 @@
   </main>
 
   <script>
+    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
+    // header shrink
     const topbar = document.getElementById('topbar');
     let ticking = false;
 

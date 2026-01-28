@@ -176,17 +176,14 @@
     }
 
     /* =========================
-       TOP TEXT (✅ 색상 변경)
+       TOP TEXT
     ========================= */
     .hero-text{
       margin-top: 22px;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
-
-      /* ✅ 사진 느낌 브라운 톤 */
       color: rgba(120, 92, 60, .95);
-
       padding: 0 4px;
     }
     .hero-text .line{
@@ -195,14 +192,14 @@
       line-height: 1.95;
     }
 
-    /* ✅ 라벨: 크기 다시 키움 (scale 제거) */
+    /* ✅ 라벨 더 키움 + 여백 */
     .tag-box{
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      margin: 12px auto 14px;
-      padding: 6px 16px;
+      margin: 14px auto 18px; /* ✅ 아래 간격 더 줌 */
+      padding: 8px 22px;      /* ✅ 크기 증가 */
 
       border: 2px solid rgba(120, 92, 60, .55);
       border-radius: 3px;
@@ -212,17 +209,15 @@
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
 
-      font-size: 13px;       /* ✅ 업 */
-      letter-spacing: .22em;
+      font-size: 14px;        /* ✅ 크기 증가 */
+      letter-spacing: .24em;  /* ✅ 답답함 줄임 */
       line-height: 1.2;
       color: rgba(120, 92, 60, .95);
     }
 
-    /* =========================
-       Buttons (색상 유지)
-    ========================= */
+    /* ✅ 라벨-버튼 간격 조금 벌림 */
     .hero-actions{
-      margin-top: 0;
+      margin-top: 6px; /* ✅ 추가 */
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -255,12 +250,11 @@
       box-shadow: 0 16px 30px rgba(0,0,0,.16);
     }
 
+    /* 버튼 색상 유지 */
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
 
-    /* =========================
-       Illustration
-    ========================= */
+    /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{
       display: grid;

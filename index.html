@@ -17,7 +17,6 @@
 
     :root{
       --mobile-max: 520px;
-
       --shadow: 0 20px 55px rgba(0,0,0,.16);
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
@@ -25,9 +24,6 @@
       --muted: rgba(47,42,34,.72);
       --line: rgba(47,42,34,.16);
       --paper: rgba(255,255,255,.70);
-
-      --card: rgba(255,255,255,.78);
-      --card-border: rgba(0,0,0,.06);
     }
 
     /* =========================
@@ -60,7 +56,7 @@
     }
 
     /* =========================
-       Header (Refined + CTA + Shrink on scroll)
+       Header
     ========================= */
     .topbar{
       position: sticky;
@@ -79,10 +75,7 @@
 
       transition: height .22s ease, box-shadow .22s ease;
     }
-    .topbar.is-compact{
-      height: 64px;
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
-    }
+    .topbar.is-compact{ height: 64px; }
 
     .topbar-inner{
       width: 100%;
@@ -114,19 +107,11 @@
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
       font-size: 16px;
-      letter-spacing: .04em;
 
       border: 1.5px solid rgba(0,0,0,.78);
       background: rgba(255,255,255,.38);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
-
-      transition: width .22s ease, height .22s ease, transform .22s ease;
       flex: 0 0 auto;
-    }
-    .topbar.is-compact .brand-mark{
-      width: 38px;
-      height: 38px;
-      transform: translateY(-.5px);
     }
 
     .brand-text{
@@ -156,12 +141,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-
-      transition: font-size .22s ease, letter-spacing .22s ease;
-    }
-    .topbar.is-compact .brand-name{
-      font-size: 16px;
-      letter-spacing: .08em;
     }
 
     .header-actions{
@@ -185,20 +164,14 @@
       font-size: 12px;
       letter-spacing: .10em;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
-      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-      user-select: none;
       white-space: nowrap;
     }
+
     .hbtn.primary{
       background: rgba(183,161,138,.92);
       color: #fff;
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
-    }
-    .hbtn .ico{ width: 18px; height: 18px; display: inline-block; }
-
-    @media (max-width: 420px){
-      .header-actions .hbtn.secondary{ display: none; }
     }
 
     /* =========================
@@ -218,11 +191,11 @@
     }
 
     /* =========================
-       TOP TEXT (✅ 가운데 정렬)
+       TOP TEXT
     ========================= */
     .hero-text{
       margin-top: 22px;
-      text-align: center; /* ✅ 변경 */
+      text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
       color: var(--ink);
@@ -234,14 +207,36 @@
       line-height: 1.95;
     }
 
+    /* ✅ 「地域密着型」 라벨 박스 */
+    .tag-box{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 16px auto 10px; /* 문구 아래 / 버튼 위 */
+      padding: 8px 18px;
+
+      border: 2px solid rgba(60, 45, 30, .45);
+      border-radius: 2px;
+
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(2px);
+
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: .28em;
+      color: rgba(90,70,45,.85);
+    }
+
     /* =========================
-       Two Buttons inline (✅ 버튼도 가운데)
+       Two Buttons inline
     ========================= */
     .hero-actions{
-      margin-top: 14px;
+      margin-top: 8px;
       display: flex;
       gap: 12px;
-      justify-content: center; /* ✅ 변경 */
+      justify-content: center;
       padding: 0 4px;
     }
 
@@ -262,9 +257,14 @@
       letter-spacing: .12em;
 
       box-shadow: 0 12px 24px rgba(0,0,0,.14);
-      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease;
       white-space: nowrap;
       flex: 0 0 auto;
+    }
+
+    .hero-btn:hover{
+      transform: translateY(-0.5px);
+      box-shadow: 0 16px 30px rgba(0,0,0,.16);
     }
 
     .hero-btn.guarantee{ background: #968444; }
@@ -287,8 +287,6 @@
       border-radius: 14px;
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
-
-    /* ✅ 'もしもの時〜' 아래 배치 */
     .illus-kicker{
       margin-top: 6px;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
@@ -298,7 +296,6 @@
       font-size: 14px;
       line-height: 1.75;
     }
-
     .illus-caption{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 13px;
@@ -307,22 +304,9 @@
       color: rgba(47,42,34,.70);
       text-align: center;
     }
-
-    /* ✅ 중요 키워드 볼드 */
     .illus-caption b{
       font-weight: 900;
       color: rgba(47,42,34,.92);
-    }
-
-    /* reveal */
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-    .reveal.is-on{
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
@@ -342,10 +326,6 @@
 
       <div class="header-actions">
         <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 4h16v16H4z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
-          </svg>
           お問い合わせ
         </a>
       </div>
@@ -359,6 +339,9 @@
         <div class="line">おひとりさまの方へ</div>
         <div class="line">子供や孫に迷惑をかけたくない方へ</div>
 
+        <!-- ✅ 여기 추가됨 -->
+        <div class="tag-box">地域密着型</div>
+
         <div class="hero-actions">
           <button class="hero-btn guarantee" type="button">
             身元保証
@@ -370,7 +353,7 @@
         </div>
       </section>
 
-      <section class="illus-wrap reveal" id="why">
+      <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illustration.png" alt="イラスト" />
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
@@ -386,24 +369,11 @@
   </main>
 
   <script>
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
-    }, { threshold: 0.14 });
-    els.forEach(el => io.observe(el));
-
     const topbar = document.getElementById('topbar');
-    let ticking = false;
     const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY || 0;
-        if (y > 12) topbar.classList.add('is-compact');
-        else topbar.classList.remove('is-compact');
-        ticking = false;
-      });
+      const y = window.scrollY || 0;
+      if (y > 12) topbar.classList.add('is-compact');
+      else topbar.classList.remove('is-compact');
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

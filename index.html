@@ -31,6 +31,10 @@
 
       --card: rgba(255,255,255,.78);
       --card-border: rgba(0,0,0,.06);
+
+      /* ✅ divider 색(금/베이지) */
+      --gold: rgba(150,132,68,.78);
+      --gold-soft: rgba(150,132,68,.35);
     }
 
     /* =========================
@@ -167,7 +171,6 @@
       letter-spacing: .08em;
     }
 
-    /* Header CTA */
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -221,7 +224,6 @@
       display: inline-block;
     }
 
-    /* 작은 화면에서는 1개만 보이게 */
     @media (max-width: 420px){
       .header-actions .hbtn.secondary{ display: none; }
     }
@@ -383,6 +385,47 @@
       letter-spacing: .06em;
     }
 
+    /* =========================
+       ✅ Diamond + Double underline (어제 그 느낌)
+       - 패널(身元保証 창) 내용은 절대 안 건드림
+       - panel-title 위에만 들어가도록 구현
+    ========================= */
+    .title-orn{
+      display: grid;
+      place-items: center;
+      gap: 10px;
+      margin: 6px 0 10px;
+      user-select: none;
+    }
+    .title-orn .topline,
+    .title-orn .bottomline{
+      width: 92%;
+      max-width: 420px;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        rgba(150,132,68,0),
+        rgba(150,132,68,.55),
+        rgba(150,132,68,0)
+      );
+    }
+    .title-orn .diamond-wrap{
+      display: grid;
+      place-items: center;
+      height: 10px;
+      margin: -2px 0;
+    }
+    .title-orn .diamond{
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      border: 1.5px solid rgba(150,132,68,.70);
+      background: rgba(255,255,255,.35);
+      border-radius: 1px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
+    }
+
+    /* 기존 sep는 유지(CTA 밑) */
     .section-sep{
       margin: 22px 0 6px;
       width: 100%;
@@ -512,7 +555,6 @@
       </a>
 
       <div class="header-actions">
-        <!-- ✅ 전화번호 있으면 여기 href를 tel:로 바꾸면 됨 -->
         <a class="hbtn secondary" href="#details" aria-label="サービスを見る">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 6h16M4 12h10M4 18h16"></path>
@@ -580,9 +622,18 @@
       <section class="details" id="details">
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
+
+            <!-- ✅ 여기: 다이아 + 밑줄 2개 (패널 내용은 그대로) -->
+            <div class="title-orn" aria-hidden="true">
+              <div class="topline"></div>
+              <div class="diamond-wrap"><span class="diamond"></span></div>
+              <div class="bottomline"></div>
+            </div>
+
             <div class="panel-title">身元保証</div>
             <div class="panel-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
           </div>
+
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
@@ -614,6 +665,14 @@
 
         <article class="panel" id="panel-support">
           <div class="panel-head">
+
+            <!-- ✅ 생활지원도 동일하게 (원하면 제거 가능) -->
+            <div class="title-orn" aria-hidden="true">
+              <div class="topline"></div>
+              <div class="diamond-wrap"><span class="diamond"></span></div>
+              <div class="bottomline"></div>
+            </div>
+
             <div class="panel-title">生活支援</div>
             <div class="panel-sub">外出・手続きなど日常の「困った」を、必要な分だけお手伝いします</div>
           </div>
@@ -654,7 +713,7 @@
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
-    // ✅ 헤더 축소(스크롤)
+    // header shrink
     const topbar = document.getElementById('topbar');
     let ticking = false;
 

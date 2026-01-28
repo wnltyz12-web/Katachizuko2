@@ -17,13 +17,8 @@
 
     :root{
       --mobile-max: 520px;
-      --shadow: 0 20px 55px rgba(0,0,0,.16);
-      --shadow2: 0 10px 26px rgba(0,0,0,.14);
-
       --ink: #2f2a22;
-      --muted: rgba(47,42,34,.72);
       --line: rgba(47,42,34,.16);
-      --paper: rgba(255,255,255,.70);
     }
 
     /* =========================
@@ -62,17 +57,14 @@
       position: sticky;
       top: 0;
       z-index: 50;
-
       height: 78px;
       display: flex;
       align-items: center;
       justify-content: center;
-
       background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       backdrop-filter: blur(6px);
-
       transition: height .22s ease, box-shadow .22s ease;
     }
     .topbar.is-compact{ height: 64px; }
@@ -100,14 +92,11 @@
       width: 44px;
       height: 44px;
       border-radius: 999px;
-
       display: grid;
       place-items: center;
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
       font-size: 16px;
-
       border: 1.5px solid rgba(0,0,0,.78);
       background: rgba(255,255,255,.38);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
@@ -137,7 +126,6 @@
       font-weight: 900;
       letter-spacing: .10em;
       color: #1f1b16;
-
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -159,14 +147,12 @@
       padding: 0 12px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       text-decoration: none;
       font-size: 12px;
       letter-spacing: .10em;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
       white-space: nowrap;
     }
-
     .hbtn.primary{
       background: rgba(183,161,138,.92);
       color: #fff;
@@ -207,33 +193,36 @@
       line-height: 1.95;
     }
 
-    /* ✅ 「地域密着型」 라벨 박스 */
+    /* ✅ 라벨: 더 작게 + 배경 없애고 stroke만 + 사진톤 색 */
     .tag-box{
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      margin: 16px auto 10px; /* 문구 아래 / 버튼 위 */
-      padding: 8px 18px;
-
-      border: 2px solid rgba(60, 45, 30, .45);
+      /* 사진처럼 라벨이 너무 튀지 않게 */
+      margin: 12px auto 14px; /* 텍스트 아래 / 버튼 위 */
+      padding: 4px 10px;      /* ✅ 작게 */
+      border: 2px solid rgba(120, 92, 60, .55); /* ✅ stroke */
       border-radius: 2px;
 
-      background: rgba(255,255,255,.55);
-      backdrop-filter: blur(2px);
+      background: transparent; /* ✅ 배경 제거 */
+      color: rgba(120, 92, 60, .95); /* ✅ 브라운 톤 */
 
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
-      font-size: 16px;
-      letter-spacing: .28em;
-      color: rgba(90,70,45,.85);
+      font-size: 12px;         /* ✅ 작게 */
+      letter-spacing: .26em;
+      line-height: 1.2;
+
+      transform: scale(.68);   /* ✅ 전체 1.5배 정도 줄이는 느낌(약 68%) */
+      transform-origin: center;
     }
 
     /* =========================
-       Two Buttons inline
+       Buttons (색상 유지)
     ========================= */
     .hero-actions{
-      margin-top: 8px;
+      margin-top: 0; /* ✅ 라벨 아래 딱 붙게 */
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -261,12 +250,12 @@
       white-space: nowrap;
       flex: 0 0 auto;
     }
-
     .hero-btn:hover{
       transform: translateY(-0.5px);
       box-shadow: 0 16px 30px rgba(0,0,0,.16);
     }
 
+    /* ✅ 버튼 색상은 그대로 유지 */
     .hero-btn.guarantee{ background: #968444; }
     .hero-btn.support{ background: #497790; }
 
@@ -339,17 +328,12 @@
         <div class="line">おひとりさまの方へ</div>
         <div class="line">子供や孫に迷惑をかけたくない方へ</div>
 
-        <!-- ✅ 여기 추가됨 -->
+        <!-- ✅ 라벨: 작게 + stroke만 + 브라운 글자 -->
         <div class="tag-box">地域密着型</div>
 
         <div class="hero-actions">
-          <button class="hero-btn guarantee" type="button">
-            身元保証
-          </button>
-
-          <button class="hero-btn support" type="button">
-            生活支援
-          </button>
+          <button class="hero-btn guarantee" type="button">身元保証</button>
+          <button class="hero-btn support" type="button">生活支援</button>
         </div>
       </section>
 

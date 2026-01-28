@@ -28,14 +28,8 @@
       --muted: rgba(47,42,34,.72);
       --line: rgba(47,42,34,.16);
 
-      --paper: rgba(255,255,255,.70);
-
-      --card: rgba(255,255,255,.40);
-      --card-border: rgba(0,0,0,.06);
-
-      /* ornament size */
-      --orn-size: 320px 320px;
-      --orn-size-lg: 420px 420px;
+      --orn-size: 360px 360px;
+      --orn-size-lg: 460px 460px;
     }
 
     /* =========================
@@ -68,7 +62,7 @@
     }
 
     /* =========================
-       Header (Refined + CTA + Shrink on scroll)
+       Header
     ========================= */
     .topbar{
       position: sticky;
@@ -172,7 +166,6 @@
       letter-spacing: .08em;
     }
 
-    /* Header CTA */
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -225,12 +218,6 @@
     @media (max-width: 420px){
       .header-actions .hbtn.secondary{ display: none; }
     }
-    @media (max-width: 360px){
-      .topbar{ height: 72px; }
-      .topbar.is-compact{ height: 60px; }
-      .brand-name{ font-size: 16px; }
-      .hbtn{ height: 36px; padding: 0 11px; }
-    }
 
     /* =========================
        Layout
@@ -249,61 +236,25 @@
     }
 
     /* =========================
-       HERO (ornament fade)
+       HERO (NO WHITE BOX)
+       - 오히토리/코도모 문구 영역은 "하얀 박스" 없이
+       - 배경 오나먼트 위에 그냥 올림
     ========================= */
-    .orn-frame{
-      position: relative;
-      overflow: hidden;
+    .hero{
       margin-top: 18px;
-      padding: 34px 22px 20px;
-      border-radius: 22px;
-
-      background-color: rgba(255,255,255,.25);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-
-      background-image: url("ornament.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 145% auto;
-
-      box-shadow: var(--shadow);
-    }
-    .orn-frame::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.92) 0%,
-        rgba(255,255,255,0.60) 30%,
-        rgba(255,255,255,0.18) 52%,
-        rgba(255,255,255,0.68) 78%,
-        rgba(255,255,255,0.92) 100%
-      );
-    }
-
-    .orn-title{
-      position: relative;
-      z-index: 2;
+      padding: 6px 0 0;
       text-align: center;
+    }
+    .hero-title{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
       color: rgba(96,84,64,.92);
-    }
-    .orn-title .line{
-      font-size: 16px;
       font-weight: 900;
+      font-size: 16px;
       line-height: 1.9;
     }
 
-    /* =========================
-       Label
-    ========================= */
     .hero-label-wrap{
-      position: relative;
-      z-index: 2;
       margin-top: 12px;
       display: grid;
       place-items: center;
@@ -312,50 +263,31 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
-      padding: 8px 18px;
+      padding: 7px 14px;
       border-radius: 4px;
-
       border: 2px solid rgba(155,122,52,.70);
       color: rgba(155,122,52,.92);
-
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
       font-size: 13px;
       letter-spacing: .22em;
-
       background: transparent;
       user-select: none;
     }
 
-    /* =========================
-       CTA Buttons row
-    ========================= */
-    .cta-section{
-      position: relative;
-      z-index: 2;
-      margin-top: 18px;
+    .hero-cta{
+      margin-top: 16px;
       display: flex;
       justify-content: center;
     }
-
-    .cta-row{
-      width: 100%;
-      display: grid;
-      place-items: center;
-      gap: 12px;
-    }
-
-    .cta-buttons{
+    .hero-cta-row{
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      width: 100%;
       flex-wrap: wrap;
-      margin-top: 2px;
+      width: 100%;
     }
-
     .cta-btn{
       appearance: none;
       border: none;
@@ -380,7 +312,6 @@
       justify-content: center;
       transition: box-shadow .18s ease, transform .18s ease;
     }
-
     .cta-btn:hover{
       transform: translateY(-0.5px);
       box-shadow: 0 14px 34px rgba(0,0,0,.17);
@@ -391,16 +322,15 @@
     }
 
     /* =========================
-       Illustration
+       Illustration (kicker below image)
     ========================= */
-    .illus-wrap{ margin-top: 16px; }
+    .illus-wrap{ margin-top: 18px; }
     .illus-inner{
       display: grid;
       place-items: center;
       gap: 12px;
       text-align: center;
     }
-
     .illus-img{
       width: 100%;
       height: auto;
@@ -408,7 +338,6 @@
       border-radius: 14px;
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
-
     .illus-kicker{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-weight: 900;
@@ -417,7 +346,6 @@
       font-size: 14px;
       line-height: 1.7;
     }
-
     .illus-caption{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 13px;
@@ -455,7 +383,7 @@
     }
 
     /* =========================
-       Panels (KEEP structure)
+       Panels (KEEP as is)
     ========================= */
     .details{
       margin-top: 18px;
@@ -467,7 +395,6 @@
       border-radius: 18px;
       overflow: hidden;
 
-      /* ✅ panel도 완전 흰색 제거 + 유리효과 */
       background: rgba(255,255,255,.22);
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
@@ -475,7 +402,6 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
-      /* ✅ panel 내부에도 ornament 보이게 */
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
@@ -488,7 +414,6 @@
       padding: 16px 16px;
       text-align: center;
 
-      /* ✅ header도 투명하게 */
       background: rgba(255,255,255,.25);
       border-bottom: 1px solid rgba(0,0,0,.06);
       backdrop-filter: blur(10px);
@@ -511,7 +436,6 @@
     }
 
     .panel-body{
-      /* ✅ body도 배경 비치게 */
       background: rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -525,7 +449,7 @@
       margin-top: 6px;
     }
 
-    /* ✅ 카드 안에도 오나먼트 보이게 (정답) */
+    /* ✅ 너가 원한 "소메뉴 하얀 박스" 안에서 오나먼트 보이게 */
     .card{
       position: relative;
       border-radius: 14px;
@@ -533,26 +457,26 @@
       padding: 12px 12px;
       overflow: hidden;
 
-      /* 완전 흰색 삭제 */
-      background: rgba(255,255,255,.12);
+      /* 완전 흰색 금지: 반투명 */
+      background: rgba(255,255,255,.14);
 
-      /* 유리 효과 */
+      /* 유리(블러) */
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
 
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
 
-    /* 카드 자체 ornament overlay */
+    /* 카드 내부에 오나먼트가 "은은하게" 보이게 */
     .card::before{
       content:"";
       position:absolute;
-      inset:-32px;
+      inset:-36px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .32;
-      filter: blur(1.2px);
+      opacity: .34;
+      filter: blur(1.1px);
       transform: scale(1.06);
       pointer-events:none;
       z-index: 0;
@@ -561,16 +485,12 @@
       .card::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* 글자 가독성 유지 */
+    /* 글자 가독성용 얇은 베일 */
     .card::after{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,.33),
-        rgba(255,255,255,.22)
-      );
+      background: rgba(255,255,255,.18);
       pointer-events:none;
       z-index: 0;
     }
@@ -640,7 +560,7 @@
           サービス
         </a>
 
-        <a class="hbtn primary" href="#cta" aria-label="お問い合わせへ">
+        <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16v16H4z"></path>
             <path d="M22 6l-10 7L2 6"></path>
@@ -654,31 +574,28 @@
   <main class="page">
     <div class="container">
 
-      <section class="orn-frame">
-        <div class="orn-title">
-          <div class="line">おひとりさまの方へ</div>
-          <div class="line">子供や孫に迷惑をかけたくない方へ</div>
-        </div>
+      <!-- ✅ 오히토리/코도모: 하얀 박스 없음 -->
+      <section class="hero">
+        <div class="hero-title">おひとりさまの方へ</div>
+        <div class="hero-title">子供や孫に迷惑をかけたくない方へ</div>
 
         <div class="hero-label-wrap">
           <div class="hero-label">地域密着型</div>
         </div>
 
-        <section class="cta-section" id="cta">
-          <div class="cta-row">
-            <div class="cta-buttons">
-              <button class="cta-btn" type="button"
-                onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
-                身元保証
-              </button>
+        <div class="hero-cta">
+          <div class="hero-cta-row">
+            <button class="cta-btn" type="button"
+              onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+              身元保証
+            </button>
 
-              <button class="cta-btn" type="button"
-                onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
-                生活支援
-              </button>
-            </div>
+            <button class="cta-btn" type="button"
+              onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+              生活支援
+            </button>
           </div>
-        </section>
+        </div>
       </section>
 
       <section class="illus-wrap reveal" id="why">

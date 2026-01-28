@@ -16,6 +16,7 @@
     }
 
     :root{
+      /* ✅ 버튼 색상은 유지(요청: 바꾸지 말 것) */
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
@@ -27,14 +28,17 @@
       --ink: #2f2a22;
       --muted: rgba(47,42,34,.72);
       --line: rgba(47,42,34,.16);
-      --paper: rgba(255,255,255,.70);
 
+      --paper: rgba(255,255,255,.70);
       --card: rgba(255,255,255,.78);
       --card-border: rgba(0,0,0,.06);
 
-      /* ✅ divider 색(금/베이지) */
-      --gold: rgba(150,132,68,.78);
-      --gold-soft: rgba(150,132,68,.35);
+      /* ✅ 라벨/타이틀 색 (사진 느낌) */
+      --label-stroke: rgba(150,132, 68, .75);
+      --label-text: rgba(150,132, 68, .92);
+
+      /* ✅ 오히토리사마 텍스트 색 */
+      --hero-text: rgba(84,74,58,.92);
     }
 
     /* =========================
@@ -67,7 +71,7 @@
     }
 
     /* =========================
-       Header (Refined + CTA + Shrink on scroll)
+       Header
     ========================= */
     .topbar{
       position: sticky;
@@ -218,11 +222,7 @@
       box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
 
-    .hbtn .ico{
-      width: 18px;
-      height: 18px;
-      display: inline-block;
-    }
+    .hbtn .ico{ width: 18px; height: 18px; display: inline-block; }
 
     @media (max-width: 420px){
       .header-actions .hbtn.secondary{ display: none; }
@@ -251,88 +251,47 @@
     }
 
     /* =========================
-       HERO (center ornament fade)
+       HERO (✅ 하얀 박스 제거 + 가운데 정렬)
     ========================= */
-    .orn-frame{
-      position: relative;
-      overflow: hidden;
-      margin-top: 18px;
-      padding: 46px 22px 40px;
-      border-radius: 22px;
-
-      background-color: var(--paper);
-      backdrop-filter: blur(1px);
-
-      background-image: url("ornament.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 145% auto;
-
-      box-shadow: var(--shadow);
-    }
-    .orn-frame::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.92) 0%,
-        rgba(255,255,255,0.70) 22%,
-        rgba(255,255,255,0.18) 50%,
-        rgba(255,255,255,0.70) 78%,
-        rgba(255,255,255,0.92) 100%
-      );
-    }
-    .orn-title{
-      position: relative;
-      z-index: 2;
+    .hero{
+      margin-top: 20px;
       text-align: center;
+    }
+    .hero-title{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       letter-spacing: .10em;
-      color: var(--ink);
-    }
-    .orn-title .line{
-      font-size: 16px;
-      font-weight: 800;
-      line-height: 1.9;
-    }
-
-    /* =========================
-       Illustration
-    ========================= */
-    .illus-wrap{ margin-top: 16px; }
-    .illus-inner{
-      display: grid;
-      place-items: center;
-      gap: 12px;
-      text-align: center;
-    }
-    .illus-kicker{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      color: var(--hero-text);
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      line-height: 1.95;
       font-weight: 900;
-      letter-spacing: .10em;
-      color: rgba(47,42,34,.88);
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 16px;
     }
-    .illus-img{
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 14px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.12);
-    }
-    .illus-caption{
+
+    /* ✅ 라벨: 배경 없이 stroke만 */
+    .hero-label{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 14px; /* 타이틀과 라벨 간격 */
+      border: 2px solid var(--label-stroke);
+      color: var(--label-text);
+
+      /* ✅ 박스 크기만 조정(작게), 폰트는 유지 */
+      padding: 5px 14px;  /* 박스만 줄임 */
+      border-radius: 2px;
+
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 13px;
-      letter-spacing: .06em;
-      line-height: 1.9;
-      color: rgba(47,42,34,.70);
+      font-size: 13px;     /* 폰트 유지(고정) */
+      font-weight: 900;
+      letter-spacing: .22em;
+
+      background: transparent; /* ✅ 하얀 박스 X */
+      user-select: none;
     }
 
     /* =========================
-       CTA Buttons
+       CTA Buttons (✅ 직렬 + 가운데)
     ========================= */
     .cta-section{
       margin-top: 18px;
@@ -340,29 +299,44 @@
       justify-content: center;
     }
     .cta-row{
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: center;
       width: 100%;
+      display: grid;
+      place-items: center;
+      gap: 12px;
     }
+    .cta-row-buttons{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px; /* ✅ 라벨과 버튼 답답함 완화(버튼 사이) */
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 4px; /* ✅ 라벨-버튼 간격 조금 벌림 */
+    }
+
     .cta-btn{
       appearance: none;
       border: none;
       cursor: pointer;
-      width: 230px;
-      height: 62px;
-      background: var(--btn);
+
+      width: 188px;         /* ✅ 기존보다 컴팩트 */
+      height: 54px;
+
+      background: var(--btn); /* ✅ 색 유지 */
       color: var(--btn-text);
-      border-radius: 16px;
+
+      border-radius: 14px;
       box-shadow: var(--shadow2);
+
       letter-spacing: .16em;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
     .cta-btn:hover{
@@ -375,79 +349,69 @@
       box-shadow: 0 9px 24px rgba(0,0,0,.14);
       filter: saturate(1);
     }
+
     .cta-message{
-      margin-top: 14px;
+      margin-top: 12px;
       text-align: center;
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      color: var(--muted);
+      color: rgba(47,42,34,.70);
       font-size: 14px;
-      line-height: 1.9;
+      line-height: 1.95;
       letter-spacing: .06em;
     }
+    .cta-message strong{
+      color: rgba(47,42,34,.86);
+      font-weight: 900;
+    }
+
+    /* ✅ (요청) 다이아몬드/장식 제거: 섹션 구분선은 심플하게 */
+    .simple-sep{
+      width: 92%;
+      height: 1px;
+      background: rgba(47,42,34,.14);
+      margin: 10px auto 0;
+    }
 
     /* =========================
-       ✅ Diamond + Double underline (어제 그 느낌)
-       - 패널(身元保証 창) 내용은 절대 안 건드림
-       - panel-title 위에만 들어가도록 구현
+       Illustration (✅ 「もしもの時」 아래로)
     ========================= */
-    .title-orn{
+    .illus-wrap{ margin-top: 18px; }
+    .illus-inner{
       display: grid;
       place-items: center;
-      gap: 10px;
-      margin: 6px 0 10px;
-      user-select: none;
+      gap: 12px;
+      text-align: center;
     }
-    .title-orn .topline,
-    .title-orn .bottomline{
-      width: 92%;
-      max-width: 420px;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        rgba(150,132,68,0),
-        rgba(150,132,68,.55),
-        rgba(150,132,68,0)
-      );
-    }
-    .title-orn .diamond-wrap{
-      display: grid;
-      place-items: center;
-      height: 10px;
-      margin: -2px 0;
-    }
-    .title-orn .diamond{
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      border: 1.5px solid rgba(150,132,68,.70);
-      background: rgba(255,255,255,.35);
-      border-radius: 1px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.06);
-    }
-
-    /* 기존 sep는 유지(CTA 밑) */
-    .section-sep{
-      margin: 22px 0 6px;
+    .illus-img{
       width: 100%;
-      display: grid;
-      place-items: center;
-      gap: 10px;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
-    .section-sep .line{
-      width: 92%;
-      height: 1px;
-      background: var(--line);
+    .illus-kicker{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-weight: 900;
+      letter-spacing: .10em;
+      color: rgba(47,42,34,.88);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 4px;
     }
-    .section-sep .diamond{
-      font-size: 12px;
-      color: rgba(47,42,34,.35);
-      transform: translateY(-2px);
-      letter-spacing: .2em;
-      user-select: none;
+    .illus-caption{
+      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-size: 13px;
+      letter-spacing: .06em;
+      line-height: 1.9;
+      color: rgba(47,42,34,.72);
+    }
+    .illus-caption strong{
+      font-weight: 900;
+      color: rgba(47,42,34,.92);
     }
 
     /* =========================
-       Panels
+       Panels (✅ 이 부분은 그대로 유지)
     ========================= */
     .details{
       margin-top: 18px;
@@ -576,64 +540,68 @@
   <main class="page">
     <div class="container">
 
-      <section class="orn-frame">
-        <div class="orn-title">
-          <div class="line">おひとりさまの方へ</div>
-          <div class="line">子供や孫に迷惑をかけたくない方へ</div>
+      <!-- ✅ 하얀 박스 제거 + 가운데정렬 -->
+      <section class="hero" aria-label="対象の方へ">
+        <div class="hero-title">
+          おひとりさまの方へ<br/>
+          子供や孫に迷惑をかけたくない方へ
+        </div>
+
+        <!-- ✅ 라벨: stroke만 / 박스 크기만 조정 -->
+        <div class="hero-label">地域密着型</div>
+
+        <!-- ✅ 버튼 2개: 직렬 + 가운데 / 버튼색 유지 -->
+        <div class="cta-section" id="cta">
+          <div class="cta-row">
+            <div class="cta-row-buttons">
+              <button class="cta-btn" type="button"
+                onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+                身元保証
+              </button>
+
+              <button class="cta-btn" type="button"
+                onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+                生活支援
+              </button>
+            </div>
+
+            <div class="cta-message">
+              皆さまの想いをかなえる ために<br/>
+              私たちが一生涯のご支援をお約束致します
+            </div>
+
+            <!-- ✅ 다이아몬드/장식 제거 -->
+            <div class="simple-sep" aria-hidden="true"></div>
+          </div>
         </div>
       </section>
 
+      <!-- ✅ 일러스트: 「もしもの時」를 이미지 아래로 -->
       <section class="illus-wrap reveal" id="why">
         <div class="illus-inner">
-          <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
+          <!-- 이미지 -->
           <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
+
+          <!-- ✅ 요청: 아래로 배치 -->
+          <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
+
+          <!-- ✅ 중요 키워드 볼드 -->
           <div class="illus-caption">
-            不安をひとつずつ整理し、<br/>
-            必要な手続きや支援をわかりやすくご案内します。
+            <strong>不安</strong>をひとつずつ整理し、<br/>
+            <strong>必要</strong>な手続きや支援をわかりやすくご案内します。
           </div>
         </div>
       </section>
 
-      <section class="cta-section reveal" id="cta">
-        <div class="cta-row">
-          <button class="cta-btn" type="button"
-            onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
-            身元保証
-          </button>
-
-          <button class="cta-btn" type="button"
-            onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
-            生活支援
-          </button>
-
-          <div class="cta-message">
-            皆さまの想いをかなえる ために<br/>
-            私たちが一生涯のご支援をお約束致します
-          </div>
-
-          <div class="section-sep" aria-hidden="true">
-            <div class="line"></div>
-            <div class="diamond">◆</div>
-            <div class="line"></div>
-          </div>
-        </div>
-      </section>
-
+      <!-- =========================
+           ✅ 아래 패널(身元保証 창 등) "그대로 유지"
+      ========================= -->
       <section class="details" id="details">
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
-
-            <!-- ✅ 여기: 다이아 + 밑줄 2개 (패널 내용은 그대로) -->
-            <div class="title-orn" aria-hidden="true">
-              <div class="topline"></div>
-              <div class="diamond-wrap"><span class="diamond"></span></div>
-              <div class="bottomline"></div>
-            </div>
-
             <div class="panel-title">身元保証</div>
             <div class="panel-sub">施設入居・入院時などの「保証」を、わかりやすく整えます</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
@@ -665,14 +633,6 @@
 
         <article class="panel" id="panel-support">
           <div class="panel-head">
-
-            <!-- ✅ 생활지원도 동일하게 (원하면 제거 가능) -->
-            <div class="title-orn" aria-hidden="true">
-              <div class="topline"></div>
-              <div class="diamond-wrap"><span class="diamond"></span></div>
-              <div class="bottomline"></div>
-            </div>
-
             <div class="panel-title">生活支援</div>
             <div class="panel-sub">外出・手続きなど日常の「困った」を、必要な分だけお手伝いします</div>
           </div>

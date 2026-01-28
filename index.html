@@ -29,7 +29,9 @@
       --line: rgba(47,42,34,.16);
 
       --paper: rgba(255,255,255,.70);
-      --card: rgba(255,255,255,.78);
+
+      /* cards */
+      --card: rgba(255,255,255,.42);            /* ✅ 더 투명 */
       --card-border: rgba(0,0,0,.06);
 
       --label-stroke: rgba(150,132, 68, .75);
@@ -264,7 +266,6 @@
       font-size: 16px;
     }
 
-    /* Label stroke only */
     .hero-label{
       display: inline-flex;
       align-items: center;
@@ -307,7 +308,7 @@
       gap: 14px;
       flex-wrap: wrap;
       width: 100%;
-      margin-top: 6px; /* ✅ 라벨-버튼 간격 */
+      margin-top: 6px;
     }
 
     .cta-btn{
@@ -401,7 +402,7 @@
       color: rgba(47,42,34,.92);
     }
 
-    /* ✅ Diamond Separator under caption */
+    /* Diamond Separator under caption */
     .diamond-sep{
       width: 100%;
       margin-top: 14px;
@@ -426,7 +427,7 @@
     }
 
     /* =========================
-       Panels (keep)
+       Panels
     ========================= */
     .details{
       margin-top: 18px;
@@ -471,13 +472,42 @@
       gap: 10px;
       margin-top: 6px;
     }
+
+    /* ✅ 카드 안에서 배경(오나먼트)이 비치게: 블러 + 투명 */
     .card{
+      position: relative;
       border-radius: 14px;
-      background: var(--card);
       border: 1px solid var(--card-border);
       padding: 12px 12px;
+      overflow: hidden;
+
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
+    /* 오나먼트가 카드 안에서도 느껴지게 */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-18px;
+      background-image: url("ornament.png");
+      background-repeat: repeat;
+      background-size: 320px 320px;
+      opacity: .22;
+      filter: blur(1.5px);
+      transform: scale(1.03);
+      pointer-events:none;
+      z-index: 0;
+    }
+    /* 내용은 위로 */
+    .card > *{ position: relative; z-index: 1; }
+
+    @media (min-width: 900px){
+      .card::before{ background-size: 420px 420px; }
+    }
+
     .card h3{
       font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
       font-size: 16px;
@@ -490,7 +520,7 @@
     .card p{
       font-size: 13px;
       line-height: 1.85;
-      color: rgba(47,42,34,.75);
+      color: rgba(47,42,34,.78);
       text-align: left;
     }
 
@@ -598,7 +628,6 @@
             <strong>必要</strong>な手続きや支援をわかりやすくご案内します。
           </div>
 
-          <!-- ✅ diamond separator -->
           <div class="diamond-sep" aria-hidden="true">
             <div class="line"></div>
             <div class="dia"></div>

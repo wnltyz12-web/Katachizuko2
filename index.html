@@ -24,16 +24,17 @@
       --shadow: 0 20px 55px rgba(0,0,0,.16);
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
-      --ink: #2f2a22;
-      --muted: rgba(47,42,34,.72);
-      --line: rgba(47,42,34,.16);
+      /* ✅ 전체 글자색(메인 텍스트 컬러)을 히어로 타이틀 색으로 통일 */
+      --ink: rgba(96,84,64,.92);          /* 기존 #2f2a22 -> 히어로 타이틀 컬러 */
+      --muted: rgba(96,84,64,.72);
+      --line: rgba(96,84,64,.16);
 
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      /* ✅ 하얀 느낌 줄이기 (핵심) */
-      --card-veil: rgba(255,255,255,.06);     /* 기존 .20 -> .06 */
-      --panel-veil: rgba(255,255,255,.08);    /* 기존 .24 -> .08 */
+      /* ✅ 하얀 느낌 줄이기 */
+      --card-veil: rgba(255,255,255,.06);
+      --panel-veil: rgba(255,255,255,.08);
     }
 
     /* =========================
@@ -361,7 +362,6 @@
       color: rgba(47,42,34,.94);
     }
 
-    /* Diamond separator under caption */
     .diamond-sep{
       width: 100%;
       margin-top: 10px;
@@ -387,8 +387,6 @@
 
     /* =========================
        Panels
-       ✅ 네모 박스는 유지
-       ✅ 하얀 덮개(veil)만 줄여서 오나먼트가 더 보이게
     ========================= */
     .details{
       margin-top: 18px;
@@ -404,13 +402,11 @@
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
 
-      /* 유리 */
-      background: rgba(255,255,255,.08); /* 기존 .10 -> .08 (조금 더 투명) */
+      background: rgba(255,255,255,.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ✅ 패널 안쪽 오나먼트 (조금 더 선명하게 보이도록 조정) */
     .panel::before{
       content:"";
       position:absolute;
@@ -418,8 +414,8 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .34;          /* 기존 .28 -> .34 (무늬 조금 더 보이게) */
-      filter: blur(.8px);    /* 기존 1.0px -> 0.8px (덜 뿌옇게) */
+      opacity: .34;
+      filter: blur(.8px);
       transform: scale(1.05);
       pointer-events:none;
       z-index: 0;
@@ -428,7 +424,6 @@
       .panel::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ✅ 하얀 덮개는 변수로 얇게 */
     .panel::after{
       content:"";
       position:absolute;
@@ -444,7 +439,7 @@
       padding: 16px 16px;
       text-align: center;
 
-      background: rgba(255,255,255,.14); /* 기존 .16 -> .14 (약간 줄임) */
+      background: rgba(255,255,255,.14);
       border-bottom: 1px solid rgba(0,0,0,.06);
 
       backdrop-filter: blur(10px);
@@ -456,18 +451,18 @@
       font-size: 18px;
       font-weight: 900;
       letter-spacing: .12em;
-      color: var(--ink);
+      color: var(--ink); /* ✅ 통일 */
     }
 
     .panel-sub{
       margin-top: 6px;
       font-size: 12px;
-      color: rgba(47,42,34,.62);
+      color: rgba(96,84,64,.72); /* ✅ 통일 */
       letter-spacing: .06em;
     }
 
     .panel-body{
-      background: rgba(255,255,255,.08); /* 기존 .10 -> .08 */
+      background: rgba(255,255,255,.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -486,14 +481,13 @@
       padding: 12px 12px;
       overflow: hidden;
 
-      background: rgba(255,255,255,.07); /* 기존 .10 -> .07 */
+      background: rgba(255,255,255,.07);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
 
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
 
-    /* ✅ 카드 안쪽 오나먼트도 더 보이게 */
     .card::before{
       content:"";
       position:absolute;
@@ -501,8 +495,8 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .40;         /* 기존 .34 -> .40 */
-      filter: blur(.9px);   /* 기존 1.15px -> 0.9px */
+      opacity: .40;
+      filter: blur(.9px);
       transform: scale(1.06);
       pointer-events:none;
       z-index: 0;
@@ -511,7 +505,6 @@
       .card::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ✅ 하얀 덮개는 변수로 얇게 */
     .card::after{
       content:"";
       position:absolute;
@@ -528,26 +521,26 @@
       font-size: 16px;
       font-weight: 900;
       letter-spacing: .10em;
-      color: rgba(47,42,34,.92);
+      color: rgba(96,84,64,.92); /* ✅ 통일 */
       margin-bottom: 6px;
       text-align: left;
     }
     .card p{
       font-size: 13px;
       line-height: 1.85;
-      color: rgba(47,42,34,.78);
+      color: rgba(96,84,64,.82); /* ✅ 통일 */
       text-align: left;
     }
 
     .mini-hr{
       margin: 14px 0 10px;
       height: 1px;
-      background: rgba(47,42,34,.12);
+      background: rgba(96,84,64,.18); /* ✅ 통일 */
     }
     .mini-note{
       text-align: center;
       font-size: 12px;
-      color: rgba(47,42,34,.60);
+      color: rgba(96,84,64,.70); /* ✅ 통일 */
       letter-spacing: .05em;
       line-height: 1.8;
     }
@@ -710,14 +703,12 @@
   </main>
 
   <script>
-    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
-    // header shrink
     const topbar = document.getElementById('topbar');
     let ticking = false;
 

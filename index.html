@@ -27,8 +27,13 @@
       --accent: rgba(155,122,52,.92);
       --accent-line: rgba(155,122,52,.72);
 
+      /* ✅ 기본 버튼(料金表은 이 색 그대로) */
       --btn: #b7a18a;
       --btn-text: #ffffff;
+
+      /* ✅ 요청한 버튼 컬러 */
+      --btn-guarantee: #968444; /* 身元保証 */
+      --btn-support: #497790;   /* 生活支援 */
 
       --mobile-max: 520px;
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
@@ -140,24 +145,42 @@
     }
     .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
 
-    .brand-text{ display: flex; flex-direction: column; line-height: 1.05; gap: 6px; min-width: 0; }
+    .brand-text{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      gap: 5px;
+      min-width: 0;
+    }
     .brand-eyebrow{
-      font-size: var(--fs-12);
-      letter-spacing: .18em;
-      color: rgba(31,27,22,.62);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(155,122,52,.40);
+      background: rgba(255,255,255,.22);
+      font-size: 11px;
+      letter-spacing: .22em;
+      color: rgba(96,84,64,.88);
+      font-weight: 900;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .brand-name{
       font-family: var(--serif);
-      font-size: var(--fs-18);
+      font-size: 18px;
       font-weight: 900;
-      letter-spacing: .12em;
-      color: rgba(31,27,22,.94);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      letter-spacing: .14em;
+      color: rgba(31,27,22,.96);
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       transition: font-size .22s ease, letter-spacing .22s ease;
     }
-    .topbar.is-compact .brand-name{ font-size: 16px; letter-spacing: .10em; }
+    .topbar.is-compact .brand-name{ font-size: 16px; letter-spacing: .12em; }
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
@@ -229,7 +252,8 @@
     .cta-btn{
       appearance: none; border: none; cursor: pointer;
       width: 180px; height: 52px;
-      background: var(--btn); color: var(--btn-text);
+      background: var(--btn);
+      color: var(--btn-text);
       border-radius: 14px;
       box-shadow: var(--shadow2);
       letter-spacing: .14em;
@@ -240,6 +264,11 @@
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
     .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
+
+    /* ✅ 버튼별 컬러 */
+    .cta-btn.guarantee{ background: var(--btn-guarantee); }
+    .cta-btn.support{ background: var(--btn-support); }
+    /* 料金表은 기본 --btn 그대로 */
 
     /* Illustration */
     .illus-wrap{ margin-top: 18px; }
@@ -297,7 +326,7 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel-title{
-      font-family: var(--serif); /* ✅ 제목만 serif */
+      font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
       letter-spacing: var(--title-letter);
@@ -305,7 +334,7 @@
     }
     .panel-sub{
       margin-top: 6px;
-      font-family: var(--sans); /* ✅ 5번: 부제/설명은 sans */
+      font-family: var(--sans);
       font-size: var(--fs-12);
       color: var(--ink-4);
       letter-spacing: .06em;
@@ -357,7 +386,7 @@
     .card > *{ position: relative; z-index: 1; }
 
     .card h3{
-      font-family: var(--serif); /* ✅ 5번: 카드 제목만 serif */
+      font-family: var(--serif);
       font-size: var(--fs-16);
       font-weight: 900;
       letter-spacing: var(--h3-letter);
@@ -375,7 +404,7 @@
       margin-bottom: 10px;
     }
     .card p{
-      font-family: var(--sans); /* ✅ 5번: 본문은 sans 고정 */
+      font-family: var(--sans);
       font-size: var(--fs-15);
       line-height: var(--body-lh);
       color: var(--ink-3);
@@ -386,7 +415,7 @@
     .card ul{
       margin-top: 10px;
       padding-left: 18px;
-      font-family: var(--sans); /* ✅ 5번 */
+      font-family: var(--sans);
       color: rgba(66,55,41,.62);
       font-size: var(--fs-14);
       line-height: 1.95;
@@ -441,7 +470,7 @@
       font-family: var(--sans);
     }
 
-    /* ✅ NEW: 문의 섹션 */
+    /* 문의 섹션 */
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
     .contact-btn{
@@ -482,14 +511,6 @@
       box-shadow: 0 16px 38px rgba(0,0,0,.12);
     }
 
-    .contact-meta{
-      display: grid;
-      gap: 6px;
-      font-family: var(--sans);
-      color: var(--ink-4);
-      font-size: 13px;
-      line-height: 1.85;
-    }
     .kv{
       display: grid;
       grid-template-columns: 86px 1fr;
@@ -500,6 +521,7 @@
       background: rgba(255,255,255,.18);
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      font-family: var(--sans);
     }
     .kv .k{
       font-weight: 800;
@@ -511,6 +533,8 @@
     .kv .v{
       color: var(--ink-3);
       font-weight: 600;
+      line-height: 1.75;
+      font-size: 13px;
     }
 
     .pill-row{
@@ -566,7 +590,6 @@
           サービス
         </a>
 
-        <!-- ✅ 문의는 맨 아래 문의 패널로 -->
         <a class="hbtn primary" href="#panel-contact" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16v16H4z"></path>
@@ -591,16 +614,19 @@
 
         <div class="hero-cta">
           <div class="hero-cta-row">
-            <button class="cta-btn" type="button"
+            <!-- ✅ 身元保証: #968444 -->
+            <button class="cta-btn guarantee" type="button"
               onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
               身元保証
             </button>
 
-            <button class="cta-btn" type="button"
+            <!-- ✅ 生活支援: #497790 -->
+            <button class="cta-btn support" type="button"
               onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
               生活支援
             </button>
 
+            <!-- ✅ 料金表: 기존 --btn(#b7a18a) 그대로 -->
             <button class="cta-btn" type="button"
               onclick="document.getElementById('panel-price').scrollIntoView({behavior:'smooth',block:'start'})">
               料金表
@@ -842,7 +868,7 @@
           </div>
         </article>
 
-        <!-- ✅ NEW: ページ最下部 お問い合わせ窓口 -->
+        <!-- お問い合わせ -->
         <article class="panel" id="panel-contact">
           <div class="panel-head">
             <div class="panel-title">お問い合わせ</div>
@@ -856,7 +882,6 @@
                   <h3>ご相談窓口</h3>
 
                   <div class="contact-actions">
-                    <!-- ✅ 전화번호/이메일은 네가 실제 값으로 바꿔 -->
                     <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する">
                       <span aria-hidden="true">☎</span>
                       電話で相談する（無料）

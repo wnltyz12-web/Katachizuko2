@@ -5,17 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>カタオカサービス</title>
 
+  <!-- ✅ Fonts (예쁘게 정리: 본문=Sans / 타이틀=Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; }
 
-    body{
-      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
-      background: #f4f1ea;
-      color: #2f2a22;
-    }
-
     :root{
+      /* ===== Theme ===== */
+      --bg: #f4f1ea;
+      --ink: rgba(96,84,64,.92);
+      --ink-strong: rgba(55,46,34,.96);
+      --muted: rgba(96,84,64,.72);
+      --muted2: rgba(96,84,64,.60);
+      --line: rgba(96,84,64,.16);
+      --line-strong: rgba(96,84,64,.22);
+
+      --accent: rgba(155,122,52,.92);
+      --accent-line: rgba(155,122,52,.70);
+
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
@@ -24,17 +35,45 @@
       --shadow: 0 20px 55px rgba(0,0,0,.16);
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
-      /* ✅ 전체 글자색(메인 텍스트 컬러)을 히어로 타이틀 색으로 통일 */
-      --ink: rgba(96,84,64,.92);          /* 기존 #2f2a22 -> 히어로 타이틀 컬러 */
-      --muted: rgba(96,84,64,.72);
-      --line: rgba(96,84,64,.16);
-
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      /* ✅ 하얀 느낌 줄이기 */
+      /* ✅ 박스는 유지, 하얀 느낌만 최소화 */
       --card-veil: rgba(255,255,255,.06);
       --panel-veil: rgba(255,255,255,.08);
+
+      /* ===== Typography ===== */
+      --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      --serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+
+      --fs-11: 11px;
+      --fs-12: 12px;
+      --fs-13: 13px;
+      --fs-14: 14px;
+      --fs-15: 15px;
+      --fs-16: 16px;
+      --fs-18: 18px;
+      --fs-20: 20px;
+
+      --ls-tight: .06em;
+      --ls-mid: .10em;
+      --ls-wide: .16em;
+
+      --r-12: 12px;
+      --r-14: 14px;
+      --r-18: 18px;
+
+      --blur-panel: 10px;
+      --blur-card: 14px;
+    }
+
+    body{
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     /* =========================
@@ -44,7 +83,7 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background-color: #f4f1ea;
+      background-color: var(--bg);
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
@@ -60,8 +99,8 @@
       background: linear-gradient(
         to bottom,
         rgba(244,241,234,0) 0%,
-        rgba(244,241,234,0) 45%,
-        rgba(255,255,255,0.55) 75%,
+        rgba(244,241,234,0) 40%,
+        rgba(255,255,255,0.50) 72%,
         rgba(255,255,255,0.92) 100%
       );
     }
@@ -82,6 +121,7 @@
       background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
+
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
 
@@ -107,7 +147,7 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: #1f1b16;
+      color: var(--ink-strong);
       min-width: 0;
     }
 
@@ -119,14 +159,14 @@
       display: grid;
       place-items: center;
 
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-family: var(--serif);
       font-weight: 900;
       font-size: 16px;
-      letter-spacing: .04em;
+      letter-spacing: .06em;
 
-      border: 1.5px solid rgba(0,0,0,.78);
-      background: rgba(255,255,255,.38);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      border: 1.5px solid rgba(0,0,0,.76);
+      background: rgba(255,255,255,.34);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.60);
 
       transition: width .22s ease, height .22s ease, transform .22s ease;
       flex: 0 0 auto;
@@ -146,20 +186,21 @@
     }
 
     .brand-eyebrow{
-      font-size: 12px;
+      font-size: var(--fs-12);
       letter-spacing: .18em;
-      color: rgba(31,27,22,.78);
+      color: rgba(31,27,22,.72);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-weight: 600;
     }
 
     .brand-name{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 18px;
+      font-family: var(--serif);
+      font-size: var(--fs-18);
       font-weight: 900;
-      letter-spacing: .10em;
-      color: #1f1b16;
+      letter-spacing: .12em;
+      color: rgba(31,27,22,.92);
 
       white-space: nowrap;
       overflow: hidden;
@@ -169,7 +210,7 @@
     }
     .topbar.is-compact .brand-name{
       font-size: 16px;
-      letter-spacing: .08em;
+      letter-spacing: .10em;
     }
 
     .header-actions{
@@ -181,7 +222,7 @@
 
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.40);
+      background: rgba(255,255,255,.38);
       color: rgba(31,27,22,.92);
       border-radius: 999px;
       height: 38px;
@@ -190,32 +231,33 @@
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      font-size: 12px;
-      letter-spacing: .10em;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      font-size: var(--fs-12);
+      letter-spacing: .12em;
+      font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.60);
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
       user-select: none;
       white-space: nowrap;
     }
     .hbtn:hover{
       transform: translateY(-0.5px);
-      background: rgba(255,255,255,.52);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
+      background: rgba(255,255,255,.50);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.70);
     }
     .hbtn:active{
       transform: translateY(0px);
-      background: rgba(255,255,255,.46);
-      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.55);
+      background: rgba(255,255,255,.44);
+      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.58);
     }
 
     .hbtn.primary{
-      background: rgba(183,161,138,.92);
+      background: rgba(183,161,138,.94);
       color: #fff;
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
     }
     .hbtn.primary:hover{
-      background: rgba(183,161,138,.98);
+      background: rgba(183,161,138,.99);
       box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
 
@@ -242,20 +284,22 @@
     }
 
     /* =========================
-       HERO (NO WHITE BOX)
+       HERO
     ========================= */
     .hero{
       margin-top: 18px;
       padding: 6px 0 0;
       text-align: center;
     }
+
+    /* ✅ 히어로 타이틀: 더 예쁜 계층(굵기/자간/줄간격) */
     .hero-title{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-family: var(--serif);
       letter-spacing: .10em;
-      color: rgba(96,84,64,.92);
+      color: var(--ink);
       font-weight: 900;
       font-size: 16px;
-      line-height: 1.9;
+      line-height: 1.95;
     }
 
     .hero-label-wrap{
@@ -268,14 +312,16 @@
       align-items: center;
       justify-content: center;
       padding: 7px 14px;
-      border-radius: 4px;
-      border: 2px solid rgba(155,122,52,.70);
-      color: rgba(155,122,52,.92);
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      border-radius: 6px;
+      border: 2px solid var(--accent-line);
+      color: var(--accent);
+      font-family: var(--serif);
       font-weight: 900;
-      font-size: 13px;
+      font-size: var(--fs-13);
       letter-spacing: .22em;
-      background: transparent;
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       user-select: none;
     }
 
@@ -288,7 +334,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 14px;
       flex-wrap: wrap;
       width: 100%;
     }
@@ -307,18 +353,19 @@
       box-shadow: var(--shadow2);
 
       letter-spacing: .14em;
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 20px;
+      font-family: var(--serif);
+      font-size: 18px;
       font-weight: 900;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: box-shadow .18s ease, transform .18s ease;
+      transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
     .cta-btn:hover{
       transform: translateY(-0.5px);
       box-shadow: 0 14px 34px rgba(0,0,0,.17);
+      filter: saturate(1.04);
     }
     .cta-btn:active{
       transform: translateY(0px);
@@ -343,23 +390,23 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
     .illus-kicker{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .10em;
-      color: rgba(47,42,34,.88);
-      font-size: 14px;
+      color: var(--ink-strong);
+      font-size: var(--fs-14);
       line-height: 1.7;
     }
     .illus-caption{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 13px;
+      font-family: var(--serif);
+      font-size: var(--fs-13);
       letter-spacing: .06em;
-      line-height: 1.9;
-      color: rgba(47,42,34,.72);
+      line-height: 1.95;
+      color: var(--muted);
     }
     .illus-caption strong{
       font-weight: 900;
-      color: rgba(47,42,34,.94);
+      color: var(--ink-strong);
     }
 
     .diamond-sep{
@@ -369,12 +416,12 @@
       align-items: center;
       justify-content: center;
       gap: 14px;
-      opacity: .90;
+      opacity: .92;
     }
     .diamond-sep .line{
       height: 1px;
       flex: 1;
-      background: rgba(47,42,34,.18);
+      background: var(--line-strong);
     }
     .diamond-sep .dia{
       width: 10px;
@@ -396,15 +443,15 @@
 
     .panel{
       position: relative;
-      border-radius: 18px;
+      border-radius: var(--r-18);
       overflow: hidden;
 
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
 
       background: rgba(255,255,255,.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
     .panel::before{
@@ -436,35 +483,34 @@
     .panel > *{ position: relative; z-index: 1; }
 
     .panel-head{
-      padding: 16px 16px;
+      padding: 16px 16px 14px;
       text-align: center;
-
-      background: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.12);
       border-bottom: 1px solid rgba(0,0,0,.06);
-
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
     .panel-title{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
+      font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
       letter-spacing: .12em;
-      color: var(--ink); /* ✅ 통일 */
+      color: var(--ink-strong);
     }
 
     .panel-sub{
       margin-top: 6px;
-      font-size: 12px;
-      color: rgba(96,84,64,.72); /* ✅ 통일 */
+      font-size: var(--fs-12);
+      color: var(--muted);
       letter-spacing: .06em;
+      line-height: 1.7;
     }
 
     .panel-body{
-      background: rgba(255,255,255,.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel-inner{ padding: 14px 14px 18px; }
 
@@ -476,14 +522,14 @@
 
     .card{
       position: relative;
-      border-radius: 14px;
+      border-radius: var(--r-14);
       border: 1px solid rgba(0,0,0,.07);
       padding: 12px 12px;
       overflow: hidden;
 
-      background: rgba(255,255,255,.07);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(var(--blur-card));
+      -webkit-backdrop-filter: blur(var(--blur-card));
 
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
@@ -516,33 +562,37 @@
 
     .card > *{ position: relative; z-index: 1; }
 
+    /* ✅ 카드 타이포: 제목은 serif, 내용은 sans로 정리 */
     .card h3{
-      font-family: "Yu Mincho","Hiragino Mincho ProN",serif;
-      font-size: 16px;
+      font-family: var(--serif);
+      font-size: var(--fs-16);
       font-weight: 900;
       letter-spacing: .10em;
-      color: rgba(96,84,64,.92); /* ✅ 통일 */
+      color: var(--ink-strong);
       margin-bottom: 6px;
       text-align: left;
     }
     .card p{
-      font-size: 13px;
+      font-family: var(--sans);
+      font-size: var(--fs-13);
       line-height: 1.85;
-      color: rgba(96,84,64,.82); /* ✅ 통일 */
+      color: rgba(96,84,64,.82);
       text-align: left;
+      letter-spacing: .02em;
     }
 
     .mini-hr{
       margin: 14px 0 10px;
       height: 1px;
-      background: rgba(96,84,64,.18); /* ✅ 통일 */
+      background: var(--line);
     }
     .mini-note{
       text-align: center;
-      font-size: 12px;
-      color: rgba(96,84,64,.70); /* ✅ 통일 */
+      font-family: var(--sans);
+      font-size: var(--fs-12);
+      color: var(--muted2);
       letter-spacing: .05em;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     /* reveal */
@@ -703,12 +753,14 @@
   </main>
 
   <script>
+    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
+    // header shrink
     const topbar = document.getElementById('topbar');
     let ticking = false;
 

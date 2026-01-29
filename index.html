@@ -38,11 +38,9 @@
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      /* 박스 하얀 느낌 최소 */
       --card-veil: rgba(255,255,255,.06);
       --panel-veil: rgba(255,255,255,.08);
 
-      /* Typography */
       --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       --serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
 
@@ -58,7 +56,6 @@
       --blur-panel: 10px;
       --blur-card: 14px;
 
-      /* spacing */
       --panel-pad: 16px;
       --cards-gap: 12px;
       --card-pad-y: 14px;
@@ -563,7 +560,7 @@
 
     .card > *{ position: relative; z-index: 1; }
 
-    /* ✅ NEW: 카드 안 서브 텍스트(2~3줄 설명)용 */
+    /* ✅ 작은 상단 설명(짧은 1~2줄) */
     .card .lead{
       margin-top: -2px;
       font-family: var(--sans);
@@ -593,7 +590,6 @@
       letter-spacing: .02em;
     }
 
-    /* ✅ 리스트 느낌(긴 항목) */
     .card ul{
       margin-top: 10px;
       padding-left: 18px;
@@ -706,7 +702,7 @@
       </section>
 
       <section class="details" id="details">
-        <!-- ✅ 텍스트 전부 교체 -->
+        <!-- 身元保証プラン -->
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証プラン</div>
@@ -720,44 +716,61 @@
                 <div class="card">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
-                  <p>条件や流れを整理し、安心して手続きができるようにご支援いたします。</p>
+                  <p>
+                    条件や流れを整理し、<br/>
+                    安心して手続きができるようにご支援いたします。
+                  </p>
                 </div>
 
                 <div class="card">
                   <h3>緊急連絡先代行</h3>
                   <div class="lead">入院時、施設契約時の緊急連絡先にご指定いただけます</div>
-                  <p>連絡方法、優先順位を事前に確認し、連絡が取れる体制を整えます。</p>
+                  <p>
+                    連絡方法、優先順位を事前に確認し、<br/>
+                    連絡が取れる体制を整えます。
+                  </p>
                 </div>
 
                 <div class="card">
                   <h3>身元引受人代行</h3>
-                  <p>お亡くなりになられた際の身元引き受けを承ります。</p>
+                  <p>
+                    お亡くなりになられた際の<br/>
+                    身元引き受けを承ります。
+                  </p>
                 </div>
 
                 <div class="card">
                   <h3>死後事務手続き代行</h3>
-                  <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
+                  <p>
+                    お亡くなりになられた後の細かな各種手続きを承ります。<br/>
+                    事前のご希望通りに円滑に進むようご支援いたします。
+                  </p>
                   <ul>
-                    <li>葬儀・納骨</li>
-                    <li>遺品整理・荷物処分</li>
-                    <li>各種解約手続き・清算 など</li>
+                    <li>葬儀・納骨・遺品整理</li>
+                    <li>荷物処分・各種解約手続き</li>
+                    <li>清算 など</li>
                   </ul>
                 </div>
               </div>
 
               <div class="mini-hr"></div>
               <div class="mini-note">
-                ※事前に細かなお打ち合わせを行ったうえで、お客様の状況やご希望に応じて最適なプランをご提案いたします。
+                ※事前に細かなお打ち合わせを行ったうえで、<br/>
+                お客様の状況やご希望に応じて最適なプランをご提案いたします。
               </div>
 
             </div>
           </div>
         </article>
 
+        <!-- 生活支援プラン -->
         <article class="panel" id="panel-support">
           <div class="panel-head">
             <div class="panel-title">生活支援プラン</div>
-            <div class="panel-sub">買物・病院受診・役所手続き・お墓参りなど、お困りではありませんか？</div>
+            <div class="panel-sub">
+              買物・病院受診・役所手続き・お墓参りなど<br/>
+              お困りではありませんか？
+            </div>
           </div>
 
           <div class="panel-body">
@@ -766,17 +779,26 @@
               <div class="cards">
                 <div class="card">
                   <h3>ご利用案内</h3>
-                  <p>私たちがお手伝いいたします（非会員の方でもご利用いただけます）。</p>
+                  <p>
+                    私たちがお手伝いいたします。<br/>
+                    <span style="font-weight:700;">非会員の方でもご利用いただけます。</span>
+                  </p>
                 </div>
 
                 <div class="card">
-                  <h3>【訪問支援】</h3>
-                  <p>ご訪問しての身の回りのお手伝い・買物代行などの日常生活支援を承ります。</p>
+                  <h3>訪問支援</h3>
+                  <p>
+                    ご訪問しての身の回りのお手伝い、<br/>
+                    買物代行などの日常生活支援を承ります。
+                  </p>
                 </div>
 
                 <div class="card">
-                  <h3>【同行支援】</h3>
-                  <p>車両を使用しての買物・通院・役所等の外出同行支援を承ります。</p>
+                  <h3>同行支援</h3>
+                  <p>
+                    車両を使用しての買物・通院・役所等の<br/>
+                    外出同行支援を承ります。
+                  </p>
                 </div>
               </div>
 
@@ -789,14 +811,12 @@
   </main>
 
   <script>
-    // reveal
     const els = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
-    // header shrink
     const topbar = document.getElementById('topbar');
     let ticking = false;
 

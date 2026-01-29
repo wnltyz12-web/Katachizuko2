@@ -297,7 +297,7 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel-title{
-      font-family: var(--serif);
+      font-family: var(--serif); /* ✅ 제목만 serif */
       font-size: 18px;
       font-weight: 900;
       letter-spacing: var(--title-letter);
@@ -305,6 +305,7 @@
     }
     .panel-sub{
       margin-top: 6px;
+      font-family: var(--sans); /* ✅ 5번: 부제/설명은 sans */
       font-size: var(--fs-12);
       color: var(--ink-4);
       letter-spacing: .06em;
@@ -356,7 +357,7 @@
     .card > *{ position: relative; z-index: 1; }
 
     .card h3{
-      font-family: var(--serif);
+      font-family: var(--serif); /* ✅ 5번: 카드 제목만 serif */
       font-size: var(--fs-16);
       font-weight: 900;
       letter-spacing: var(--h3-letter);
@@ -374,7 +375,7 @@
       margin-bottom: 10px;
     }
     .card p{
-      font-family: var(--sans);
+      font-family: var(--sans); /* ✅ 5번: 본문은 sans 고정 */
       font-size: var(--fs-15);
       line-height: var(--body-lh);
       color: var(--ink-3);
@@ -385,6 +386,7 @@
     .card ul{
       margin-top: 10px;
       padding-left: 18px;
+      font-family: var(--sans); /* ✅ 5번 */
       color: rgba(66,55,41,.62);
       font-size: var(--fs-14);
       line-height: 1.95;
@@ -392,7 +394,7 @@
     }
     .card li{ margin: 2px 0; }
 
-    /* ✅ 가격표: 밑줄/구분선/점선 없음. "창(카드)로만" 분리 */
+    /* 가격표(창 분리) */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{
       display: grid;
@@ -410,6 +412,7 @@
       font-weight: 800;
       color: var(--ink-2);
       line-height: 1.55;
+      font-family: var(--sans);
     }
     .fee-desc{
       margin-top: 4px;
@@ -417,6 +420,7 @@
       color: var(--ink-4);
       line-height: 1.75;
       font-weight: 500;
+      font-family: var(--sans);
     }
     .fee-price{
       text-align: right;
@@ -425,6 +429,7 @@
       color: var(--ink-1);
       white-space: nowrap;
       line-height: 1.55;
+      font-family: var(--sans);
     }
     .fee-price .sub{
       display:block;
@@ -433,6 +438,79 @@
       font-weight: 700;
       color: var(--ink-4);
       white-space: nowrap;
+      font-family: var(--sans);
+    }
+
+    /* ✅ NEW: 문의 섹션 */
+    .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
+    .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
+    .contact-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      width: 100%;
+      height: 52px;
+
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.34);
+      color: rgba(31,27,22,.92);
+
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+
+      box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .contact-btn:hover{
+      transform: translateY(-0.5px);
+      background: rgba(255,255,255,.44);
+      box-shadow: 0 14px 34px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .contact-btn.primary{
+      background: rgba(183,161,138,.98);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+    }
+    .contact-btn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 16px 38px rgba(0,0,0,.12);
+    }
+
+    .contact-meta{
+      display: grid;
+      gap: 6px;
+      font-family: var(--sans);
+      color: var(--ink-4);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+    .kv{
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+    }
+    .kv .k{
+      font-weight: 800;
+      color: var(--ink-2);
+      letter-spacing: .06em;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .kv .v{
+      color: var(--ink-3);
+      font-weight: 600;
     }
 
     .pill-row{
@@ -488,7 +566,8 @@
           サービス
         </a>
 
-        <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
+        <!-- ✅ 문의는 맨 아래 문의 패널로 -->
+        <a class="hbtn primary" href="#panel-contact" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16v16H4z"></path>
             <path d="M22 6l-10 7L2 6"></path>
@@ -632,7 +711,7 @@
           </div>
         </article>
 
-        <!-- ✅ 料金表 (밑줄/구분선 없이 "창(카드)"으로만 분리) -->
+        <!-- 料金表 -->
         <article class="panel" id="panel-price">
           <div class="panel-head">
             <div class="panel-title">料金表</div>
@@ -642,21 +721,15 @@
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-
                 <div class="card">
                   <h3>会費</h3>
                   <div class="fee-list">
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">入会金</div>
-                      </div>
+                      <div><div class="fee-name">入会金</div></div>
                       <div class="fee-price">300,000円</div>
                     </div>
-
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">月会費</div>
-                      </div>
+                      <div><div class="fee-name">月会費</div></div>
                       <div class="fee-price">5,000円</div>
                     </div>
                   </div>
@@ -670,40 +743,22 @@
                         <div class="fee-name">A-1 身元保証人代行</div>
                         <div class="fee-desc">施設月額利用料の2か月分（会員）</div>
                       </div>
-                      <div class="fee-price">
-                        2か月分
-                        <span class="sub">非会員：4か月分</span>
-                      </div>
+                      <div class="fee-price">2か月分<span class="sub">非会員：4か月分</span></div>
                     </div>
 
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">A-2 緊急連絡先代行</div>
-                      </div>
-                      <div class="fee-price">
-                        220,000円
-                        <span class="sub">非会員：440,000円</span>
-                      </div>
+                      <div><div class="fee-name">A-2 緊急連絡先代行</div></div>
+                      <div class="fee-price">220,000円<span class="sub">非会員：440,000円</span></div>
                     </div>
 
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">A-3 身元引受人代行</div>
-                      </div>
-                      <div class="fee-price">
-                        110,000円
-                        <span class="sub">非会員：220,000円</span>
-                      </div>
+                      <div><div class="fee-name">A-3 身元引受人代行</div></div>
+                      <div class="fee-price">110,000円<span class="sub">非会員：220,000円</span></div>
                     </div>
 
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">A-4 死後事務代行</div>
-                      </div>
-                      <div class="fee-price">
-                        220,000円
-                        <span class="sub">非会員：440,000円</span>
-                      </div>
+                      <div><div class="fee-name">A-4 死後事務代行</div></div>
+                      <div class="fee-price">220,000円<span class="sub">非会員：440,000円</span></div>
                     </div>
                   </div>
                 </div>
@@ -716,26 +771,17 @@
 
                   <div class="fee-list">
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">訪問支援（9:00〜18:00）</div>
-                      </div>
+                      <div><div class="fee-name">訪問支援（9:00〜18:00）</div></div>
                       <div class="fee-price">4,000円／1時間</div>
                     </div>
-
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">訪問支援（18:00〜9:00）</div>
-                      </div>
+                      <div><div class="fee-name">訪問支援（18:00〜9:00）</div></div>
                       <div class="fee-price">5,000円／1時間</div>
                     </div>
-
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">訪問支援（深夜帯 22:00〜7:00）</div>
-                      </div>
+                      <div><div class="fee-name">訪問支援（深夜帯 22:00〜7:00）</div></div>
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
-
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">同行支援（9:00〜18:00）</div>
@@ -743,18 +789,12 @@
                       </div>
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
-
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">同行支援（18:00〜9:00）</div>
-                      </div>
+                      <div><div class="fee-name">同行支援（18:00〜9:00）</div></div>
                       <div class="fee-price">7,000円／1時間</div>
                     </div>
-
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">同行支援（深夜帯 22:00〜7:00）</div>
-                      </div>
+                      <div><div class="fee-name">同行支援（深夜帯 22:00〜7:00）</div></div>
                       <div class="fee-price">8,000円／1時間</div>
                     </div>
                   </div>
@@ -801,6 +841,59 @@
             </div>
           </div>
         </article>
+
+        <!-- ✅ NEW: ページ最下部 お問い合わせ窓口 -->
+        <article class="panel" id="panel-contact">
+          <div class="panel-head">
+            <div class="panel-title">お問い合わせ</div>
+            <div class="panel-sub">ご相談は無料です。状況を伺い、最適なご案内をいたします。</div>
+          </div>
+
+          <div class="panel-body">
+            <div class="panel-inner">
+              <div class="cards">
+                <div class="card">
+                  <h3>ご相談窓口</h3>
+
+                  <div class="contact-actions">
+                    <!-- ✅ 전화번호/이메일은 네가 실제 값으로 바꿔 -->
+                    <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する">
+                      <span aria-hidden="true">☎</span>
+                      電話で相談する（無料）
+                    </a>
+
+                    <a class="contact-btn" href="mailto:info@example.com" aria-label="メールで相談する">
+                      <span aria-hidden="true">✉</span>
+                      メールで相談する
+                    </a>
+                  </div>
+
+                  <div class="contact-grid" style="margin-top:12px;">
+                    <div class="kv">
+                      <div class="k">対応地域</div>
+                      <div class="v">松戸周辺（応相談）</div>
+                    </div>
+                    <div class="kv">
+                      <div class="k">受付時間</div>
+                      <div class="v">9:00〜18:00（時間外もご相談ください）</div>
+                    </div>
+                  </div>
+
+                  <div class="pill-row" aria-label="安心の約束">
+                    <div class="pill">秘密厳守</div>
+                    <div class="pill">相談無料</div>
+                  </div>
+
+                  <p style="margin-top:10px; text-align:center; color: var(--ink-4); font-size: 12px; line-height: 1.9; font-family: var(--sans);">
+                    ※緊急時や状況により折り返しとなる場合がございます。<br/>
+                    まずはお気軽にご相談ください。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </section>
 
     </div>

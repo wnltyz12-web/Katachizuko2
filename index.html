@@ -16,13 +16,13 @@
     :root{
       --bg: #f4f1ea;
 
-      /* ✅ 가독성: 글자 대비(더 진하게), 본문/보조 텍스트 분리 */
-      --ink: rgba(66,55,41,.96);
-      --ink-strong: rgba(45,37,28,.98);
-      --muted: rgba(66,55,41,.76);
-      --muted2: rgba(66,55,41,.66);
+      /* ✅ 대비 단계(중요도 레벨) */
+      --ink-1: rgba(45,37,28,.96);  /* 제목/H3 */
+      --ink-2: rgba(66,55,41,.84);  /* lead(짧은 핵심) */
+      --ink-3: rgba(66,55,41,.70);  /* 본문 */
+      --ink-4: rgba(66,55,41,.56);  /* 보조/노트 */
 
-      --line: rgba(66,55,41,.16);
+      --line: rgba(66,55,41,.14);
       --line-strong: rgba(66,55,41,.22);
 
       --accent: rgba(155,122,52,.92);
@@ -32,20 +32,18 @@
       --btn-text: #ffffff;
 
       --mobile-max: 520px;
-
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      /* ✅ 유리 박스는 유지, 대신 "텍스트 뒤" 베일만 살짝 올려서 읽기 편하게 */
+      /* ✅ 가독성 베일은 유지하되 과하지 않게 */
       --card-veil: rgba(255,255,255,.14);
-      --panel-veil: rgba(255,255,255,.16);
+      --panel-veil: rgba(255,255,255,.14);
 
       --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       --serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
 
-      /* ✅ 가독성: 폰트 크기/줄간격 */
       --fs-12: 12px;
       --fs-13: 13px;
       --fs-14: 14px;
@@ -63,17 +61,19 @@
       --cards-gap: 12px;
       --card-pad-y: 14px;
       --card-pad-x: 14px;
-      --card-title-mb: 8px;
 
-      /* ✅ 본문 읽기 최적화 */
       --body-lh: 2.02;
       --sub-lh: 1.78;
+
+      /* ✅ 제목/본문 리듬 */
+      --title-letter: .12em;
+      --h3-letter: .10em;
     }
 
     body{
       font-family: var(--sans);
       background: var(--bg);
-      color: var(--ink);
+      color: var(--ink-3);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -150,7 +150,7 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: var(--ink-strong);
+      color: var(--ink-1);
       min-width: 0;
     }
 
@@ -190,7 +190,7 @@
     .brand-eyebrow{
       font-size: var(--fs-12);
       letter-spacing: .18em;
-      color: rgba(31,27,22,.74);
+      color: rgba(31,27,22,.62);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -202,7 +202,7 @@
       font-size: var(--fs-18);
       font-weight: 900;
       letter-spacing: .12em;
-      color: rgba(31,27,22,.95);
+      color: rgba(31,27,22,.94);
 
       white-space: nowrap;
       overflow: hidden;
@@ -225,7 +225,7 @@
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
-      color: rgba(31,27,22,.92);
+      color: rgba(31,27,22,.90);
       border-radius: 999px;
       height: 38px;
       padding: 0 12px;
@@ -245,11 +245,6 @@
       transform: translateY(-0.5px);
       background: rgba(255,255,255,.54);
       box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.72);
-    }
-    .hbtn:active{
-      transform: translateY(0px);
-      background: rgba(255,255,255,.46);
-      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.60);
     }
 
     .hbtn.primary{
@@ -296,7 +291,7 @@
     .hero-title{
       font-family: var(--serif);
       letter-spacing: .10em;
-      color: var(--ink);
+      color: rgba(96,84,64,.92);
       font-weight: 900;
       font-size: 16px;
       line-height: 1.95;
@@ -367,10 +362,6 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.17);
       filter: saturate(1.04);
     }
-    .cta-btn:active{
-      transform: translateY(0px);
-      box-shadow: 0 9px 24px rgba(0,0,0,.14);
-    }
 
     /* =========================
        Illustration
@@ -393,7 +384,7 @@
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .10em;
-      color: var(--ink-strong);
+      color: var(--ink-1);
       font-size: var(--fs-14);
       line-height: 1.7;
     }
@@ -402,11 +393,11 @@
       font-size: var(--fs-13);
       letter-spacing: .06em;
       line-height: 1.95;
-      color: var(--muted);
+      color: var(--ink-3);
     }
     .illus-caption strong{
       font-weight: 900;
-      color: var(--ink-strong);
+      color: var(--ink-1);
     }
 
     .diamond-sep{
@@ -471,7 +462,6 @@
       .panel::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ✅ 텍스트 가독성 핵심: 패널 베일(얇은 흰막) */
     .panel::after{
       content:"";
       position:absolute;
@@ -492,18 +482,20 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
+    /* ✅ 패널 타이틀 = 가장 중요 */
     .panel-title{
       font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
-      letter-spacing: .12em;
-      color: var(--ink-strong);
+      letter-spacing: var(--title-letter);
+      color: var(--ink-1);
     }
 
+    /* ✅ 패널 서브 = 중간 중요 */
     .panel-sub{
       margin-top: 6px;
       font-size: var(--fs-12);
-      color: var(--muted);
+      color: var(--ink-4);
       letter-spacing: .06em;
       line-height: var(--sub-lh);
       padding: 0 6px;
@@ -557,7 +549,6 @@
       .card::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ✅ 텍스트 가독성 핵심: 카드 베일(패널보다 조금 더) */
     .card::after{
       content:"";
       position:absolute;
@@ -569,47 +560,48 @@
 
     .card > *{ position: relative; z-index: 1; }
 
+    /* ✅ 카드 제목 = 중요 */
     .card h3{
       font-family: var(--serif);
       font-size: var(--fs-16);
       font-weight: 900;
-      letter-spacing: .10em;
-      color: var(--ink-strong);
-      margin-bottom: var(--card-title-mb);
+      letter-spacing: var(--h3-letter);
+      color: var(--ink-1);
+      margin-bottom: 10px;
       text-align: left;
     }
 
-    /* ✅ lead: 짧은 설명은 굵게 + 대비 */
+    /* ✅ lead = 그 다음 중요 */
     .card .lead{
       margin-top: -2px;
       font-family: var(--sans);
-      font-weight: 800;
+      font-weight: 700;
       font-size: var(--fs-14);
-      color: rgba(66,55,41,.92);
-      letter-spacing: .02em;
+      color: var(--ink-2);
+      letter-spacing: .01em;
       line-height: 1.75;
       margin-bottom: 10px;
     }
 
-    /* ✅ 본문: 줄간격/자간/색상 최적화 */
+    /* ✅ 본문 = 더 연하게(중요도 낮춤) */
     .card p{
       font-family: var(--sans);
       font-size: var(--fs-15);
       line-height: var(--body-lh);
-      color: rgba(66,55,41,.88);
+      color: var(--ink-3);
       text-align: left;
-      letter-spacing: .015em;
-      font-weight: 500;
+      letter-spacing: .01em;
+      font-weight: 400;
     }
 
-    /* ✅ 리스트: 너무 빽빽하지 않게 */
+    /* ✅ 리스트 = 본문보다 살짝 더 연하게 */
     .card ul{
       margin-top: 12px;
       padding-left: 18px;
-      color: rgba(66,55,41,.86);
+      color: rgba(66,55,41,.62);
       font-size: var(--fs-14);
       line-height: 1.95;
-      font-weight: 500;
+      font-weight: 400;
     }
     .card li{ margin: 2px 0; }
 
@@ -618,15 +610,17 @@
       height: 1px;
       background: var(--line);
     }
+
+    /* ✅ 노트 = 가장 낮은 중요 */
     .mini-note{
       text-align: center;
       font-family: var(--sans);
       font-size: var(--fs-13);
-      color: rgba(66,55,41,.72);
+      color: var(--ink-4);
       letter-spacing: .04em;
       line-height: 1.9;
       padding: 0 6px;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     /* reveal */
@@ -665,8 +659,8 @@
 
         <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 4h16v16H4z"></path>
-          <path d="M22 6l-10 7L2 6"></path>
+            <path d="M4 4h16v16H4z"></path>
+            <path d="M22 6l-10 7L2 6"></path>
           </svg>
           お問い合わせ
         </a>
@@ -794,7 +788,7 @@
                   <h3>ご利用案内</h3>
                   <p>
                     私たちがお手伝いいたします。<br/>
-                    <strong style="font-weight:800;">非会員の方でもご利用いただけます。</strong>
+                    <span style="color: var(--ink-2); font-weight: 700;">非会員の方でもご利用いただけます。</span>
                   </p>
                 </div>
 

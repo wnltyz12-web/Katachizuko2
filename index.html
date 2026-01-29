@@ -16,37 +16,40 @@
     :root{
       --bg: #f4f1ea;
 
-      --ink: rgba(96,84,64,.92);
-      --ink-strong: rgba(55,46,34,.96);
-      --muted: rgba(96,84,64,.72);
-      --muted2: rgba(96,84,64,.60);
+      /* ✅ 가독성: 글자 대비(더 진하게), 본문/보조 텍스트 분리 */
+      --ink: rgba(66,55,41,.96);
+      --ink-strong: rgba(45,37,28,.98);
+      --muted: rgba(66,55,41,.76);
+      --muted2: rgba(66,55,41,.66);
 
-      --line: rgba(96,84,64,.16);
-      --line-strong: rgba(96,84,64,.22);
+      --line: rgba(66,55,41,.16);
+      --line-strong: rgba(66,55,41,.22);
 
       --accent: rgba(155,122,52,.92);
-      --accent-line: rgba(155,122,52,.70);
+      --accent-line: rgba(155,122,52,.72);
 
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
       --mobile-max: 520px;
 
-      --shadow: 0 20px 55px rgba(0,0,0,.16);
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      --card-veil: rgba(255,255,255,.06);
-      --panel-veil: rgba(255,255,255,.08);
+      /* ✅ 유리 박스는 유지, 대신 "텍스트 뒤" 베일만 살짝 올려서 읽기 편하게 */
+      --card-veil: rgba(255,255,255,.14);
+      --panel-veil: rgba(255,255,255,.16);
 
       --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       --serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
 
+      /* ✅ 가독성: 폰트 크기/줄간격 */
       --fs-12: 12px;
       --fs-13: 13px;
       --fs-14: 14px;
+      --fs-15: 15px;
       --fs-16: 16px;
       --fs-18: 18px;
 
@@ -61,6 +64,10 @@
       --card-pad-y: 14px;
       --card-pad-x: 14px;
       --card-title-mb: 8px;
+
+      /* ✅ 본문 읽기 최적화 */
+      --body-lh: 2.02;
+      --sub-lh: 1.78;
     }
 
     body{
@@ -96,7 +103,7 @@
         to bottom,
         rgba(244,241,234,0) 0%,
         rgba(244,241,234,0) 40%,
-        rgba(255,255,255,0.50) 72%,
+        rgba(255,255,255,0.52) 72%,
         rgba(255,255,255,0.92) 100%
       );
     }
@@ -161,11 +168,10 @@
       letter-spacing: .06em;
 
       border: 1.5px solid rgba(0,0,0,.76);
-      background: rgba(255,255,255,.34);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.60);
-
-      transition: width .22s ease, height .22s ease, transform .22s ease;
+      background: rgba(255,255,255,.36);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
       flex: 0 0 auto;
+      transition: width .22s ease, height .22s ease, transform .22s ease;
     }
     .topbar.is-compact .brand-mark{
       width: 38px;
@@ -184,11 +190,11 @@
     .brand-eyebrow{
       font-size: var(--fs-12);
       letter-spacing: .18em;
-      color: rgba(31,27,22,.72);
+      color: rgba(31,27,22,.74);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .brand-name{
@@ -196,7 +202,7 @@
       font-size: var(--fs-18);
       font-weight: 900;
       letter-spacing: .12em;
-      color: rgba(31,27,22,.92);
+      color: rgba(31,27,22,.95);
 
       white-space: nowrap;
       overflow: hidden;
@@ -218,7 +224,7 @@
 
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.38);
+      background: rgba(255,255,255,.40);
       color: rgba(31,27,22,.92);
       border-radius: 999px;
       height: 38px;
@@ -229,31 +235,31 @@
       text-decoration: none;
       font-size: var(--fs-12);
       letter-spacing: .12em;
-      font-weight: 700;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.60);
+      font-weight: 800;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
       user-select: none;
       white-space: nowrap;
     }
     .hbtn:hover{
       transform: translateY(-0.5px);
-      background: rgba(255,255,255,.50);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.70);
+      background: rgba(255,255,255,.54);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.72);
     }
     .hbtn:active{
       transform: translateY(0px);
-      background: rgba(255,255,255,.44);
-      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.58);
+      background: rgba(255,255,255,.46);
+      box-shadow: 0 7px 16px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.60);
     }
 
     .hbtn.primary{
-      background: rgba(183,161,138,.94);
+      background: rgba(183,161,138,.96);
       color: #fff;
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
     }
     .hbtn.primary:hover{
-      background: rgba(183,161,138,.99);
+      background: rgba(183,161,138,1);
       box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
 
@@ -313,7 +319,7 @@
       font-weight: 900;
       font-size: var(--fs-13);
       letter-spacing: .22em;
-      background: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.14);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       user-select: none;
@@ -422,7 +428,7 @@
       height: 10px;
       transform: rotate(45deg);
       border: 1.5px solid rgba(155,122,52,.65);
-      background: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.60);
       box-shadow: 0 4px 10px rgba(0,0,0,.05);
     }
 
@@ -455,7 +461,7 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .34;
+      opacity: .32;
       filter: blur(.8px);
       transform: scale(1.05);
       pointer-events:none;
@@ -465,6 +471,7 @@
       .panel::before{ background-size: var(--orn-size-lg); }
     }
 
+    /* ✅ 텍스트 가독성 핵심: 패널 베일(얇은 흰막) */
     .panel::after{
       content:"";
       position:absolute;
@@ -479,7 +486,7 @@
     .panel-head{
       padding: 16px 16px 14px;
       text-align: center;
-      background: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.18);
       border-bottom: 1px solid rgba(0,0,0,.06);
       backdrop-filter: blur(var(--blur-panel));
       -webkit-backdrop-filter: blur(var(--blur-panel));
@@ -498,8 +505,9 @@
       font-size: var(--fs-12);
       color: var(--muted);
       letter-spacing: .06em;
-      line-height: 1.7;
-      padding: 0 4px;
+      line-height: var(--sub-lh);
+      padding: 0 6px;
+      font-weight: 600;
     }
 
     .panel-body{
@@ -515,7 +523,7 @@
     .cards{
       display: grid;
       gap: var(--cards-gap);
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .card{
@@ -539,7 +547,7 @@
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .40;
+      opacity: .38;
       filter: blur(.9px);
       transform: scale(1.06);
       pointer-events:none;
@@ -549,6 +557,7 @@
       .card::before{ background-size: var(--orn-size-lg); }
     }
 
+    /* ✅ 텍스트 가독성 핵심: 카드 베일(패널보다 조금 더) */
     .card::after{
       content:"";
       position:absolute;
@@ -560,18 +569,6 @@
 
     .card > *{ position: relative; z-index: 1; }
 
-    /* ✅ 작은 상단 설명(짧은 1~2줄) */
-    .card .lead{
-      margin-top: -2px;
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: var(--fs-13);
-      color: rgba(96,84,64,.86);
-      letter-spacing: .02em;
-      line-height: 1.65;
-      margin-bottom: 8px;
-    }
-
     .card h3{
       font-family: var(--serif);
       font-size: var(--fs-16);
@@ -581,36 +578,55 @@
       margin-bottom: var(--card-title-mb);
       text-align: left;
     }
+
+    /* ✅ lead: 짧은 설명은 굵게 + 대비 */
+    .card .lead{
+      margin-top: -2px;
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: var(--fs-14);
+      color: rgba(66,55,41,.92);
+      letter-spacing: .02em;
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    /* ✅ 본문: 줄간격/자간/색상 최적화 */
     .card p{
       font-family: var(--sans);
-      font-size: var(--fs-13);
-      line-height: 1.9;
-      color: rgba(96,84,64,.82);
+      font-size: var(--fs-15);
+      line-height: var(--body-lh);
+      color: rgba(66,55,41,.88);
       text-align: left;
-      letter-spacing: .02em;
+      letter-spacing: .015em;
+      font-weight: 500;
     }
 
+    /* ✅ 리스트: 너무 빽빽하지 않게 */
     .card ul{
-      margin-top: 10px;
+      margin-top: 12px;
       padding-left: 18px;
-      color: rgba(96,84,64,.80);
-      font-size: var(--fs-13);
-      line-height: 1.85;
+      color: rgba(66,55,41,.86);
+      font-size: var(--fs-14);
+      line-height: 1.95;
+      font-weight: 500;
     }
+    .card li{ margin: 2px 0; }
 
     .mini-hr{
-      margin: 16px 2px 12px;
+      margin: 18px 2px 12px;
       height: 1px;
       background: var(--line);
     }
     .mini-note{
       text-align: center;
       font-family: var(--sans);
-      font-size: var(--fs-12);
-      color: var(--muted2);
-      letter-spacing: .05em;
-      line-height: 1.85;
+      font-size: var(--fs-13);
+      color: rgba(66,55,41,.72);
+      letter-spacing: .04em;
+      line-height: 1.9;
       padding: 0 6px;
+      font-weight: 500;
     }
 
     /* reveal */
@@ -649,8 +665,8 @@
 
         <a class="hbtn primary" href="#details" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 4h16v16H4z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
+          <path d="M4 4h16v16H4z"></path>
+          <path d="M22 6l-10 7L2 6"></path>
           </svg>
           お問い合わせ
         </a>
@@ -711,7 +727,6 @@
 
           <div class="panel-body">
             <div class="panel-inner">
-
               <div class="cards">
                 <div class="card">
                   <h3>身元保証人代行</h3>
@@ -758,7 +773,6 @@
                 ※事前に細かなお打ち合わせを行ったうえで、<br/>
                 お客様の状況やご希望に応じて最適なプランをご提案いたします。
               </div>
-
             </div>
           </div>
         </article>
@@ -775,13 +789,12 @@
 
           <div class="panel-body">
             <div class="panel-inner">
-
               <div class="cards">
                 <div class="card">
                   <h3>ご利用案内</h3>
                   <p>
                     私たちがお手伝いいたします。<br/>
-                    <span style="font-weight:700;">非会員の方でもご利用いただけます。</span>
+                    <strong style="font-weight:800;">非会員の方でもご利用いただけます。</strong>
                   </p>
                 </div>
 
@@ -801,7 +814,6 @@
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </article>

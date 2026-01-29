@@ -27,11 +27,11 @@
       --accent: rgba(155,122,52,.92);
       --accent-line: rgba(155,122,52,.72);
 
-      /* ✅ 기본 버튼(料金表은 이 색 그대로) */
+      /* 기본 버튼(料金表은 이 색 그대로) */
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
-      /* ✅ 요청한 버튼 컬러 */
+      /* 버튼 컬러 */
       --btn-guarantee: #968444; /* 身元保証 */
       --btn-support: #497790;   /* 生活支援 */
 
@@ -265,10 +265,8 @@
     }
     .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
 
-    /* ✅ 버튼별 컬러 */
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
-    /* 料金表은 기본 --btn 그대로 */
 
     /* Illustration */
     .illus-wrap{ margin-top: 18px; }
@@ -423,7 +421,7 @@
     }
     .card li{ margin: 2px 0; }
 
-    /* 가격표(창 분리) */
+    /* Fee */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{
       display: grid;
@@ -448,7 +446,7 @@
       font-size: var(--fs-13);
       color: var(--ink-4);
       line-height: 1.75;
-      font-weight: 500;
+      font-weight: 600;
       font-family: var(--sans);
     }
     .fee-price{
@@ -463,14 +461,25 @@
     .fee-price .sub{
       display:block;
       margin-top: 4px;
-      font-size: var(--fs-12);
+      font-size: 12px;
       font-weight: 700;
       color: var(--ink-4);
       white-space: nowrap;
       font-family: var(--sans);
     }
+    /* ✅ 深夜帯 표시(색 빠진 + 작게) */
+    .fee-price .time{
+      display:block;
+      margin-top: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(66,55,41,.48);
+      letter-spacing: .04em;
+      white-space: nowrap;
+      font-family: var(--sans);
+    }
 
-    /* 문의 섹션 */
+    /* Contact */
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
     .contact-btn{
@@ -478,21 +487,17 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-
       width: 100%;
       height: 52px;
-
       border-radius: 14px;
       border: 1px solid rgba(0,0,0,.10);
       background: rgba(255,255,255,.34);
       color: rgba(31,27,22,.92);
-
       font-family: var(--sans);
       font-size: 14px;
       font-weight: 800;
       letter-spacing: .08em;
       text-decoration: none;
-
       box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
     }
@@ -614,19 +619,16 @@
 
         <div class="hero-cta">
           <div class="hero-cta-row">
-            <!-- ✅ 身元保証: #968444 -->
             <button class="cta-btn guarantee" type="button"
               onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
               身元保証
             </button>
 
-            <!-- ✅ 生活支援: #497790 -->
             <button class="cta-btn support" type="button"
               onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
               生活支援
             </button>
 
-            <!-- ✅ 料金表: 기존 --btn(#b7a18a) 그대로 -->
             <button class="cta-btn" type="button"
               onclick="document.getElementById('panel-price').scrollIntoView({behavior:'smooth',block:'start'})">
               料金表
@@ -657,7 +659,11 @@
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証プラン</div>
-            <div class="panel-sub">施設入居・入院時などに必要な「保証」を、わかりやすく整えます</div>
+            <!-- ✅ 줄바꿈 -->
+            <div class="panel-sub">
+              施設入居・入院時などに必要な「保証」を、<br/>
+              わかりやすく整えます
+            </div>
           </div>
 
           <div class="panel-body">
@@ -741,7 +747,11 @@
         <article class="panel" id="panel-price">
           <div class="panel-head">
             <div class="panel-title">料金表</div>
-            <div class="panel-sub">入会金・月会費、各プランの料金目安です（すべて税込）</div>
+            <!-- ✅ 줄바꿈 -->
+            <div class="panel-sub">
+              入会金・月会費、各プランの料金目安です<br/>
+              （すべて税込）
+            </div>
           </div>
 
           <div class="panel-body">
@@ -767,7 +777,8 @@
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">A-1 身元保証人代行</div>
-                        <div class="fee-desc">施設月額利用料の2か月分（会員）</div>
+                        <!-- ✅ 줄바꿈 -->
+                        <div class="fee-desc">施設月額利用料の2か月分<br/>（会員）</div>
                       </div>
                       <div class="fee-price">2か月分<span class="sub">非会員：4か月分</span></div>
                     </div>
@@ -804,10 +815,13 @@
                       <div><div class="fee-name">訪問支援（18:00〜9:00）</div></div>
                       <div class="fee-price">5,000円／1時間</div>
                     </div>
+
+                    <!-- ✅ 深夜帯: 작은/색빠진 텍스트를 1時間 아래에 -->
                     <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（深夜帯 22:00〜7:00）</div></div>
-                      <div class="fee-price">6,000円／1時間</div>
+                      <div><div class="fee-name">訪問支援</div></div>
+                      <div class="fee-price">6,000円／1時間<span class="time">深夜帯 22:00〜7:00</span></div>
                     </div>
+
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">同行支援（9:00〜18:00）</div>
@@ -819,9 +833,11 @@
                       <div><div class="fee-name">同行支援（18:00〜9:00）</div></div>
                       <div class="fee-price">7,000円／1時間</div>
                     </div>
+
+                    <!-- ✅ 深夜帯 -->
                     <div class="fee-item">
-                      <div><div class="fee-name">同行支援（深夜帯 22:00〜7:00）</div></div>
-                      <div class="fee-price">8,000円／1時間</div>
+                      <div><div class="fee-name">同行支援</div></div>
+                      <div class="fee-price">8,000円／1時間<span class="time">深夜帯 22:00〜7:00</span></div>
                     </div>
                   </div>
                 </div>

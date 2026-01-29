@@ -16,7 +16,6 @@
     :root{
       --bg: #f4f1ea;
 
-      /* 대비 단계(중요도) */
       --ink-1: rgba(45,37,28,.96);
       --ink-2: rgba(66,55,41,.84);
       --ink-3: rgba(66,55,41,.70);
@@ -77,25 +76,18 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* =========================
-       Background Ornament + Bottom Fade
-    ========================= */
+    /* Background */
     .ornament-bg{
-      position: fixed;
-      inset: 0;
-      z-index: 0;
+      position: fixed; inset: 0; z-index: 0;
       background-color: var(--bg);
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
     }
-    @media (min-width: 900px){
-      .ornament-bg{ background-size: var(--orn-size-lg); }
-    }
+    @media (min-width: 900px){ .ornament-bg{ background-size: var(--orn-size-lg); } }
     .ornament-bg::after{
       content:"";
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       pointer-events: none;
       background: linear-gradient(
         to bottom,
@@ -106,26 +98,16 @@
       );
     }
 
-    /* =========================
-       Header
-    ========================= */
+    /* Header */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-
+      position: sticky; top: 0; z-index: 50;
       height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
+      display: flex; align-items: center; justify-content: center;
       background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
-
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-
       transition: height .22s ease, box-shadow .22s ease;
     }
     .topbar.is-compact{ height: 64px; box-shadow: 0 8px 18px rgba(0,0,0,.06); }
@@ -134,33 +116,22 @@
       width: 100%;
       max-width: var(--mobile-max);
       padding: 0 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       gap: 12px;
     }
 
     .brand{
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--ink-1);
+      display: inline-flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink-1);
       min-width: 0;
     }
-
     .brand-mark{
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-
+      width: 44px; height: 44px; border-radius: 999px;
+      display: grid; place-items: center;
       font-family: var(--serif);
       font-weight: 900;
       font-size: 16px;
       letter-spacing: .06em;
-
       border: 1.5px solid rgba(0,0,0,.76);
       background: rgba(255,255,255,.36);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
@@ -169,54 +140,34 @@
     }
     .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
 
-    .brand-text{
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-      gap: 6px;
-      min-width: 0;
-    }
-
+    .brand-text{ display: flex; flex-direction: column; line-height: 1.05; gap: 6px; min-width: 0; }
     .brand-eyebrow{
       font-size: var(--fs-12);
       letter-spacing: .18em;
       color: rgba(31,27,22,.62);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       font-weight: 700;
     }
-
     .brand-name{
       font-family: var(--serif);
       font-size: var(--fs-18);
       font-weight: 900;
       letter-spacing: .12em;
       color: rgba(31,27,22,.94);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       transition: font-size .22s ease, letter-spacing .22s ease;
     }
     .topbar.is-compact .brand-name{ font-size: 16px; letter-spacing: .10em; }
 
-    .header-actions{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      flex: 0 0 auto;
-    }
+    .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
       color: rgba(31,27,22,.90);
       border-radius: 999px;
-      height: 38px;
-      padding: 0 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      height: 38px; padding: 0 12px;
+      display: inline-flex; align-items: center; gap: 8px;
       text-decoration: none;
       font-size: var(--fs-12);
       letter-spacing: .12em;
@@ -241,15 +192,11 @@
     .hbtn .ico{ width: 18px; height: 18px; display: inline-block; }
     @media (max-width: 420px){ .header-actions .hbtn.secondary{ display: none; } }
 
-    /* =========================
-       Layout
-    ========================= */
+    /* Layout */
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* HERO */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
     .hero-title{
       font-family: var(--serif);
@@ -259,12 +206,9 @@
       font-size: 16px;
       line-height: 1.95;
     }
-
     .hero-label-wrap{ margin-top: 12px; display: grid; place-items: center; }
     .hero-label{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center;
       padding: 7px 14px;
       border-radius: 6px;
       border: 2px solid var(--accent-line);
@@ -297,9 +241,7 @@
     }
     .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
 
-    /* =========================
-       Illustration
-    ========================= */
+    /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{ width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 14px 34px rgba(0,0,0,.12); }
@@ -311,9 +253,7 @@
     .diamond-sep .line{ height: 1px; flex: 1; background: var(--line-strong); }
     .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
 
-    /* =========================
-       Panels
-    ========================= */
+    /* Panels */
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
     .panel{
@@ -326,11 +266,9 @@
       backdrop-filter: blur(var(--blur-panel));
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
-
     .panel::before{
       content:"";
-      position:absolute;
-      inset:-60px;
+      position:absolute; inset:-60px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
@@ -341,11 +279,9 @@
       z-index: 0;
     }
     @media (min-width: 900px){ .panel::before{ background-size: var(--orn-size-lg); } }
-
     .panel::after{
       content:"";
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       background: var(--panel-veil);
       pointer-events:none;
       z-index: 0;
@@ -397,11 +333,9 @@
       -webkit-backdrop-filter: blur(var(--blur-card));
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
-
     .card::before{
       content:"";
-      position:absolute;
-      inset:-44px;
+      position:absolute; inset:-44px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
@@ -412,11 +346,9 @@
       z-index: 0;
     }
     @media (min-width: 900px){ .card::before{ background-size: var(--orn-size-lg); } }
-
     .card::after{
       content:"";
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       background: var(--card-veil);
       pointer-events:none;
       z-index: 0;
@@ -438,7 +370,6 @@
       font-weight: 700;
       font-size: var(--fs-14);
       color: var(--ink-2);
-      letter-spacing: .01em;
       line-height: 1.75;
       margin-bottom: 10px;
     }
@@ -452,7 +383,7 @@
       font-weight: 400;
     }
     .card ul{
-      margin-top: 12px;
+      margin-top: 10px;
       padding-left: 18px;
       color: rgba(66,55,41,.62);
       font-size: var(--fs-14);
@@ -461,86 +392,51 @@
     }
     .card li{ margin: 2px 0; }
 
-    .mini-hr{ margin: 18px 2px 12px; height: 1px; background: var(--line); }
-    .mini-note{
-      text-align: center;
-      font-family: var(--sans);
-      font-size: var(--fs-13);
-      color: var(--ink-4);
-      letter-spacing: .04em;
-      line-height: 1.9;
-      padding: 0 6px;
-      font-weight: 400;
-    }
-
-    /* =========================
-       ✅ Pricing Panel (NEW, separate window/panel)
-    ========================= */
-    .price-grid{ display: grid; gap: 12px; margin-top: 10px; }
-
-    .price-section-title{
-      font-family: var(--serif);
-      font-weight: 900;
-      font-size: var(--fs-14);
-      letter-spacing: .08em;
-      color: var(--ink-1);
-      margin: 2px 0 8px;
-      text-align: left;
-    }
-
-    .price-row{
+    /* ✅ 가격표: 밑줄/구분선/점선 없음. "창(카드)로만" 분리 */
+    .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
+    .fee-item{
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 10px;
       align-items: start;
-      padding: 10px 0;
-      border-bottom: 1px dashed rgba(66,55,41,.18);
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
     }
-    .price-row:last-child{ border-bottom: 0; padding-bottom: 0; }
-
-    .price-label{
+    .fee-name{
       font-size: var(--fs-14);
-      line-height: 1.7;
+      font-weight: 800;
       color: var(--ink-2);
-      font-weight: 700;
-      letter-spacing: .02em;
+      line-height: 1.55;
     }
-    .price-sub{
+    .fee-desc{
       margin-top: 4px;
       font-size: var(--fs-13);
-      line-height: 1.8;
       color: var(--ink-4);
+      line-height: 1.75;
+      font-weight: 500;
     }
-
-    .price-val{
+    .fee-price{
       text-align: right;
-      font-family: var(--sans);
       font-size: var(--fs-14);
-      line-height: 1.7;
+      font-weight: 900;
       color: var(--ink-1);
-      font-weight: 800;
-      letter-spacing: .02em;
       white-space: nowrap;
+      line-height: 1.55;
     }
-    .price-val .small{
-      display: block;
+    .fee-price .sub{
+      display:block;
       margin-top: 4px;
       font-size: var(--fs-12);
-      font-weight: 600;
+      font-weight: 700;
       color: var(--ink-4);
-      letter-spacing: .02em;
-    }
-
-    .price-note-list{
-      margin-top: 8px;
-      padding-left: 18px;
-      color: var(--ink-4);
-      font-size: var(--fs-13);
-      line-height: 1.9;
+      white-space: nowrap;
     }
 
     .pill-row{
-      margin-top: 14px;
+      margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -665,53 +561,43 @@
                 <div class="card">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
-                  <p>
-                    条件や流れを整理し、<br/>
-                    安心して手続きができるようにご支援いたします。
-                  </p>
+                  <p>条件や流れを整理し、安心して手続きができるようにご支援いたします。</p>
                 </div>
 
                 <div class="card">
                   <h3>緊急連絡先代行</h3>
                   <div class="lead">入院時、施設契約時の緊急連絡先にご指定いただけます</div>
-                  <p>
-                    連絡方法、優先順位を事前に確認し、<br/>
-                    連絡が取れる体制を整えます。
-                  </p>
+                  <p>連絡方法、優先順位を事前に確認し、連絡が取れる体制を整えます。</p>
                 </div>
 
                 <div class="card">
                   <h3>身元引受人代行</h3>
-                  <p>
-                    お亡くなりになられた際の<br/>
-                    身元引き受けを承ります。
-                  </p>
+                  <p>お亡くなりになられた際の身元引き受けを承ります。</p>
                 </div>
 
                 <div class="card">
                   <h3>死後事務手続き代行</h3>
-                  <p>
-                    お亡くなりになられた後の細かな各種手続きを承ります。<br/>
-                    事前のご希望通りに円滑に進むようご支援いたします。
-                  </p>
+                  <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
                   <ul>
                     <li>葬儀・納骨・遺品整理</li>
                     <li>荷物処分・各種解約手続き</li>
                     <li>清算 など</li>
                   </ul>
                 </div>
-              </div>
 
-              <div class="mini-hr"></div>
-              <div class="mini-note">
-                ※事前に細かなお打ち合わせを行ったうえで、<br/>
-                お客様の状況やご希望に応じて最適なプランをご提案いたします。
+                <div class="card">
+                  <h3>ご案内</h3>
+                  <p style="color: var(--ink-4); font-size: 13px; line-height: 1.9;">
+                    ※事前に細かなお打ち合わせを行ったうえで、<br/>
+                    お客様の状況やご希望に応じて最適なプランをご提案いたします。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 生活支援プラン (separate, NO pricing here) -->
+        <!-- 生活支援プラン -->
         <article class="panel" id="panel-support">
           <div class="panel-head">
             <div class="panel-title">生活支援プラン</div>
@@ -734,143 +620,176 @@
 
                 <div class="card">
                   <h3>訪問支援</h3>
-                  <p>
-                    ご訪問しての身の回りのお手伝い、<br/>
-                    買物代行などの日常生活支援を承ります。
-                  </p>
+                  <p>ご訪問しての身の回りのお手伝い、買物代行などの日常生活支援を承ります。</p>
                 </div>
 
                 <div class="card">
                   <h3>同行支援</h3>
-                  <p>
-                    車両を使用しての買物・通院・役所等の<br/>
-                    外出同行支援を承ります。
-                  </p>
+                  <p>車両を使用しての買物・通院・役所等の外出同行支援を承ります。</p>
                 </div>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- ✅ 料金表を独立パネル로 분리 -->
+        <!-- ✅ 料金表 (밑줄/구분선 없이 "창(카드)"으로만 분리) -->
         <article class="panel" id="panel-price">
           <div class="panel-head">
             <div class="panel-title">料金表</div>
-            <div class="panel-sub">
-              入会金・月会費、各プランの料金目安です（すべて税込）
-            </div>
+            <div class="panel-sub">入会金・月会費、各プランの料金目安です（すべて税込）</div>
           </div>
 
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
+
                 <div class="card">
                   <h3>会費</h3>
-                  <div class="price-grid">
-                    <div class="price-row">
+                  <div class="fee-list">
+                    <div class="fee-item">
                       <div>
-                        <div class="price-label">入会金</div>
-                        <div class="price-sub">ご入会時に必要となります</div>
+                        <div class="fee-name">入会金</div>
                       </div>
-                      <div class="price-val">300,000円</div>
+                      <div class="fee-price">300,000円</div>
                     </div>
-                    <div class="price-row">
+
+                    <div class="fee-item">
                       <div>
-                        <div class="price-label">月会費</div>
-                        <div class="price-sub">会員継続の月額費用</div>
+                        <div class="fee-name">月会費</div>
                       </div>
-                      <div class="price-val">5,000円</div>
+                      <div class="fee-price">5,000円</div>
                     </div>
                   </div>
                 </div>
 
                 <div class="card">
                   <h3>身元保証プラン</h3>
-                  <div class="price-grid">
-                    <div class="price-row">
+                  <div class="fee-list">
+                    <div class="fee-item">
                       <div>
-                        <div class="price-label">A-1 身元保証人代行</div>
-                        <div class="price-sub">施設月額利用料の2か月分（会員）</div>
+                        <div class="fee-name">A-1 身元保証人代行</div>
+                        <div class="fee-desc">施設月額利用料の2か月分（会員）</div>
                       </div>
-                      <div class="price-val">
+                      <div class="fee-price">
                         2か月分
-                        <span class="small">非会員：4か月分</span>
+                        <span class="sub">非会員：4か月分</span>
                       </div>
                     </div>
 
-                    <div class="price-row">
-                      <div><div class="price-label">A-2 緊急連絡先代行</div></div>
-                      <div class="price-val">220,000円<span class="small">非会員：440,000円</span></div>
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">A-2 緊急連絡先代行</div>
+                      </div>
+                      <div class="fee-price">
+                        220,000円
+                        <span class="sub">非会員：440,000円</span>
+                      </div>
                     </div>
 
-                    <div class="price-row">
-                      <div><div class="price-label">A-3 身元引受人代行</div></div>
-                      <div class="price-val">110,000円<span class="small">非会員：220,000円</span></div>
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">A-3 身元引受人代行</div>
+                      </div>
+                      <div class="fee-price">
+                        110,000円
+                        <span class="sub">非会員：220,000円</span>
+                      </div>
                     </div>
 
-                    <div class="price-row">
-                      <div><div class="price-label">A-4 死後事務代行</div></div>
-                      <div class="price-val">220,000円<span class="small">非会員：440,000円</span></div>
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">A-4 死後事務代行</div>
+                      </div>
+                      <div class="fee-price">
+                        220,000円
+                        <span class="sub">非会員：440,000円</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div class="card">
                   <h3>生活支援プラン</h3>
-                  <p style="margin-top:-4px; color: var(--ink-4); font-size: 13px; line-height: 1.8;">
+                  <p style="margin-top:-6px; color: var(--ink-4); font-size: 13px; line-height: 1.85;">
                     ※会員／非会員すべて同じ金額です
                   </p>
 
-                  <div class="price-section-title">訪問支援</div>
-                  <div class="price-grid">
-                    <div class="price-row">
-                      <div><div class="price-label">9:00〜18:00</div></div>
-                      <div class="price-val">4,000円／1時間</div>
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">訪問支援（9:00〜18:00）</div>
+                      </div>
+                      <div class="fee-price">4,000円／1時間</div>
                     </div>
-                    <div class="price-row">
-                      <div><div class="price-label">18:00〜9:00</div></div>
-                      <div class="price-val">5,000円／1時間</div>
-                    </div>
-                    <div class="price-row">
-                      <div><div class="price-label">深夜帯 22:00〜7:00</div></div>
-                      <div class="price-val">6,000円／1時間</div>
-                    </div>
-                  </div>
 
-                  <div class="mini-hr" style="margin:14px 0 10px;"></div>
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">訪問支援（18:00〜9:00）</div>
+                      </div>
+                      <div class="fee-price">5,000円／1時間</div>
+                    </div>
 
-                  <div class="price-section-title">同行支援（車両使用）</div>
-                  <div class="price-grid">
-                    <div class="price-row">
-                      <div><div class="price-label">9:00〜18:00</div></div>
-                      <div class="price-val">6,000円／1時間</div>
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">訪問支援（深夜帯 22:00〜7:00）</div>
+                      </div>
+                      <div class="fee-price">6,000円／1時間</div>
                     </div>
-                    <div class="price-row">
-                      <div><div class="price-label">18:00〜9:00</div></div>
-                      <div class="price-val">7,000円／1時間</div>
+
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">同行支援（9:00〜18:00）</div>
+                        <div class="fee-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
+                      </div>
+                      <div class="fee-price">6,000円／1時間</div>
                     </div>
-                    <div class="price-row">
-                      <div><div class="price-label">深夜帯 22:00〜7:00</div></div>
-                      <div class="price-val">8,000円／1時間</div>
+
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">同行支援（18:00〜9:00）</div>
+                      </div>
+                      <div class="fee-price">7,000円／1時間</div>
+                    </div>
+
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">同行支援（深夜帯 22:00〜7:00）</div>
+                      </div>
+                      <div class="fee-price">8,000円／1時間</div>
                     </div>
                   </div>
                 </div>
 
                 <div class="card">
                   <h3>その他の料金</h3>
-                  <ul class="price-note-list">
-                    <li>同行支援費：20km毎＝500円</li>
-                    <li>スタッフ移動費：20円／1km</li>
-                    <li>土日祝日料金：＋1,000円／1時間</li>
-                  </ul>
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">同行支援費</div><div class="fee-desc">20km毎</div></div>
+                      <div class="fee-price">500円</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">スタッフ移動費</div><div class="fee-desc">1kmあたり</div></div>
+                      <div class="fee-price">20円</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">土日祝日料金</div><div class="fee-desc">1時間あたり</div></div>
+                      <div class="fee-price">＋1,000円</div>
+                    </div>
+                  </div>
+                </div>
 
-                  <div class="mini-hr" style="margin:14px 0 10px;"></div>
-
-                  <h3 style="margin-bottom:8px;">キャンセルポリシー</h3>
-                  <ul class="price-note-list">
-                    <li>変更・キャンセルは前日の15時までにご連絡ください</li>
-                    <li>時間を過ぎてのキャンセルはサポート料金を全額お支払いいただきます</li>
-                  </ul>
+                <div class="card">
+                  <h3>キャンセルポリシー</h3>
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">変更・キャンセル</div><div class="fee-desc">前日の15時までにご連絡ください</div></div>
+                      <div class="fee-price">—</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">時間を過ぎてのキャンセル</div><div class="fee-desc">サポート料金を全額お支払いいただきます</div></div>
+                      <div class="fee-price">—</div>
+                    </div>
+                  </div>
 
                   <div class="pill-row" aria-label="安心の約束">
                     <div class="pill">秘密厳守</div>
@@ -894,14 +813,11 @@
     }, { threshold: 0.14 });
     els.forEach(el => io.observe(el));
 
-    const topbar = document.getElementById('topbar');
-    let ticking = false;
-
     const topbarEl = document.getElementById('topbar');
+    let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
-
       window.requestAnimationFrame(() => {
         const y = window.scrollY || 0;
         if (y > 12) topbarEl.classList.add('is-compact');

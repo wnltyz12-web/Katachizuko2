@@ -37,7 +37,6 @@
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      /* ✅ 가독성 베일은 유지하되 과하지 않게 */
       --card-veil: rgba(255,255,255,.14);
       --panel-veil: rgba(255,255,255,.14);
 
@@ -65,7 +64,6 @@
       --body-lh: 2.02;
       --sub-lh: 1.78;
 
-      /* ✅ 제목/본문 리듬 */
       --title-letter: .12em;
       --h3-letter: .10em;
     }
@@ -277,7 +275,7 @@
     .container{
       width: 100%;
       max-width: var(--mobile-max);
-      padding: 18px 16px 140px;
+      padding: 18px 16px 160px;
     }
 
     /* =========================
@@ -482,7 +480,6 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
-    /* ✅ 패널 타이틀 = 가장 중요 */
     .panel-title{
       font-family: var(--serif);
       font-size: 18px;
@@ -491,7 +488,6 @@
       color: var(--ink-1);
     }
 
-    /* ✅ 패널 서브 = 중간 중요 */
     .panel-sub{
       margin-top: 6px;
       font-size: var(--fs-12);
@@ -560,7 +556,6 @@
 
     .card > *{ position: relative; z-index: 1; }
 
-    /* ✅ 카드 제목 = 중요 */
     .card h3{
       font-family: var(--serif);
       font-size: var(--fs-16);
@@ -571,7 +566,6 @@
       text-align: left;
     }
 
-    /* ✅ lead = 그 다음 중요 */
     .card .lead{
       margin-top: -2px;
       font-family: var(--sans);
@@ -583,7 +577,6 @@
       margin-bottom: 10px;
     }
 
-    /* ✅ 본문 = 더 연하게(중요도 낮춤) */
     .card p{
       font-family: var(--sans);
       font-size: var(--fs-15);
@@ -594,7 +587,6 @@
       font-weight: 400;
     }
 
-    /* ✅ 리스트 = 본문보다 살짝 더 연하게 */
     .card ul{
       margin-top: 12px;
       padding-left: 18px;
@@ -611,7 +603,6 @@
       background: var(--line);
     }
 
-    /* ✅ 노트 = 가장 낮은 중요 */
     .mini-note{
       text-align: center;
       font-family: var(--sans);
@@ -621,6 +612,97 @@
       line-height: 1.9;
       padding: 0 6px;
       font-weight: 400;
+    }
+
+    /* =========================
+       ✅ Pricing Section (NEW)
+    ========================= */
+    .pricing{
+      margin-top: 14px;
+    }
+
+    .price-grid{
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .price-row{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(66,55,41,.18);
+    }
+    .price-row:last-child{ border-bottom: 0; padding-bottom: 0; }
+
+    .price-label{
+      font-size: var(--fs-14);
+      line-height: 1.7;
+      color: var(--ink-2);
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .price-sub{
+      margin-top: 4px;
+      font-size: var(--fs-13);
+      line-height: 1.8;
+      color: var(--ink-4);
+    }
+
+    .price-val{
+      text-align: right;
+      font-family: var(--sans);
+      font-size: var(--fs-14);
+      line-height: 1.7;
+      color: var(--ink-1);
+      font-weight: 800;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .price-val .small{
+      display: block;
+      margin-top: 4px;
+      font-size: var(--fs-12);
+      font-weight: 600;
+      color: var(--ink-4);
+      letter-spacing: .02em;
+    }
+
+    .price-note-list{
+      margin-top: 10px;
+      padding-left: 18px;
+      color: var(--ink-4);
+      font-size: var(--fs-13);
+      line-height: 1.9;
+    }
+
+    .pill-row{
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,55,41,.16);
+      background: rgba(255,255,255,.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: var(--fs-13);
+      letter-spacing: .10em;
+      color: rgba(96,84,64,.92);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      user-select: none;
     }
 
     /* reveal */
@@ -808,6 +890,179 @@
                   </p>
                 </div>
               </div>
+
+              <!-- ✅ NEW: 料金表(아래에 추가) -->
+              <div class="mini-hr"></div>
+
+              <div class="card pricing">
+                <h3>料金の目安</h3>
+                <p style="margin-top:-2px;">
+                  入会金・月会費、および各プランの料金目安です。<br/>
+                  <span style="color: var(--ink-4); font-size: 13px;">※表示はすべて税込です。</span>
+                </p>
+
+                <div class="price-grid">
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">入会金</div>
+                      <div class="price-sub">ご入会時に必要となります</div>
+                    </div>
+                    <div class="price-val">300,000円</div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">月会費</div>
+                      <div class="price-sub">会員継続の月額費用</div>
+                    </div>
+                    <div class="price-val">5,000円</div>
+                  </div>
+                </div>
+
+                <div class="mini-hr" style="margin:16px 0 12px;"></div>
+
+                <div class="price-label" style="margin-bottom:8px;">身元保証プラン</div>
+
+                <div class="price-grid">
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">A-1 身元保証人代行</div>
+                      <div class="price-sub">施設月額利用料の2か月分（会員）</div>
+                    </div>
+                    <div class="price-val">
+                      2か月分
+                      <span class="small">非会員：4か月分</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">A-2 緊急連絡先代行</div>
+                    </div>
+                    <div class="price-val">
+                      220,000円
+                      <span class="small">非会員：440,000円</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">A-3 身元引受人代行</div>
+                    </div>
+                    <div class="price-val">
+                      110,000円
+                      <span class="small">非会員：220,000円</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">A-4 死後事務代行</div>
+                    </div>
+                    <div class="price-val">
+                      220,000円
+                      <span class="small">非会員：440,000円</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mini-hr" style="margin:16px 0 12px;"></div>
+
+                <div class="price-label" style="margin-bottom:8px;">
+                  生活支援プラン
+                  <span style="display:block; margin-top:4px; font-size:12px; color: var(--ink-4); font-weight:600;">
+                    ※会員／非会員すべて同じ金額です
+                  </span>
+                </div>
+
+                <div class="price-grid">
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">訪問支援</div>
+                      <div class="price-sub">買物・お困りごと・相談等の訪問支援</div>
+                    </div>
+                    <div class="price-val">
+                      4,000円/時
+                      <span class="small">9:00〜18:00</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">訪問支援（夜間）</div>
+                    </div>
+                    <div class="price-val">
+                      5,000円/時
+                      <span class="small">18:00〜9:00</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">訪問支援（深夜）</div>
+                    </div>
+                    <div class="price-val">
+                      6,000円/時
+                      <span class="small">22:00〜7:00</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">同行支援</div>
+                      <div class="price-sub">車両を使用しての通院・買物・役所等の外出同行支援</div>
+                    </div>
+                    <div class="price-val">
+                      6,000円/時
+                      <span class="small">9:00〜18:00</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">同行支援（夜間）</div>
+                    </div>
+                    <div class="price-val">
+                      7,000円/時
+                      <span class="small">18:00〜9:00</span>
+                    </div>
+                  </div>
+
+                  <div class="price-row">
+                    <div>
+                      <div class="price-label">同行支援（深夜）</div>
+                    </div>
+                    <div class="price-val">
+                      8,000円/時
+                      <span class="small">22:00〜7:00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mini-hr" style="margin:16px 0 10px;"></div>
+
+                <div class="price-label" style="margin-bottom:6px;">その他の料金</div>
+                <ul class="price-note-list">
+                  <li>同行支援費：20km毎＝500円</li>
+                  <li>スタッフ移動費：20円／1km</li>
+                  <li>土日祝日料金：＋1,000円／1時間</li>
+                </ul>
+
+                <div class="mini-hr" style="margin:14px 0 10px;"></div>
+
+                <div class="price-label" style="margin-bottom:6px;">キャンセルポリシー</div>
+                <ul class="price-note-list">
+                  <li>変更・キャンセルは前日の15時までにご連絡ください</li>
+                  <li>時間を過ぎてのキャンセルはサポート料金を全額お支払いいただきます</li>
+                </ul>
+
+                <div class="pill-row" aria-label="安心の約束">
+                  <div class="pill">秘密厳守</div>
+                  <div class="pill">相談無料</div>
+                </div>
+              </div>
+              <!-- ✅ /料金表 -->
+
             </div>
           </div>
         </article>

@@ -133,16 +133,12 @@
     .brand-mark{
       width: 44px; height: 44px; border-radius: 999px;
       display: grid; place-items: center;
-      font-family: var(--serif);
-      font-weight: 900;
-      font-size: 16px;
-      letter-spacing: .06em;
       border: 1.5px solid rgba(0,0,0,.76);
       background: rgba(255,255,255,.36);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
       flex: 0 0 auto;
       transition: width .22s ease, height .22s ease, transform .22s ease;
-      overflow: hidden; /* ✅ 이미지가 원 밖으로 안 나가게 */
+      overflow: hidden;
     }
     .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
 
@@ -152,7 +148,7 @@
       height: 100%;
       display: block;
       object-fit: contain;
-      padding: 6px; /* 원 안에서 여백 */
+      padding: 6px;
     }
     .topbar.is-compact .brand-mark img{ padding: 5px; }
 
@@ -230,6 +226,18 @@
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
 
+    /* ✅ PC에서만 전체 확대 (모바일처럼 크게 보이게) */
+    @media (min-width: 900px){
+      .page{
+        transform: scale(1.35);          /* ← 1.25~1.50 사이 조절 */
+        transform-origin: top center;
+      }
+      .container{
+        max-width: 620px;               /* 기존 520 → PC에서 살짝 넓게 */
+      }
+      body{ overflow-x: hidden; }
+    }
+
     /* HERO */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
     .hero-title{
@@ -266,7 +274,7 @@
       background: var(--btn);
       color: var(--btn-text);
       border-radius: 14px;
-      box-shadow: 0 10px 26px rgba(0,0,0,.14);
+      box-shadow: var(--shadow2);
       letter-spacing: .14em;
       font-family: var(--serif);
       font-size: 18px;
@@ -276,19 +284,19 @@
     }
     .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
 
-    .cta-btn.guarantee{ background: #968444; }
-    .cta-btn.support{ background: #497790; }
+    .cta-btn.guarantee{ background: var(--btn-guarantee); }
+    .cta-btn.support{ background: var(--btn-support); }
 
     /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{ width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 14px 34px rgba(0,0,0,.12); }
-    .illus-kicker{ font-family: var(--serif); font-weight: 900; letter-spacing: .10em; color: rgba(45,37,28,.96); font-size: 14px; line-height: 1.7; }
-    .illus-caption{ font-family: var(--serif); font-size: 13px; letter-spacing: .06em; line-height: 1.95; color: rgba(66,55,41,.70); }
-    .illus-caption strong{ font-weight: 900; color: rgba(45,37,28,.96); }
+    .illus-kicker{ font-family: var(--serif); font-weight: 900; letter-spacing: .10em; color: var(--ink-1); font-size: var(--fs-14); line-height: 1.7; }
+    .illus-caption{ font-family: var(--serif); font-size: var(--fs-13); letter-spacing: .06em; line-height: 1.95; color: var(--ink-3); }
+    .illus-caption strong{ font-weight: 900; color: var(--ink-1); }
 
     .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
-    .diamond-sep .line{ height: 1px; flex: 1; background: rgba(66,55,41,.22); }
+    .diamond-sep .line{ height: 1px; flex: 1; background: var(--line-strong); }
     .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
 
     /* Panels */
@@ -296,31 +304,31 @@
 
     .panel{
       position: relative;
-      border-radius: 18px;
+      border-radius: var(--r-18);
       overflow: hidden;
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
       background: rgba(255,255,255,.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel::before{
       content:"";
       position:absolute; inset:-60px;
       background-image: url("ornament.png");
       background-repeat: repeat;
-      background-size: 360px 360px;
+      background-size: var(--orn-size);
       opacity: .32;
       filter: blur(.8px);
       transform: scale(1.05);
       pointer-events:none;
       z-index: 0;
     }
-    @media (min-width: 900px){ .panel::before{ background-size: 460px 460px; } }
+    @media (min-width: 900px){ .panel::before{ background-size: var(--orn-size-lg); } }
     .panel::after{
       content:"";
       position:absolute; inset:0;
-      background: rgba(255,255,255,.14);
+      background: var(--panel-veil);
       pointer-events:none;
       z-index: 0;
     }
@@ -331,45 +339,45 @@
       text-align: center;
       background: rgba(255,255,255,.18);
       border-bottom: 1px solid rgba(0,0,0,.06);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel-title{
       font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
-      letter-spacing: .12em;
-      color: rgba(45,37,28,.96);
+      letter-spacing: var(--title-letter);
+      color: var(--ink-1);
     }
     .panel-sub{
       margin-top: 6px;
       font-family: var(--sans);
-      font-size: 12px;
-      color: rgba(66,55,41,.56);
+      font-size: var(--fs-12);
+      color: var(--ink-4);
       letter-spacing: .06em;
-      line-height: 1.78;
+      line-height: var(--sub-lh);
       padding: 0 6px;
       font-weight: 600;
     }
 
     .panel-body{
       background: rgba(255,255,255,.06);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
-    .panel-inner{ padding: 16px 16px 20px; }
+    .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
 
-    .cards{ display: grid; gap: 12px; margin-top: 10px; }
+    .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
 
     .card{
       position: relative;
-      border-radius: 14px;
+      border-radius: var(--r-14);
       border: 1px solid rgba(0,0,0,.07);
-      padding: 14px 14px;
+      padding: var(--card-pad-y) var(--card-pad-x);
       overflow: hidden;
       background: rgba(255,255,255,.06);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(var(--blur-card));
+      -webkit-backdrop-filter: blur(var(--blur-card));
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
     .card::before{
@@ -377,18 +385,18 @@
       position:absolute; inset:-44px;
       background-image: url("ornament.png");
       background-repeat: repeat;
-      background-size: 360px 360px;
+      background-size: var(--orn-size);
       opacity: .38;
       filter: blur(.9px);
       transform: scale(1.06);
       pointer-events:none;
       z-index: 0;
     }
-    @media (min-width: 900px){ .card::before{ background-size: 460px 460px; } }
+    @media (min-width: 900px){ .card::before{ background-size: var(--orn-size-lg); } }
     .card::after{
       content:"";
       position:absolute; inset:0;
-      background: rgba(255,255,255,.14);
+      background: var(--card-veil);
       pointer-events:none;
       z-index: 0;
     }
@@ -396,10 +404,10 @@
 
     .card h3{
       font-family: var(--serif);
-      font-size: 16px;
+      font-size: var(--fs-16);
       font-weight: 900;
-      letter-spacing: .10em;
-      color: rgba(45,37,28,.96);
+      letter-spacing: var(--h3-letter);
+      color: var(--ink-1);
       margin-bottom: 10px;
       text-align: left;
     }
@@ -407,16 +415,16 @@
       margin-top: -2px;
       font-family: var(--sans);
       font-weight: 700;
-      font-size: 14px;
-      color: rgba(66,55,41,.84);
+      font-size: var(--fs-14);
+      color: var(--ink-2);
       line-height: 1.75;
       margin-bottom: 10px;
     }
     .card p{
       font-family: var(--sans);
-      font-size: 15px;
-      line-height: 2.02;
-      color: rgba(66,55,41,.70);
+      font-size: var(--fs-15);
+      line-height: var(--body-lh);
+      color: var(--ink-3);
       text-align: left;
       letter-spacing: .01em;
       font-weight: 400;
@@ -426,7 +434,7 @@
       padding-left: 18px;
       font-family: var(--sans);
       color: rgba(66,55,41,.62);
-      font-size: 14px;
+      font-size: var(--fs-14);
       line-height: 1.95;
       font-weight: 400;
     }
@@ -446,25 +454,25 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
     }
     .fee-name{
-      font-size: 14px;
+      font-size: var(--fs-14);
       font-weight: 800;
-      color: rgba(66,55,41,.84);
+      color: var(--ink-2);
       line-height: 1.55;
       font-family: var(--sans);
     }
     .fee-desc{
       margin-top: 4px;
-      font-size: 13px;
-      color: rgba(66,55,41,.56);
+      font-size: var(--fs-13);
+      color: var(--ink-4);
       line-height: 1.75;
       font-weight: 600;
       font-family: var(--sans);
     }
     .fee-price{
       text-align: right;
-      font-size: 14px;
+      font-size: var(--fs-14);
       font-weight: 900;
-      color: rgba(45,37,28,.96);
+      color: var(--ink-1);
       white-space: nowrap;
       line-height: 1.55;
       font-family: var(--sans);
@@ -474,7 +482,7 @@
       margin-top: 4px;
       font-size: 12px;
       font-weight: 700;
-      color: rgba(66,55,41,.56);
+      color: var(--ink-4);
       white-space: nowrap;
       font-family: var(--sans);
     }
@@ -541,13 +549,13 @@
     }
     .kv .k{
       font-weight: 800;
-      color: rgba(66,55,41,.84);
+      color: var(--ink-2);
       letter-spacing: .06em;
       font-size: 12px;
       white-space: nowrap;
     }
     .kv .v{
-      color: rgba(66,55,41,.70);
+      color: var(--ink-3);
       font-weight: 600;
       line-height: 1.75;
       font-size: 13px;
@@ -572,7 +580,7 @@
       -webkit-backdrop-filter: blur(8px);
       font-family: var(--serif);
       font-weight: 900;
-      font-size: 13px;
+      font-size: var(--fs-13);
       letter-spacing: .10em;
       color: rgba(96,84,64,.92);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
@@ -591,7 +599,6 @@
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="カタオカサービス トップ">
-        <!-- ✅ 여기: 텍스트 '片' 대신 로고 이미지 -->
         <span class="brand-mark" aria-hidden="true">
           <img src="Logo.png" alt="" />
         </span>
@@ -712,7 +719,7 @@
 
                 <div class="card">
                   <h3>ご案内</h3>
-                  <p style="color: rgba(66,55,41,.56); font-size: 13px; line-height: 1.9;">
+                  <p style="color: var(--ink-4); font-size: 13px; line-height: 1.9;">
                     ※事前に細かなお打ち合わせを行ったうえで、<br/>
                     お客様の状況やご希望に応じて最適なプランをご提案いたします。
                   </p>
@@ -739,7 +746,7 @@
                   <h3>ご利用案内</h3>
                   <p>
                     私たちがお手伝いいたします。<br/>
-                    <span style="color: rgba(66,55,41,.84); font-weight: 700;">非会員の方でもご利用いただけます。</span>
+                    <span style="color: var(--ink-2); font-weight: 700;">非会員の方でもご利用いただけます。</span>
                   </p>
                 </div>
 
@@ -814,165 +821,6 @@
 
                 <div class="card">
                   <h3>生活支援プラン</h3>
-                  <p style="margin-top:-6px; color: rgba(66,55,41,.56); font-size: 13px; line-height: 1.85;">
+                  <p style="margin-top:-6px; color: var(--ink-4); font-size: 13px; line-height: 1.85;">
                     ※会員／非会員すべて同じ金額です
                   </p>
-
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（9:00〜18:00）</div></div>
-                      <div class="fee-price">4,000円／1時間</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（18:00〜9:00）</div></div>
-                      <div class="fee-price">5,000円／1時間</div>
-                    </div>
-
-                    <!-- ✅ (22:00〜7:00)은 제목에 / 深夜帯만 아래 작게 -->
-                    <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（22:00〜7:00）</div></div>
-                      <div class="fee-price">6,000円／1時間<span class="time">深夜帯</span></div>
-                    </div>
-
-                    <div class="fee-item">
-                      <div>
-                        <div class="fee-name">同行支援（9:00〜18:00）</div>
-                        <div class="fee-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
-                      </div>
-                      <div class="fee-price">6,000円／1時間</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">同行支援（18:00〜9:00）</div></div>
-                      <div class="fee-price">7,000円／1時間</div>
-                    </div>
-
-                    <!-- ✅ (22:00〜7:00)은 제목에 / 深夜帯만 아래 작게 -->
-                    <div class="fee-item">
-                      <div><div class="fee-name">同行支援（22:00〜7:00）</div></div>
-                      <div class="fee-price">8,000円／1時間<span class="time">深夜帯</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <h3>その他の料金</h3>
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div><div class="fee-name">同行支援費</div><div class="fee-desc">20km毎</div></div>
-                      <div class="fee-price">500円</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">スタッフ移動費</div><div class="fee-desc">1kmあたり</div></div>
-                      <div class="fee-price">20円</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">土日祝日料金</div><div class="fee-desc">1時間あたり</div></div>
-                      <div class="fee-price">＋1,000円</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <h3>キャンセルポリシー</h3>
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div><div class="fee-name">変更・キャンセル</div><div class="fee-desc">前日の15時までにご連絡ください</div></div>
-                      <div class="fee-price">—</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">時間を過ぎてのキャンセル</div><div class="fee-desc">サポート料金を全額お支払いいただきます</div></div>
-                      <div class="fee-price">—</div>
-                    </div>
-                  </div>
-
-                  <div class="pill-row" aria-label="安心の約束">
-                    <div class="pill">秘密厳守</div>
-                    <div class="pill">相談無料</div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- お問い合わせ -->
-        <article class="panel" id="panel-contact">
-          <div class="panel-head">
-            <div class="panel-title">お問い合わせ</div>
-            <div class="panel-sub">ご相談は無料です。状況を伺い、最適なご案内をいたします。</div>
-          </div>
-
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-                <div class="card">
-                  <h3>ご相談窓口</h3>
-
-                  <div class="contact-actions">
-                    <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する">
-                      <span aria-hidden="true">☎</span>
-                      電話で相談する（無料）
-                    </a>
-
-                    <a class="contact-btn" href="mailto:info@example.com" aria-label="メールで相談する">
-                      <span aria-hidden="true">✉</span>
-                      メールで相談する
-                    </a>
-                  </div>
-
-                  <div class="contact-grid" style="margin-top:12px;">
-                    <div class="kv">
-                      <div class="k">対応地域</div>
-                      <div class="v">松戸周辺（応相談）</div>
-                    </div>
-                    <div class="kv">
-                      <div class="k">受付時間</div>
-                      <div class="v">9:00〜18:00（時間外もご相談ください）</div>
-                    </div>
-                  </div>
-
-                  <div class="pill-row" aria-label="安心の約束">
-                    <div class="pill">秘密厳守</div>
-                    <div class="pill">相談無料</div>
-                  </div>
-
-                  <p style="margin-top:10px; text-align:center; color: rgba(66,55,41,.56); font-size: 12px; line-height: 1.9; font-family: var(--sans);">
-                    ※緊急時や状況により折り返しとなる場合がございます。<br/>
-                    まずはお気軽にご相談ください。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </section>
-
-    </div>
-  </main>
-
-  <script>
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
-    }, { threshold: 0.14 });
-    els.forEach(el => io.observe(el));
-
-    const topbarEl = document.getElementById('topbar');
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY || 0;
-        if (y > 12) topbarEl.classList.add('is-compact');
-        else topbarEl.classList.remove('is-compact');
-        ticking = false;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  </script>
-</body>
-</html>

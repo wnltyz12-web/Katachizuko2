@@ -79,7 +79,18 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
-      overflow-x: hidden; /* ✅ 혹시 모를 가로 스크롤 방지 */
+      overflow-x: hidden;
+    }
+
+    /* ✅ PC에서만 모바일처럼 크게: zoom (스크롤 안 깨짐) */
+    @media (min-width: 900px){
+      body{
+        zoom: 1.5; /* ← 150% */
+      }
+      /* zoom으로 커지면 가운데 정렬 느낌이 깨질 수 있어서 살짝 보정 */
+      .topbar, .page{
+        width: 100%;
+      }
     }
 
     /* Background */
@@ -132,7 +143,6 @@
       min-width: 0;
     }
 
-    /* ✅ 로고(원) */
     .brand-mark{
       width: 44px; height: 44px; border-radius: 999px;
       display: grid; place-items: center;
@@ -145,7 +155,6 @@
     }
     .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
 
-    /* ✅ 로고 이미지 */
     .brand-mark img{
       width: 100%;
       height: 100%;
@@ -278,7 +287,7 @@
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
 
-    /* Illustration (✅ 숨김/애니메이션 제거: 무조건 보이게) */
+    /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{ width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 14px 34px rgba(0,0,0,.12); }
@@ -477,8 +486,6 @@
       white-space: nowrap;
       font-family: var(--sans);
     }
-
-    /* ✅ 深夜帯 표시(색 빠진 + 작게) */
     .fee-price .time{
       display:block;
       margin-top: 3px;
@@ -588,7 +595,6 @@
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="カタオカサービス トップ">
         <span class="brand-mark" aria-hidden="true">
-          <!-- ✅ 파일명: Logo.png -->
           <img src="Logo.png" alt="" />
         </span>
 
@@ -648,10 +654,8 @@
         </div>
       </section>
 
-      <!-- ✅ 일러스트: 숨김 효과(reveal) 제거해서 무조건 보임 -->
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
-          <!-- ✅ 파일명: illustration.png -->
           <img class="illus-img" src="illustration.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
           <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
           <div class="illus-caption">
@@ -826,7 +830,6 @@
                       <div class="fee-price">5,000円／1時間</div>
                     </div>
 
-                    <!-- ✅ 시간은 제목에 유지 / 深夜帯만 아래 작게 -->
                     <div class="fee-item">
                       <div><div class="fee-name">訪問支援（22:00〜7:00）</div></div>
                       <div class="fee-price">6,000円／1時間<span class="time">深夜帯</span></div>
@@ -844,7 +847,6 @@
                       <div class="fee-price">7,000円／1時間</div>
                     </div>
 
-                    <!-- ✅ 시간은 제목에 유지 / 深夜帯만 아래 작게 -->
                     <div class="fee-item">
                       <div><div class="fee-name">同行支援（22:00〜7:00）</div></div>
                       <div class="fee-price">8,000円／1時間<span class="time">深夜帯</span></div>

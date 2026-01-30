@@ -133,24 +133,17 @@
     .brand-mark{
       width: 44px; height: 44px; border-radius: 999px;
       display: grid; place-items: center;
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: .06em;
       border: 1.5px solid rgba(0,0,0,.76);
       background: rgba(255,255,255,.36);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
       flex: 0 0 auto;
       transition: width .22s ease, height .22s ease, transform .22s ease;
-      overflow: hidden;
     }
     .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
-
-    /* ✅ 로고 이미지 */
-    .brand-mark img{
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      padding: 6px;
-    }
-    .topbar.is-compact .brand-mark img{ padding: 5px; }
 
     .brand-text{
       display: flex;
@@ -225,18 +218,6 @@
     /* Layout */
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
-
-    /* ✅ PC에서만 전체 확대 (모바일처럼 크게 보이게) */
-    @media (min-width: 900px){
-      .page{
-        transform: scale(1.35);          /* ← 1.25~1.50 사이 조절 */
-        transform-origin: top center;
-      }
-      .container{
-        max-width: 620px;               /* 기존 520 → PC에서 살짝 넓게 */
-      }
-      body{ overflow-x: hidden; }
-    }
 
     /* HERO */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
@@ -599,10 +580,7 @@
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="カタオカサービス トップ">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="Logo.png" alt="" />
-        </span>
-
+        <span class="brand-mark" aria-hidden="true">片</span>
         <span class="brand-text">
           <span class="brand-eyebrow">外出支援</span>
           <span class="brand-name">カタオカサービス</span>
@@ -824,3 +802,162 @@
                   <p style="margin-top:-6px; color: var(--ink-4); font-size: 13px; line-height: 1.85;">
                     ※会員／非会員すべて同じ金額です
                   </p>
+
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">訪問支援（9:00〜18:00）</div></div>
+                      <div class="fee-price">4,000円／1時間</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">訪問支援（18:00〜9:00）</div></div>
+                      <div class="fee-price">5,000円／1時間</div>
+                    </div>
+
+                    <!-- ✅ 요청 반영: (22:00〜7:00)은 제목에, 深夜帯만 아래 작게 -->
+                    <div class="fee-item">
+                      <div><div class="fee-name">訪問支援（22:00〜7:00）</div></div>
+                      <div class="fee-price">6,000円／1時間<span class="time">深夜帯</span></div>
+                    </div>
+
+                    <div class="fee-item">
+                      <div>
+                        <div class="fee-name">同行支援（9:00〜18:00）</div>
+                        <div class="fee-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
+                      </div>
+                      <div class="fee-price">6,000円／1時間</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">同行支援（18:00〜9:00）</div></div>
+                      <div class="fee-price">7,000円／1時間</div>
+                    </div>
+
+                    <!-- ✅ 요청 반영 -->
+                    <div class="fee-item">
+                      <div><div class="fee-name">同行支援（22:00〜7:00）</div></div>
+                      <div class="fee-price">8,000円／1時間<span class="time">深夜帯</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>その他の料金</h3>
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">同行支援費</div><div class="fee-desc">20km毎</div></div>
+                      <div class="fee-price">500円</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">スタッフ移動費</div><div class="fee-desc">1kmあたり</div></div>
+                      <div class="fee-price">20円</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">土日祝日料金</div><div class="fee-desc">1時間あたり</div></div>
+                      <div class="fee-price">＋1,000円</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>キャンセルポリシー</h3>
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">変更・キャンセル</div><div class="fee-desc">前日の15時までにご連絡ください</div></div>
+                      <div class="fee-price">—</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">時間を過ぎてのキャンセル</div><div class="fee-desc">サポート料金を全額お支払いいただきます</div></div>
+                      <div class="fee-price">—</div>
+                    </div>
+                  </div>
+
+                  <div class="pill-row" aria-label="安心の約束">
+                    <div class="pill">秘密厳守</div>
+                    <div class="pill">相談無料</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- お問い合わせ -->
+        <article class="panel" id="panel-contact">
+          <div class="panel-head">
+            <div class="panel-title">お問い合わせ</div>
+            <div class="panel-sub">ご相談は無料です。状況を伺い、最適なご案内をいたします。</div>
+          </div>
+
+          <div class="panel-body">
+            <div class="panel-inner">
+              <div class="cards">
+                <div class="card">
+                  <h3>ご相談窓口</h3>
+
+                  <div class="contact-actions">
+                    <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する">
+                      <span aria-hidden="true">☎</span>
+                      電話で相談する（無料）
+                    </a>
+
+                    <a class="contact-btn" href="mailto:info@example.com" aria-label="メールで相談する">
+                      <span aria-hidden="true">✉</span>
+                      メールで相談する
+                    </a>
+                  </div>
+
+                  <div class="contact-grid" style="margin-top:12px;">
+                    <div class="kv">
+                      <div class="k">対応地域</div>
+                      <div class="v">松戸周辺（応相談）</div>
+                    </div>
+                    <div class="kv">
+                      <div class="k">受付時間</div>
+                      <div class="v">9:00〜18:00（時間外もご相談ください）</div>
+                    </div>
+                  </div>
+
+                  <div class="pill-row" aria-label="安心の約束">
+                    <div class="pill">秘密厳守</div>
+                    <div class="pill">相談無料</div>
+                  </div>
+
+                  <p style="margin-top:10px; text-align:center; color: var(--ink-4); font-size: 12px; line-height: 1.9; font-family: var(--sans);">
+                    ※緊急時や状況により折り返しとなる場合がございます。<br/>
+                    まずはお気軽にご相談ください。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-on'); });
+    }, { threshold: 0.14 });
+    els.forEach(el => io.observe(el));
+
+    const topbarEl = document.getElementById('topbar');
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        if (y > 12) topbarEl.classList.add('is-compact');
+        else topbarEl.classList.remove('is-compact');
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>

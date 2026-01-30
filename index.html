@@ -27,13 +27,11 @@
       --accent: rgba(155,122,52,.92);
       --accent-line: rgba(155,122,52,.72);
 
-      /* 기본 버튼(料金表은 이 색 그대로) */
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
-      /* 버튼 컬러 */
-      --btn-guarantee: #968444; /* 身元保証 */
-      --btn-support: #497790;   /* 生活支援 */
+      --btn-guarantee: #968444;
+      --btn-support: #497790;
 
       --mobile-max: 520px;
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
@@ -82,9 +80,9 @@
       overflow-x: hidden;
     }
 
-    /* ✅ PC에서만 모바일처럼 크게: Chrome/Edge 기준 */
+    /* ✅ PC에서만 150% 확대 */
     @media (min-width: 900px){
-      body{ zoom: 1.5; } /* 150% */
+      body{ zoom: 1.5; }
     }
 
     /* Background */
@@ -281,10 +279,18 @@
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
 
-    /* Illustration */
+    /* ✅ Illustration: 하얀 박스/카드/그림자 전부 제거 -> 일러스트 원본 그대로 */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
-    .illus-img{ width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 14px 34px rgba(0,0,0,.12); }
+    .illus-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;     /* ✅ 박스 느낌 제거 */
+      box-shadow: none;     /* ✅ 그림자 제거 */
+      background: transparent;
+    }
+
     .illus-kicker{ font-family: var(--serif); font-weight: 900; letter-spacing: .10em; color: var(--ink-1); font-size: var(--fs-14); line-height: 1.7; }
     .illus-caption{ font-family: var(--serif); font-size: var(--fs-13); letter-spacing: .06em; line-height: 1.95; color: var(--ink-3); }
     .illus-caption strong{ font-weight: 900; color: var(--ink-1); }
@@ -648,7 +654,7 @@
         </div>
       </section>
 
-      <!-- ✅ 일러스트: illust.png로 변경 -->
+      <!-- ✅ 일러스트: 박스/그림자 없이 원본 그대로 -->
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illust.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
@@ -666,6 +672,7 @@
         </div>
       </section>
 
+      <!-- 이하 섹션은 그대로 -->
       <section class="details" id="details">
         <!-- 身元保証プラン -->
         <article class="panel" id="panel-guarantee">

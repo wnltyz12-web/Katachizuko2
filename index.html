@@ -80,9 +80,14 @@
       overflow-x: hidden;
     }
 
-    /* ✅ PC에서만 150% 확대 */
     @media (min-width: 900px){
       body{ zoom: 1.5; }
+    }
+
+    /* ✅ 헤더 점프 방지 (sticky 헤더 높이만큼 스크롤 여유) */
+    html{
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
     }
 
     /* Background */
@@ -195,6 +200,7 @@
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
+    /* ✅ 링크 클릭 점프 방지용: 버튼처럼 보이게 */
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
@@ -210,6 +216,7 @@
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
       user-select: none;
       white-space: nowrap;
+      cursor: pointer;
     }
     .hbtn:hover{
       transform: translateY(-0.5px);
@@ -263,8 +270,8 @@
     .cta-btn{
       appearance: none; border: none; cursor: pointer;
       width: 180px; height: 52px;
-      background: var(--btn);
-      color: var(--btn-text);
+      background: #b7a18a;
+      color: #ffffff;
       border-radius: 14px;
       box-shadow: var(--shadow2);
       letter-spacing: .14em;
@@ -279,18 +286,17 @@
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
 
-    /* ✅ Illustration: 하얀 박스/카드/그림자 전부 제거 -> 일러스트 원본 그대로 */
+    /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 0;     /* ✅ 박스 느낌 제거 */
-      box-shadow: none;     /* ✅ 그림자 제거 */
+      border-radius: 0;
+      box-shadow: none;
       background: transparent;
     }
-
     .illus-kicker{ font-family: var(--serif); font-weight: 900; letter-spacing: .10em; color: var(--ink-1); font-size: var(--fs-14); line-height: 1.7; }
     .illus-caption{ font-family: var(--serif); font-size: var(--fs-13); letter-spacing: .06em; line-height: 1.95; color: var(--ink-3); }
     .illus-caption strong{ font-weight: 900; color: var(--ink-1); }
@@ -328,7 +334,7 @@
     .panel::after{
       content:"";
       position:absolute; inset:0;
-      background: var(--panel-veil);
+      background: rgba(255,255,255,.14);
       pointer-events:none;
       z-index: 0;
     }
@@ -366,7 +372,6 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
-
     .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
 
     .card{
@@ -396,7 +401,7 @@
     .card::after{
       content:"";
       position:absolute; inset:0;
-      background: var(--card-veil);
+      background: rgba(255,255,255,.14);
       pointer-events:none;
       z-index: 0;
     }
@@ -597,7 +602,6 @@
         <span class="brand-mark" aria-hidden="true">
           <img src="Logo.png" alt="" />
         </span>
-
         <span class="brand-text">
           <span class="brand-eyebrow">外出支援</span>
           <span class="brand-name">カタオカサービス</span>
@@ -612,7 +616,8 @@
           サービス
         </a>
 
-        <a class="hbtn primary" href="#panel-contact" aria-label="お問い合わせへ">
+        <!-- ✅ 문의하기도 버튼처럼 JS smooth scroll -->
+        <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16v16H4z"></path>
             <path d="M22 6l-10 7L2 6"></path>
@@ -654,7 +659,6 @@
         </div>
       </section>
 
-      <!-- ✅ 일러스트: 박스/그림자 없이 원본 그대로 -->
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illust.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
@@ -672,7 +676,6 @@
         </div>
       </section>
 
-      <!-- 이하 섹션은 그대로 -->
       <section class="details" id="details">
         <!-- 身元保証プラン -->
         <article class="panel" id="panel-guarantee">
@@ -967,6 +970,15 @@
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    /* ✅ お問い合わせ도 스무스 스크롤로 통일 */
+    const contactBtn = document.getElementById('btn-contact');
+    if(contactBtn){
+      contactBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('panel-contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   </script>
 </body>
 </html>

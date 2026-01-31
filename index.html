@@ -423,14 +423,14 @@
       margin-top: -2px;
       font-family: var(--sans);
       font-weight: 700;
-      font-size: var(--fs-14);
+      font-size: calc(var(--fs-14) - 1px); /* ✅ 1px(=1pt 느낌) 줄임 */
       color: var(--ink-2);
       line-height: 1.75;
       margin-bottom: 10px;
     }
     .card p{
       font-family: var(--sans);
-      font-size: var(--fs-15);
+      font-size: calc(var(--fs-15) - 1px); /* ✅ 1px 줄임 */
       line-height: var(--body-lh);
       color: var(--ink-3);
       text-align: left;

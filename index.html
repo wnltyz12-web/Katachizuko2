@@ -419,19 +419,21 @@
       margin-bottom: 10px;
       text-align: left;
     }
+
+    /* ✅ 행간(라인하이트) 줄임 */
     .card .lead{
       margin-top: -2px;
       font-family: var(--sans);
       font-weight: 700;
-      font-size: calc(var(--fs-14) - 1px); /* ✅ 1px(=1pt 느낌) 줄임 */
+      font-size: calc(var(--fs-14) - 1px);
       color: var(--ink-2);
-      line-height: 1.75;
-      margin-bottom: 10px;
+      line-height: 1.45;         /* 기존 1.75 -> 줄임 */
+      margin-bottom: 8px;        /* 살짝 줄임 */
     }
     .card p{
       font-family: var(--sans);
-      font-size: calc(var(--fs-15) - 1px); /* ✅ 1px 줄임 */
-      line-height: var(--body-lh);
+      font-size: calc(var(--fs-15) - 1px);
+      line-height: 1.70;         /* 기존 var(--body-lh)=2.02 -> 줄임 */
       color: var(--ink-3);
       text-align: left;
       letter-spacing: .01em;

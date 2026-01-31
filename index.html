@@ -84,13 +84,11 @@
       body{ zoom: 1.5; }
     }
 
-    /* ✅ 헤더 점프 방지 (sticky 헤더 높이만큼 스크롤 여유) */
     html{
       scroll-behavior: smooth;
       scroll-padding-top: 88px;
     }
 
-    /* Background */
     .ornament-bg{
       position: fixed; inset: 0; z-index: 0;
       background-color: var(--bg);
@@ -112,7 +110,6 @@
       );
     }
 
-    /* Header */
     .topbar{
       position: sticky; top: 0; z-index: 50;
       height: 78px;
@@ -200,7 +197,6 @@
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
-    /* ✅ 링크 클릭 점프 방지용: 버튼처럼 보이게 */
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
@@ -233,11 +229,9 @@
     .hbtn .ico{ width: 18px; height: 18px; display: inline-block; }
     @media (max-width: 420px){ .header-actions .hbtn.secondary{ display: none; } }
 
-    /* Layout */
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
 
-    /* HERO */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
     .hero-title{
       font-family: var(--serif);
@@ -270,7 +264,7 @@
       align-items: center;
       justify-content: center;
       gap: 14px;
-      flex-wrap: nowrap; /* ✅ 직렬 고정 */
+      flex-wrap: nowrap;
       width: 100%;
     }
 
@@ -293,13 +287,11 @@
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
 
-    /* ✅ 작은 화면에서 버튼이 너무 커지면 한줄 유지 + 자동 축소 */
     @media (max-width: 520px){
       .cta-btn{ width: calc((100% - 14px) / 2); }
       .cta-btn{ font-size: 17px; }
     }
 
-    /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{
@@ -310,17 +302,13 @@
       box-shadow: none;
       background: transparent;
     }
-
-    /* ✅ 삭제 요청으로 문구/캡션 영역은 제거 (스타일은 유지해도 무방) */
     .illus-kicker{ display:none; }
     .illus-caption{ display:none; }
-    .illus-caption strong{ font-weight: 900; color: var(--ink-1); }
 
     .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
     .diamond-sep .line{ height: 1px; flex: 1; background: var(--line-strong); }
     .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
 
-    /* Panels */
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
     .panel{
@@ -449,18 +437,7 @@
       letter-spacing: .01em;
       font-weight: 400;
     }
-    .card ul{
-      margin-top: 10px;
-      padding-left: 18px;
-      font-family: var(--sans);
-      color: rgba(66,55,41,.62);
-      font-size: var(--fs-14);
-      line-height: 1.95;
-      font-weight: 400;
-    }
-    .card li{ margin: 2px 0; }
 
-    /* Fee */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{
       display: grid;
@@ -517,7 +494,6 @@
       font-family: var(--sans);
     }
 
-    /* Contact */
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
     .contact-btn{
@@ -631,7 +607,6 @@
           サービス
         </a>
 
-        <!-- ✅ 문의하기도 버튼처럼 JS smooth scroll -->
         <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 4h16v16H4z"></path>
@@ -682,46 +657,43 @@
       </section>
 
       <section class="details" id="details">
-        <!-- 身元保証プラン -->
+
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証プラン</div>
-            <!-- ✅ 요청대로 서브 문구 삭제 -->
           </div>
 
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
+
                 <div class="card">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
-                  <p>条件や流れを整理し、安心して手続きができるようにご支援いたします。</p>
+                  <p>条件や流れを整理し安心して手続きができるようにご支援いたします</p>
                 </div>
 
                 <div class="card">
                   <h3>緊急連絡先代行</h3>
                   <div class="lead">入院時、施設契約時の緊急連絡先にご指定いただけます</div>
-                  <p>連絡方法、優先順位を事前に確認し、連絡が取れる体制を整えます。</p>
+                  <p>連絡方法、優先順位を事前に確認し連絡が取れる体制を整えます</p>
                 </div>
 
                 <div class="card">
-                  <h3>身元引受人代行</h3>
-                  <p>お亡くなりになられた際の身元引き受けを承ります。</p>
+                  <h3>身元保証人代行</h3>
+                  <p>お亡くなりになられた際の身元引き受けを承ります</p>
                 </div>
 
                 <div class="card">
                   <h3>死後事務手続き代行</h3>
                   <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
-                  <!-- ✅ 요청대로 리스트 삭제 -->
                 </div>
 
-                <!-- ✅ 요청대로 ご案内 카드 삭제 -->
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 生活支援プラン -->
         <article class="panel" id="panel-support">
           <div class="panel-head">
             <div class="panel-title">生活支援プラン</div>
@@ -756,7 +728,6 @@
           </div>
         </article>
 
-        <!-- 料金表 -->
         <article class="panel" id="panel-price">
           <div class="panel-head">
             <div class="panel-title">料金表</div>
@@ -891,7 +862,6 @@
           </div>
         </article>
 
-        <!-- お問い合わせ -->
         <article class="panel" id="panel-contact">
           <div class="panel-head">
             <div class="panel-title">お問い合わせ</div>
@@ -963,7 +933,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    /* ✅ お問い合わせ도 스무스 스크롤로 통일 */
     const contactBtn = document.getElementById('btn-contact');
     if(contactBtn){
       contactBtn.addEventListener('click', (e) => {

@@ -265,7 +265,14 @@
     }
 
     .hero-cta{ margin-top: 18px; display: flex; justify-content: center; }
-    .hero-cta-row{ display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; width: 100%; }
+    .hero-cta-row{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: nowrap; /* ✅ 직렬 고정 */
+      width: 100%;
+    }
 
     .cta-btn{
       appearance: none; border: none; cursor: pointer;
@@ -286,6 +293,12 @@
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
 
+    /* ✅ 작은 화면에서 버튼이 너무 커지면 한줄 유지 + 자동 축소 */
+    @media (max-width: 520px){
+      .cta-btn{ width: calc((100% - 14px) / 2); }
+      .cta-btn{ font-size: 17px; }
+    }
+
     /* Illustration */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
@@ -297,8 +310,10 @@
       box-shadow: none;
       background: transparent;
     }
-    .illus-kicker{ font-family: var(--serif); font-weight: 900; letter-spacing: .10em; color: var(--ink-1); font-size: var(--fs-14); line-height: 1.7; }
-    .illus-caption{ font-family: var(--serif); font-size: var(--fs-13); letter-spacing: .06em; line-height: 1.95; color: var(--ink-3); }
+
+    /* ✅ 삭제 요청으로 문구/캡션 영역은 제거 (스타일은 유지해도 무방) */
+    .illus-kicker{ display:none; }
+    .illus-caption{ display:none; }
     .illus-caption strong{ font-weight: 900; color: var(--ink-1); }
 
     .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
@@ -650,11 +665,6 @@
               onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
               生活支援
             </button>
-
-            <button class="cta-btn" type="button"
-              onclick="document.getElementById('panel-price').scrollIntoView({behavior:'smooth',block:'start'})">
-              料金表
-            </button>
           </div>
         </div>
       </section>
@@ -662,11 +672,6 @@
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illust2.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
-          <div class="illus-kicker">「もしもの時」に備えて、今できることを。</div>
-          <div class="illus-caption">
-            <strong>不安</strong>をひとつずつ整理し、<br/>
-            <strong>必要</strong>な手続きや支援をわかりやすくご案内します。
-          </div>
 
           <div class="diamond-sep" aria-hidden="true">
             <div class="line"></div>
@@ -681,10 +686,7 @@
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証プラン</div>
-            <div class="panel-sub">
-              施設入居・入院時などに必要な「保証」を、<br/>
-              わかりやすく整えます
-            </div>
+            <!-- ✅ 요청대로 서브 문구 삭제 -->
           </div>
 
           <div class="panel-body">
@@ -710,20 +712,10 @@
                 <div class="card">
                   <h3>死後事務手続き代行</h3>
                   <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
-                  <ul>
-                    <li>葬儀・納骨・遺品整理</li>
-                    <li>荷物処分・各種解約手続き</li>
-                    <li>清算 など</li>
-                  </ul>
+                  <!-- ✅ 요청대로 리스트 삭제 -->
                 </div>
 
-                <div class="card">
-                  <h3>ご案内</h3>
-                  <p style="color: var(--ink-4); font-size: 13px; line-height: 1.9;">
-                    ※事前に細かなお打ち合わせを行ったうえで、<br/>
-                    お客様の状況やご希望に応じて最適なプランをご提案いたします。
-                  </p>
-                </div>
+                <!-- ✅ 요청대로 ご案内 카드 삭제 -->
               </div>
             </div>
           </div>
@@ -982,4 +974,3 @@
   </script>
 </body>
 </html>
-

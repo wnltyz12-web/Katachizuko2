@@ -420,26 +420,26 @@
       text-align: left;
     }
 
-    /* ✅ 행간(라인하이트) 줄임 */
     .card .lead{
       margin-top: -2px;
       font-family: var(--sans);
       font-weight: 700;
       font-size: calc(var(--fs-14) - 1px);
       color: var(--ink-2);
-      line-height: 1.45;         /* 기존 1.75 -> 줄임 */
-      margin-bottom: 8px;        /* 살짝 줄임 */
+      line-height: 1.45;
+      margin-bottom: 8px;
     }
     .card p{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
-      line-height: 1.70;         /* 기존 var(--body-lh)=2.02 -> 줄임 */
+      line-height: 1.70;
       color: var(--ink-3);
       text-align: left;
       letter-spacing: .01em;
       font-weight: 400;
     }
 
+    /* Fee / Contact 등 나머지 스타일 그대로 */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{
       display: grid;
@@ -688,10 +688,8 @@
 
                 <div class="card">
                   <h3>死後事務手続き代行</h3>
-                  <p>
-                    お亡くなりになられた後の細かな各種手続きを承ります<br/>
-                    事前のご希望通りに円滑に進むようご支援いたします
-                  </p>
+                  <!-- ✅ 줄바꿈 제거 + 마침표 포함해서 한 줄 문장으로 복구 -->
+                  <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
                 </div>
 
               </div>

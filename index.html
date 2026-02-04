@@ -398,6 +398,24 @@
       backdrop-filter: blur(var(--blur-panel));
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
+
+    /* ✅ 추가: “身元保証プラン”에 ‘身元保証’ 버튼과 같은 색 박스 */
+    .panel-title-tag{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 12px;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: var(--title-letter);
+      font-size: 16px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.22);
+      border: 1px solid rgba(0,0,0,.10);
+      color: #fff;
+    }
+    .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
+
     .panel-title{
       font-family: var(--serif);
       font-size: 18px;
@@ -405,6 +423,7 @@
       letter-spacing: var(--title-letter);
       color: var(--ink-1);
     }
+
     .panel-sub{
       margin-top: 6px;
       font-family: var(--sans);
@@ -466,33 +485,21 @@
       text-align: left;
     }
 
-    /* ✅ “お亡くなりになられた後...” 문장(p)의 기본 행간 = 1.70
-       ✅ 요청: 두 줄짜리 텍스트도 이 행간 그대로 보이게 */
     .card p,
     .card .lead{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
-      line-height: 1.70;          /* ← 기준과 동일 */
+      line-height: 1.70;
       color: var(--ink-3);
       text-align: left;
       letter-spacing: .01em;
       font-weight: 400;
     }
+    .card .lead{ margin: 0; white-space: pre-line; }
+    .card p{ margin: 0; white-space: pre-line; }
+    .card .lead + p{ margin-top: 0; }
 
-    /* ✅ 두 줄(lead + p) 사이 간격도 “단일 p”처럼 보이게:
-       - lead의 아래 마진 제거
-       - 두 문장을 하나의 문단처럼 붙여서 동일한 리듬 */
-    .card .lead{
-      margin: 0;                  /* ← 8px 제거 */
-      white-space: pre-line;
-    }
-    .card p{
-      margin: 0;                  /* ← 기본 margin 제거 */
-      white-space: pre-line;
-    }
-    .card .lead + p{ margin-top: 0; } /* ← 줄 간격 추가 없음 */
-
-    /* Fee / Contact 등 이하 동일 */
+    /* Fee / Contact 이하 그대로 */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{ display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; padding: 10px 10px; border-radius: 12px; background: rgba(255,255,255,.18); border: 1px solid rgba(0,0,0,.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); }
     .fee-name{ font-size: var(--fs-14); font-weight: 800; color: var(--ink-2); line-height: 1.55; font-family: var(--sans); }
@@ -603,7 +610,8 @@
 
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
-            <div class="panel-title">身元保証プラン</div>
+            <!-- ✅ 여기만 박스 적용 (색: 身元保証 버튼과 동일) -->
+            <div class="panel-title-tag guarantee">身元保証プラン</div>
           </div>
 
           <div class="panel-body">
@@ -671,7 +679,6 @@
           </div>
         </article>
 
-        <!-- 요금/문의 섹션은 그대로 -->
         <article class="panel" id="panel-price">
           <div class="panel-head">
             <div class="panel-title">料金表</div>

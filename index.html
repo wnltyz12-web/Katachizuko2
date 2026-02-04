@@ -292,6 +292,23 @@
       .cta-btn{ font-size: 17px; }
     }
 
+    /* ✅ 추가: 버튼과 일러스트 사이 슬로건 */
+    .slogan-wrap{
+      margin-top: 14px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    .slogan-img{
+      width: min(100%, 480px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,.06));
+      opacity: .98;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{
@@ -644,6 +661,11 @@
             </button>
           </div>
         </div>
+
+        <!-- ✅ 버튼/일러스트 사이에 문구 이미지 추가 (파일명은 원하는대로 변경 가능) -->
+        <div class="slogan-wrap" aria-label="皆さまの想いをかなえるために">
+          <img class="slogan-img" src="slogan.png" alt="皆さまの想いをかなえるために 私たちが一生涯のご支援をお約束致します" />
+        </div>
       </section>
 
       <section class="illus-wrap" id="why">
@@ -688,7 +710,6 @@
 
                 <div class="card">
                   <h3>死後事務手続き代行</h3>
-                  <!-- ✅ 줄바꿈 제거 + 마침표 포함해서 한 줄 문장으로 복구 -->
                   <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
                 </div>
 
@@ -946,6 +967,3 @@
   </script>
 </body>
 </html>
-
-
-

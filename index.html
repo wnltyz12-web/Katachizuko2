@@ -292,7 +292,7 @@
       .cta-btn{ font-size: 17px; }
     }
 
-    /* ✅ 추가: 버튼과 일러스트 사이 슬로건(텍스트) */
+    /* ✅ 버튼과 일러스트 사이 문구(줄바꿈 그대로) */
     .slogan-text{
       margin-top: 14px;
       padding: 8px 10px;
@@ -304,16 +304,10 @@
       line-height: 1.75;
       font-size: 14px;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-    .slogan-text .line{
-      display:block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: pre-line; /* ✅ 줄바꿈 그대로 */
     }
     @media (max-width: 420px){
       .slogan-text{ font-size: 13px; letter-spacing: .06em; }
-      .slogan-text .line{ white-space: normal; }
     }
 
     .illus-wrap{ margin-top: 18px; }
@@ -669,9 +663,10 @@
           </div>
         </div>
 
-        <!-- ✅ 이미지 말고 텍스트로 추가 -->
+        <!-- ✅ 줄바꿈까지 똑같이 -->
         <div class="slogan-text" aria-label="理念">
-          <span class="line">皆さまの想いをかなえるために 私たちが一生涯のご支援をお約束致します</span>
+皆さまの想いをかなえるために
+私たちが一生涯のご支援をお約束致します
         </div>
       </section>
 

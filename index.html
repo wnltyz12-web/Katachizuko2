@@ -292,21 +292,28 @@
       .cta-btn{ font-size: 17px; }
     }
 
-    /* ✅ 추가: 버튼과 일러스트 사이 슬로건 */
-    .slogan-wrap{
+    /* ✅ 추가: 버튼과 일러스트 사이 슬로건(텍스트) */
+    .slogan-text{
       margin-top: 14px;
-      display: grid;
-      place-items: center;
+      padding: 8px 10px;
       text-align: center;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .08em;
+      color: rgba(155,122,52,.88);
+      line-height: 1.75;
+      font-size: 14px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
-    .slogan-img{
-      width: min(100%, 480px);
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,.06));
-      opacity: .98;
-      user-select: none;
-      -webkit-user-drag: none;
+    .slogan-text .line{
+      display:block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 420px){
+      .slogan-text{ font-size: 13px; letter-spacing: .06em; }
+      .slogan-text .line{ white-space: normal; }
     }
 
     .illus-wrap{ margin-top: 18px; }
@@ -662,9 +669,9 @@
           </div>
         </div>
 
-        <!-- ✅ 버튼/일러스트 사이에 문구 이미지 추가 (파일명은 원하는대로 변경 가능) -->
-        <div class="slogan-wrap" aria-label="皆さまの想いをかなえるために">
-          <img class="slogan-img" src="slogan.png" alt="皆さまの想いをかなえるために 私たちが一生涯のご支援をお約束致します" />
+        <!-- ✅ 이미지 말고 텍스트로 추가 -->
+        <div class="slogan-text" aria-label="理念">
+          <span class="line">皆さまの想いをかなえるために 私たちが一生涯のご支援をお約束致します</span>
         </div>
       </section>
 

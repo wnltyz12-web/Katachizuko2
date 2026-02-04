@@ -399,7 +399,6 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
-    /* ✅ 추가: “身元保証プラン”에 ‘身元保証’ 버튼과 같은 색 박스 */
     .panel-title-tag{
       display: inline-flex;
       align-items: center;
@@ -415,6 +414,7 @@
       color: #fff;
     }
     .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
+    .panel-title-tag.support{ background: var(--btn-support); } /* ✅ 추가 */
 
     .panel-title{
       font-family: var(--serif);
@@ -610,7 +610,6 @@
 
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
-            <!-- ✅ 여기만 박스 적용 (색: 身元保証 버튼과 동일) -->
             <div class="panel-title-tag guarantee">身元保証プラン</div>
           </div>
 
@@ -647,7 +646,9 @@
 
         <article class="panel" id="panel-support">
           <div class="panel-head">
-            <div class="panel-title">生活支援プラン</div>
+            <!-- ✅ 여기: 生活支援 버튼 색(#497790)과 같은 “버튼형 태그” 적용 -->
+            <div class="panel-title-tag support">生活支援プラン</div>
+
             <div class="panel-sub">
               買物・病院受診・役所手続き・お墓参りなど<br/>
               お困りではありませんか？

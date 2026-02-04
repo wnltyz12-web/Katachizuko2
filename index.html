@@ -94,7 +94,7 @@
     .ornament-bg::after{
       content:"";
       position: absolute; inset: 0;
-      pointer-events: none;
+           pointer-events: none;
       background: linear-gradient(
         to bottom,
         rgba(244,241,234,0) 0%,
@@ -331,7 +331,6 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
-    /* ✅ 타이틀 태그(버튼색 박스) */
     .panel-title-tag{
       display: inline-flex;
       align-items: center;
@@ -440,7 +439,7 @@
     .fee-price .sub{ display:block; margin-top: 4px; font-size: 12px; font-weight: 700; color: var(--ink-4); white-space: nowrap; font-family: var(--sans); }
     .fee-price .time{ display:block; margin-top: 3px; font-size: 11px; font-weight: 600; color: rgba(66,55,41,.48); letter-spacing: .04em; white-space: nowrap; font-family: var(--sans); }
 
-    /* Contact etc (kept) */
+    /* Contact etc */
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
     .contact-btn{ display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 52px; border-radius: 14px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.34); color: rgba(31,27,22,.92); font-family: var(--sans); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-decoration: none; box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
@@ -605,7 +604,7 @@
           <div class="panel-head">
             <div class="panel-title">料金表</div>
             <div class="panel-sub">
-              入会金・月会費、各プランの料金目安です<br/>
+              入会金・月会費、各プランの料金です<br/>
               （すべて税込）
             </div>
           </div>
@@ -614,7 +613,20 @@
             <div class="panel-inner">
               <div class="cards">
 
-                <!-- ✅ 여기(料金表 안) '身元保証プラン'도 버튼색 박스로 변경 -->
+                <!-- ✅ 1) '会費' 카드 삭제 + (입회금/월회비) 탭을 '身元保証プラン' 위로 이동 -->
+                <div class="card">
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">入会金</div></div>
+                      <div class="fee-price">300,000円</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">月会費</div></div>
+                      <div class="fee-price">5,000円</div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="card">
                   <div class="panel-title-tag guarantee" style="margin-bottom:10px;">身元保証プラン</div>
                   <div class="fee-list">
@@ -643,7 +655,6 @@
                   </div>
                 </div>
 
-                <!-- ✅ 여기(料金表 안) '生活支援プラン'도 버튼색 박스로 변경 -->
                 <div class="card">
                   <div class="panel-title-tag support" style="margin-bottom:10px;">生活支援プラン</div>
 
@@ -679,20 +690,6 @@
                     <div class="fee-item">
                       <div><div class="fee-name">同行支援（22:00〜7:00）</div></div>
                       <div class="fee-price">8,000円／1時間<span class="time">深夜帯</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <h3>会費</h3>
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div><div class="fee-name">入会金</div></div>
-                      <div class="fee-price">300,000円</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">月会費</div></div>
-                      <div class="fee-price">5,000円</div>
                     </div>
                   </div>
                 </div>

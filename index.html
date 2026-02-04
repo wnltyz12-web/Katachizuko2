@@ -39,9 +39,6 @@
       --orn-size: 360px 360px;
       --orn-size-lg: 460px 460px;
 
-      --card-veil: rgba(255,255,255,.14);
-      --panel-veil: rgba(255,255,255,.14);
-
       --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       --serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
 
@@ -62,9 +59,6 @@
       --cards-gap: 12px;
       --card-pad-y: 14px;
       --card-pad-x: 14px;
-
-      --body-lh: 2.02;
-      --sub-lh: 1.78;
 
       --title-letter: .12em;
       --h3-letter: .10em;
@@ -136,7 +130,6 @@
       text-decoration: none; color: var(--ink-1);
       min-width: 0;
     }
-
     .brand-mark{
       width: 44px; height: 44px; border-radius: 999px;
       display: grid; place-items: center;
@@ -148,38 +141,19 @@
       overflow: hidden;
     }
     .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
-
-    .brand-mark img{
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      padding: 6px;
-    }
+    .brand-mark img{ width: 100%; height: 100%; display: block; object-fit: contain; padding: 6px; }
     .topbar.is-compact .brand-mark img{ padding: 5px; }
 
-    .brand-text{
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-      gap: 5px;
-      min-width: 0;
-    }
+    .brand-text{ display: flex; flex-direction: column; line-height: 1.05; gap: 5px; min-width: 0; }
     .brand-eyebrow{
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      padding: 3px 8px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; width: fit-content;
+      padding: 3px 8px; border-radius: 999px;
       border: 1px solid rgba(155,122,52,.40);
       background: rgba(255,255,255,.22);
-      font-size: 11px;
-      letter-spacing: .22em;
+      font-size: 11px; letter-spacing: .22em;
       color: rgba(96,84,64,.88);
       font-weight: 900;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .brand-name{
       font-family: var(--serif);
@@ -188,15 +162,12 @@
       letter-spacing: .14em;
       color: rgba(31,27,22,.96);
       text-shadow: 0 1px 0 rgba(255,255,255,.55);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       transition: font-size .22s ease, letter-spacing .22s ease;
     }
     .topbar.is-compact .brand-name{ font-size: 16px; letter-spacing: .12em; }
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
-
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
@@ -259,14 +230,7 @@
     }
 
     .hero-cta{ margin-top: 18px; display: flex; justify-content: center; }
-    .hero-cta-row{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: nowrap;
-      width: 100%;
-    }
+    .hero-cta-row{ display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; }
 
     .cta-btn{
       appearance: none; border: none; cursor: pointer;
@@ -283,13 +247,10 @@
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
     .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
-
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
-
     @media (max-width: 520px){
-      .cta-btn{ width: calc((100% - 14px) / 2); }
-      .cta-btn{ font-size: 17px; }
+      .cta-btn{ width: calc((100% - 14px) / 2); font-size: 17px; }
     }
 
     .slogan-text{
@@ -308,53 +269,24 @@
 
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
-    .illus-img{
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 0;
-      box-shadow: none;
-      background: transparent;
-    }
+    .illus-img{ width: 100%; height: auto; display: block; background: transparent; }
 
-    .illus-brand{
-      margin-top: 4px;
-      padding: 6px 10px;
-      width: 100%;
-      text-align: center;
-      display: grid;
-      gap: 4px;
-    }
-    .illus-brand .corp-line-1{
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: .06em;
-      color: rgba(66,55,41,.58);
-    }
+    .illus-brand{ margin-top: 4px; padding: 6px 10px; width: 100%; text-align: center; display: grid; gap: 4px; }
+    .illus-brand .corp-line-1{ font-family: var(--sans); font-weight: 700; font-size: 11px; letter-spacing: .06em; color: rgba(66,55,41,.58); }
     .illus-brand .corp-line-2{
-      font-family: var(--serif);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: .10em;
-      color: rgba(66,55,41,.72);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: .10em;
+      color: rgba(66,55,41,.72); text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
     }
     .illus-brand .corp-line-2::before,
     .illus-brand .corp-line-2::after{
-      content:"";
-      width: 18px;
-      height: 1px;
+      content:""; width: 18px; height: 1px;
       background: rgba(155,122,52,.42);
       box-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
 
     .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
-    .diamond-sep .line{ height: 1px; flex: 1; background: var(--line-strong); }
+    .diamond-sep .line{ height: 1px; flex: 1; background: var(--ink-2); opacity: .18; }
     .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
@@ -399,6 +331,7 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
+    /* ✅ 타이틀 태그(버튼색 박스) */
     .panel-title-tag{
       display: inline-flex;
       align-items: center;
@@ -423,31 +356,26 @@
       letter-spacing: var(--title-letter);
       color: var(--ink-1);
     }
-
     .panel-sub{
       margin-top: 6px;
       font-family: var(--sans);
       font-size: var(--fs-12);
       color: var(--ink-4);
       letter-spacing: .06em;
-      line-height: var(--sub-lh);
+      line-height: 1.78;
       padding: 0 6px;
       font-weight: 600;
     }
 
-    .panel-body{
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(var(--blur-panel));
-      -webkit-backdrop-filter: blur(var(--blur-panel));
-    }
-    .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
-    .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
+    .panel-body{ background: rgba(255,255,255,.06); backdrop-filter: blur(var(--blur-panel)); -webkit-backdrop-filter: blur(var(--blur-panel)); }
+    .panel-inner{ padding: 16px 16px 20px; }
+    .cards{ display: grid; gap: 12px; margin-top: 10px; }
 
     .card{
       position: relative;
       border-radius: var(--r-14);
       border: 1px solid rgba(0,0,0,.07);
-      padding: var(--card-pad-y) var(--card-pad-x);
+      padding: 14px 14px;
       overflow: hidden;
       background: rgba(255,255,255,.06);
       backdrop-filter: blur(var(--blur-card));
@@ -485,8 +413,7 @@
       text-align: left;
     }
 
-    .card p,
-    .card .lead{
+    .card p, .card .lead{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
       line-height: 1.70;
@@ -494,20 +421,26 @@
       text-align: left;
       letter-spacing: .01em;
       font-weight: 400;
+      white-space: pre-line;
+      margin: 0;
     }
-    .card .lead{ margin: 0; white-space: pre-line; }
-    .card p{ margin: 0; white-space: pre-line; }
-    .card .lead + p{ margin-top: 0; }
 
-    /* Fee / Contact 이하 그대로 */
+    /* Fee */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
-    .fee-item{ display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; padding: 10px 10px; border-radius: 12px; background: rgba(255,255,255,.18); border: 1px solid rgba(0,0,0,.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); }
+    .fee-item{
+      display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start;
+      padding: 10px 10px; border-radius: 12px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+    }
     .fee-name{ font-size: var(--fs-14); font-weight: 800; color: var(--ink-2); line-height: 1.55; font-family: var(--sans); }
     .fee-desc{ margin-top: 4px; font-size: var(--fs-13); color: var(--ink-4); line-height: 1.75; font-weight: 600; font-family: var(--sans); }
     .fee-price{ text-align: right; font-size: var(--fs-14); font-weight: 900; color: var(--ink-1); white-space: nowrap; line-height: 1.55; font-family: var(--sans); }
     .fee-price .sub{ display:block; margin-top: 4px; font-size: 12px; font-weight: 700; color: var(--ink-4); white-space: nowrap; font-family: var(--sans); }
     .fee-price .time{ display:block; margin-top: 3px; font-size: 11px; font-weight: 600; color: rgba(66,55,41,.48); letter-spacing: .04em; white-space: nowrap; font-family: var(--sans); }
 
+    /* Contact etc (kept) */
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
     .contact-btn{ display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 52px; border-radius: 14px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.34); color: rgba(31,27,22,.92); font-family: var(--sans); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-decoration: none; box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
@@ -680,22 +613,10 @@
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-                <div class="card">
-                  <h3>会費</h3>
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div><div class="fee-name">入会金</div></div>
-                      <div class="fee-price">300,000円</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">月会費</div></div>
-                      <div class="fee-price">5,000円</div>
-                    </div>
-                  </div>
-                </div>
 
+                <!-- ✅ 여기(料金表 안) '身元保証プラン'도 버튼색 박스로 변경 -->
                 <div class="card">
-                  <h3>身元保証プラン</h3>
+                  <div class="panel-title-tag guarantee" style="margin-bottom:10px;">身元保証プラン</div>
                   <div class="fee-list">
                     <div class="fee-item">
                       <div>
@@ -722,8 +643,10 @@
                   </div>
                 </div>
 
+                <!-- ✅ 여기(料金表 안) '生活支援プラン'도 버튼색 박스로 변경 -->
                 <div class="card">
-                  <h3>生活支援プラン</h3>
+                  <div class="panel-title-tag support" style="margin-bottom:10px;">生活支援プラン</div>
+
                   <p style="margin-top:-6px; color: var(--ink-4); font-size: 13px; line-height: 1.85;">
                     ※会員／非会員すべて同じ金額です
                   </p>
@@ -756,6 +679,20 @@
                     <div class="fee-item">
                       <div><div class="fee-name">同行支援（22:00〜7:00）</div></div>
                       <div class="fee-price">8,000円／1時間<span class="time">深夜帯</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>会費</h3>
+                  <div class="fee-list">
+                    <div class="fee-item">
+                      <div><div class="fee-name">入会金</div></div>
+                      <div class="fee-price">300,000円</div>
+                    </div>
+                    <div class="fee-item">
+                      <div><div class="fee-name">月会費</div></div>
+                      <div class="fee-price">5,000円</div>
                     </div>
                   </div>
                 </div>

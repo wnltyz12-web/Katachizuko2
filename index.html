@@ -292,12 +292,13 @@
       .cta-btn{ font-size: 17px; }
     }
 
+    /* ✅ 요청: 슬로건 bold 제거(가벼운 weight로) */
     .slogan-text{
       margin-top: 14px;
       padding: 8px 10px;
       text-align: center;
       font-family: var(--serif);
-      font-weight: 900;
+      font-weight: 600; /* ✅ 이전 900 → 600 */
       letter-spacing: .08em;
       color: rgba(96,84,64,.92);
       line-height: 1.75;
@@ -320,7 +321,7 @@
       background: transparent;
     }
 
-    /* ✅ 변경: 일러스트 아래에 “법인 정보”를 작은 브랜드 네임처럼 */
+    /* ✅ 일러스트 아래 법인표기(작게, 브랜드 네임 느낌) */
     .illus-brand{
       margin-top: 4px;
       padding: 6px 10px;
@@ -331,14 +332,14 @@
     }
     .illus-brand .corp-line-1{
       font-family: var(--sans);
-      font-weight: 800;
+      font-weight: 700;
       font-size: 11px;
       letter-spacing: .06em;
       color: rgba(66,55,41,.58);
     }
     .illus-brand .corp-line-2{
       font-family: var(--serif);
-      font-weight: 900;
+      font-weight: 700;
       font-size: 13px;
       letter-spacing: .10em;
       color: rgba(66,55,41,.72);
@@ -711,7 +712,6 @@
         <div class="illus-inner">
           <img class="illus-img" src="illust5.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
 
-          <!-- ✅ 변경 완료: 일러스트 아래 법인표기(작게, 브랜드 네임 느낌) -->
           <div class="illus-brand" aria-label="法人情報">
             <div class="corp-line-1">法人登録番号：8040005021344</div>
             <div class="corp-line-2">一般社団法人　福祉介護機構</div>
@@ -726,7 +726,7 @@
       </section>
 
       <section class="details" id="details">
-
+        <!-- 이하 동일 -->
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
             <div class="panel-title">身元保証プラン</div>
@@ -912,11 +912,11 @@
                   <div class="fee-list">
                     <div class="fee-item">
                       <div><div class="fee-name">変更・キャンセル</div><div class="fee-desc">前日の15時までにご連絡ください</div></div>
-                      <div class="fee-price"></div>
+                      <div class="fee-price">—</div>
                     </div>
                     <div class="fee-item">
                       <div><div class="fee-name">時間を過ぎてのキャンセル</div><div class="fee-desc">サポート料金を全額お支払いいただきます</div></div>
-                      <div class="fee-price"></div>
+                      <div class="fee-price">—</div>
                     </div>
                   </div>
 
@@ -1012,4 +1012,3 @@
   </script>
 </body>
 </html>
-

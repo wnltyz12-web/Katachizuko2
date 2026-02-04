@@ -217,11 +217,11 @@
       display: inline-flex; align-items: center; justify-content: center;
       padding: 7px 14px;
       border-radius: 6px;
-      border: 2px solid var(--accent-line);
-      color: var(--accent);
+      border: 2px solid rgba(155,122,52,.72);
+      color: rgba(155,122,52,.92);
       font-family: var(--serif);
       font-weight: 900;
-      font-size: var(--fs-13);
+      font-size: 13px;
       letter-spacing: .22em;
       background: rgba(255,255,255,.14);
       backdrop-filter: blur(6px);
@@ -238,7 +238,7 @@
       background: #b7a18a;
       color: #ffffff;
       border-radius: 14px;
-      box-shadow: 0 10px 26px rgba(0,0,0,.14);
+      box-shadow: var(--shadow2);
       letter-spacing: .14em;
       font-family: var(--serif);
       font-size: 18px;
@@ -249,6 +249,7 @@
     .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
+
     @media (max-width: 520px){
       .cta-btn{ width: calc((100% - 14px) / 2); font-size: 17px; }
     }
@@ -286,20 +287,20 @@
     }
 
     .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
-    .diamond-sep .line{ height: 1px; flex: 1; background: var(--ink-2); opacity: .18; }
+    .diamond-sep .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
     .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
     .panel{
       position: relative;
-      border-radius: 18px;
+      border-radius: var(--r-18);
       overflow: hidden;
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
       background: rgba(255,255,255,.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
     .panel::before{
       content:"";
@@ -327,8 +328,8 @@
       text-align: center;
       background: rgba(255,255,255,.18);
       border-bottom: 1px solid rgba(0,0,0,.06);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(var(--blur-panel));
+      -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
     .panel-title-tag{
@@ -339,7 +340,7 @@
       border-radius: 12px;
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .12em;
+      letter-spacing: var(--title-letter);
       font-size: 16px;
       box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.22);
       border: 1px solid rgba(0,0,0,.10);
@@ -352,13 +353,13 @@
       font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
-      letter-spacing: .12em;
+      letter-spacing: var(--title-letter);
       color: var(--ink-1);
     }
     .panel-sub{
       margin-top: 6px;
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: var(--fs-12);
       color: var(--ink-4);
       letter-spacing: .06em;
       line-height: 1.78;
@@ -366,19 +367,19 @@
       font-weight: 600;
     }
 
-    .panel-body{ background: rgba(255,255,255,.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-    .panel-inner{ padding: 16px 16px 20px; }
-    .cards{ display: grid; gap: 12px; margin-top: 10px; }
+    .panel-body{ background: rgba(255,255,255,.06); backdrop-filter: blur(var(--blur-panel)); -webkit-backdrop-filter: blur(var(--blur-panel)); }
+    .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
+    .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
 
     .card{
       position: relative;
-      border-radius: 14px;
+      border-radius: var(--r-14);
       border: 1px solid rgba(0,0,0,.07);
-      padding: 14px 14px;
+      padding: var(--card-pad-y) var(--card-pad-x);
       overflow: hidden;
       background: rgba(255,255,255,.06);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(var(--blur-card));
+      -webkit-backdrop-filter: blur(var(--blur-card));
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
     .card::before{
@@ -404,9 +405,9 @@
 
     .card h3{
       font-family: var(--serif);
-      font-size: 16px;
+      font-size: var(--fs-16);
       font-weight: 900;
-      letter-spacing: .10em;
+      letter-spacing: var(--h3-letter);
       color: var(--ink-1);
       margin-bottom: 10px;
       text-align: left;
@@ -414,7 +415,7 @@
 
     .card p, .card .lead{
       font-family: var(--sans);
-      font-size: 14px;
+      font-size: calc(var(--fs-15) - 1px);
       line-height: 1.70;
       color: var(--ink-3);
       text-align: left;
@@ -424,17 +425,20 @@
       margin: 0;
     }
 
-    /* Fee */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{
-      display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start;
-      padding: 10px 10px; border-radius: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 10px;
+      border-radius: 12px;
       background: rgba(255,255,255,.18);
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
     }
     .fee-name{
-      font-size: 14px;
+      font-size: var(--fs-14);
       font-weight: 800;
       color: var(--ink-2);
       line-height: 1.55;
@@ -442,7 +446,7 @@
     }
     .fee-desc{
       margin-top: 4px;
-      font-size: 13px;
+      font-size: var(--fs-13);
       color: var(--ink-4);
       line-height: 1.75;
       font-weight: 600;
@@ -450,23 +454,22 @@
     }
     .fee-price{
       text-align: right;
-      font-size: 14px;
+      font-size: var(--fs-14);
       font-weight: 900;
       color: var(--ink-1);
       white-space: nowrap;
       line-height: 1.55;
       font-family: var(--sans);
     }
-    /* ✅ 행간 더 줄이기(가격 + 서브) */
     .fee-price .sub{
       display:block;
-      margin-top: 1px;            /* 기존 4px → 1px */
+      margin-top: 1px;
       font-size: 12px;
       font-weight: 700;
       color: var(--ink-4);
       white-space: nowrap;
       font-family: var(--sans);
-      line-height: 1.15;          /* ✅ 줄간격 줄임 */
+      line-height: 1.15;
     }
     .fee-price .time{
       display:block;
@@ -479,20 +482,93 @@
       font-family: var(--sans);
     }
 
-    /* Contact etc */
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
-    .contact-btn{ display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 52px; border-radius: 14px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.34); color: rgba(31,27,22,.92); font-family: var(--sans); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-decoration: none; box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
-    .contact-btn:hover{ transform: translateY(-0.5px); background: rgba(255,255,255,.44); box-shadow: 0 14px 34px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.72); }
-    .contact-btn.primary{ background: rgba(183,161,138,.98); color: #fff; box-shadow: 0 14px 34px rgba(0,0,0,.10); }
-    .contact-btn.primary:hover{ background: rgba(183,161,138,1); box-shadow: 0 16px 38px rgba(0,0,0,.12); }
+    .contact-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.34);
+      color: rgba(31,27,22,.92);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+      box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .contact-btn:hover{
+      transform: translateY(-0.5px);
+      background: rgba(255,255,255,.44);
+      box-shadow: 0 14px 34px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .contact-btn.primary{
+      background: rgba(183,161,138,.98);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+    }
+    .contact-btn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 16px 38px rgba(0,0,0,.12);
+    }
 
-    .kv{ display: grid; grid-template-columns: 86px 1fr; gap: 10px; align-items: start; padding: 10px 10px; border-radius: 12px; background: rgba(255,255,255,.18); border: 1px solid rgba(0,0,0,.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); font-family: var(--sans); }
-    .kv .k{ font-weight: 800; color: var(--ink-2); letter-spacing: .06em; font-size: 12px; white-space: nowrap; }
-    .kv .v{ color: var(--ink-3); font-weight: 600; line-height: 1.75; font-size: 13px; }
+    .kv{
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      font-family: var(--sans);
+    }
+    .kv .k{
+      font-weight: 800;
+      color: var(--ink-2);
+      letter-spacing: .06em;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .kv .v{
+      color: var(--ink-3);
+      font-weight: 600;
+      line-height: 1.75;
+      font-size: 13px;
+    }
 
-    .pill-row{ margin-top: 12px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .pill{ display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(66,55,41,.16); background: rgba(255,255,255,.22); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-family: var(--serif); font-weight: 900; font-size: 13px; letter-spacing: .10em; color: rgba(96,84,64,.92); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); user-select: none; }
+    .pill-row{
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,55,41,.16);
+      background: rgba(255,255,255,.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: var(--fs-13);
+      letter-spacing: .10em;
+      color: rgba(96,84,64,.92);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      user-select: none;
+    }
   </style>
 </head>
 
@@ -672,7 +748,6 @@
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">A-1 身元保証人代行</div>
-                        <!-- ✅ '施設月額利用料の2か月分'을 오른쪽(가격 위치)로 이동 -->
                       </div>
                       <div class="fee-price">
                         施設月額利用料の2か月分
@@ -701,37 +776,36 @@
                   <div class="panel-title-tag support" style="margin-bottom:10px;">生活支援プラン</div>
 
                   <p style="margin-top:-6px; color: var(--ink-4); font-size: 13px; line-height: 1.85;">
-                    ※会員／非会員すべて同じ金額です
+                    ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
                   </p>
 
                   <div class="fee-list">
                     <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（9:00〜18:00）</div></div>
+                      <div><div class="fee-name">日中（9:00〜18:00）</div></div>
                       <div class="fee-price">4,000円／1時間</div>
                     </div>
                     <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（18:00〜9:00）</div></div>
+                      <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
                       <div class="fee-price">5,000円／1時間</div>
                     </div>
                     <div class="fee-item">
-                      <div><div class="fee-name">訪問支援（22:00〜7:00）</div></div>
-                      <div class="fee-price">6,000円／1時間<span class="time">深夜帯</span></div>
+                      <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
+                      <div class="fee-price">6,000円／1時間</div>
                     </div>
 
                     <div class="fee-item">
                       <div>
-                        <div class="fee-name">同行支援（9:00〜18:00）</div>
-                        <div class="fee-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
+                        <div class="fee-name">日中（9:00〜18:00）</div>
                       </div>
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
                     <div class="fee-item">
-                      <div><div class="fee-name">同行支援（18:00〜9:00）</div></div>
+                      <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
                       <div class="fee-price">7,000円／1時間</div>
                     </div>
                     <div class="fee-item">
-                      <div><div class="fee-name">同行支援（22:00〜7:00）</div></div>
-                      <div class="fee-price">8,000円／1時間<span class="time">深夜帯</span></div>
+                      <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
+                      <div class="fee-price">8,000円／1時間</div>
                     </div>
                   </div>
                 </div>

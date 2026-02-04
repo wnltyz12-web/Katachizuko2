@@ -300,7 +300,8 @@
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .08em;
-      color: rgba(155,122,52,.88);
+      /* ✅ 요청: hero-title 색상이랑 동일하게 */
+      color: rgba(96,84,64,.92);
       line-height: 1.75;
       font-size: 14px;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
@@ -320,6 +321,58 @@
       box-shadow: none;
       background: transparent;
     }
+
+    /* ✅ 추가: 일러스트 아래 브랜드 문구(사진 글씨 영역) */
+    .illus-brand{
+      margin-top: 2px;
+      padding: 6px 10px;
+      width: 100%;
+      text-align: center;
+    }
+    .illus-brand .brandline-1{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .22em;
+      font-size: 12px;
+      color: rgba(96,84,64,.82);
+      opacity: .98;
+    }
+    .illus-brand .brandline-2{
+      margin-top: 6px;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .14em;
+      font-size: 18px;
+      color: rgba(31,27,22,.96);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .illus-brand .brandline-2::before,
+    .illus-brand .brandline-2::after{
+      content:"";
+      width: 26px;
+      height: 1px;
+      background: rgba(155,122,52,.55);
+      box-shadow: 0 1px 0 rgba(255,255,255,.55);
+    }
+    .illus-brand .brandline-3{
+      margin-top: 6px;
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .10em;
+      font-size: 12px;
+      color: rgba(66,55,41,.62);
+    }
+
+    @media (max-width: 420px){
+      .illus-brand .brandline-2{ font-size: 17px; }
+      .illus-brand .brandline-2::before,
+      .illus-brand .brandline-2::after{ width: 22px; }
+    }
+
     .illus-kicker{ display:none; }
     .illus-caption{ display:none; }
 
@@ -673,6 +726,13 @@
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illust5.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
+
+          <!-- ✅ 요청: 일러스트 아래(사진에 적힌 글씨) + 예쁘게 디자인 -->
+          <div class="illus-brand" aria-label="ブランド表記">
+            <div class="brandline-1">外出支援</div>
+            <div class="brandline-2">カタオカサービス</div>
+            <div class="brandline-3">KATAOKA SERVICE</div>
+          </div>
 
           <div class="diamond-sep" aria-hidden="true">
             <div class="line"></div>

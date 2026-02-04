@@ -292,7 +292,6 @@
       .cta-btn{ font-size: 17px; }
     }
 
-    /* ✅ 버튼과 일러스트 사이 문구(줄바꿈 그대로) */
     .slogan-text{
       margin-top: 14px;
       padding: 8px 10px;
@@ -300,12 +299,11 @@
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .08em;
-      /* ✅ 요청: hero-title 색상이랑 동일하게 */
       color: rgba(96,84,64,.92);
       line-height: 1.75;
       font-size: 14px;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
-      white-space: pre-line; /* ✅ 줄바꿈 그대로 */
+      white-space: pre-line;
     }
     @media (max-width: 420px){
       .slogan-text{ font-size: 13px; letter-spacing: .06em; }
@@ -322,59 +320,47 @@
       background: transparent;
     }
 
-    /* ✅ 추가: 일러스트 아래 브랜드 문구(사진 글씨 영역) */
+    /* ✅ 변경: 일러스트 아래에 “법인 정보”를 작은 브랜드 네임처럼 */
     .illus-brand{
-      margin-top: 2px;
+      margin-top: 4px;
       padding: 6px 10px;
       width: 100%;
       text-align: center;
+      display: grid;
+      gap: 4px;
     }
-    .illus-brand .brandline-1{
+    .illus-brand .corp-line-1{
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: rgba(66,55,41,.58);
+    }
+    .illus-brand .corp-line-2{
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .22em;
-      font-size: 12px;
-      color: rgba(96,84,64,.82);
-      opacity: .98;
-    }
-    .illus-brand .brandline-2{
-      margin-top: 6px;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .14em;
-      font-size: 18px;
-      color: rgba(31,27,22,.96);
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      font-size: 13px;
+      letter-spacing: .10em;
+      color: rgba(66,55,41,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
     }
-    .illus-brand .brandline-2::before,
-    .illus-brand .brandline-2::after{
+    .illus-brand .corp-line-2::before,
+    .illus-brand .corp-line-2::after{
       content:"";
-      width: 26px;
+      width: 18px;
       height: 1px;
-      background: rgba(155,122,52,.55);
+      background: rgba(155,122,52,.42);
       box-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-    .illus-brand .brandline-3{
-      margin-top: 6px;
-      font-family: var(--sans);
-      font-weight: 800;
-      letter-spacing: .10em;
-      font-size: 12px;
-      color: rgba(66,55,41,.62);
-    }
-
     @media (max-width: 420px){
-      .illus-brand .brandline-2{ font-size: 17px; }
-      .illus-brand .brandline-2::before,
-      .illus-brand .brandline-2::after{ width: 22px; }
+      .illus-brand .corp-line-2{ font-size: 12.5px; }
+      .illus-brand .corp-line-2::before,
+      .illus-brand .corp-line-2::after{ width: 14px; }
     }
-
-    .illus-kicker{ display:none; }
-    .illus-caption{ display:none; }
 
     .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
     .diamond-sep .line{ height: 1px; flex: 1; background: var(--line-strong); }
@@ -510,7 +496,6 @@
       font-weight: 400;
     }
 
-    /* Fee / Contact 등 나머지 스타일 그대로 */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{
       display: grid;
@@ -716,7 +701,6 @@
           </div>
         </div>
 
-        <!-- ✅ 줄바꿈까지 똑같이 -->
         <div class="slogan-text" aria-label="理念">
 皆さまの想いをかなえるために
 私たちが一生涯のご支援をお約束致します
@@ -727,11 +711,10 @@
         <div class="illus-inner">
           <img class="illus-img" src="illust5.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
 
-          <!-- ✅ 요청: 일러스트 아래(사진에 적힌 글씨) + 예쁘게 디자인 -->
-          <div class="illus-brand" aria-label="ブランド表記">
-            <div class="brandline-1">外出支援</div>
-            <div class="brandline-2">カタオカサービス</div>
-            <div class="brandline-3">KATAOKA SERVICE</div>
+          <!-- ✅ 변경 완료: 일러스트 아래 법인표기(작게, 브랜드 네임 느낌) -->
+          <div class="illus-brand" aria-label="法人情報">
+            <div class="corp-line-1">法人登録番号：8040005021344</div>
+            <div class="corp-line-2">一般社団法人　福祉介護機構</div>
           </div>
 
           <div class="diamond-sep" aria-hidden="true">

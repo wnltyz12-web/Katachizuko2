@@ -480,6 +480,7 @@
       letter-spacing: .04em;
       white-space: nowrap;
       font-family: var(--sans);
+      line-height: 1.15;
     }
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
@@ -775,6 +776,7 @@
                 <div class="card">
                   <div class="panel-title-tag support" style="margin-bottom:10px;">生活支援プラン</div>
 
+                  <!-- ✅ 줄바꿈 과한 부분 정리(한 줄 느낌으로) -->
                   <p style="margin-top:-6px; color: var(--ink-4); font-size: 13px; line-height: 1.85;">
                     ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
                   </p>
@@ -792,6 +794,11 @@
                       <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
+
+                    <!-- ✅ 요청 문구 추가 (6,000円／1時間 다음 줄) -->
+                    <p style="margin-top:6px; color: var(--ink-4); font-size: 13px; line-height: 1.85; font-family: var(--sans);">
+                      同行支援・・・車両を使用しての通院・買物・役所等の外出同行支援
+                    </p>
 
                     <div class="fee-item">
                       <div>

@@ -466,28 +466,33 @@
       text-align: left;
     }
 
-    /* ✅ 통일된 본문 스타일 */
+    /* ✅ “お亡くなりになられた後...” 문장(p)의 기본 행간 = 1.70
+       ✅ 요청: 두 줄짜리 텍스트도 이 행간 그대로 보이게 */
     .card p,
     .card .lead{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
-      line-height: 1.70;
+      line-height: 1.70;          /* ← 기준과 동일 */
       color: var(--ink-3);
       text-align: left;
       letter-spacing: .01em;
       font-weight: 400;
-      white-space: pre-line; /* ✅ 줄바꿈 유지 */
     }
-    .card .lead{ margin-top: -2px; margin-bottom: 8px; }
 
-    /* ✅ 요청: 두 줄의 “행간/줄바꿈” 딱 맞추기 위한 래퍼(라인 하이트 고정 + 줄바꿈 유지) */
-    .lead-block{
-      display:block;
-      line-height: 1.70;
+    /* ✅ 두 줄(lead + p) 사이 간격도 “단일 p”처럼 보이게:
+       - lead의 아래 마진 제거
+       - 두 문장을 하나의 문단처럼 붙여서 동일한 리듬 */
+    .card .lead{
+      margin: 0;                  /* ← 8px 제거 */
       white-space: pre-line;
     }
+    .card p{
+      margin: 0;                  /* ← 기본 margin 제거 */
+      white-space: pre-line;
+    }
+    .card .lead + p{ margin-top: 0; } /* ← 줄 간격 추가 없음 */
 
-    /* Fee/Contact 등 이하 생략 없이 그대로 */
+    /* Fee / Contact 등 이하 동일 */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
     .fee-item{ display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; padding: 10px 10px; border-radius: 12px; background: rgba(255,255,255,.18); border: 1px solid rgba(0,0,0,.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); }
     .fee-name{ font-size: var(--fs-14); font-weight: 800; color: var(--ink-2); line-height: 1.55; font-family: var(--sans); }
@@ -607,16 +612,14 @@
 
                 <div class="card">
                   <h3>身元保証人代行</h3>
-                  <!-- ✅ 줄바꿈/행간 동일하게: pre-line + 동일 line-height -->
-                  <div class="lead lead-block">施設入居時に必要となる保証人を承ります</div>
-                  <p class="lead-block">条件や流れを整理し安心して手続きができるようにご支援いたします</p>
+                  <div class="lead">施設入居時に必要となる保証人を承ります</div>
+                  <p>条件や流れを整理し安心して手続きができるようにご支援いたします</p>
                 </div>
 
                 <div class="card">
                   <h3>緊急連絡先代行</h3>
-                  <!-- ✅ 줄바꿈/행간 동일하게: pre-line + 동일 line-height -->
-                  <div class="lead lead-block">入院時、施設契約時の緊急連絡先にご指定いただけます</div>
-                  <p class="lead-block">連絡方法、優先順位を事前に確認し連絡が取れる体制を整えます</p>
+                  <div class="lead">入院時、施設契約時の緊急連絡先にご指定いただけます</div>
+                  <p>連絡方法、優先順位を事前に確認し連絡が取れる体制を整えます</p>
                 </div>
 
                 <div class="card">
@@ -668,7 +671,7 @@
           </div>
         </article>
 
-        <!-- 이하 동일(요금/문의) -->
+        <!-- 요금/문의 섹션은 그대로 -->
         <article class="panel" id="panel-price">
           <div class="panel-head">
             <div class="panel-title">料金表</div>

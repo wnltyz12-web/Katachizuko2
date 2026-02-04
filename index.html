@@ -471,6 +471,16 @@
       font-family: var(--sans);
       line-height: 1.15;
     }
+    .fee-price .time{
+      display:block;
+      margin-top: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(66,55,41,.48);
+      letter-spacing: .04em;
+      white-space: nowrap;
+      font-family: var(--sans);
+    }
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
@@ -778,23 +788,15 @@
                       <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
                       <div class="fee-price">5,000円／1時間</div>
                     </div>
-
-                    <!-- ✅ 요청한 문구를 여기(深夜帯 6,000円과 日中 6,000円 사이)에 삽입 -->
-                    <div class="fee-item">
-                      <div>
-                        <div class="fee-name">同行支援</div>
-                        <div class="fee-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
-                      </div>
-                      <div class="fee-price">　</div>
-                    </div>
-
                     <div class="fee-item">
                       <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
 
                     <div class="fee-item">
-                      <div><div class="fee-name">日中（9:00〜18:00）</div></div>
+                      <div>
+                        <div class="fee-name">日中（9:00〜18:00）</div>
+                      </div>
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
                     <div class="fee-item">

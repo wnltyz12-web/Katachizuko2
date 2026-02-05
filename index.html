@@ -212,6 +212,7 @@
       font-size: 16px;
       line-height: 1.95;
     }
+
     .hero-label-wrap{ margin-top: 12px; display: grid; place-items: center; }
     .hero-label{
       display: inline-flex; align-items: center; justify-content: center;
@@ -430,7 +431,7 @@
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 10px;
-      align-items: start;
+      align-items: center;
       padding: 10px 10px;
       border-radius: 12px;
       background: rgba(255,255,255,.18);
@@ -464,10 +465,7 @@
       font-weight: 700;
       letter-spacing: .02em;
     }
-    .fee-meta strong{
-      font-weight: 900;
-      color: var(--ink-2);
-    }
+    .fee-meta strong{ font-weight: 900; color: var(--ink-2); }
 
     .fee-sep{
       margin: 12px 0 10px;
@@ -501,6 +499,16 @@
       font-weight: 700;
       letter-spacing: .02em;
       white-space: pre-line;
+    }
+
+    /* ✅ 여기 추가: "その他の料金"의 아래 작은 글씨를 가운데쪽으로 밀기 */
+    .fee-sub{
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--ink-4);
+      font-weight: 600;
+      padding-left: 28px;          /* ← 이 값으로 위치 조절 */
+      line-height: 1.35;
     }
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
@@ -806,8 +814,6 @@
                 <div class="card" style="padding-bottom:10px;">
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
-
-                    <!-- ✅ 한 줄로 변경 -->
                     <div class="fee-meta">※<strong>会員</strong>／非会員すべて同じ金額です</div>
                   </div>
 
@@ -851,27 +857,30 @@
                   </div>
                 </div>
 
+                <!-- ✅ 요청 반영: その他の料金의 작은 글씨를 오른쪽(가운데쪽)으로 이동 -->
                 <div class="card">
                   <h3>その他の料金</h3>
                   <div class="fee-list">
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">同行支援費</div>
-                        <div style="margin-top:4px; font-size:13px; color: var(--ink-4); font-weight:600;">20km毎</div>
+                        <div class="fee-sub">20km毎</div>
                       </div>
                       <div class="fee-price">500円</div>
                     </div>
+
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">スタッフ移動費</div>
-                        <div style="margin-top:4px; font-size:13px; color: var(--ink-4); font-weight:600;">1kmあたり</div>
+                        <div class="fee-sub">1kmあたり</div>
                       </div>
                       <div class="fee-price">20円</div>
                     </div>
+
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">土日祝日料金</div>
-                        <div style="margin-top:4px; font-size:13px; color: var(--ink-4); font-weight:600;">1時間あたり</div>
+                        <div class="fee-sub">1時間あたり</div>
                       </div>
                       <div class="fee-price">＋1,000円</div>
                     </div>
@@ -884,14 +893,14 @@
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">変更・キャンセル</div>
-                        <div style="margin-top:4px; font-size:13px; color: var(--ink-4); font-weight:600;">前日の15時までにご連絡ください</div>
+                        <div class="fee-sub" style="padding-left:0;">前日の15時までにご連絡ください</div>
                       </div>
                       <div class="fee-price">—</div>
                     </div>
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">時間を過ぎてのキャンセル</div>
-                        <div style="margin-top:4px; font-size:13px; color: var(--ink-4); font-weight:600;">サポート料金を全額お支払いいただきます</div>
+                        <div class="fee-sub" style="padding-left:0;">サポート料金を全額お支払いいただきます</div>
                       </div>
                       <div class="fee-price">—</div>
                     </div>

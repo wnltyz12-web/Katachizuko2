@@ -454,42 +454,28 @@
       font-family: var(--sans);
     }
 
-    /* ✅ (수정) 안내문: 가운데 정렬 */
+    /* ✅ (수정) 버튼(캡슐) 제거: 그냥 텍스트 가운데 정렬 */
     .fee-meta{
-      display: flex;
-      justify-content: center;
       margin-top: 8px;
-    }
-    .fee-sameprice{
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.52);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
+      text-align: center;
       color: var(--ink-4);
       font-size: 12px;
-      line-height: 1.1;
+      line-height: 1.25;
       font-family: var(--sans);
-      white-space: nowrap;
+      font-weight: 700;
+      letter-spacing: .02em;
     }
-    .fee-sameprice strong{
+    .fee-meta strong{
       font-weight: 900;
       color: var(--ink-2);
     }
 
+    /* ✅ (수정) 同行支援도 버튼/박스 제거: 그냥 가운데 정렬 텍스트 */
     .fee-sep{
-      margin: 10px 0 8px;
+      margin: 12px 0 10px;
       text-align: center;
-      padding: 10px 10px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.34);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      color: var(--ink-4);
+      font-family: var(--sans);
     }
     .fee-sep-title{
       display: inline-flex;
@@ -511,13 +497,12 @@
     }
     .fee-sep-desc{
       margin-top: 6px;
-      font-family: var(--sans);
       font-size: 12px;
       line-height: 1.55;
       color: var(--ink-4);
-      font-weight: 600;
-      letter-letter-spacing: .02em;
+      font-weight: 700;
       letter-spacing: .02em;
+      white-space: pre-line;
     }
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
@@ -824,10 +809,9 @@
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
 
+                    <!-- ✅ 박스/버튼 없이 그냥 텍스트 -->
                     <div class="fee-meta">
-                      <div class="fee-sameprice">
-                        ※<strong>会員</strong>／非会員すべて同じ金額です
-                      </div>
+                      ※<strong>会員</strong><br/>／非会員すべて同じ金額です
                     </div>
                   </div>
 
@@ -846,6 +830,7 @@
                     </div>
                   </div>
 
+                  <!-- ✅ 박스/버튼 없이 그냥 텍스트 -->
                   <div class="fee-sep" aria-label="同行支援の説明">
                     <div class="fee-sep-title">
                       <span class="dots">・・・</span>

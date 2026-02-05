@@ -454,7 +454,7 @@
       font-family: var(--sans);
     }
 
-    /* ✅ 추가: 深夜帯(6,000円) 아래 설명 문구 */
+    /* ✅ 深夜帯(6,000円) 아래 설명 문구 */
     .fee-note{
       margin: 0;
       margin-top: -2px;
@@ -464,6 +464,27 @@
       line-height: 1.55;
       font-family: var(--sans);
       white-space: pre-line;
+
+      /* ✅ 추가 요청: 가운데 정렬 */
+      text-align: center;
+    }
+
+    /* ✅ 추가 요청: 生活支援プラン 버튼 아래 오른쪽에 안내문 배치 */
+    .support-head{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .support-note{
+      margin: 0;
+      padding: 0;
+      color: var(--ink-4);
+      font-size: 12px;
+      line-height: 1.15;
+      text-align: right;
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
@@ -726,13 +747,11 @@
                   </div>
                 </div>
 
-                <!-- ✅ 身元保証プラン: 生活支援プラン과 같은 구조(색상 유지) -->
                 <div class="card">
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag guarantee" style="margin:0;">身元保証プラン</div>
                   </div>
 
-                  <!-- 약간의 간격만 주고 바로 요금 -->
                   <div class="fee-list" style="margin-top:8px;">
                     <div class="fee-item">
                       <div><div class="fee-name">A-1 身元保証人代行</div></div>
@@ -768,16 +787,15 @@
                   </div>
                 </div>
 
-                <!-- ✅ 생활지원: 안내문 다음에 '살짝' 공백 -->
                 <div class="card" style="padding-bottom:10px;">
-                  <div style="display:grid; gap:0;">
+                  <!-- ✅ 버튼 + 안내문을 같은 줄(오른쪽)로 -->
+                  <div class="support-head">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
-                    <p style="margin:0; padding:0; color: var(--ink-4); font-size: 12px; line-height: 1.15;">
+                    <p class="support-note">
                       ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
                     </p>
                   </div>
 
-                  <!-- ✅ 안내문 다음에 '살짝' 간격 -->
                   <div class="fee-list" style="margin-top:8px; margin-bottom:10px;">
                     <div class="fee-item">
                       <div><div class="fee-name">日中（9:00〜18:00）</div></div>
@@ -792,8 +810,9 @@
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
 
-                    <!-- ✅ 요청: 深夜帯（22:00〜7:00） 6,000円／1時間 칸 아래에 줄바꿈해서 넣기 -->
-                    <p class="fee-note">同行支援・・・
+                    <!-- ✅ 요청 반영: 첫 줄에 "・・・" 추가 + 가운데 정렬 -->
+                    <p class="fee-note">・・・
+同行支援・・・
 車両を使用しての通院・買物・役所等の外出同行支援</p>
                   </div>
 

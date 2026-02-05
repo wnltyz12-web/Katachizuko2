@@ -212,6 +212,7 @@
       font-size: 16px;
       line-height: 1.95;
     }
+
     .hero-label-wrap{ margin-top: 12px; display: grid; place-items: center; }
     .hero-label{
       display: inline-flex; align-items: center; justify-content: center;
@@ -460,27 +461,6 @@
       white-space: nowrap;
       line-height: 1.55;
       font-family: var(--sans);
-    }
-    .fee-price .sub{
-      display:block;
-      margin-top: 1px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--ink-4);
-      white-space: nowrap;
-      font-family: var(--sans);
-      line-height: 1.15;
-    }
-    .fee-price .time{
-      display:block;
-      margin-top: 3px;
-      font-size: 11px;
-      font-weight: 600;
-      color: rgba(66,55,41,.48);
-      letter-spacing: .04em;
-      white-space: nowrap;
-      font-family: var(--sans);
-      line-height: 1.15;
     }
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
@@ -747,9 +727,7 @@
                   <div class="panel-title-tag guarantee" style="margin-bottom:10px;">身元保証プラン</div>
                   <div class="fee-list">
                     <div class="fee-item">
-                      <div>
-                        <div class="fee-name">A-1 身元保証人代行</div>
-                      </div>
+                      <div><div class="fee-name">A-1 身元保証人代行</div></div>
                       <div class="fee-price">
                         施設月額利用料の2か月分
                         <span class="sub">非会員：4か月分</span>
@@ -773,8 +751,8 @@
                   </div>
                 </div>
 
-                <!-- ✅ 여기만 변경: 안내문을 맨 아래로 내리고, 동행설명 문구 삭제 -->
-                <div class="card">
+                <!-- ✅ 간격 제거 버전: 마지막 요금 박스와 안내문을 바짝 붙임 -->
+                <div class="card" style="padding-bottom:10px;">
                   <div class="panel-title-tag support" style="margin-bottom:8px;">生活支援プラン</div>
 
                   <!-- 방문지원 요금 -->
@@ -793,8 +771,9 @@
                     </div>
                   </div>
 
-                  <!-- 동행지원 요금 (설명 문구는 삭제됨) -->
-                  <div class="fee-list" style="margin-top:0; margin-bottom:10px;">
+                  <!-- 동행지원 요금 -->
+                  <!-- ✅ 여기 margin-bottom을 0으로 + 안내문을 위로 살짝 끌어올림 -->
+                  <div class="fee-list" style="margin-top:0; margin-bottom:0;">
                     <div class="fee-item">
                       <div><div class="fee-name">日中（9:00〜18:00）</div></div>
                       <div class="fee-price">6,000円／1時間</div>
@@ -809,8 +788,8 @@
                     </div>
                   </div>
 
-                  <!-- ✅ 안내문을 맨 아래로 -->
-                  <p style="margin:0; color: var(--ink-4); font-size: 12px; line-height: 1.55; text-align:left;">
+                  <!-- ✅ 안내문: margin-top을 음수로 해서 박스 아래 여백 “확실히” 제거 -->
+                  <p style="margin:0; margin-top:-6px; padding-top:0; color: var(--ink-4); font-size: 12px; line-height: 1.45;">
                     ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
                   </p>
                 </div>

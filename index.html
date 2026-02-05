@@ -212,7 +212,6 @@
       font-size: 16px;
       line-height: 1.95;
     }
-
     .hero-label-wrap{ margin-top: 12px; display: grid; place-items: center; }
     .hero-label{
       display: inline-flex; align-items: center; justify-content: center;
@@ -751,11 +750,16 @@
                   </div>
                 </div>
 
-                <!-- ✅ 간격 제거 버전: 마지막 요금 박스와 안내문을 바짝 붙임 -->
+                <!-- ✅ 요청: "生活支援プラン" 바로 아래(공백 없이) 안내문 배치 -->
                 <div class="card" style="padding-bottom:10px;">
-                  <div class="panel-title-tag support" style="margin-bottom:8px;">生活支援プラン</div>
+                  <div style="display:grid; gap:0;">
+                    <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
+                    <p style="margin:0; padding:0; color: var(--ink-4); font-size: 12px; line-height: 1.15;">
+                      ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
+                    </p>
+                  </div>
 
-                  <!-- 방문지원 요금 -->
+                  <!-- 방문지원 요금 (위 여백 제거) -->
                   <div class="fee-list" style="margin-top:0; margin-bottom:10px;">
                     <div class="fee-item">
                       <div><div class="fee-name">日中（9:00〜18:00）</div></div>
@@ -772,7 +776,6 @@
                   </div>
 
                   <!-- 동행지원 요금 -->
-                  <!-- ✅ 여기 margin-bottom을 0으로 + 안내문을 위로 살짝 끌어올림 -->
                   <div class="fee-list" style="margin-top:0; margin-bottom:0;">
                     <div class="fee-item">
                       <div><div class="fee-name">日中（9:00〜18:00）</div></div>
@@ -787,11 +790,6 @@
                       <div class="fee-price">8,000円／1時間</div>
                     </div>
                   </div>
-
-                  <!-- ✅ 안내문: margin-top을 음수로 해서 박스 아래 여백 “확실히” 제거 -->
-                  <p style="margin:0; margin-top:-6px; padding-top:0; color: var(--ink-4); font-size: 12px; line-height: 1.45;">
-                    ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
-                  </p>
                 </div>
 
                 <div class="card">

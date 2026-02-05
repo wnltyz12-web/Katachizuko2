@@ -454,38 +454,14 @@
       font-family: var(--sans);
     }
 
-    /* ✅ 공통: 작은 안내문(색/크기) */
-    .fine-note{
-      margin: 0;
-      padding: 0;
-      color: var(--ink-4);
-      font-size: 12px;
-      line-height: 1.15;
-      font-family: var(--sans);
-      white-space: pre-line;
-    }
-
-    /* ✅ 상단 라인(태그 + 우측 안내문) */
-    .plan-head-row{
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .plan-head-row .panel-title-tag{ margin:0; }
-    .note-right{
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    /* ✅ 深夜帯(6,000円) 아래에 넣는 동행지원 안내문: 같은 스타일로 */
+    /* ✅ 추가: 深夜帯(6,000円) 아래 설명 문구 */
     .fee-note{
       margin: 0;
       margin-top: -2px;
       padding: 0 2px;
       color: var(--ink-4);
       font-size: 12px;
-      line-height: 1.15;
+      line-height: 1.55;
       font-family: var(--sans);
       white-space: pre-line;
     }
@@ -750,10 +726,14 @@
                   </div>
                 </div>
 
-                <!-- 身元保証プラン -->
+                <!-- ✅ 身元保証プラン: 生活支援プラン과 같은 구조(색상 유지) -->
                 <div class="card">
-                  <div class="panel-title-tag guarantee" style="margin-bottom:10px;">身元保証プラン</div>
-                  <div class="fee-list">
+                  <div style="display:grid; gap:0;">
+                    <div class="panel-title-tag guarantee" style="margin:0;">身元保証プラン</div>
+                  </div>
+
+                  <!-- 약간의 간격만 주고 바로 요금 -->
+                  <div class="fee-list" style="margin-top:8px;">
                     <div class="fee-item">
                       <div><div class="fee-name">A-1 身元保証人代行</div></div>
                       <div class="fee-price">
@@ -761,6 +741,7 @@
                         <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：4か月分</span>
                       </div>
                     </div>
+
                     <div class="fee-item">
                       <div><div class="fee-name">A-2 緊急連絡先代行</div></div>
                       <div class="fee-price">
@@ -768,6 +749,7 @@
                         <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
                       </div>
                     </div>
+
                     <div class="fee-item">
                       <div><div class="fee-name">A-3 身元引受人代行</div></div>
                       <div class="fee-price">
@@ -775,6 +757,7 @@
                         <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：220,000円</span>
                       </div>
                     </div>
+
                     <div class="fee-item">
                       <div><div class="fee-name">A-4 死後事務代行</div></div>
                       <div class="fee-price">
@@ -785,17 +768,16 @@
                   </div>
                 </div>
 
-                <!-- ✅ 생활지원(요청 반영) -->
+                <!-- ✅ 생활지원: 안내문 다음에 '살짝' 공백 -->
                 <div class="card" style="padding-bottom:10px;">
-                  <!-- ✅ 태그 아래 줄에, 우측 정렬로 배치 -->
-                  <div class="plan-head-row">
-                    <div class="panel-title-tag support">生活支援プラン</div>
-                    <p class="fine-note note-right">
+                  <div style="display:grid; gap:0;">
+                    <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
+                    <p style="margin:0; padding:0; color: var(--ink-4); font-size: 12px; line-height: 1.15;">
                       ※<span style="font-weight:900; color: var(--ink-2);">会員</span>／非会員すべて同じ金額です
                     </p>
                   </div>
 
-                  <!-- ✅ 태그/안내문 다음, 살짝 간격 -->
+                  <!-- ✅ 안내문 다음에 '살짝' 간격 -->
                   <div class="fee-list" style="margin-top:8px; margin-bottom:10px;">
                     <div class="fee-item">
                       <div><div class="fee-name">日中（9:00〜18:00）</div></div>
@@ -810,7 +792,7 @@
                       <div class="fee-price">6,000円／1時間</div>
                     </div>
 
-                    <!-- ✅ 동행지원 문구: 폰트사이즈/색상/줄바꿈 = 非会員すべて同じ金額です 와 동일 -->
+                    <!-- ✅ 요청: 深夜帯（22:00〜7:00） 6,000円／1時間 칸 아래에 줄바꿈해서 넣기 -->
                     <p class="fee-note">同行支援・・・
 車両を使用しての通院・買物・役所等の外出同行支援</p>
                   </div>

@@ -521,7 +521,7 @@
       line-height: 1.35;
     }
 
-    /* ✅ ご利用の流れ（1つだけ表示） */
+    /* ✅ ご利用の流れ（1枚目みたいなレイアウト） */
     .flow-box{
       position: relative;
       border-radius: 18px;
@@ -606,6 +606,95 @@
       color: var(--ink-3);
       letter-spacing: .01em;
       white-space: pre-line;
+    }
+    /* ✅ 끝 */
+
+    .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
+    .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
+    .contact-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.34);
+      color: rgba(31,27,22,.92);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+      box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .contact-btn:hover{
+      transform: translateY(-0.5px);
+      background: rgba(255,255,255,.44);
+      box-shadow: 0 14px 34px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .contact-btn.primary{
+      background: rgba(183,161,138,.98);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+    }
+    .contact-btn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 16px 38px rgba(0,0,0,.12);
+    }
+
+    .kv{
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      font-family: var(--sans);
+    }
+    .kv .k{
+      font-weight: 800;
+      color: var(--ink-2);
+      letter-spacing: .06em;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .kv .v{
+      color: var(--ink-3);
+      font-weight: 600;
+      line-height: 1.75;
+      font-size: 13px;
+    }
+
+    .pill-row{
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,55,41,.16);
+      background: rgba(255,255,255,.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: var(--fs-13);
+      letter-spacing: .10em;
+      color: rgba(96,84,64,.92);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      user-select: none;
     }
   </style>
 </head>
@@ -925,7 +1014,7 @@
           </div>
         </article>
 
-        <!-- ✅ ご利用の流れ：ここだけ（タイトルは中に1回だけ） -->
+        <!-- ✅ ご利用の流れ：タイトルを1つに統一（重複 제거) -->
         <article class="panel" id="panel-flow">
           <div class="panel-head">
             <div class="panel-title">ご利用の流れ</div>
@@ -933,11 +1022,8 @@
 
           <div class="panel-body">
             <div class="panel-inner">
-
               <div class="flow-box" aria-label="ご利用の流れ">
-                <!-- ❌ 중복되던 내부タイトル(ご利用の流れ) 제거: 아래 한 줄 삭제 -->
-                <!-- <div class="flow-title">ご利用の流れ</div> -->
-
+                <!-- 여기서 flow-title(=두번째 제목) 제거해서 한 번만 보이게 -->
                 <div class="flow-steps">
                   <div class="flow-step">
                     <div class="flow-top">
@@ -981,7 +1067,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </article>

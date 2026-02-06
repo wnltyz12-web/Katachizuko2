@@ -350,7 +350,6 @@
     .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
     .panel-title-tag.support{ background: var(--btn-support); }
 
-    /* ✅ 요청: 身元保証プラン / 生活支援プラン 탭을 "길게(버튼처럼)" */
     .panel-tabwide{
       width: 100%;
       height: 52px;
@@ -369,7 +368,6 @@
     }
     .panel-tabwide.guarantee{ background: var(--btn-guarantee); }
     .panel-tabwide.support{ background: var(--btn-support); }
-    /* ✅ 끝 */
 
     .panel-title{
       font-family: var(--serif);
@@ -451,7 +449,7 @@
 
     .fee-item{
       display: grid;
-      grid-template-columns: 1fr assure auto;
+      grid-template-columns: 1fr auto;
       gap: 10px;
       align-items: center;
       padding: 10px 10px;
@@ -542,7 +540,27 @@
       line-height: 1.35;
     }
 
-    /* ✅ ご利用の流れ（1枚目みたいなレイアウト） */
+    /* ✅ (요청) 캔슬 포리시 간격 줄이기 */
+    .fee-list.cancel-list{ gap: 8px; }
+    .fee-list.cancel-list .fee-item{
+      padding: 12px 12px;            /* 박스 안 여백 약간 정리 */
+      align-items: start;             /* 텍스트 위로 정렬 */
+    }
+    .fee-list.cancel-list .fee-item > div{
+      display: grid;
+      gap: 4px;                       /* 제목-설명 간격 줄임 */
+      align-content: start;
+    }
+    .fee-list.cancel-list .fee-sub{
+      margin-top: 0;
+      font-size: 12px;
+      line-height: 1.35;              /* 줄간격 약간 타이트 */
+      white-space: normal;            /* 2줄도 자연스럽게 */
+    }
+    .card.cancel-card .pill-row{ margin-top: 10px; } /* 아래 pill과의 간격도 살짝 줄임 */
+    /* ✅ 끝 */
+
+    /* ✅ ご利用の流れ */
     .flow-box{
       position: relative;
       border-radius: 18px;
@@ -574,15 +592,6 @@
     }
     .flow-box > *{ position: relative; z-index: 1; }
 
-    .flow-title{
-      text-align: center;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
-      color: var(--ink-1);
-      font-size: 18px;
-      padding: 14px 12px 10px;
-    }
     .flow-steps{
       display: grid;
       gap: 12px;
@@ -628,7 +637,6 @@
       letter-spacing: .01em;
       white-space: pre-line;
     }
-    /* ✅ 끝 */
 
     .contact-grid{ display: grid; gap: 12px; margin-top: 10px; }
     .contact-actions{ display: grid; gap: 10px; margin-top: 10px; }
@@ -806,7 +814,6 @@
 
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
-            <!-- ✅ 길게 -->
             <div class="panel-tabwide guarantee">身元保証プラン</div>
           </div>
 
@@ -843,7 +850,6 @@
 
         <article class="panel" id="panel-support">
           <div class="panel-head">
-            <!-- ✅ 길게 -->
             <div class="panel-tabwide support">生活支援プラン</div>
           </div>
 
@@ -1007,9 +1013,10 @@
                   </div>
                 </div>
 
-                <div class="card">
+                <!-- ✅ 여기 간격 타이트하게 -->
+                <div class="card cancel-card">
                   <h3>キャンセルポリシー</h3>
-                  <div class="fee-list">
+                  <div class="fee-list cancel-list">
                     <div class="fee-item">
                       <div>
                         <div class="fee-name">変更・キャンセル</div>
@@ -1037,7 +1044,6 @@
           </div>
         </article>
 
-        <!-- ✅ ご利用の流れ：タイトルを1つに統一（重複 제거) -->
         <article class="panel" id="panel-flow">
           <div class="panel-head">
             <div class="panel-title">ご利用の流れ</div>

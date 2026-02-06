@@ -350,6 +350,27 @@
     .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
     .panel-title-tag.support{ background: var(--btn-support); }
 
+    /* ✅ 요청: 身元保証プラン / 生活支援プラン 탭을 "길게(버튼처럼)" */
+    .panel-tabwide{
+      width: 100%;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .12em;
+      font-size: 18px;
+      color: #fff;
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+      user-select: none;
+    }
+    .panel-tabwide.guarantee{ background: var(--btn-guarantee); }
+    .panel-tabwide.support{ background: var(--btn-support); }
+    /* ✅ 끝 */
+
     .panel-title{
       font-family: var(--serif);
       font-size: 18px;
@@ -430,7 +451,7 @@
 
     .fee-item{
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr assure auto;
       gap: 10px;
       align-items: center;
       padding: 10px 10px;
@@ -785,7 +806,8 @@
 
         <article class="panel" id="panel-guarantee">
           <div class="panel-head">
-            <div class="panel-title-tag guarantee">身元保証プラン</div>
+            <!-- ✅ 길게 -->
+            <div class="panel-tabwide guarantee">身元保証プラン</div>
           </div>
 
           <div class="panel-body">
@@ -821,7 +843,8 @@
 
         <article class="panel" id="panel-support">
           <div class="panel-head">
-            <div class="panel-title-tag support">生活支援プラン</div>
+            <!-- ✅ 길게 -->
+            <div class="panel-tabwide support">生活支援プラン</div>
           </div>
 
           <div class="panel-body">
@@ -1023,7 +1046,6 @@
           <div class="panel-body">
             <div class="panel-inner">
               <div class="flow-box" aria-label="ご利用の流れ">
-                <!-- 여기서 flow-title(=두번째 제목) 제거해서 한 번만 보이게 -->
                 <div class="flow-steps">
                   <div class="flow-step">
                     <div class="flow-top">

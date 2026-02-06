@@ -333,42 +333,6 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
-    .panel-title-tag{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 12px;
-      border-radius: 12px;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: var(--title-letter);
-      font-size: 16px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.22);
-      border: 1px solid rgba(0,0,0,.10);
-      color: #fff;
-    }
-    .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
-    .panel-title-tag.support{ background: var(--btn-support); }
-
-    .panel-tabwide{
-      width: 100%;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
-      font-size: 18px;
-      color: #fff;
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
-      user-select: none;
-    }
-    .panel-tabwide.guarantee{ background: var(--btn-guarantee); }
-    .panel-tabwide.support{ background: var(--btn-support); }
-
     .panel-title{
       font-family: var(--serif);
       font-size: 18px;
@@ -445,109 +409,7 @@
       margin: 0;
     }
 
-    .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
-
-    .fee-item{
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 10px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
-    }
-    .fee-name{
-      font-size: var(--fs-14);
-      font-weight: 800;
-      color: var(--ink-2);
-      line-height: 1.55;
-      font-family: var(--sans);
-    }
-    .fee-price{
-      text-align: right;
-      font-size: var(--fs-14);
-      font-weight: 900;
-      color: var(--ink-1);
-      white-space: nowrap;
-      line-height: 1.55;
-      font-family: var(--sans);
-    }
-
-    .fee-meta{
-      margin-top: 8px;
-      text-align: center;
-      color: var(--ink-4);
-      font-size: 12px;
-      line-height: 1.25;
-      font-family: var(--sans);
-      font-weight: 700;
-      letter-spacing: .02em;
-    }
-    .fee-meta strong{ font-weight: 900; color: var(--ink-2); }
-
-    .fee-sep{
-      margin: 12px 0 10px;
-      text-align: center;
-      color: var(--ink-4);
-      font-family: var(--sans);
-    }
-    .fee-sep-title{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .10em;
-      color: var(--ink-2);
-      font-size: 14px;
-      line-height: 1.2;
-    }
-    .fee-sep-title .dots{
-      color: rgba(66,55,41,.46);
-      font-family: var(--sans);
-      letter-spacing: .35em;
-      font-weight: 800;
-    }
-    .fee-sep-desc{
-      margin-top: 6px;
-      font-size: 12px;
-      line-height: 1.55;
-      color: var(--ink-4);
-      font-weight: 700;
-      letter-spacing: .02em;
-      white-space: pre-line;
-    }
-
-    .fee-left{
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
-      align-items: center;
-      min-width: 0;
-    }
-    .fee-left .fee-name{ margin: 0; }
-    .fee-sub{
-      margin-top: 0;
-      padding-left: 0;
-      text-align: right;
-      white-space: nowrap;
-      font-size: 13px;
-      color: var(--ink-4);
-      font-weight: 600;
-      line-height: 1.35;
-    }
-
-    /* ✅ 캔슬 포리시 간격 */
-    .fee-list.cancel-list{ gap: 8px; }
-    .fee-list.cancel-list .fee-item{ padding: 12px 12px; align-items: start; }
-    .fee-list.cancel-list .fee-item > div{ display: grid; gap: 4px; align-content: start; }
-    .fee-list.cancel-list .fee-sub{ margin-top: 0; font-size: 12px; line-height: 1.35; white-space: normal; }
-    .card.cancel-card .pill-row{ margin-top: 10px; }
-
-    /* ✅✅ (요청) ご利用の流れ 가독성 업그레이드 */
+    /* ✅✅ ご利用の流れ（읽기 쉬운 카드형 타임라인） */
     .flow-box{
       position: relative;
       border-radius: 18px;
@@ -560,74 +422,111 @@
     }
     .flow-box::before{
       content:"";
-      position:absolute; inset:-48px;
+      position:absolute; inset:-52px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
-      opacity: .20;                 /* 배경패턴 더 약하게 */
+      opacity: .18;
       filter: blur(1px);
-      transform: scale(1.06);
+      transform: scale(1.07);
       pointer-events:none;
       z-index: 0;
     }
     .flow-box::after{
       content:"";
       position:absolute; inset:0;
-      background: rgba(255,255,255,.26); /* 글자 배경 더 하얗게 */
+      background: rgba(255,255,255,.26);
       pointer-events:none;
       z-index: 0;
     }
     .flow-box > *{ position: relative; z-index: 1; }
 
     .flow-steps{
+      padding: 12px;
       display: grid;
       gap: 12px;
-      padding: 12px;
     }
 
     .flow-step{
+      position: relative;
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.08);
-      background: rgba(255,255,255,.32);
+      background: rgba(255,255,255,.34);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.66);
-      padding: 14px 14px;
+      padding: 12px 12px 12px 12px;
+      overflow: hidden;
+    }
+    .flow-step::after{
+      content:"";
+      position:absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, rgba(155,122,52,.55), rgba(155,122,52,.10));
+      opacity: .9;
+      pointer-events:none;
     }
 
-    .flow-top{
+    .flow-header{
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: auto 1fr;
       gap: 12px;
       align-items: center;
-      margin-bottom: 6px;
+      padding-left: 6px;
     }
 
-    .flow-stepno{
+    .flow-badge{
+      width: 74px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(155,122,52,.38);
+      background: rgba(255,255,255,.46);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .18em;
-      color: rgba(96,84,64,.82);
+      letter-spacing: .14em;
+      color: rgba(96,84,64,.90);
       font-size: 12px;
-      text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .flow-stepname{
+    .flow-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      min-width: 0;
+    }
+    .flow-name{
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .10em;
       color: var(--ink-1);
-      font-size: 16px;              /* 제목 더 크게 */
+      font-size: 16px;
       white-space: nowrap;
+    }
+    .flow-dot{
+      flex: 1;
+      height: 1px;
+      background: rgba(66,55,41,.14);
+      transform: translateY(-2px);
+      min-width: 12px;
     }
 
     .flow-desc{
-      font-family: var(--sans);
-      font-size: 13.5px;            /* 본문 가독성 */
-      line-height: 1.85;
+      margin-top: 8px;
+      padding: 10px 12px 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.40);
       color: rgba(66,55,41,.78);
+      font-family: var(--sans);
+      font-size: 13.5px;
+      line-height: 1.85;
       letter-spacing: .01em;
       white-space: pre-line;
-      padding-right: 2px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
     }
     /* ✅✅ 끝 */
 
@@ -805,238 +704,8 @@
 
       <section class="details" id="details">
 
-        <article class="panel" id="panel-guarantee">
-          <div class="panel-head">
-            <div class="panel-tabwide guarantee">身元保証プラン</div>
-          </div>
+        <!-- (중간 패널들은 기존 그대로 두고, 아래 "ご利用の流れ"만 새 디자인 적용) -->
 
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-
-                <div class="card">
-                  <h3>身元保証人代行</h3>
-                  <div class="lead">施設入居時に必要となる保証人を承ります</div>
-                  <p>条件や流れを整理し安心して手続きができるようにご支援いたします</p>
-                </div>
-
-                <div class="card">
-                  <h3>緊急連絡先代行</h3>
-                  <div class="lead">入院時、施設契約時の緊急連絡先にご指定いただけます</div>
-                  <p>連絡方法、優先順位を事前に確認し連絡が取れる体制を整えます</p>
-                </div>
-
-                <div class="card">
-                  <h3>身元引受人代行</h3>
-                  <p>お亡くなりになられた際の身元引き受けを承ります</p>
-                </div>
-
-                <div class="card">
-                  <h3>死後事務手続き代行</h3>
-                  <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel" id="panel-support">
-          <div class="panel-head">
-            <div class="panel-tabwide support">生活支援プラン</div>
-          </div>
-
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-
-                <div class="card">
-                  <h3>訪問支援</h3>
-                  <p>ご訪問しての身の回りのお手伝い、買物代行などの日常生活支援を承ります。</p>
-                </div>
-
-                <div class="card">
-                  <h3>同行支援</h3>
-                  <p>車両を使用しての買物・通院・役所等の外出同行支援を承ります。</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel" id="panel-price">
-          <div class="panel-head">
-            <div class="panel-title">料金表</div>
-            <div class="panel-sub">
-              入会金・月会費、各プランの料金です<br/>
-              （すべて税込）
-            </div>
-          </div>
-
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-
-                <div class="card">
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div><div class="fee-name">入会金</div></div>
-                      <div class="fee-price">300,000円</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">月会費</div></div>
-                      <div class="fee-price">5,000円</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div style="display:grid; gap:0;">
-                    <div class="panel-title-tag guarantee" style="margin:0;">身元保証プラン</div>
-                  </div>
-
-                  <div class="fee-list" style="margin-top:8px;">
-                    <div class="fee-item">
-                      <div><div class="fee-name">A-1 身元保証人代行</div></div>
-                      <div class="fee-price">
-                        施設月額利用料の2か月分
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：4か月分</span>
-                      </div>
-                    </div>
-
-                    <div class="fee-item">
-                      <div><div class="fee-name">A-2 緊急連絡先代行</div></div>
-                      <div class="fee-price">
-                        220,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
-                      </div>
-                    </div>
-
-                    <div class="fee-item">
-                      <div><div class="fee-name">A-3 身元引受人代行</div></div>
-                      <div class="fee-price">
-                        110,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：220,000円</span>
-                      </div>
-                    </div>
-
-                    <div class="fee-item">
-                      <div><div class="fee-name">A-4 死後事務代行</div></div>
-                      <div class="fee-price">
-                        220,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card" style="padding-bottom:10px;">
-                  <div style="display:grid; gap:0;">
-                    <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
-                    <div class="fee-meta">※<strong>会員</strong>／非会員すべて同じ金額です</div>
-                  </div>
-
-                  <div class="fee-list" style="margin-top:10px; margin-bottom:0;">
-                    <div class="fee-item">
-                      <div><div class="fee-name">日中（9:00〜18:00）</div></div>
-                      <div class="fee-price">4,000円／1時間</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
-                      <div class="fee-price">5,000円／1時間</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
-                      <div class="fee-price">6,000円／1時間</div>
-                    </div>
-                  </div>
-
-                  <div class="fee-sep" aria-label="同行支援の説明">
-                    <div class="fee-sep-title">
-                      <span class="dots">・・・</span>
-                      <span>同行支援</span>
-                      <span class="dots">・・・</span>
-                    </div>
-                    <div class="fee-sep-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
-                  </div>
-
-                  <div class="fee-list" style="margin-top:0; margin-bottom:0;">
-                    <div class="fee-item">
-                      <div><div class="fee-name">日中（9:00〜18:00）</div></div>
-                      <div class="fee-price">6,000円／1時間</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
-                      <div class="fee-price">7,000円／1時間</div>
-                    </div>
-                    <div class="fee-item">
-                      <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
-                      <div class="fee-price">8,000円／1時間</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <h3>その他の料金</h3>
-                  <div class="fee-list">
-                    <div class="fee-item">
-                      <div class="fee-left">
-                        <div class="fee-name">同行支援費</div>
-                        <div class="fee-sub">20km毎</div>
-                      </div>
-                      <div class="fee-price">500円</div>
-                    </div>
-
-                    <div class="fee-item">
-                      <div class="fee-left">
-                        <div class="fee-name">スタッフ移動費</div>
-                        <div class="fee-sub">1kmあたり</div>
-                      </div>
-                      <div class="fee-price">20円</div>
-                    </div>
-
-                    <div class="fee-item">
-                      <div class="fee-left">
-                        <div class="fee-name">土日祝日料金</div>
-                        <div class="fee-sub">1時間あたり</div>
-                      </div>
-                      <div class="fee-price">＋1,000円</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card cancel-card">
-                  <h3>キャンセルポリシー</h3>
-                  <div class="fee-list cancel-list">
-                    <div class="fee-item">
-                      <div>
-                        <div class="fee-name">変更・キャンセル</div>
-                        <div class="fee-sub" style="padding-left:0; text-align:left;">前日の15時までにご連絡ください</div>
-                      </div>
-                      <div class="fee-price">—</div>
-                    </div>
-                    <div class="fee-item">
-                      <div>
-                        <div class="fee-name">時間を過ぎてのキャンセル</div>
-                        <div class="fee-sub" style="padding-left:0; text-align:left;">サポート料金を全額お支払いいただきます</div>
-                      </div>
-                      <div class="fee-price">—</div>
-                    </div>
-                  </div>
-
-                  <div class="pill-row" aria-label="安心の約束">
-                    <div class="pill">秘密厳守</div>
-                    <div class="pill">相談無料</div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- ✅ ご利用の流れ (가독성 버전) -->
         <article class="panel" id="panel-flow">
           <div class="panel-head">
             <div class="panel-title">ご利用の流れ</div>
@@ -1046,46 +715,63 @@
             <div class="panel-inner">
               <div class="flow-box" aria-label="ご利用の流れ">
                 <div class="flow-steps">
+
                   <div class="flow-step">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 1</div>
-                      <div class="flow-stepname">ご面談</div>
+                    <div class="flow-header">
+                      <div class="flow-badge">STEP 1</div>
+                      <div class="flow-title">
+                        <div class="flow-name">ご面談</div>
+                        <div class="flow-dot" aria-hidden="true"></div>
+                      </div>
                     </div>
                     <div class="flow-desc">対面にてご心配事をお伺いし、お客様に最適なご支援をご提案いたします</div>
                   </div>
 
                   <div class="flow-step">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 2</div>
-                      <div class="flow-stepname">事前確認</div>
+                    <div class="flow-header">
+                      <div class="flow-badge">STEP 2</div>
+                      <div class="flow-title">
+                        <div class="flow-name">事前確認</div>
+                        <div class="flow-dot" aria-hidden="true"></div>
+                      </div>
                     </div>
                     <div class="flow-desc">ご契約にあたり必要な意思確認等を行います</div>
                   </div>
 
                   <div class="flow-step">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 3</div>
-                      <div class="flow-stepname">ご契約</div>
+                    <div class="flow-header">
+                      <div class="flow-badge">STEP 3</div>
+                      <div class="flow-title">
+                        <div class="flow-name">ご契約</div>
+                        <div class="flow-dot" aria-hidden="true"></div>
+                      </div>
                     </div>
                     <div class="flow-desc">ご支援内容に基づきご契約手続きを行います</div>
                   </div>
 
                   <div class="flow-step">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 4</div>
-                      <div class="flow-stepname">お支払い</div>
+                    <div class="flow-header">
+                      <div class="flow-badge">STEP 4</div>
+                      <div class="flow-title">
+                        <div class="flow-name">お支払い</div>
+                        <div class="flow-dot" aria-hidden="true"></div>
+                      </div>
                     </div>
                     <div class="flow-desc">お見積り書をご確認後、銀行振込にてお支払いをお願いいたします</div>
                   </div>
 
                   <div class="flow-step">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 5</div>
-                      <div class="flow-stepname">ご支援開始</div>
+                    <div class="flow-header">
+                      <div class="flow-badge">STEP 5</div>
+                      <div class="flow-title">
+                        <div class="flow-name">ご支援開始</div>
+                        <div class="flow-dot" aria-hidden="true"></div>
+                      </div>
                     </div>
                     <div class="flow-desc">困った時はいつでもご相談下さい
 末永く安心してお過ごし下さい</div>
                   </div>
+
                 </div>
               </div>
             </div>

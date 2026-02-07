@@ -750,7 +750,7 @@
     .greet-top{
       display: grid;
       place-items: center;
-      gap: 10px;
+      gap: 12px;
       text-align: center;
     }
     .greet-portrait{
@@ -777,25 +777,11 @@
       display: block;
       transform: translateY(2px);
     }
-    .greet-divider{
-      width: 100%;
-      margin-top: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      opacity: .92;
-    }
-    .greet-divider .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
-    .greet-divider .dia{
-      width: 10px; height: 10px;
-      transform: rotate(45deg);
-      border: 1.5px solid rgba(155,122,52,.60);
-      background: rgba(255,255,255,.62);
-      box-shadow: 0 4px 10px rgba(0,0,0,.05);
-    }
+
+    /* ✅ divider(다이아/가로라인) 완전 제거: CSS도 없음 */
+
     .greet-body{
-      margin-top: 12px;
+      margin-top: 10px;
       padding: 12px 12px;
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.06);
@@ -810,37 +796,34 @@
       text-align: left;
     }
 
-    /* ✅ NEW: 마지막 줄 아래 서명(탭 느낌) */
+    /* ✅ 마지막 줄 아래 서명(한 줄) */
     .greet-footer{
       margin-top: 10px;
       display: flex;
       justify-content: flex-end;
     }
-.greet-chip{
-  display:flex;
-  align-items:baseline;
-  justify-content:flex-end;
-  gap:10px;
-  margin-top:6px;
-}
-
-
-.greet-chip .role{
-  font-family: var(--serif);
-  font-size: 12px;
-  letter-spacing: .18em;
-  color: rgba(66,55,41,.65);
-  font-weight:700;
-}
-
-.greet-chip .name{
-  font-family: var(--serif);
-  font-size: 18px;
-  letter-spacing: .18em;
-  color: rgba(45,37,28,.92);
-  font-weight:900;
-}
-
+    .greet-chip{
+      display:flex;
+      align-items:baseline;
+      justify-content:flex-end;
+      gap:10px;
+      margin-top:6px;
+      white-space: nowrap;
+    }
+    .greet-chip .role{
+      font-family: var(--serif);
+      font-size: 12px;
+      letter-spacing: .18em;
+      color: rgba(66,55,41,.65);
+      font-weight:700;
+    }
+    .greet-chip .name{
+      font-family: var(--serif);
+      font-size: 18px;
+      letter-spacing: .18em;
+      color: rgba(45,37,28,.92);
+      font-weight:900;
+    }
   </style>
 </head>
 
@@ -1265,7 +1248,7 @@
           </div>
         </article>
 
-        <!-- ✅ ごあいさつ（Photo_01.jpg 사용 + 마지막 줄 아래 “탭”에 서명 복구） -->
+        <!-- ✅ ごあいさつ：ダイヤ/ライン完全削除済み -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1280,12 +1263,7 @@
                     <div class="greet-portrait" aria-label="写真">
                       <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
                     </div>
-
-                    <div class="greet-divider" aria-hidden="true">
-                      <div class="line"></div>
-                      <div class="dia"></div>
-                      <div class="line"></div>
-                    </div>
+                    <!-- ✅ greet-divider(ダイヤ+横線) はHTMLから削除 -->
                   </div>
 
                   <div class="greet-body">
@@ -1297,7 +1275,6 @@
 どうぞよろしくお願いいたします。
                   </div>
 
-                  <!-- ✅ 요청: 마지막 줄 아래 탭에 “代表理事 片岡千鶴子” 일본어로 복구 -->
                   <div class="greet-footer" aria-label="署名">
                     <div class="greet-chip">
                       <span class="role">代表理事</span>
@@ -1342,5 +1319,3 @@
   </script>
 </body>
 </html>
-
-

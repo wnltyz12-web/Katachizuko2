@@ -63,13 +63,18 @@
       --title-letter: .12em;
       --h3-letter: .10em;
 
-      /* ✅ 오나먼트 보이는 정도(필요하면 숫자만 조절) */
+      /* 오나먼트 보이는 정도 */
       --orn-opacity-panel: .55;
       --orn-opacity-card: .62;
       --orn-opacity-inner: .58;
 
-      /* ✅ 글자 가독성을 위한 아주 약한 밝기막 */
-      --mist: rgba(255,255,255,.06);
+      /* ✅ 글자 투명해짐 방지: 텍스트는 진하게, 배경만 아주 얇게 밝힘 */
+      --text-strong: rgba(45,37,28,.94);
+      --text-mid: rgba(45,37,28,.88);
+      --text-sub: rgba(45,37,28,.78);
+
+      /* ✅ 배경 밝기막(텍스트에 영향 없음) */
+      --mist: rgba(255,255,255,.08);
     }
 
     body{
@@ -91,9 +96,7 @@
       scroll-padding-top: 88px;
     }
 
-    /* =========================
-       ✅ 전체 배경 오나먼트
-    ========================= */
+    /* ===== 전체 배경 오나먼트 ===== */
     .ornament-bg{
       position: fixed; inset: 0; z-index: 0;
       background-color: var(--bg);
@@ -106,7 +109,6 @@
       content:"";
       position:absolute; inset:0;
       pointer-events:none;
-      /* 아래쪽 덮는거 최소화 */
       background: linear-gradient(
         to bottom,
         rgba(244,241,234,0) 0%,
@@ -116,11 +118,7 @@
       );
     }
 
-    /* =========================
-       ✅ 공용: "박스 전체에 오나먼트 보이게"
-       - 단색 오버레이 제거
-       - ::before로 ornament 직접 깔기
-    ========================= */
+    /* ===== 공용: 박스 전체 오나먼트 ===== */
     .orn-fill{
       position: relative;
       overflow: hidden;
@@ -150,9 +148,7 @@
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* =========================
-       헤더
-    ========================= */
+    /* ===== 헤더 ===== */
     .topbar{
       position: sticky; top: 0; z-index: 50;
       height: 78px;
@@ -252,9 +248,7 @@
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
 
-    /* =========================
-       히어로
-    ========================= */
+    /* ===== 히어로 ===== */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
     .hero-title{
       font-family: var(--serif);
@@ -321,9 +315,7 @@
       white-space: pre-line;
     }
 
-    /* =========================
-       일러스트
-    ========================= */
+    /* ===== 일러스트 ===== */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{ width: 100%; height: auto; display: block; background: transparent; }
@@ -348,9 +340,7 @@
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
-    /* =========================
-       패널/카드 (전부 오나먼트)
-    ========================= */
+    /* ===== 패널/카드 ===== */
     .panel{
       border-radius: var(--r-18);
       border: 1px solid rgba(0,0,0,.06);
@@ -393,24 +383,22 @@
       font-size: 18px;
       font-weight: 900;
       letter-spacing: var(--title-letter);
-      color: var(--ink-1);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      color: var(--text-strong);
+      text-shadow: 0 1px 0 rgba(255,255,255,.72);
     }
     .panel-sub{
       margin-top: 6px;
       font-family: var(--sans);
       font-size: var(--fs-12);
-      color: var(--ink-4);
+      color: var(--text-sub);
       letter-spacing: .06em;
       line-height: 1.78;
       padding: 0 6px;
       font-weight: 600;
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
-    .panel-body{ }
     .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
-
     .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
 
     .card{
@@ -426,28 +414,26 @@
       font-size: var(--fs-16);
       font-weight: 900;
       letter-spacing: var(--h3-letter);
-      color: var(--ink-1);
+      color: var(--text-strong);
       margin-bottom: 10px;
       text-align: left;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
 
     .card p, .card .lead{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
       line-height: 1.70;
-      color: rgba(45,37,28,.90);
+      color: var(--text-mid);   /* ✅ 더 진하게 */
       text-align: left;
       letter-spacing: .01em;
-      font-weight: 400;
+      font-weight: 500;         /* ✅ 더 두껍게 */
       white-space: pre-line;
       margin: 0;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
 
-    /* =========================
-       料金표 내부
-    ========================= */
+    /* ===== 料金표 ===== */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
 
     .fee-item{
@@ -460,7 +446,6 @@
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
     }
-    /* ✅ fee-item도 오나먼트 깔기 */
     .fee-item.orn-fill::before{
       opacity: var(--orn-opacity-inner);
       inset: -60px;
@@ -469,42 +454,42 @@
 
     .fee-name{
       font-size: var(--fs-14);
-      font-weight: 800;
-      color: var(--ink-2);
+      font-weight: 900;          /* ✅ 더 두껍게 */
+      color: var(--text-mid);     /* ✅ 더 진하게 */
       line-height: 1.55;
       font-family: var(--sans);
-      text-shadow: 0 1px 0 rgba(255,255,255,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
     .fee-price{
       text-align: right;
       font-size: var(--fs-14);
       font-weight: 900;
-      color: var(--ink-1);
+      color: var(--text-strong);
       white-space: nowrap;
       line-height: 1.55;
       font-family: var(--sans);
-      text-shadow: 0 1px 0 rgba(255,255,255,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
 
     .fee-meta{
       margin-top: 8px;
       text-align: center;
-      color: var(--ink-4);
+      color: var(--text-sub);      /* ✅ 진하게 */
       font-size: 12px;
       line-height: 1.25;
       font-family: var(--sans);
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .02em;
-      text-shadow: 0 1px 0 rgba(255,255,255,.60);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
-    .fee-meta strong{ font-weight: 900; color: var(--ink-2); }
+    .fee-meta strong{ font-weight: 900; color: var(--text-mid); }
 
     .fee-sep{
       margin: 12px 0 10px;
       text-align: center;
-      color: var(--ink-4);
+      color: var(--text-sub);
       font-family: var(--sans);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
     .fee-sep-title{
       display: inline-flex;
@@ -514,13 +499,13 @@
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .10em;
-      color: var(--ink-2);
+      color: var(--text-mid);
       font-size: 14px;
       line-height: 1.2;
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
     .fee-sep-title .dots{
-      color: rgba(66,55,41,.46);
+      color: rgba(66,55,41,.55);
       font-family: var(--sans);
       letter-spacing: .35em;
       font-weight: 800;
@@ -529,11 +514,11 @@
       margin-top: 6px;
       font-size: 12px;
       line-height: 1.55;
-      color: var(--ink-4);
-      font-weight: 700;
+      color: var(--text-sub);
+      font-weight: 800;
       letter-spacing: .02em;
       white-space: pre-line;
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
 
     .fee-left{
@@ -550,15 +535,13 @@
       text-align: right;
       white-space: nowrap;
       font-size: 13px;
-      color: var(--ink-4);
-      font-weight: 600;
+      color: var(--text-sub);     /* ✅ 진하게 */
+      font-weight: 800;
       line-height: 1.35;
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      text-shadow: 0 1px 0 rgba(255,255,255,.78);
     }
 
-    /* =========================
-       ご利用の流れ
-    ========================= */
+    /* ===== ご利用の流れ ===== */
     .flow-box{
       border-radius: 18px;
       border: 1px solid rgba(0,0,0,.07);
@@ -611,10 +594,10 @@
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .14em;
-      color: rgba(96,84,64,.90);
+      color: rgba(96,84,64,.94);
       font-size: 12px;
       white-space: nowrap;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
     .flow-stepname{
       display: flex;
@@ -624,17 +607,17 @@
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .10em;
-      color: var(--ink-1);
+      color: var(--text-strong);
       font-size: 16px;
       white-space: nowrap;
       padding-right: 4px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
     .flow-stepname::after{
       content:"";
       flex: 1;
       height: 1px;
-      background: rgba(66,55,41,.14);
+      background: rgba(66,55,41,.16);
       transform: translateY(-2px);
       min-width: 12px;
       margin-left: 10px;
@@ -644,7 +627,7 @@
       font-family: var(--sans);
       font-size: 13.5px;
       line-height: 1.85;
-      color: rgba(45,37,28,.90);
+      color: var(--text-mid);    /* ✅ 진하게 */
       letter-spacing: .01em;
       white-space: pre-line;
 
@@ -653,7 +636,8 @@
       border-radius: 14px;
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
+      font-weight: 600;          /* ✅ 진하게 */
     }
     .flow-desc.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
 
@@ -665,9 +649,7 @@
       }
     }
 
-    /* =========================
-       문의
-    ========================= */
+    /* ===== 문의 ===== */
     .contact-actions{
       display: grid;
       gap: 10px;
@@ -686,12 +668,12 @@
       color: rgba(31,27,22,.92);
       font-family: var(--sans);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: .08em;
       text-decoration: none;
       box-shadow: 0 12px 26px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.65);
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
     .contact-btn:hover{
       transform: translateY(-0.5px);
@@ -724,19 +706,19 @@
     }
     .kv.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
     .kv .k{
-      font-weight: 800;
-      color: var(--ink-2);
+      font-weight: 900;
+      color: var(--text-mid);
       letter-spacing: .06em;
       font-size: 12px;
       white-space: nowrap;
-      text-shadow: 0 1px 0 rgba(255,255,255,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.82);
     }
     .kv .v{
-      color: rgba(45,37,28,.90);
-      font-weight: 600;
+      color: var(--text-mid);
+      font-weight: 700;
       line-height: 1.75;
       font-size: 13px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.82);
     }
 
     .pill-row{
@@ -763,19 +745,20 @@
       color: rgba(96,84,64,.92);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
       user-select: none;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
 
     .contact-note{
       margin-top: 6px !important;
       line-height: 1.55 !important;
       white-space: normal !important;
+      color: var(--text-sub) !important;
+      font-weight: 700;
+      text-shadow: 0 1px 0 rgba(255,255,255,.80);
     }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
-    /* =========================
-       ごあいさつ
-    ========================= */
+    /* ===== ごあいさつ ===== */
     .greet-wrap{ padding: 16px 16px 18px; }
 
     .greet-top{
@@ -820,10 +803,11 @@
       font-size: 14px;
       line-height: 1.95;
       letter-spacing: .04em;
-      color: rgba(45,37,28,.90);
+      color: var(--text-mid);     /* ✅ 진하게 */
       white-space: normal;
       text-align: left;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.82);
+      font-weight: 600;           /* ✅ 진하게 */
     }
     .greet-body.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-70px; }
 
@@ -843,19 +827,19 @@
       font-family: var(--serif);
       font-size: 12px;
       letter-spacing: .18em;
-      color: rgba(66,55,41,.65);
-      font-weight:700;
+      color: var(--text-sub);
+      font-weight:800;
       white-space: nowrap;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.82);
     }
     .greet-chip .name{
       font-family: var(--serif);
       font-size: 18px;
       letter-spacing: .18em;
-      color: rgba(45,37,28,.92);
+      color: var(--text-strong);
       font-weight:900;
       white-space: nowrap;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      text-shadow: 0 1px 0 rgba(255,255,255,.82);
     }
 
   </style>
@@ -1041,7 +1025,7 @@
                       <div><div class="fee-name">A-1 身元保証人代行</div></div>
                       <div class="fee-price">
                         施設月額利用料の2か月分
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：4か月分</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:800; color: var(--text-sub); white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.82);">非会員：4か月分</span>
                       </div>
                     </div>
 
@@ -1049,7 +1033,7 @@
                       <div><div class="fee-name">A-2 緊急連絡先代行</div></div>
                       <div class="fee-price">
                         220,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:800; color: var(--text-sub); white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.82);">非会員：440,000円</span>
                       </div>
                     </div>
 
@@ -1057,7 +1041,7 @@
                       <div><div class="fee-name">A-3 身元引受人代行</div></div>
                       <div class="fee-price">
                         110,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：220,000円</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:800; color: var(--text-sub); white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.82);">非会員：220,000円</span>
                       </div>
                     </div>
 
@@ -1065,7 +1049,7 @@
                       <div><div class="fee-name">A-4 死後事務代行</div></div>
                       <div class="fee-price">
                         220,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:800; color: var(--text-sub); white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.82);">非会員：440,000円</span>
                       </div>
                     </div>
                   </div>
@@ -1271,7 +1255,7 @@
                     <div class="pill">相談無料</div>
                   </div>
 
-                  <p class="contact-note" style="text-align:center; color: var(--ink-4); font-size: 12px; font-family: var(--sans);">
+                  <p class="contact-note" style="text-align:center; font-size: 12px; font-family: var(--sans);">
                     ※緊急時や状況により折り返しとなる場合がございます。<br class="tight-br" />
                     まずはお気軽にご相談ください。
                   </p>

@@ -748,11 +748,11 @@
     /* ✅ ごあいさつ */
     .greet-wrap{ padding: 16px 16px 18px; }
 
-    /* ✅ 간격 더 줄임: 사진(원형) ↔ 본문 박스 사이 */
+    /* 🔥 간격 줄임: 사진(원형) ↔ 본문 박스 사이 */
     .greet-top{
       display: grid;
       place-items: center;
-      gap: 2px;              /* ✅ 6px → 2px */
+      gap: 6px;              /* 기존 12px → 6px */
       text-align: center;
     }
 
@@ -781,21 +781,21 @@
       transform: translateY(2px);
     }
 
-  .greet-body{
-  margin-top: -6px;           /* 사진 바로 붙이기 */
-  padding: 10px 12px 6px;     /* 위 패딩 줄임 */
-  border-radius: 16px;
-  border: 1px solid rgba(0,0,0,.06);
-  background: rgba(255,255,255,.36);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.55;          /* 🔥 핵심: 줄간격 제거 */
-  letter-spacing: .02em;      /* 글자 간격도 살짝 축소 */
-  color: rgba(66,55,41,.82);
-  white-space: pre-line;
-  text-align: left;
-}
+    .greet-body{
+      margin-top: 6px;       /* 기존 10~12px → 6px (간격 줄임) */
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.36);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.95;
+      letter-spacing: .04em;
+      color: rgba(66,55,41,.82);
+      white-space: pre-line;
+      text-align: left;
+    }
 
     /* ✅ 마지막 줄 아래 서명 */
     .greet-footer{
@@ -1250,7 +1250,7 @@
           </div>
         </article>
 
-        <!-- ✅ ごあいさつ（간격 더 줄인 버전 / Photo_01.jpg） -->
+        <!-- ✅ ごあいさつ（간격 줄인 버전 / Photo_01.jpg） -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1320,4 +1320,3 @@
   </script>
 </body>
 </html>
-

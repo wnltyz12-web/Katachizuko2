@@ -333,7 +333,6 @@
       -webkit-backdrop-filter: blur(var(--blur-panel));
     }
 
-    /* ✅ “길게 버튼처럼” (요청대로) */
     .panel-title-tag{
       width: 100%;
       height: 48px;
@@ -528,7 +527,6 @@
       line-height: 1.35;
     }
 
-    /* ✅ ご利用の流れ */
     .flow-box{
       position: relative;
       border-radius: 18px;
@@ -647,7 +645,6 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
     }
 
-    /* ✅ お問い合わせ */
     .contact-actions{
       display: grid;
       gap: 10px;
@@ -748,26 +745,88 @@
     }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
-    /* ✅ ごあいさつ（중복 제거: panel title만 사용, 카드 내부 타이틀 삭제） */
-    .greet-card{ padding: 16px 16px 14px; }
-    .greet-sep{
+    /* ✅ NEW: ごあいさつ（레퍼런스 느낌 + 사이트 톤 맞춤） */
+    .greet-wrap{ padding: 16px 16px 18px; }
+    .greet-top{
+      display: grid;
+      place-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .greet-badge{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 34px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(155,122,52,.40);
+      background: rgba(155,122,52,.18);
+      color: rgba(96,84,64,.92);
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .12em;
+      font-size: 13px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
+      user-select: none;
+      white-space: nowrap;
+    }
+    .greet-name{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .14em;
+      color: rgba(31,27,22,.92);
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .greet-portrait{
+      width: 178px;
+      height: 178px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,.34);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 16px 34px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.75);
+      position: relative;
+    }
+    .greet-portrait::after{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
+      opacity: .9;
+    }
+    .greet-portrait img{
       width: 100%;
-      margin: 2px 0 12px;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: translateY(2px);
+    }
+    .greet-divider{
+      width: 100%;
+      margin-top: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 14px;
       opacity: .92;
     }
-    .greet-sep .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
-    .greet-sep .dia{
+    .greet-divider .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
+    .greet-divider .dia{
       width: 10px; height: 10px;
       transform: rotate(45deg);
       border: 1.5px solid rgba(155,122,52,.60);
       background: rgba(255,255,255,.62);
       box-shadow: 0 4px 10px rgba(0,0,0,.05);
     }
-    .greet-text{
+    .greet-body{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.36);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
       font-family: var(--serif);
       font-size: 14px;
       line-height: 1.95;
@@ -775,11 +834,6 @@
       color: rgba(66,55,41,.82);
       white-space: pre-line;
       text-align: left;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.06);
-      background: rgba(255,255,255,.34);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
     }
     .greet-sign{
       margin-top: 12px;
@@ -1228,7 +1282,7 @@
           </div>
         </article>
 
-        <!-- ✅ 맨 아래: ごあいさつ (중복 제거 완료) -->
+        <!-- ✅ ごあいさつ（첫번째 사진 Photo_01.jpg 사용 / 레퍼런스 느낌 반영） -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1237,23 +1291,30 @@
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-                <div class="card greet-card" aria-label="ごあいさつ本文">
+                <div class="card greet-wrap" aria-label="ごあいさつ">
 
-                  <div class="greet-sep" aria-hidden="true">
-                    <div class="line"></div>
-                    <div class="dia"></div>
-                    <div class="line"></div>
+                  <div class="greet-top">
+                    <div class="greet-badge">代表理事</div>
+                    <div class="greet-name">片岡　千鶴子</div>
+
+                    <div class="greet-portrait" aria-label="代表理事 写真">
+                      <img src="Photo_01.jpg" alt="代表理事 片岡千鶴子" />
+                    </div>
+
+                    <div class="greet-divider" aria-hidden="true">
+                      <div class="line"></div>
+                      <div class="dia"></div>
+                      <div class="line"></div>
+                    </div>
                   </div>
 
-                  <div class="greet-text">
+                  <div class="greet-body">
 国内航空会社で客室乗務員として接客を学んだ後、
-身内の介護を機に高齢者の方々と関わる仕事をして参り
-ました。 あらゆるタイプの施設勤務経験の中で、昨今の
-少子高齢化の弊害を目の当たりにしてきました。 その思
-いを活かして介護福祉士の目線から高齢者終身サポート
-問題の一端を担えるように努力・誠実・継続をモットー
-に真摯な気持ちでご支援して参りたいと思います。 どう
-ぞよろしくお願いいたします。
+身内の介護を機に高齢者の方々と関わる仕事をして参りました。
+あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。
+その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように
+努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。
+どうぞよろしくお願いいたします。
                   </div>
 
                   <div class="greet-sign" aria-label="署名">

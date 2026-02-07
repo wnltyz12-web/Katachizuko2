@@ -21,10 +21,6 @@
       --ink-3: rgba(66,55,41,.70);
       --ink-4: rgba(66,55,41,.56);
 
-      /* ✅ 선명(완전 불투명) 잉크 */
-      --ink-solid: rgba(45,37,28,1);
-      --ink-solid-2: rgba(66,55,41,1);
-
       --line: rgba(66,55,41,.14);
       --line-strong: rgba(66,55,41,.22);
 
@@ -74,10 +70,6 @@
 
       /* ✅ 글자 가독성을 위한 아주 약한 밝기막 */
       --mist: rgba(255,255,255,.06);
-
-      /* ✅ 텍스트 박스 뒤 “종이막” (무늬는 보이되 글자는 선명) */
-      --paper: rgba(255,255,255,.62);
-      --paper-strong: rgba(255,255,255,.70);
     }
 
     body{
@@ -90,10 +82,8 @@
       overflow-x: hidden;
     }
 
-    /* ❌ zoom은 텍스트를 뿌옇게 만들 수 있어 제거
-       필요하면 아래처럼 폰트/여백으로만 PC 스케일 조정 */
     @media (min-width: 900px){
-      html{ font-size: 18px; }
+      body{ zoom: 1.5; }
     }
 
     html{
@@ -116,6 +106,7 @@
       content:"";
       position:absolute; inset:0;
       pointer-events:none;
+      /* 아래쪽 덮는거 최소화 */
       background: linear-gradient(
         to bottom,
         rgba(244,241,234,0) 0%,
@@ -127,6 +118,8 @@
 
     /* =========================
        ✅ 공용: "박스 전체에 오나먼트 보이게"
+       - 단색 오버레이 제거
+       - ::before로 ornament 직접 깔기
     ========================= */
     .orn-fill{
       position: relative;
@@ -467,6 +460,7 @@
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
     }
+    /* ✅ fee-item도 오나먼트 깔기 */
     .fee-item.orn-fill::before{
       opacity: var(--orn-opacity-inner);
       inset: -60px;
@@ -864,82 +858,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
-    /* =========================
-       ✅ 전역 “흐린 텍스트” 선명화 (오나먼트 유지)
-       - 글자색 불투명 고정
-       - 작은 글자 text-shadow 제거
-       - 텍스트 영역은 “얇은 종이막”으로 대비 확보
-    ========================= */
-
-    /* 1) 기본 텍스트는 불투명 잉크로 */
-    body,
-    .card p, .card .lead,
-    .kv .v,
-    .flow-desc,
-    .greet-body,
-    .fee-meta,
-    .fee-sub,
-    .fee-sep,
-    .fee-sep-desc,
-    .panel-sub,
-    .illus-brand .corp-line-1,
-    .contact-note,
-    .greet-chip .role{
-      color: var(--ink-solid) !important;
-      opacity: 1 !important;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* 2) 작은 글자 번짐 원인인 text-shadow 제거 */
-    .card p, .card .lead,
-    .kv .v,
-    .flow-desc,
-    .greet-body,
-    .fee-meta,
-    .fee-sub,
-    .fee-sep,
-    .fee-sep-desc,
-    .panel-sub,
-    .illus-brand .corp-line-1,
-    .contact-note,
-    .greet-chip .role,
-    .greet-chip .name{
-      text-shadow: none !important;
-    }
-
-    /* 3) 텍스트가 있는 박스에만 종이막(무늬는 비치게) */
-    .flow-desc,
-    .greet-body,
-    .card p,
-    .card .lead,
-    .kv .v,
-    .fee-meta,
-    .fee-sub,
-    .fee-sep-desc,
-    .panel-sub,
-    .illus-brand .corp-line-1,
-    .contact-note{
-      background: var(--paper) !important;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-color: rgba(0,0,0,.10) !important;
-    }
-
-    /* 4) 자식 요소(인라인 span 등)도 같이 선명하게 고정 */
-    .card p * , .card .lead * ,
-    .kv .v * ,
-    .flow-desc * ,
-    .greet-body * ,
-    .fee-meta * ,
-    .fee-sub * ,
-    .fee-sep-desc * ,
-    .panel-sub * ,
-    .illus-brand .corp-line-1 * ,
-    .contact-note *{
-      color: var(--ink-solid) !important;
-      opacity: 1 !important;
-      text-shadow: none !important;
-    }
   </style>
 </head>
 
@@ -1123,7 +1041,7 @@
                       <div><div class="fee-name">A-1 身元保証人代行</div></div>
                       <div class="fee-price">
                         施設月額利用料の2か月分
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-solid); white-space:nowrap;">非会員：4か月分</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：4か月分</span>
                       </div>
                     </div>
 
@@ -1131,7 +1049,7 @@
                       <div><div class="fee-name">A-2 緊急連絡先代行</div></div>
                       <div class="fee-price">
                         220,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-solid); white-space:nowrap;">非会員：440,000円</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
                       </div>
                     </div>
 
@@ -1139,7 +1057,7 @@
                       <div><div class="fee-name">A-3 身元引受人代行</div></div>
                       <div class="fee-price">
                         110,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-solid); white-space:nowrap;">非会員：220,000円</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：220,000円</span>
                       </div>
                     </div>
 
@@ -1147,7 +1065,7 @@
                       <div><div class="fee-name">A-4 死後事務代行</div></div>
                       <div class="fee-price">
                         220,000円
-                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-solid); white-space:nowrap;">非会員：440,000円</span>
+                        <span style="display:block; margin-top:1px; font-size:12px; font-weight:700; color: var(--ink-4); white-space:nowrap;">非会員：440,000円</span>
                       </div>
                     </div>
                   </div>
@@ -1353,7 +1271,7 @@
                     <div class="pill">相談無料</div>
                   </div>
 
-                  <p class="contact-note" style="text-align:center; color: var(--ink-solid); font-size: 12px; font-family: var(--sans);">
+                  <p class="contact-note" style="text-align:center; color: var(--ink-4); font-size: 12px; font-family: var(--sans);">
                     ※緊急時や状況により折り返しとなる場合がございます。<br class="tight-br" />
                     まずはお気軽にご相談ください。
                   </p>

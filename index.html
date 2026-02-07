@@ -748,11 +748,11 @@
     /* ✅ ごあいさつ */
     .greet-wrap{ padding: 16px 16px 18px; }
 
-    /* ✅✅✅ 간격 완전 제거: 사진(원형) ↔ 본문 박스 */
+    /* ✅ 사진 ↔ 본문 박스 간격은 이미 0 */
     .greet-top{
       display: grid;
       place-items: center;
-      gap: 0px;              /* ✅ 6px → 0px */
+      gap: 0px;
       text-align: center;
     }
 
@@ -778,11 +778,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transform: translateY(0px); /* ✅ 2px → 0px */
+      transform: translateY(0px);
     }
 
+    /* ✅✅✅ 핵심: "탭 안에서 글이 엔터친 것처럼 보이는 현상" 제거 */
     .greet-body{
-      margin-top: 0px;       /* ✅ 6px → 0px */
+      margin-top: 0px;
       padding: 12px 12px;
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.06);
@@ -793,11 +794,12 @@
       line-height: 1.95;
       letter-spacing: .04em;
       color: rgba(66,55,41,.82);
-      white-space: pre-line;
+
+      /* ✅ 줄바꿈/앞 공백 다 무시 (엔터친 것처럼 안 뜸) */
+      white-space: normal;
       text-align: left;
     }
 
-    /* ✅ 마지막 줄 아래 서명 */
     .greet-footer{
       margin-top: 10px;
       display: flex;
@@ -1191,7 +1193,7 @@
                     <div class="flow-top">
                       <div class="flow-stepno">STEP 5</div>
                       <div class="flow-stepname">ご支援開始</div>
-                    </div>
+                      </div>
                     <div class="flow-desc">困った時はいつでもご相談下さい
 末永く安心してお過ごし下さい</div>
                   </div>
@@ -1250,7 +1252,7 @@
           </div>
         </article>
 
-        <!-- ✅ ごあいさつ（간격 완전 제거 버전 / Photo_01.jpg） -->
+        <!-- ✅ ごあいさつ -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1267,14 +1269,8 @@
                     </div>
                   </div>
 
-                  <div class="greet-body">
-国内航空会社で客室乗務員として接客を学んだ後、
-身内の介護を機に高齢者の方々と関わる仕事をして参りました。
-あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。
-その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように
-努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。
-どうぞよろしくお願いいたします。
-                  </div>
+                  <!-- ✅✅✅ 핵심: 텍스트를 "한 줄로" 넣어서, 탭 안에서 시작하자마자 엔터되는 현상 원천 제거 -->
+                  <div class="greet-body">国内航空会社で客室乗務員として接客を学んだ後、身内の介護を機に高齢者の方々と関わる仕事をして参りました。あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。どうぞよろしくお願いいたします。</div>
 
                   <div class="greet-footer" aria-label="署名">
                     <div class="greet-chip">

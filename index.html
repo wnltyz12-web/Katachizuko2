@@ -859,13 +859,23 @@
     }
 
     /* =========================
-       ✅ FIX: 글자만 오파시티(알파) 제거
-       - ご利用の流れ(.flow-desc)
-       - ごあいさつ(.greet-body)
+       ✅ FIX: 글자만 오파시티(알파) 제거 (강화버전)
+       - 흐려 보이는 원인: rgba(...,0.xx) 알파값
+       - 해결: 해당 텍스트들 + 자식요소까지 불투명 강제
        (배경/오나먼트는 그대로)
     ========================= */
     .flow-desc,
-    .greet-body{
+    .flow-desc * ,
+    .greet-body,
+    .greet-body * ,
+    .card p,
+    .card p * ,
+    .card .lead,
+    .card .lead * ,
+    .kv .v,
+    .kv .v * ,
+    .greet-chip .name,
+    .greet-chip .name *{
       opacity: 1 !important;
       color: rgba(45,37,28,1) !important;
     }

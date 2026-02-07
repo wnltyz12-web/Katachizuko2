@@ -745,7 +745,7 @@
     }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
-    /* ✅ NEW: ごあいさつ（레퍼런스 느낌 + 사이트 톤 맞춤） */
+    /* ✅ NEW: ごあいさつ（レ퍼런스 느낌 + 사이트 톤 맞춤） */
     .greet-wrap{ padding: 16px 16px 18px; }
     .greet-top{
       display: grid;
@@ -858,6 +858,9 @@
       color: rgba(66,55,41,.88);
       white-space: nowrap;
     }
+
+    /* ✅ NEW: 이름/직함 지웠을 때 공백 최적화 */
+    .greet-top.compact{ gap: 12px; }
   </style>
 </head>
 
@@ -1282,7 +1285,7 @@
           </div>
         </article>
 
-        <!-- ✅ ごあいさつ（첫번째 사진 Photo_01.jpg 사용 / 레퍼런스 느낌 반영） -->
+        <!-- ✅ ごあいさつ（代表/이름 제거 + 공백 자동 조절 / Photo_01.jpg 사용 유지） -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1293,12 +1296,10 @@
               <div class="cards">
                 <div class="card greet-wrap" aria-label="ごあいさつ">
 
-                  <div class="greet-top">
-                    <div class="greet-badge">代表理事</div>
-                    <div class="greet-name">片岡　千鶴子</div>
-
-                    <div class="greet-portrait" aria-label="代表理事 写真">
-                      <img src="Photo_01.jpg" alt="代表理事 片岡千鶴子" />
+                  <!-- ✅ 여기서 "代表理事" / "片岡　千鶴子" 제거 -->
+                  <div class="greet-top compact">
+                    <div class="greet-portrait" aria-label="写真">
+                      <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
                     </div>
 
                     <div class="greet-divider" aria-hidden="true">
@@ -1317,10 +1318,8 @@
 どうぞよろしくお願いいたします。
                   </div>
 
-                  <div class="greet-sign" aria-label="署名">
-                    <span class="role">代表理事</span>
-                    <span class="name">片岡千鶴子</span>
-                  </div>
+                  <!-- ✅ 아래 서명도 동일하게 제거 -->
+                  <!-- <div class="greet-sign"> ... </div> -->
 
                 </div>
               </div>

@@ -747,12 +747,15 @@
 
     /* ✅ ごあいさつ */
     .greet-wrap{ padding: 16px 16px 18px; }
+
+    /* 🔥 간격 줄임: 사진(원형) ↔ 본문 박스 사이 */
     .greet-top{
       display: grid;
       place-items: center;
-      gap: 12px;
+      gap: 6px;              /* 기존 12px → 6px */
       text-align: center;
     }
+
     .greet-portrait{
       width: 178px;
       height: 178px;
@@ -778,10 +781,8 @@
       transform: translateY(2px);
     }
 
-    /* ✅ divider(다이아/가로라인) 완전 제거: CSS도 없음 */
-
     .greet-body{
-      margin-top: 10px;
+      margin-top: 6px;       /* 기존 10~12px → 6px (간격 줄임) */
       padding: 12px 12px;
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.06);
@@ -796,7 +797,7 @@
       text-align: left;
     }
 
-    /* ✅ 마지막 줄 아래 서명(한 줄) */
+    /* ✅ 마지막 줄 아래 서명 */
     .greet-footer{
       margin-top: 10px;
       display: flex;
@@ -808,7 +809,6 @@
       justify-content:flex-end;
       gap:10px;
       margin-top:6px;
-      white-space: nowrap;
     }
     .greet-chip .role{
       font-family: var(--serif);
@@ -816,6 +816,7 @@
       letter-spacing: .18em;
       color: rgba(66,55,41,.65);
       font-weight:700;
+      white-space: nowrap;
     }
     .greet-chip .name{
       font-family: var(--serif);
@@ -823,6 +824,7 @@
       letter-spacing: .18em;
       color: rgba(45,37,28,.92);
       font-weight:900;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -1248,7 +1250,7 @@
           </div>
         </article>
 
-        <!-- ✅ ごあいさつ：ダイヤ/ライン完全削除済み -->
+        <!-- ✅ ごあいさつ（간격 줄인 버전 / Photo_01.jpg） -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1263,7 +1265,6 @@
                     <div class="greet-portrait" aria-label="写真">
                       <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
                     </div>
-                    <!-- ✅ greet-divider(ダイヤ+横線) はHTMLから削除 -->
                   </div>
 
                   <div class="greet-body">

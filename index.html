@@ -745,39 +745,13 @@
     }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
-    /* ✅ NEW: ごあいさつ（レ퍼런스 느낌 + 사이트 톤 맞춤） */
+    /* ✅ ごあいさつ */
     .greet-wrap{ padding: 16px 16px 18px; }
     .greet-top{
       display: grid;
       place-items: center;
       gap: 10px;
       text-align: center;
-    }
-    .greet-badge{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 34px;
-      padding: 0 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(155,122,52,.40);
-      background: rgba(155,122,52,.18);
-      color: rgba(96,84,64,.92);
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
-      font-size: 13px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70);
-      user-select: none;
-      white-space: nowrap;
-    }
-    .greet-name{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .14em;
-      color: rgba(31,27,22,.92);
-      font-size: 20px;
-      line-height: 1.2;
     }
     .greet-portrait{
       width: 178px;
@@ -835,32 +809,40 @@
       white-space: pre-line;
       text-align: left;
     }
-    .greet-sign{
-      margin-top: 12px;
+
+    /* ✅ NEW: 마지막 줄 아래 서명(탭 느낌) */
+    .greet-footer{
+      margin-top: 10px;
       display: flex;
       justify-content: flex-end;
-      gap: 10px;
-      align-items: baseline;
     }
-    .greet-sign .role{
+    .greet-chip{
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.42);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      max-width: 100%;
+    }
+    .greet-chip .role{
       font-family: var(--serif);
       font-size: 12px;
       letter-spacing: .14em;
-      font-weight: 700;
-      color: rgba(66,55,41,.72);
+      font-weight: 800;
+      color: rgba(66,55,41,.70);
       white-space: nowrap;
     }
-    .greet-sign .name{
+    .greet-chip .name{
       font-family: var(--serif);
       font-size: 16px;
-      letter-spacing: .14em;
+      letter-spacing: .12em;
       font-weight: 900;
-      color: rgba(66,55,41,.88);
+      color: rgba(45,37,28,.92);
       white-space: nowrap;
     }
-
-    /* ✅ NEW: 이름/직함 지웠을 때 공백 최적화 */
-    .greet-top.compact{ gap: 12px; }
   </style>
 </head>
 
@@ -1285,7 +1267,7 @@
           </div>
         </article>
 
-        <!-- ✅ ごあいさつ（代表/이름 제거 + 공백 자동 조절 / Photo_01.jpg 사용 유지） -->
+        <!-- ✅ ごあいさつ（Photo_01.jpg 사용 + 마지막 줄 아래 “탭”에 서명 복구） -->
         <article class="panel" id="panel-greeting">
           <div class="panel-head">
             <div class="panel-title">ごあいさつ</div>
@@ -1296,8 +1278,7 @@
               <div class="cards">
                 <div class="card greet-wrap" aria-label="ごあいさつ">
 
-                  <!-- ✅ 여기서 "代表理事" / "片岡　千鶴子" 제거 -->
-                  <div class="greet-top compact">
+                  <div class="greet-top">
                     <div class="greet-portrait" aria-label="写真">
                       <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
                     </div>
@@ -1318,8 +1299,13 @@
 どうぞよろしくお願いいたします。
                   </div>
 
-                  <!-- ✅ 아래 서명도 동일하게 제거 -->
-                  <!-- <div class="greet-sign"> ... </div> -->
+                  <!-- ✅ 요청: 마지막 줄 아래 탭에 “代表理事 片岡千鶴子” 일본어로 복구 -->
+                  <div class="greet-footer" aria-label="署名">
+                    <div class="greet-chip">
+                      <span class="role">代表理事</span>
+                      <span class="name">片岡千鶴子</span>
+                    </div>
+                  </div>
 
                 </div>
               </div>

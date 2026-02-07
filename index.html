@@ -748,6 +748,67 @@
       white-space: normal !important;
     }
     .contact-note br.tight-br{ display:block; line-height:0; } /* ✅ 간격만 줄임 */
+
+    /* ✅ 追加: ごあいさつ（맨 아래에 넣는 섹션 전용, 기존 건드리지 않음） */
+    .greet-card{ padding: 16px 16px 14px; }
+    .greet-title{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .18em;
+      font-size: 18px;
+      color: rgba(155,122,52,.92);
+      text-align: center;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+    .greet-sep{
+      width: 100%;
+      margin: 12px 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      opacity: .92;
+    }
+    .greet-sep .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
+    .greet-sep .dia{
+      width: 10px; height: 10px;
+      transform: rotate(45deg);
+      border: 1.5px solid rgba(155,122,52,.60);
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    }
+    .greet-text{
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.95;
+      letter-spacing: .04em;
+      color: rgba(66,55,41,.82);
+      white-space: pre-line;
+      text-align: left;
+    }
+    .greet-sign{
+      margin-top: 14px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      align-items: baseline;
+    }
+    .greet-sign .role{
+      font-family: var(--serif);
+      font-size: 12px;
+      letter-spacing: .14em;
+      font-weight: 700;
+      color: rgba(66,55,41,.72);
+      white-space: nowrap;
+    }
+    .greet-sign .name{
+      font-family: var(--serif);
+      font-size: 16px;
+      letter-spacing: .14em;
+      font-weight: 900;
+      color: rgba(66,55,41,.88);
+      white-space: nowrap;
+    }
   </style>
 </head>
 
@@ -1168,6 +1229,45 @@
                     まずはお気軽にご相談ください。
                   </p>
 
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ✅ 追加（맨 아래）: ごあいさつ -->
+        <article class="panel" id="panel-greeting">
+          <div class="panel-head">
+            <div class="panel-title">ごあいさつ</div>
+          </div>
+
+          <div class="panel-body">
+            <div class="panel-inner">
+              <div class="cards">
+                <div class="card greet-card" aria-label="ごあいさつ本文">
+                  <div class="greet-title">ごあいさつ</div>
+
+                  <div class="greet-sep" aria-hidden="true">
+                    <div class="line"></div>
+                    <div class="dia"></div>
+                    <div class="line"></div>
+                  </div>
+
+                  <div class="greet-text">
+国内航空会社で客室乗務員として接客を学んだ後、
+身内の介護を機に高齢者の方々と関わる仕事をして参り
+ました。 あらゆるタイプの施設勤務経験の中で、昨今の
+少子高齢化の弊害を目の当たりにしてきました。 その思
+いを活かして介護福祉士の目線から高齢者終身サポート
+問題の一端を担えるように努力・誠実・継続をモットー
+に真摯な気持ちでご支援して参りたいと思います。 どう
+ぞよろしくお願いいたします。
+                  </div>
+
+                  <div class="greet-sign" aria-label="署名">
+                    <span class="role">代表理事</span>
+                    <span class="name">片岡千鶴子</span>
+                  </div>
                 </div>
               </div>
             </div>

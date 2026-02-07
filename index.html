@@ -145,7 +145,6 @@
       pointer-events:none;
       z-index: -1; /* ✅ 뒤로 */
     }
-    /* ✅ 이제 별도의 z-index 올리기 필요 없음(텍스트 노드도 정상) */
 
     @media (min-width: 900px){
       .orn-fill::before{ background-size: var(--orn-size-lg); }
@@ -645,7 +644,7 @@
       font-family: var(--sans);
       font-size: 13.5px;
       line-height: 1.85;
-      color: var(--ink-4); /* 그대로 */
+      color: var(--ink-4);
       letter-spacing: .01em;
       white-space: pre-line;
 
@@ -812,7 +811,7 @@
     }
 
     .greet-body{
-      margin-top: 0px;
+      margin-top: 14px; /* ✅ 사진-설명 간격만 '조금' 넓힘 (기존 0px) */
       padding: 12px 12px;
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.06);
@@ -821,7 +820,7 @@
       font-size: 14px;
       line-height: 1.95;
       letter-spacing: .04em;
-      color: var(--ink-4); /* 그대로 */
+      color: var(--ink-4);
       white-space: normal;
       text-align: left;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);

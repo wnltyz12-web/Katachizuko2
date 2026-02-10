@@ -219,12 +219,7 @@
     }
     .topbar.is-compact .brand-big{ font-size: 16px; letter-spacing: .12em; }
 
-    .header-actions{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      flex: 0 0 auto;
-    }
+    .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
     /* ✅ 法人登録番号: "お問い合わせ" 위에, 작고 검정 */
     .header-meta{
@@ -232,22 +227,22 @@
       font-family: var(--sans);
       font-weight: 800;
       letter-spacing: .06em;
-      font-size: 10.5px;
-      color: rgba(31,27,22,.88); /* 검정 계열 */
+      font-size: 7px;           /* ✅ 변경: 10.5px -> 7px */
+      color: rgba(31,27,22,.88);
       white-space: nowrap;
       line-height: 1;
       opacity: .95;
       text-align: right;
     }
     @media (max-width: 420px){
-      .header-meta{ display:none; } /* 작은 화면에서는 숨김(원하면 삭제 가능) */
+      .header-meta{ display:none; }
     }
 
     .header-actions-col{
       display: inline-flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 6px; /* ✅ 번호와 버튼 간격 */
+      gap: 6px;
     }
 
     .hbtn{
@@ -948,7 +943,7 @@
                 <div class="card orn-fill">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
-                  <p>条件や流れを整理し安心して手続きができるようにご支援いたします</p>
+                  <!-- ✅ 삭제: 条件や流れを整理し安心して手続きができるようにご支援いたします -->
                 </div>
 
                 <div class="card orn-fill">

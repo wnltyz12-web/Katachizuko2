@@ -52,6 +52,9 @@
       --r-14: 14px;
       --r-18: 18px;
 
+      --blur-panel: 10px;
+      --blur-card: 14px;
+
       --panel-pad: 16px;
       --cards-gap: 12px;
       --card-pad-y: 14px;
@@ -66,7 +69,7 @@
 
       --mist: rgba(255,255,255,.06);
 
-      /* ✅ 헤더 레드 */
+      /* ✅ 헤더 우상단 레드 */
       --header-red: #d85b5b;
     }
 
@@ -89,6 +92,9 @@
       scroll-padding-top: 88px;
     }
 
+    /* =========================
+       ✅ 전체 배경 오나먼트
+    ========================= */
     .ornament-bg{
       position: fixed; inset: 0; z-index: 0;
       background-color: var(--bg);
@@ -110,6 +116,9 @@
       );
     }
 
+    /* =========================
+       ✅ 공용: 박스 오나먼트
+    ========================= */
     .orn-fill{
       position: relative;
       overflow: hidden;
@@ -134,12 +143,13 @@
       pointer-events:none;
       z-index: -1;
     }
+
     @media (min-width: 900px){
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
     /* =========================
-       헤더
+       ✅ 헤더 (요청 스샷 스타일)
     ========================= */
     .topbar{
       position: sticky; top: 0; z-index: 50;
@@ -167,6 +177,7 @@
       text-decoration: none;
       min-width: 0;
     }
+
     .brand-mark{
       width: 44px; height: 44px; border-radius: 999px;
       display: grid; place-items: center;
@@ -181,41 +192,54 @@
     .brand-mark img{ width: 100%; height: 100%; display: block; object-fit: contain; padding: 6px; }
     .topbar.is-compact .brand-mark img{ padding: 5px; }
 
-    /* ✅ 기존 brand-eyebrow/brand-name 제거하고, 레드 텍스트로만 구성 */
     .brand-text{
       display: grid;
-      gap: 2px;
+      gap: 4px;
       line-height: 1.05;
       min-width: 0;
     }
-    .brand-small{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .10em;
-      font-size: 12px;
-      color: var(--header-red);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      text-shadow: none;
-    }
-    .brand-mid{
+
+    /* ✅ 一般社団法人: "外出支援"과 동일한 폰트/색/크기(= 기존 brand-mid 느낌) + 박스 */
+    .brand-box{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 3px;
+      border: 2px solid rgba(66,55,41,.45);
+      background: rgba(255,255,255,.08);
+
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
-      font-size: 12px;
-      color: rgba(66,55,41,.70); /* "外出支援"은 스샷처럼 약간 톤 다운 */
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-size: 12px;                 /* ✅ 외出支援급 */
+      color: rgba(66,55,41,.70);       /* ✅ 외出支援급 */
+      white-space: nowrap;
       text-shadow: none;
+      width: fit-content;
     }
+    .topbar.is-compact .brand-box{
+      padding: 5px 9px;
+      font-size: 11px;
+      letter-spacing: .10em;
+    }
+
+    /* ✅ 福祉介護機構: 예전 "カタオカサービス" (brand-name) 스타일로 */
     .brand-big{
       font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
       font-size: 18px;
-      color: var(--header-red);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      text-shadow: none;
+      font-weight: 900;
+      letter-spacing: .14em;
+      color: rgba(31,27,22,.96);
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .topbar.is-compact .brand-big{ font-size: 16px; letter-spacing: .10em; }
+    .topbar.is-compact .brand-big{
+      font-size: 16px;
+      letter-spacing: .12em;
+    }
 
     .header-actions{
       display: inline-flex;
@@ -224,7 +248,7 @@
       flex: 0 0 auto;
     }
 
-    /* ✅ 헤더 오른쪽 위 "法人登録番号" 레드 */
+    /* ✅ 오른쪽 위 "法人登録番号" 레드 */
     .header-meta{
       display: none;
       font-family: var(--serif);
@@ -240,7 +264,7 @@
       .header-meta{ display: inline-block; }
     }
     @media (max-width: 420px){
-      .header-meta{ display: none; } /* 아주 좁으면 숨김 */
+      .header-meta{ display: none; }
     }
 
     .hbtn{
@@ -248,12 +272,13 @@
       background: rgba(255,255,255,.40);
       color: rgba(31,27,22,.90);
       border-radius: 999px;
-      height: 38px; padding: 0 12px;
-      display: inline-flex; align-items: center; gap: 8px;
+      height: 44px;
+      padding: 0 16px;
+      display: inline-flex; align-items: center; gap: 10px;
       text-decoration: none;
-      font-size: var(--fs-12);
+      font-size: 14px;
       letter-spacing: .12em;
-      font-weight: 800;
+      font-weight: 900;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
       user-select: none;
@@ -265,15 +290,21 @@
       background: rgba(255,255,255,.54);
       box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.72);
     }
+
+    /* ✅ 스샷 같은 문의 버튼 */
     .hbtn.primary{
       background: rgba(183,161,138,.96);
       color: #fff;
       border: 1px solid rgba(0,0,0,.10);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      text-shadow: none;
     }
-    .hbtn.primary:hover{ background: rgba(183,161,138,1); box-shadow: 0 12px 26px rgba(0,0,0,.10); }
-    .hbtn .ico{ width: 18px; height: 18px; display: inline-block; }
-    @media (max-width: 420px){ .header-actions .hbtn.secondary{ display: none; } }
+    .hbtn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    }
+
+    .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
@@ -348,7 +379,7 @@
     }
 
     /* =========================
-       일러스트 / 법인정보
+       일러스트
     ========================= */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
@@ -885,6 +916,7 @@
 <body>
   <div class="ornament-bg"></div>
 
+  <!-- ✅ 헤더: 요청 이미지처럼 -->
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="ヘッダー">
@@ -892,28 +924,18 @@
           <img src="Logo.png" alt="" />
         </span>
 
-        <!-- ✅ 겹치던 기존 글자(brand-eyebrow/brand-name) 제거하고 레드 텍스트로 교체 -->
         <span class="brand-text" aria-label="法人名">
-          <span class="brand-small">一般社団法人</span>
-          <span class="brand-mid">外出支援</span>
+          <span class="brand-box">一般社団法人</span>
           <span class="brand-big">福祉介護機構</span>
         </span>
       </a>
 
       <div class="header-actions">
-        <!-- ✅ 스샷처럼 오른쪽 위 레드 텍스트 -->
         <span class="header-meta">法人登録番号 8040005021344</span>
-
-        <a class="hbtn secondary" href="#details" aria-label="サービスを見る">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 6h16M4 12h10M4 18h16"></path>
-          </svg>
-          サービス
-        </a>
 
         <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 4h16v16H4z"></path>
+            <path d="M4 6h16v12H4z"></path>
             <path d="M22 6l-10 7L2 6"></path>
           </svg>
           お問い合わせ

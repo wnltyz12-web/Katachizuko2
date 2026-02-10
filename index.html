@@ -118,6 +118,7 @@
 
     /* =========================
        ✅ 공용: "박스 전체에 오나먼트 보이게"
+       ✅ pseudo를 뒤로 보내고, stacking context 고정(isolation)
     ========================= */
     .orn-fill{
       position: relative;
@@ -533,17 +534,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* ✅ (추가) 사진처럼 '訪問支援' 구분 타이틀만 살짝 붉게 강조 */
-    .fee-sep.visit{ margin: 10px 0 10px; }
-    .fee-sep.visit .fee-sep-title{
-      color: rgba(200,65,65,.92);
-      font-size: 15px;
-      letter-spacing: .14em;
-    }
-    .fee-sep.visit .fee-sep-title .dots{
-      color: rgba(200,65,65,.55);
-    }
-
     .fee-left{
       display: grid;
       grid-template-columns: 1fr auto;
@@ -866,6 +856,7 @@
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
+
   </style>
 </head>
 
@@ -1082,19 +1073,21 @@
                 <div class="card orn-fill" style="padding-bottom:10px;">
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
-                    <div class="fee-meta">※<strong>会員</strong>／非会員すべて同じ金額です</div>
 
-                    <!-- ✅ (추가) 사진처럼 '・・・訪問支援・・・' 구분 타이틀 -->
-                    <div class="fee-sep visit" aria-label="訪問支援の説明">
+                    <!-- ✅ 방문지원 타이틀 (同行支援와 동일 스타일) -->
+                    <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
                       <div class="fee-sep-title">
                         <span class="dots">・・・</span>
                         <span>訪問支援</span>
                         <span class="dots">・・・</span>
                       </div>
                     </div>
+
+                    <!-- ✅ ※ 문구를 방문지원 타이틀 아래로 이동 -->
+                    <div class="fee-meta" style="margin-top:0;">※<strong>会員</strong>／非会員すべて同じ金額です</div>
                   </div>
 
-                  <div class="fee-list" style="margin-top:8px; margin-bottom:0;">
+                  <div class="fee-list" style="margin-top:10px; margin-bottom:0;">
                     <div class="fee-item orn-fill">
                       <div><div class="fee-name">日中（9:00〜18:00）</div></div>
                       <div class="fee-price">4,000円／1時間</div>

@@ -373,15 +373,14 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* ✅ 여기만 변경:
-       - 기존 문구(검정/회색)는 전부 삭제
-       - 빨간 문구는 '입회금・월회비...'가 갖고 있던 폰트/크기/정렬을 그대로 사용
-       - 색상만 빨간색으로 */
+    /* ✅ 요청 반영
+       1) 색상 = "車両を使用しての通院・買物・役所等の外出同行支援" 와 동일(= var(--ink-4))
+       2) 엔터키(여백) 줄이기: margin-top을 6px → 0px 로 */
     .panel-sub{
-      margin-top: 6px;
+      margin-top: 0px;                 /* ✅ 엔터(빈칸) 느낌 제거 */
       font-family: var(--sans);
       font-size: var(--fs-12);
-      color: rgba(200,65,65,.92); /* ✅ 빨간색 */
+      color: var(--ink-4);             /* ✅ 같은 색 */
       letter-spacing: .06em;
       line-height: 1.78;
       padding: 0 6px;
@@ -977,12 +976,7 @@
 
         <article class="panel orn-fill" id="panel-price">
           <div class="panel-head orn-fill">
-            <div class="panel-title">料金表</div>
-
-            <!-- ✅ 빨간 글씨만 남김 (폰트/크기/정렬은 기존 panel-sub 값 그대로) -->
-            <div class="panel-sub">
-              入会金・月会費（非課税）
-            </div>
+            <div class="panel-title">料金表</div><div class="panel-sub">入会金・月会費（非課税）</div>
           </div>
 
           <div class="panel-body">

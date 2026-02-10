@@ -63,12 +63,10 @@
       --title-letter: .12em;
       --h3-letter: .10em;
 
-      /* ✅ 오나먼트 보이는 정도(필요하면 숫자만 조절) */
       --orn-opacity-panel: .55;
       --orn-opacity-card: .62;
       --orn-opacity-inner: .58;
 
-      /* ✅ 글자 가독성을 위한 아주 약한 밝기막 */
       --mist: rgba(255,255,255,.06);
     }
 
@@ -91,9 +89,6 @@
       scroll-padding-top: 88px;
     }
 
-    /* =========================
-       ✅ 전체 배경 오나먼트
-    ========================= */
     .ornament-bg{
       position: fixed; inset: 0; z-index: 0;
       background-color: var(--bg);
@@ -106,7 +101,6 @@
       content:"";
       position:absolute; inset:0;
       pointer-events:none;
-      /* 아래쪽 덮는거 최소화 */
       background: linear-gradient(
         to bottom,
         rgba(244,241,234,0) 0%,
@@ -116,15 +110,11 @@
       );
     }
 
-    /* =========================
-       ✅ 공용: "박스 전체에 오나먼트 보이게"
-       ✅ pseudo를 뒤로 보내고, stacking context 고정(isolation)
-    ========================= */
     .orn-fill{
       position: relative;
       overflow: hidden;
       background: rgba(255,255,255,0);
-      isolation: isolate; /* ✅ 중요 */
+      isolation: isolate;
     }
     .orn-fill::before{
       content:"";
@@ -135,23 +125,19 @@
       opacity: var(--orn-opacity-panel);
       transform: scale(1.05);
       pointer-events:none;
-      z-index: -2; /* ✅ 뒤로 */
+      z-index: -2;
     }
     .orn-fill::after{
       content:"";
       position:absolute; inset:0;
       background: var(--mist);
       pointer-events:none;
-      z-index: -1; /* ✅ 뒤로 */
+      z-index: -1;
     }
-
     @media (min-width: 900px){
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* =========================
-       헤더
-    ========================= */
     .topbar{
       position: sticky; top: 0; z-index: 50;
       height: 78px;
@@ -251,9 +237,6 @@
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
 
-    /* =========================
-       히어로
-    ========================= */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
     .hero-title{
       font-family: var(--serif);
@@ -320,9 +303,6 @@
       white-space: pre-line;
     }
 
-    /* =========================
-       일러스트
-    ========================= */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{ width: 100%; height: auto; display: block; background: transparent; }
@@ -347,9 +327,6 @@
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
-    /* =========================
-       패널/카드 (전부 오나먼트)
-    ========================= */
     .panel{
       border-radius: var(--r-18);
       border: 1px solid rgba(0,0,0,.06);
@@ -405,6 +382,26 @@
       padding: 0 6px;
       font-weight: 600;
       text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      position: relative; /* ✅ 빨간 글씨 오버레이용 */
+    }
+
+    /* ✅ (추가) 스샷처럼 “빨간 글씨”를 기존 문구 위에 그대로 올림 */
+    .panel-sub .panel-sub-red{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      pointer-events:none;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+      line-height: inherit;
+      color: rgba(200,65,65,.92);
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
 
     .panel-body{ }
@@ -444,9 +441,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
-    /* =========================
-       料金표 내부
-    ========================= */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
 
     .fee-item{
@@ -554,9 +548,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* =========================
-       ご利用の流れ
-    ========================= */
     .flow-box{
       border-radius: 18px;
       border: 1px solid rgba(0,0,0,.07);
@@ -664,9 +655,6 @@
       }
     }
 
-    /* =========================
-       문의
-    ========================= */
     .contact-actions{
       display: grid;
       gap: 10px;
@@ -772,9 +760,6 @@
     }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
-    /* =========================
-       ごあいさつ
-    ========================= */
     .greet-wrap{ padding: 16px 16px 18px; }
 
     .greet-top{
@@ -856,7 +841,6 @@
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
-
   </style>
 </head>
 
@@ -1007,9 +991,16 @@
         <article class="panel orn-fill" id="panel-price">
           <div class="panel-head orn-fill">
             <div class="panel-title">料金表</div>
+
+            <!-- ✅ 기존 문구는 그대로 두고, 그 위에 빨간 글씨를 얹음 -->
             <div class="panel-sub">
               入会金・月会費、各プランの料金です<br/>
               （すべて税込）
+
+              <div class="panel-sub-red" aria-hidden="true">
+                入会金・月会費（非課税）<br/>
+                （すべて税込）
+              </div>
             </div>
           </div>
 
@@ -1074,7 +1065,6 @@
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
 
-                    <!-- ✅ 방문지원 타이틀 (同行支援와 동일 스타일) -->
                     <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
                       <div class="fee-sep-title">
                         <span class="dots">・・・</span>
@@ -1083,7 +1073,6 @@
                       </div>
                     </div>
 
-                    <!-- ✅ ※ 문구를 방문지원 타이틀 아래로 이동 -->
                     <div class="fee-meta" style="margin-top:0;">※<strong>会員</strong>／非会員すべて同じ金額です</div>
                   </div>
 

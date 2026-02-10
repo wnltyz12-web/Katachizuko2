@@ -21,12 +21,6 @@
       --ink-3: rgba(66,55,41,.70);
       --ink-4: rgba(66,55,41,.56);
 
-      --line: rgba(66,55,41,.14);
-      --line-strong: rgba(66,55,41,.22);
-
-      --accent: rgba(155,122,52,.92);
-      --accent-line: rgba(155,122,52,.72);
-
       --btn: #b7a18a;
       --btn-text: #ffffff;
 
@@ -52,9 +46,6 @@
       --r-14: 14px;
       --r-18: 18px;
 
-      --blur-panel: 10px;
-      --blur-card: 14px;
-
       --panel-pad: 16px;
       --cards-gap: 12px;
       --card-pad-y: 14px;
@@ -68,9 +59,6 @@
       --orn-opacity-inner: .58;
 
       --mist: rgba(255,255,255,.06);
-
-      /* ✅ 헤더 우상단 레드 */
-      --header-red: #d85b5b;
     }
 
     body{
@@ -82,15 +70,9 @@
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
+    @media (min-width: 900px){ body{ zoom: 1.5; } }
 
-    @media (min-width: 900px){
-      body{ zoom: 1.5; }
-    }
-
-    html{
-      scroll-behavior: smooth;
-      scroll-padding-top: 88px;
-    }
+    html{ scroll-behavior: smooth; scroll-padding-top: 88px; }
 
     /* =========================
        ✅ 전체 배경 오나먼트
@@ -143,13 +125,10 @@
       pointer-events:none;
       z-index: -1;
     }
-
-    @media (min-width: 900px){
-      .orn-fill::before{ background-size: var(--orn-size-lg); }
-    }
+    @media (min-width: 900px){ .orn-fill::before{ background-size: var(--orn-size-lg); } }
 
     /* =========================
-       ✅ 헤더 (요청 스샷 스타일)
+       ✅ 헤더
     ========================= */
     .topbar{
       position: sticky; top: 0; z-index: 50;
@@ -194,37 +173,39 @@
 
     .brand-text{
       display: grid;
-      gap: 4px;
+      gap: 6px;
       line-height: 1.05;
       min-width: 0;
     }
 
-    /* ✅ 一般社団法人: "外出支援"과 동일한 폰트/색/크기(= 기존 brand-mid 느낌) + 박스 */
-    .brand-box{
+    /* ✅ 一般社団法人: 동그란 버튼(알약) */
+    .brand-pill{
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 6px 10px;
-      border-radius: 3px;
-      border: 2px solid rgba(66,55,41,.45);
-      background: rgba(255,255,255,.08);
+      height: 26px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.18);
+      background: rgba(255,255,255,.34);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
 
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
-      font-size: 12px;                 /* ✅ 외出支援급 */
-      color: rgba(66,55,41,.70);       /* ✅ 외出支援급 */
+      font-size: 12px;
+      color: rgba(66,55,41,.70);
       white-space: nowrap;
-      text-shadow: none;
       width: fit-content;
     }
-    .topbar.is-compact .brand-box{
-      padding: 5px 9px;
+    .topbar.is-compact .brand-pill{
+      height: 24px;
+      padding: 0 10px;
       font-size: 11px;
       letter-spacing: .10em;
     }
 
-    /* ✅ 福祉介護機構: 예전 "カタオカサービス" (brand-name) 스타일로 */
+    /* ✅ 福祉介護機構: 기존 카타오카서비스(brand-name) 스타일 */
     .brand-big{
       font-family: var(--serif);
       font-size: 18px;
@@ -236,10 +217,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .topbar.is-compact .brand-big{
-      font-size: 16px;
-      letter-spacing: .12em;
-    }
+    .topbar.is-compact .brand-big{ font-size: 16px; letter-spacing: .12em; }
 
     .header-actions{
       display: inline-flex;
@@ -248,23 +226,28 @@
       flex: 0 0 auto;
     }
 
-    /* ✅ 오른쪽 위 "法人登録番号" 레드 */
+    /* ✅ 法人登録番号: "お問い合わせ" 위에, 작고 검정 */
     .header-meta{
-      display: none;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .10em;
-      font-size: 11px;
-      color: var(--header-red);
+      display: block;
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: 10.5px;
+      color: rgba(31,27,22,.88); /* 검정 계열 */
       white-space: nowrap;
-      text-shadow: none;
+      line-height: 1;
       opacity: .95;
-    }
-    @media (min-width: 360px){
-      .header-meta{ display: inline-block; }
+      text-align: right;
     }
     @media (max-width: 420px){
-      .header-meta{ display: none; }
+      .header-meta{ display:none; } /* 작은 화면에서는 숨김(원하면 삭제 가능) */
+    }
+
+    .header-actions-col{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px; /* ✅ 번호와 버튼 간격 */
     }
 
     .hbtn{
@@ -290,8 +273,6 @@
       background: rgba(255,255,255,.54);
       box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.72);
     }
-
-    /* ✅ 스샷 같은 문의 버튼 */
     .hbtn.primary{
       background: rgba(183,161,138,.96);
       color: #fff;
@@ -299,11 +280,7 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
       text-shadow: none;
     }
-    .hbtn.primary:hover{
-      background: rgba(183,161,138,1);
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
-    }
-
+    .hbtn.primary:hover{ background: rgba(183,161,138,1); box-shadow: 0 12px 26px rgba(0,0,0,.10); }
     .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
@@ -622,17 +599,12 @@
     }
     .flow-box.orn-fill::before{ opacity: var(--orn-opacity-card); inset: -70px; }
 
-    .flow-steps{
-      display: grid;
-      gap: 12px;
-      padding: 12px;
-      padding-top: 10px;
-    }
+    .flow-steps{ display: grid; gap: 12px; padding: 12px; padding-top: 10px; }
     .flow-step{
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.08);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.66);
-      padding: 12px 12px 12px 12px;
+      padding: 12px;
       position: relative;
     }
     .flow-step.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
@@ -646,7 +618,6 @@
       pointer-events:none;
       z-index: 2;
     }
-
     .flow-top{
       display: grid;
       grid-template-columns: auto 1fr;
@@ -696,7 +667,6 @@
       min-width: 12px;
       margin-left: 10px;
     }
-
     .flow-desc{
       font-family: var(--sans);
       font-size: 13.5px;
@@ -704,7 +674,6 @@
       color: var(--ink-4);
       letter-spacing: .01em;
       white-space: pre-line;
-
       margin-left: 6px;
       padding: 10px 12px;
       border-radius: 14px;
@@ -713,13 +682,8 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
     .flow-desc.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
-
     @media (max-width: 520px){
-      .flow-desc{
-        font-size: 12.5px;
-        letter-spacing: 0;
-        padding: 10px 10px;
-      }
+      .flow-desc{ font-size: 12.5px; letter-spacing: 0; padding: 10px 10px; }
     }
 
     /* =========================
@@ -819,25 +783,14 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
-    .contact-note{
-      margin-top: 6px !important;
-      line-height: 1.55 !important;
-      white-space: normal !important;
-    }
+    .contact-note{ margin-top: 6px !important; line-height: 1.55 !important; white-space: normal !important; }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
     /* =========================
        ごあいさつ
     ========================= */
     .greet-wrap{ padding: 16px 16px 18px; }
-
-    .greet-top{
-      display: grid;
-      place-items: center;
-      gap: 0px;
-      text-align: center;
-    }
-
+    .greet-top{ display: grid; place-items: center; gap: 0px; text-align: center; }
     .greet-portrait{
       width: 178px;
       height: 178px;
@@ -862,7 +815,6 @@
       display: block;
       transform: translateY(0px);
     }
-
     .greet-body{
       margin-top: 14px;
       padding: 12px 12px;
@@ -879,19 +831,8 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
     .greet-body.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-70px; }
-
-    .greet-footer{
-      margin-top: 10px;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .greet-chip{
-      display:flex;
-      align-items:baseline;
-      justify-content:flex-end;
-      gap:10px;
-      margin-top:6px;
-    }
+    .greet-footer{ margin-top: 10px; display: flex; justify-content: flex-end; }
+    .greet-chip{ display:flex; align-items:baseline; justify-content:flex-end; gap:10px; margin-top:6px; }
     .greet-chip .role{
       font-family: var(--serif);
       font-size: 12px;
@@ -916,7 +857,6 @@
 <body>
   <div class="ornament-bg"></div>
 
-  <!-- ✅ 헤더: 요청 이미지처럼 -->
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="ヘッダー">
@@ -925,21 +865,23 @@
         </span>
 
         <span class="brand-text" aria-label="法人名">
-          <span class="brand-box">一般社団法人</span>
+          <span class="brand-pill">一般社団法人</span>
           <span class="brand-big">福祉介護機構</span>
         </span>
       </a>
 
       <div class="header-actions">
-        <span class="header-meta">法人登録番号 8040005021344</span>
+        <div class="header-actions-col">
+          <div class="header-meta">法人登録番号 8040005021344</div>
 
-        <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 6h16v12H4z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
-          </svg>
-          お問い合わせ
-        </a>
+          <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16v12H4z"></path>
+              <path d="M22 6l-10 7L2 6"></path>
+            </svg>
+            お問い合わせ
+          </a>
+        </div>
       </div>
     </div>
   </header>

@@ -30,7 +30,7 @@
       /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
 
-      /* ✅ 공통 타이틀(お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
+      /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
       --mobile-max: 520px;
@@ -421,6 +421,28 @@
     .panel-title-tag.support{ background: var(--btn-support); }
     .panel-title-tag.flow{ background: var(--btn-flow); }
     .panel-title-tag.common{ background: var(--btn-common); }
+
+    /* ✅ 변경: 料金表 헤더(2줄) 전용 — 폰트/박스 크기 줄임 */
+    .panel-title-tag.stacked{
+      height: auto;                 /* 박스 높이 자동 */
+      padding: 10px 14px;           /* 박스 크기 줄임 */
+      flex-direction: column;
+      gap: 6px;
+      line-height: 1.15;
+    }
+    .panel-title-tag.stacked .tag-main{
+      font-size: 16px;              /* 다른 박스(기본 16px)와 동일 */
+      letter-spacing: var(--title-letter);
+      font-weight: 900;
+    }
+    .panel-title-tag.stacked .tag-sub{
+      font-family: var(--sans);
+      font-size: 12px;              /* ✅ 더 작게 */
+      letter-spacing: .08em;
+      font-weight: 800;
+      opacity: .98;
+      line-height: 1.2;
+    }
 
     .panel-title{
       font-family: var(--serif);
@@ -926,49 +948,6 @@
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
-
-    /* =========================
-       ✅ 料金表: 스샷처럼 큰 베이지 배너 헤더
-       (panel 내부 구조는 그대로 두고, 헤더만 교체)
-    ========================= */
-    .price-hero{
-      margin: 0 0 14px;
-      padding: 16px 16px 0;
-      text-align: center;
-    }
-    .price-hero-inner{
-      background: #b29c83; /* 스샷 느낌 베이지 */
-      color: #fff;
-      border-radius: 26px;
-      padding: 24px 18px 26px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.10);
-      border: 1px solid rgba(0,0,0,.06);
-      position: relative;
-      overflow: hidden;
-    }
-    .price-hero-title{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .20em;
-      font-size: 22px;
-      text-shadow: 0 1px 0 rgba(0,0,0,.10);
-    }
-    .price-hero-sub{
-      margin-top: 12px;
-      font-family: var(--sans);
-      font-weight: 700;
-      letter-spacing: .08em;
-      font-size: 16px;
-      opacity: .96;
-      text-shadow: 0 1px 0 rgba(0,0,0,.10);
-      white-space: pre-line;
-    }
-    @media (max-width: 520px){
-      .price-hero{ padding: 14px 14px 0; }
-      .price-hero-inner{ border-radius: 22px; padding: 22px 16px 24px; }
-      .price-hero-title{ font-size: 20px; }
-      .price-hero-sub{ font-size: 15px; }
-    }
   </style>
 </head>
 
@@ -1113,16 +1092,12 @@
           </div>
         </article>
 
-        <!-- =========================
-             ✅ 料金表: 스샷처럼 큰 베이지 배너 헤더 적용
-             - 나머지(카드/요금 내용)는 그대로
-        ========================== -->
         <article class="panel orn-fill" id="panel-price">
-
-          <div class="price-hero">
-            <div class="price-hero-inner">
-              <div class="price-hero-title">料金表</div>
-              <div class="price-hero-sub">入会金・月会費（非課税）</div>
+          <div class="panel-head orn-fill">
+            <!-- ✅ 변경: 料金表 + 入会金・月会費（非課税） 를 같은 박스(2줄)로 + 폰트/박스 크기 줄임 -->
+            <div class="panel-title-tag common stacked">
+              <span class="tag-main">料金表</span>
+              <span class="tag-sub">入会金・月会費（非課税）</span>
             </div>
           </div>
 

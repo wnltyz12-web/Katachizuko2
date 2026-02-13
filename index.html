@@ -221,13 +221,13 @@
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
-    /* ✅ 法人登録番号: "お問い合わせ" 위에, 작고 검정 */
+    /* ✅ 法인등록번호: "お問い合わせ" 위에, 작고 검정 */
     .header-meta{
       display: block;
       font-family: var(--sans);
       font-weight: 800;
       letter-spacing: .06em;
-      font-size: 7px;           /* ✅ 변경: 10.5px -> 7px */
+      font-size: 7px;
       color: rgba(31,27,22,.88);
       white-space: nowrap;
       line-height: 1;
@@ -781,6 +781,82 @@
     .contact-note{ margin-top: 6px !important; line-height: 1.55 !important; white-space: normal !important; }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
+    /* ✅ 추가: 문의 탭 하단 "연락처 상세" 박스 */
+    .contact-info-box{
+      margin-top: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.66), 0 10px 24px rgba(0,0,0,.05);
+      padding: 12px 12px;
+    }
+    .contact-info-box.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-70px; }
+
+    .contact-info-head{
+      text-align: center;
+      padding: 8px 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .contact-info-head.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-70px; }
+
+    .contact-info-org{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .12em;
+      font-size: 14px;
+      color: var(--ink-1);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      line-height: 1.5;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .contact-info-reg{
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: 11px;
+      color: var(--ink-4);
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      line-height: 1.35;
+    }
+
+    .contact-info-sep{
+      height: 1px;
+      margin: 12px 6px;
+      background: rgba(66,55,41,.14);
+      box-shadow: 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    .contact-info-block{ padding: 2px 6px; display: grid; gap: 4px; }
+    .contact-info-bname{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .08em;
+      font-size: 13px;
+      color: var(--ink-1);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      margin-top: 2px;
+    }
+    .contact-info-line{
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .02em;
+      color: rgba(45,37,28,.90);
+      line-height: 1.55;
+      text-shadow: 0 1px 0 rgba(255,255,255,.68);
+      word-break: break-word;
+    }
+    .contact-info-line a{
+      color: rgba(45,37,28,.92);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(66,55,41,.30);
+    }
+    .contact-info-line a:hover{ border-bottom-color: rgba(66,55,41,.55); }
+
     /* =========================
        ごあいさつ
     ========================= */
@@ -943,7 +1019,6 @@
                 <div class="card orn-fill">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
-                  <!-- ✅ 삭제: 条件や流れを整理し安心して手続きができるようにご支援いたします -->
                 </div>
 
                 <div class="card orn-fill">
@@ -1266,6 +1341,37 @@
                     ※緊急時や状況により折り返しとなる場合がございます。<br class="tight-br" />
                     まずはお気軽にご相談ください。
                   </p>
+
+                  <!-- ✅ 여기부터 추가됨: 문의 탭 맨 아래 상세 연락처 -->
+                  <div class="contact-info-box orn-fill" aria-label="法人連絡先（詳細）">
+                    <div class="contact-info-head orn-fill">
+                      <div class="contact-info-org">一般社団法人　福祉介護機構</div>
+                      <div class="contact-info-reg">（法人登録番号：8040005021344）</div>
+                    </div>
+
+                    <div class="contact-info-block">
+                      <div class="contact-info-bname">● 松戸本部</div>
+                      <div class="contact-info-line">〒270-2203　千葉県松戸市六高台5−78−706</div>
+                      <div class="contact-info-line">TEL：<a href="tel:0473834526">047−383−4526</a>　／　FAX：047−413−0489</div>
+                      <div class="contact-info-line">携帯電話：<a href="tel:08034623481">080−3462−3481</a>（土日夜間対応致します）</div>
+                    </div>
+
+                    <div class="contact-info-sep" aria-hidden="true"></div>
+
+                    <div class="contact-info-block">
+                      <div class="contact-info-bname">● 江戸川支部</div>
+                      <div class="contact-info-line">〒133−0061　東京都江戸川区篠崎町7−2−16−301</div>
+                      <div class="contact-info-line">携帯電話：<a href="tel:09024848862">090−2484−8862</a></div>
+                    </div>
+
+                    <div class="contact-info-sep" aria-hidden="true"></div>
+
+                    <div class="contact-info-block">
+                      <div class="contact-info-line">MAIL：<a href="mailto:fukusikaigo.kikou@gmail.com">fukusikaigo.kikou@gmail.com</a></div>
+                      <div class="contact-info-line">HP：<span style="color: var(--ink-4); font-weight:800;">（準備中）</span></div>
+                    </div>
+                  </div>
+                  <!-- ✅ 추가 끝 -->
 
                 </div>
               </div>

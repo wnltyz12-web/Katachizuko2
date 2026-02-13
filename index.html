@@ -27,8 +27,11 @@
       --btn-guarantee: #968444;
       --btn-support: #497790;
 
-      /* ✅ 추가: ご利用の流れ 타이틀 컬러 */
+      /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
+
+      /* ✅ 추가: 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
+      --btn-common: #b7a18a;
 
       --mobile-max: 520px;
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
@@ -416,8 +419,10 @@
     }
     .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
     .panel-title-tag.support{ background: var(--btn-support); }
-    /* ✅ 추가: ご利用の流れ도 같은 방식으로 */
     .panel-title-tag.flow{ background: var(--btn-flow); }
+
+    /* ✅ 추가: 공통 패널 헤더도 flow처럼 */
+    .panel-title-tag.common{ background: var(--btn-common); }
 
     .panel-title{
       font-family: var(--serif);
@@ -1069,7 +1074,9 @@
 
         <article class="panel orn-fill" id="panel-price">
           <div class="panel-head orn-fill">
-            <div class="panel-title">料金表</div><div class="panel-sub">入会金・月会費（非課税）</div>
+            <!-- ✅ 변경: 料金表 헤더를 flow 같은 컬러 태그로 -->
+            <div class="panel-title-tag common">料金表</div>
+            <div class="panel-sub">入会金・月会費（非課税）</div>
           </div>
 
           <div class="panel-body">
@@ -1245,7 +1252,6 @@
           </div>
         </article>
 
-        <!-- ✅ 여기 수정됨: ご利用の流れ 타이틀을 색상 태그로 변경 -->
         <article class="panel orn-fill" id="panel-flow">
           <div class="panel-head orn-fill">
             <div class="panel-title-tag flow">ご利用の流れ</div>
@@ -1303,7 +1309,8 @@
 
         <article class="panel orn-fill" id="panel-contact">
           <div class="panel-head orn-fill">
-            <div class="panel-title">お問い合わせ</div>
+            <!-- ✅ 변경: お問い合わせ도 flow 같은 컬러 태그로 -->
+            <div class="panel-title-tag common">お問い合わせ</div>
           </div>
 
           <div class="panel-body">
@@ -1381,7 +1388,8 @@
 
         <article class="panel orn-fill" id="panel-greeting">
           <div class="panel-head orn-fill">
-            <div class="panel-title">ごあいさつ</div>
+            <!-- ✅ 변경: ごあいさつ도 flow 같은 컬러 태그로 -->
+            <div class="panel-title-tag common">ごあいさつ</div>
           </div>
 
           <div class="panel-body">
@@ -1441,5 +1449,3 @@
   </script>
 </body>
 </html>
-
-

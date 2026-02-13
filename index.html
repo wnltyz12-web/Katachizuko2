@@ -30,7 +30,7 @@
       /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
 
-      /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
+      /* ✅ 공통 타이틀(お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
       --mobile-max: 520px;
@@ -926,6 +926,49 @@
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
+
+    /* =========================
+       ✅ 料金表: 스샷처럼 큰 베이지 배너 헤더
+       (panel 내부 구조는 그대로 두고, 헤더만 교체)
+    ========================= */
+    .price-hero{
+      margin: 0 0 14px;
+      padding: 16px 16px 0;
+      text-align: center;
+    }
+    .price-hero-inner{
+      background: #b29c83; /* 스샷 느낌 베이지 */
+      color: #fff;
+      border-radius: 26px;
+      padding: 24px 18px 26px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.10);
+      border: 1px solid rgba(0,0,0,.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .price-hero-title{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .20em;
+      font-size: 22px;
+      text-shadow: 0 1px 0 rgba(0,0,0,.10);
+    }
+    .price-hero-sub{
+      margin-top: 12px;
+      font-family: var(--sans);
+      font-weight: 700;
+      letter-spacing: .08em;
+      font-size: 16px;
+      opacity: .96;
+      text-shadow: 0 1px 0 rgba(0,0,0,.10);
+      white-space: pre-line;
+    }
+    @media (max-width: 520px){
+      .price-hero{ padding: 14px 14px 0; }
+      .price-hero-inner{ border-radius: 22px; padding: 22px 16px 24px; }
+      .price-hero-title{ font-size: 20px; }
+      .price-hero-sub{ font-size: 15px; }
+    }
   </style>
 </head>
 
@@ -1070,15 +1113,23 @@
           </div>
         </article>
 
+        <!-- =========================
+             ✅ 料金表: 스샷처럼 큰 베이지 배너 헤더 적용
+             - 나머지(카드/요금 내용)는 그대로
+        ========================== -->
         <article class="panel orn-fill" id="panel-price">
-          <div class="panel-head orn-fill">
-            <div class="panel-title-tag common">料金表</div>
-            <div class="panel-sub">入会金・月会費（非課税）</div>
+
+          <div class="price-hero">
+            <div class="price-hero-inner">
+              <div class="price-hero-title">料金表</div>
+              <div class="price-hero-sub">入会金・月会費（非課税）</div>
+            </div>
           </div>
 
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
+
                 <div class="card orn-fill">
                   <div class="fee-list">
                     <div class="fee-item orn-fill">

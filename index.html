@@ -27,6 +27,9 @@
       --btn-guarantee: #968444;
       --btn-support: #497790;
 
+      /* ✅ 추가: ご利用の流れ 타이틀 컬러 */
+      --btn-flow: #b7a18a;
+
       --mobile-max: 520px;
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
@@ -178,7 +181,6 @@
       min-width: 0;
     }
 
-    /* ✅ 一般社団法人: 동그란 버튼(알약) */
     .brand-pill{
       display: inline-flex;
       align-items: center;
@@ -205,7 +207,6 @@
       letter-spacing: .10em;
     }
 
-    /* ✅ 福祉介護機構: 기존 카타오카서비스(brand-name) 스타일 */
     .brand-big{
       font-family: var(--serif);
       font-size: 18px;
@@ -221,7 +222,6 @@
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 
-    /* ✅ 法인등록번호: "お問い合わせ" 위에, 작고 검정 */
     .header-meta{
       display: block;
       font-family: var(--sans);
@@ -416,6 +416,8 @@
     }
     .panel-title-tag.guarantee{ background: var(--btn-guarantee); }
     .panel-title-tag.support{ background: var(--btn-support); }
+    /* ✅ 추가: ご利用の流れ도 같은 방식으로 */
+    .panel-title-tag.flow{ background: var(--btn-flow); }
 
     .panel-title{
       font-family: var(--serif);
@@ -682,7 +684,7 @@
     }
 
     /* =========================
-       문의
+       문의 + (상세 연락처 박스 포함)
     ========================= */
     .contact-actions{ display: grid; gap: 10px; margin-top: 0; }
     .contact-btn{
@@ -781,7 +783,6 @@
     .contact-note{ margin-top: 6px !important; line-height: 1.55 !important; white-space: normal !important; }
     .contact-note br.tight-br{ display:block; line-height:0; }
 
-    /* ✅ 추가: 문의 탭 하단 "연락처 상세" 박스 */
     .contact-info-box{
       margin-top: 12px;
       border-radius: 16px;
@@ -1244,9 +1245,10 @@
           </div>
         </article>
 
+        <!-- ✅ 여기 수정됨: ご利用の流れ 타이틀을 색상 태그로 변경 -->
         <article class="panel orn-fill" id="panel-flow">
           <div class="panel-head orn-fill">
-            <div class="panel-title">ご利用の流れ</div>
+            <div class="panel-title-tag flow">ご利用の流れ</div>
           </div>
 
           <div class="panel-body">
@@ -1342,7 +1344,6 @@
                     まずはお気軽にご相談ください。
                   </p>
 
-                  <!-- ✅ 여기부터 추가됨: 문의 탭 맨 아래 상세 연락처 -->
                   <div class="contact-info-box orn-fill" aria-label="法人連絡先（詳細）">
                     <div class="contact-info-head orn-fill">
                       <div class="contact-info-org">一般社団法人　福祉介護機構</div>
@@ -1371,7 +1372,6 @@
                       <div class="contact-info-line">HP：<span style="color: var(--ink-4); font-weight:800;">（準備中）</span></div>
                     </div>
                   </div>
-                  <!-- ✅ 추가 끝 -->
 
                 </div>
               </div>

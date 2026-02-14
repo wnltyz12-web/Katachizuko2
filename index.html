@@ -723,7 +723,7 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* ========================= ✅ 入会特典 (안짤리게 리디자인) ========================= */
+    /* ========================= ✅ 入会特典 (겹치는 3원 레이아웃) ========================= */
     .perk-wrap{
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.07);
@@ -760,56 +760,74 @@
       border-radius: 999px;
     }
 
-    /* ✅ 핵심: 원 안 내용 안짤리게 */
-    .perk-circles{
+    /* ✅ "처음 사진처럼": 1 위, 2/3 아래 겹치기 */
+    .perk-stage{
+      position: relative;
       margin-top: 10px;
-      display: grid;
-      gap: 12px;
-    }
-
-    /* 1) 기본은 '세로 3개' (절대 안짤림) */
-    .perk-grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      justify-items: center;
-    }
-
-    /* 2) 화면이 넓으면 2개 + 1개 */
-    @media (min-width: 430px){
-      .perk-grid{
-        grid-template-columns: 1fr 1fr;
-      }
-      .perk-grid .perk-item:last-child{
-        grid-column: 1 / -1;
-        justify-self: center;
-        width: min(320px, 100%);
-      }
-    }
-
-    .perk-item{
-      width: 100%;
-      display: grid;
-      place-items: center;
+      height: 330px;           /* ✅ 안전 높이 */
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .perk-circle{
-      width: 100%;
-      max-width: 420px;
-      aspect-ratio: 1 / 1;
+      position: absolute;
       border-radius: 999px;
       border: 2px solid rgba(66,55,41,.55);
       background: rgba(255,255,255,.12);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 10px 20px rgba(0,0,0,.06);
-
-      /* ✅ 원 안 안전영역 */
-      padding: 18px 22px;
       display: grid;
       place-items: center;
       text-align: center;
+      padding: 16px 18px;
       overflow: hidden;
+    }
+
+    .perk-circle.c1{
+      width: 210px; height: 210px;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+    .perk-circle.c2{
+      width: 210px; height: 210px;
+      left: 12px; top: 120px;
+      z-index: 2;
+    }
+    .perk-circle.c3{
+      width: 210px; height: 210px;
+      right: 12px; top: 120px;
+      z-index: 2;
+    }
+
+    /* ✅ 살짝 겹치게 */
+    .perk-circle.c2{ transform: translateX(0); }
+    .perk-circle.c3{ transform: translateX(0); }
+
+    /* ✅ 모바일(좁을 때)에서도 안짤리게 축소 */
+    @media (max-width: 420px){
+      .perk-stage{ height: 310px; }
+      .perk-circle.c1,
+      .perk-circle.c2,
+      .perk-circle.c3{
+        width: 190px; height: 190px;
+        padding: 14px 14px;
+      }
+      .perk-circle.c2{ left: 6px; top: 120px; }
+      .perk-circle.c3{ right: 6px; top: 120px; }
+    }
+    @media (max-width: 360px){
+      .perk-stage{ height: 300px; }
+      .perk-circle.c1,
+      .perk-circle.c2,
+      .perk-circle.c3{
+        width: 176px; height: 176px;
+        padding: 12px 12px;
+      }
+      .perk-circle.c2{ left: 2px; top: 120px; }
+      .perk-circle.c3{ right: 2px; top: 120px; }
     }
 
     .perk-no{
@@ -822,28 +840,22 @@
       margin-bottom: 10px;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
-
-    /* ✅ 텍스트가 길어도 안짤리게: 줄간격/폰트/최대폭/자동 줄바꿈 */
     .perk-text{
       font-family: var(--serif);
       font-weight: 700;
-      font-size: clamp(12px, 2.9vw, 14px);
+      font-size: 13px;
       letter-spacing: .06em;
       line-height: 1.65;
       color: rgba(45,37,28,.88);
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
       white-space: pre-line;
-
-      max-width: 26ch;
-      word-break: keep-all;
+      max-width: 24ch;
       overflow-wrap: anywhere;
+      word-break: keep-all;
     }
-
-    /* ✅ 원이 너무 커지면 미세 조정 */
     @media (max-width: 360px){
-      .perk-circle{ padding: 16px 18px; }
       .perk-no{ font-size: 22px; margin-bottom: 8px; }
-      .perk-text{ max-width: 24ch; }
+      .perk-text{ font-size: 12px; max-width: 22ch; }
     }
 
     .perk-bottom{
@@ -1523,40 +1535,32 @@
                       <div class="perk-title">入会特典</div>
                     </div>
 
-                    <div class="perk-circles">
-                      <div class="perk-grid">
-                        <div class="perk-item">
-                          <div class="perk-circle">
-                            <div>
-                              <div class="perk-no">1</div>
-                              <div class="perk-text">身元保証プラン
+                    <div class="perk-stage" aria-label="特典サークル">
+                      <div class="perk-circle c1">
+                        <div>
+                          <div class="perk-no">1</div>
+                          <div class="perk-text">身元保証プラン
 〜とも〜の料金が
 全て半額でご利用
 頂けます</div>
-                            </div>
-                          </div>
                         </div>
+                      </div>
 
-                        <div class="perk-item">
-                          <div class="perk-circle">
-                            <div>
-                              <div class="perk-no">2</div>
-                              <div class="perk-text">月に一度以上の
+                      <div class="perk-circle c2">
+                        <div>
+                          <div class="perk-no">2</div>
+                          <div class="perk-text">月に一度以上の
 ご訪問やご相談が
 可能です</div>
-                            </div>
-                          </div>
                         </div>
+                      </div>
 
-                        <div class="perk-item">
-                          <div class="perk-circle">
-                            <div>
-                              <div class="perk-no">3</div>
-                              <div class="perk-text">一生涯の
+                      <div class="perk-circle c3">
+                        <div>
+                          <div class="perk-no">3</div>
+                          <div class="perk-text">一生涯の
 身元保証・緊急時対応
 を承ります</div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

@@ -27,7 +27,9 @@
       --btn-guarantee: #968444;
       --btn-support: #497790;
 
+      /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
+      /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
       --mobile-max: 520px;
@@ -64,9 +66,6 @@
       --orn-opacity-inner: .58;
 
       --mist: rgba(255,255,255,.06);
-
-      /* ✅ 헤더 태그라인 컬러 (레퍼런스 느낌) */
-      --tagline: #4b86a8;
     }
 
     body{
@@ -175,7 +174,6 @@
       justify-content: space-between;
       gap: 12px;
     }
-
     .brand{
       display: inline-flex;
       align-items: center;
@@ -184,29 +182,29 @@
       min-width: 0;
     }
 
-    /* ✅ 카타오카 원형 로고 삭제 → 레퍼런스처럼 링 로고(인라인 SVG) */
+    /* ✅ 왼쪽 로고: 사진처럼 링 로고 (원형 테두리/배경 제거) */
     .brand-mark{
-      width: 56px;
+      width: 58px;
       height: 44px;
-      border-radius: 10px;
+      border-radius: 0;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.20);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
+      border: none;
+      background: transparent;
+      box-shadow: none;
       flex: 0 0 auto;
-      overflow: hidden;
-      transition: transform .22s ease, width .22s ease, height .22s ease;
+      transition: width .22s ease, height .22s ease, transform .22s ease;
+      overflow: visible;
     }
     .topbar.is-compact .brand-mark{
-      width: 50px;
-      height: 38px;
+      width: 54px;
+      height: 40px;
       transform: translateY(-.5px);
     }
-    .brand-mark svg{
+    .logo-rings{
       width: 100%;
       height: 100%;
-      display: block;
+      display:block;
     }
 
     .brand-text{
@@ -239,14 +237,6 @@
       font-size: 11px;
       letter-spacing: .10em;
     }
-
-    /* ✅ 福祉介護機構 + ~ていりーと~ 같은 줄 */
-    .brand-big-row{
-      display: inline-flex;
-      align-items: baseline;
-      gap: 10px;
-      min-width: 0;
-    }
     .brand-big{
       font-family: var(--serif);
       font-size: 18px;
@@ -257,26 +247,11 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      min-width: 0;
     }
     .topbar.is-compact .brand-big{
       font-size: 16px;
       letter-spacing: .12em;
     }
-    .brand-tagline{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .10em;
-      color: var(--tagline);
-      font-size: 13px;
-      white-space: nowrap;
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-    .topbar.is-compact .brand-tagline{
-      font-size: 12px;
-      letter-spacing: .08em;
-    }
-
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -305,17 +280,15 @@
       gap: 6px;
     }
 
-    /* ✅ 문의 버튼: 레퍼런스처럼 〜ていりーと〜 라인 추가 */
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
       color: rgba(31,27,22,.90);
       border-radius: 999px;
-      min-height: 44px;
-      padding: 8px 16px;
+      height: 44px;
+      padding: 0 16px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
       text-decoration: none;
       font-size: 14px;
@@ -343,34 +316,21 @@
       background: rgba(183,161,138,1);
       box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
-    .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
-    .hbtn.two-line{
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 8px 16px 7px;
-      line-height: 1;
-    }
-    .hbtn.two-line .btn-main{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      line-height: 1;
-    }
-    .hbtn.two-line .btn-sub{
+    /* ✅ 버튼: 우편 아이콘/오네가이아와세 제거 + 〜ていりーと〜만 */
+    .teirito{
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .10em;
-      font-size: 11px;
-      opacity: .95;
+      font-size: 15px;
       line-height: 1;
-      transform: translateY(-1px);
+      display:inline-flex;
+      align-items:center;
+      gap: 2px;
       white-space: nowrap;
     }
-    .topbar.is-compact .hbtn.two-line .btn-sub{
-      font-size: 10px;
-    }
+    .teirito .t-blue{ color: #2f6fb0; }
+    .teirito .t-orange{ color: #d08a2f; }
 
     .page{
       position: relative;
@@ -701,6 +661,7 @@
       color: var(--ink-4);
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
+
       position: relative;
       padding-left: 56px;
       padding-right: 56px;
@@ -751,9 +712,7 @@
       top: 50%;
       transform: translateY(-50%);
     }
-    .fee-sep-block{
-      position: relative;
-    }
+    .fee-sep-block{ position: relative; }
     .fee-sep-block > .fee-code{
       position: absolute;
       left: 12px;
@@ -1128,29 +1087,21 @@
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="ヘッダー">
-        <!-- ✅ 카타오카 로고 삭제 → 링 로고로 교체 -->
         <span class="brand-mark" aria-hidden="true">
-          <!-- 인라인 SVG 로고 (파일 필요 없음) -->
-          <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ロゴ">
-            <rect x="0" y="0" width="120" height="90" fill="transparent"/>
-            <!-- 링크 링 3개 -->
-            <circle cx="34" cy="46" r="16" fill="none" stroke="#2F6FB4" stroke-width="7"/>
-            <circle cx="58" cy="46" r="16" fill="none" stroke="#D08A2A" stroke-width="7"/>
-            <circle cx="82" cy="46" r="16" fill="none" stroke="#2F6FB4" stroke-width="7" opacity=".98"/>
-            <!-- 작은 배지 (레퍼런스 느낌) -->
-            <circle cx="18" cy="22" r="14" fill="rgba(255,255,255,.70)" stroke="rgba(0,0,0,.45)" stroke-width="2"/>
-            <text x="18" y="26" text-anchor="middle" font-family="Noto Serif JP, serif" font-weight="900" font-size="14" fill="rgba(45,37,28,.90)">介</text>
+          <!-- ✅ 왼쪽 로고: 너가 보낸 사진처럼 링 로고 -->
+          <svg class="logo-rings" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ロゴ">
+            <!-- left blue -->
+            <circle cx="28" cy="52" r="18" fill="none" stroke="#2f6fb0" stroke-width="10" />
+            <!-- middle orange -->
+            <circle cx="56" cy="40" r="18" fill="none" stroke="#d08a2f" stroke-width="10" />
+            <!-- right blue -->
+            <circle cx="84" cy="28" r="18" fill="none" stroke="#2f6fb0" stroke-width="10" />
           </svg>
         </span>
 
         <span class="brand-text" aria-label="法人名">
           <span class="brand-pill">一般社団法人</span>
-
-          <!-- ✅ 福祉介護機構 오른쪽에 ~ていりーと~ 추가 -->
-          <span class="brand-big-row">
-            <span class="brand-big">福祉介護機構</span>
-            <span class="brand-tagline">〜ていりーと〜</span>
-          </span>
+          <span class="brand-big">福祉介護機構</span>
         </span>
       </a>
 
@@ -1158,16 +1109,9 @@
         <div class="header-actions-col">
           <div class="header-meta">法人登録番号 8040005021344</div>
 
-          <!-- ✅ 버튼에 〜ていりーと〜 라인 추가 -->
-          <a class="hbtn primary two-line" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
-            <span class="btn-main">
-              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 6h16v12H4z"></path>
-                <path d="M22 6l-10 7L2 6"></path>
-              </svg>
-              お問い合わせ
-            </span>
-            <span class="btn-sub">〜ていりーと〜</span>
+          <!-- ✅ 문의하기: 오네가이아와세/우편 아이콘 제거 + 〜ていりーと〜만 -->
+          <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
+            <span class="teirito">〜<span class="t-blue">ていりー</span><span class="t-orange">と</span>〜</span>
           </a>
         </div>
       </div>

@@ -64,6 +64,9 @@
       --orn-opacity-inner: .58;
 
       --mist: rgba(255,255,255,.06);
+
+      /* ✅ 헤더 태그라인 컬러 (레퍼런스 느낌) */
+      --tagline: #4b86a8;
     }
 
     body{
@@ -172,6 +175,7 @@
       justify-content: space-between;
       gap: 12px;
     }
+
     .brand{
       display: inline-flex;
       align-items: center;
@@ -179,32 +183,31 @@
       text-decoration: none;
       min-width: 0;
     }
+
+    /* ✅ 카타오카 원형 로고 삭제 → 레퍼런스처럼 링 로고(인라인 SVG) */
     .brand-mark{
-      width: 44px;
+      width: 56px;
       height: 44px;
-      border-radius: 999px;
+      border-radius: 10px;
       display: grid;
       place-items: center;
-      border: 1.5px solid rgba(0,0,0,.76);
-      background: rgba(255,255,255,.36);
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.20);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
       flex: 0 0 auto;
-      transition: width .22s ease, height .22s ease, transform .22s ease;
       overflow: hidden;
+      transition: transform .22s ease, width .22s ease, height .22s ease;
     }
     .topbar.is-compact .brand-mark{
-      width: 38px;
+      width: 50px;
       height: 38px;
       transform: translateY(-.5px);
     }
-    .brand-mark img{
+    .brand-mark svg{
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: contain;
-      padding: 6px;
     }
-    .topbar.is-compact .brand-mark img{ padding: 5px; }
 
     .brand-text{
       display: grid;
@@ -236,6 +239,14 @@
       font-size: 11px;
       letter-spacing: .10em;
     }
+
+    /* ✅ 福祉介護機構 + ~ていりーと~ 같은 줄 */
+    .brand-big-row{
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      min-width: 0;
+    }
     .brand-big{
       font-family: var(--serif);
       font-size: 18px;
@@ -246,11 +257,26 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      min-width: 0;
     }
     .topbar.is-compact .brand-big{
       font-size: 16px;
       letter-spacing: .12em;
     }
+    .brand-tagline{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .10em;
+      color: var(--tagline);
+      font-size: 13px;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+    .topbar.is-compact .brand-tagline{
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -278,15 +304,18 @@
       align-items: flex-end;
       gap: 6px;
     }
+
+    /* ✅ 문의 버튼: 레퍼런스처럼 〜ていりーと〜 라인 추가 */
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
       color: rgba(31,27,22,.90);
       border-radius: 999px;
-      height: 44px;
-      padding: 0 16px;
+      min-height: 44px;
+      padding: 8px 16px;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       text-decoration: none;
       font-size: 14px;
@@ -315,6 +344,33 @@
       box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
     .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
+
+    .hbtn.two-line{
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 8px 16px 7px;
+      line-height: 1;
+    }
+    .hbtn.two-line .btn-main{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1;
+    }
+    .hbtn.two-line .btn-sub{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .10em;
+      font-size: 11px;
+      opacity: .95;
+      line-height: 1;
+      transform: translateY(-1px);
+      white-space: nowrap;
+    }
+    .topbar.is-compact .hbtn.two-line .btn-sub{
+      font-size: 10px;
+    }
 
     .page{
       position: relative;
@@ -695,7 +751,9 @@
       top: 50%;
       transform: translateY(-50%);
     }
-    .fee-sep-block{ position: relative; }
+    .fee-sep-block{
+      position: relative;
+    }
     .fee-sep-block > .fee-code{
       position: absolute;
       left: 12px;
@@ -721,152 +779,6 @@
       font-weight: 600;
       line-height: 1.35;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-
-    /* ========================= ✅ 入会特典 (겹치는 3원 레이아웃) ========================= */
-    .perk-wrap{
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.07);
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-      padding: 14px 14px 16px;
-    }
-    .perk-wrap.orn-fill::before{ opacity: var(--orn-opacity-card); inset:-70px; }
-
-    .perk-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:flex-start;
-      gap:10px;
-      padding: 2px 2px 10px;
-    }
-    .perk-title{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
-      font-size: 16px;
-      color: var(--ink-1);
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
-      position: relative;
-      padding-bottom: 6px;
-    }
-    .perk-title::after{
-      content:"";
-      position:absolute;
-      left:0; right:0;
-      bottom:0;
-      height:2px;
-      background: rgba(155,122,52,.55);
-      box-shadow: 0 1px 0 rgba(255,255,255,.65);
-      border-radius: 999px;
-    }
-
-    /* ✅ "처음 사진처럼": 1 위, 2/3 아래 겹치기 */
-    .perk-stage{
-      position: relative;
-      margin-top: 10px;
-      height: 330px;           /* ✅ 안전 높이 */
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .perk-circle{
-      position: absolute;
-      border-radius: 999px;
-      border: 2px solid rgba(66,55,41,.55);
-      background: rgba(255,255,255,.12);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 10px 20px rgba(0,0,0,.06);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 16px 18px;
-      overflow: hidden;
-    }
-
-    .perk-circle.c1{
-      width: 210px; height: 210px;
-      left: 50%; top: 0;
-      transform: translateX(-50%);
-      z-index: 3;
-    }
-    .perk-circle.c2{
-      width: 210px; height: 210px;
-      left: 12px; top: 120px;
-      z-index: 2;
-    }
-    .perk-circle.c3{
-      width: 210px; height: 210px;
-      right: 12px; top: 120px;
-      z-index: 2;
-    }
-
-    /* ✅ 살짝 겹치게 */
-    .perk-circle.c2{ transform: translateX(0); }
-    .perk-circle.c3{ transform: translateX(0); }
-
-    /* ✅ 모바일(좁을 때)에서도 안짤리게 축소 */
-    @media (max-width: 420px){
-      .perk-stage{ height: 310px; }
-      .perk-circle.c1,
-      .perk-circle.c2,
-      .perk-circle.c3{
-        width: 190px; height: 190px;
-        padding: 14px 14px;
-      }
-      .perk-circle.c2{ left: 6px; top: 120px; }
-      .perk-circle.c3{ right: 6px; top: 120px; }
-    }
-    @media (max-width: 360px){
-      .perk-stage{ height: 300px; }
-      .perk-circle.c1,
-      .perk-circle.c2,
-      .perk-circle.c3{
-        width: 176px; height: 176px;
-        padding: 12px 12px;
-      }
-      .perk-circle.c2{ left: 2px; top: 120px; }
-      .perk-circle.c3{ right: 2px; top: 120px; }
-    }
-
-    .perk-no{
-      font-family: var(--serif);
-      font-weight: 900;
-      font-size: 24px;
-      letter-spacing: .06em;
-      color: var(--ink-1);
-      line-height: 1;
-      margin-bottom: 10px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
-    }
-    .perk-text{
-      font-family: var(--serif);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: .06em;
-      line-height: 1.65;
-      color: rgba(45,37,28,.88);
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
-      white-space: pre-line;
-      max-width: 24ch;
-      overflow-wrap: anywhere;
-      word-break: keep-all;
-    }
-    @media (max-width: 360px){
-      .perk-no{ font-size: 22px; margin-bottom: 8px; }
-      .perk-text{ font-size: 12px; max-width: 22ch; }
-    }
-
-    .perk-bottom{
-      margin-top: 10px;
-      text-align: center;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .18em;
-      color: rgba(66,55,41,.78);
-      font-size: 14px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
     /* ========================= ご利用の流れ ========================= */
@@ -1216,24 +1128,46 @@
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#" aria-label="ヘッダー">
+        <!-- ✅ 카타오카 로고 삭제 → 링 로고로 교체 -->
         <span class="brand-mark" aria-hidden="true">
-          <img src="Logo.png" alt="" />
+          <!-- 인라인 SVG 로고 (파일 필요 없음) -->
+          <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ロゴ">
+            <rect x="0" y="0" width="120" height="90" fill="transparent"/>
+            <!-- 링크 링 3개 -->
+            <circle cx="34" cy="46" r="16" fill="none" stroke="#2F6FB4" stroke-width="7"/>
+            <circle cx="58" cy="46" r="16" fill="none" stroke="#D08A2A" stroke-width="7"/>
+            <circle cx="82" cy="46" r="16" fill="none" stroke="#2F6FB4" stroke-width="7" opacity=".98"/>
+            <!-- 작은 배지 (레퍼런스 느낌) -->
+            <circle cx="18" cy="22" r="14" fill="rgba(255,255,255,.70)" stroke="rgba(0,0,0,.45)" stroke-width="2"/>
+            <text x="18" y="26" text-anchor="middle" font-family="Noto Serif JP, serif" font-weight="900" font-size="14" fill="rgba(45,37,28,.90)">介</text>
+          </svg>
         </span>
+
         <span class="brand-text" aria-label="法人名">
           <span class="brand-pill">一般社団法人</span>
-          <span class="brand-big">福祉介護機構</span>
+
+          <!-- ✅ 福祉介護機構 오른쪽에 ~ていりーと~ 추가 -->
+          <span class="brand-big-row">
+            <span class="brand-big">福祉介護機構</span>
+            <span class="brand-tagline">〜ていりーと〜</span>
+          </span>
         </span>
       </a>
 
       <div class="header-actions">
         <div class="header-actions-col">
           <div class="header-meta">法人登録番号 8040005021344</div>
-          <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 6h16v12H4z"></path>
-              <path d="M22 6l-10 7L2 6"></path>
-            </svg>
-            お問い合わせ
+
+          <!-- ✅ 버튼에 〜ていりーと〜 라인 추가 -->
+          <a class="hbtn primary two-line" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
+            <span class="btn-main">
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 6h16v12H4z"></path>
+                <path d="M22 6l-10 7L2 6"></path>
+              </svg>
+              お問い合わせ
+            </span>
+            <span class="btn-sub">〜ていりーと〜</span>
           </a>
         </div>
       </div>
@@ -1516,58 +1450,6 @@
                   </div>
                 </div>
 
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- ✅ 入会特典: 'ご利用の流れ' 바로 위 -->
-        <article class="panel orn-fill" id="panel-perks">
-          <div class="panel-head orn-fill">
-            <div class="panel-title-tag common">入会特典</div>
-          </div>
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-                <div class="card orn-fill">
-                  <div class="perk-wrap orn-fill" aria-label="入会特典">
-                    <div class="perk-head">
-                      <div class="perk-title">入会特典</div>
-                    </div>
-
-                    <div class="perk-stage" aria-label="特典サークル">
-                      <div class="perk-circle c1">
-                        <div>
-                          <div class="perk-no">1</div>
-                          <div class="perk-text">身元保証プラン
-〜とも〜の料金が
-全て半額でご利用
-頂けます</div>
-                        </div>
-                      </div>
-
-                      <div class="perk-circle c2">
-                        <div>
-                          <div class="perk-no">2</div>
-                          <div class="perk-text">月に一度以上の
-ご訪問やご相談が
-可能です</div>
-                        </div>
-                      </div>
-
-                      <div class="perk-circle c3">
-                        <div>
-                          <div class="perk-no">3</div>
-                          <div class="perk-text">一生涯の
-身元保証・緊急時対応
-を承ります</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="perk-bottom">秘密厳守・相談無料</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

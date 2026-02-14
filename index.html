@@ -82,7 +82,7 @@
 
     html{
       scroll-behavior: smooth;
-      scroll-padding-top: 102px;
+      scroll-padding-top: 88px;
     }
 
     /* ========================= ✅ 전체 배경 오나먼트 ========================= */
@@ -96,7 +96,6 @@
       background-size: var(--orn-size);
     }
     @media (min-width: 900px){
-      .topbar{ }
       .ornament-bg{ background-size: var(--orn-size-lg); }
     }
     .ornament-bg::after{
@@ -144,192 +143,224 @@
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ========================= ✅ 헤더 (520 안에 전부 들어가게) ========================= */
+    /* ========================= ✅ 헤더 ========================= */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 50;
-      height: 96px; /* ✅ 살짝 줄임 */
+      height: 86px; /* ✅ 살짝 여유 */
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(220px 120px at 52% 60%, rgba(255,255,255,.28), rgba(255,255,255,0) 72%),
-        linear-gradient(180deg, #f2eae0 0%, #e4d7c8 100%);
+      background: linear-gradient(180deg, #efe6dc 0%, #e5d8c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 12px 26px rgba(0,0,0,.08);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       transition: height .22s ease, box-shadow .22s ease;
     }
     .topbar.is-compact{
-      height: 80px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.07);
+      height: 70px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
     }
-
     .topbar-inner{
       width: 100%;
       max-width: var(--mobile-max);
-      padding: 0 14px; /* ✅ 좌우 여백 조금 줄임 */
+      padding: 0 14px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      position: relative;
-    }
-
-    /* 등록번호: 위 중앙 (더 작게) */
-    .topbar-meta{
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--sans);
-      font-weight: 800;
-      letter-spacing: .05em;
-      font-size: 10px;           /* ✅ 줄임 */
-      color: rgba(31,27,22,.84);
-      text-shadow: 0 1px 0 rgba(255,255,255,.78);
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .topbar.is-compact .topbar-meta{
-      top: 6px;
-      font-size: 9px;
+      justify-content: space-between; /* ✅ 좌/우 배치 */
+      gap: 12px;
     }
 
     .brand{
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       min-width: 0;
-      padding-top: 12px; /* meta 간섭 방지 */
     }
-    .topbar.is-compact .brand{ padding-top: 10px; }
 
-    .brand-logo{
-      width: 52px;   /* ✅ 줄임 */
-      height: 52px;
-      flex: 0 0 auto;
+    /* ✅ 로고: Logo-1.png */
+    .brand-mark{
+      width: 56px;
+      height: 56px;
       display: grid;
       place-items: center;
-      filter: drop-shadow(0 10px 16px rgba(0,0,0,.10));
+      flex: 0 0 auto;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      overflow: visible;
+      transition: width .22s ease, height .22s ease, transform .22s ease;
     }
-    .brand-logo img{
+    .topbar.is-compact .brand-mark{
+      width: 46px;
+      height: 46px;
+      transform: translateY(-.5px);
+    }
+    .brand-mark img{
       width: 100%;
       height: 100%;
       display: block;
       object-fit: contain;
+      padding: 0;
     }
-    .topbar.is-compact .brand-logo{ width: 46px; height: 46px; }
 
     .brand-text{
       display: grid;
       gap: 6px;
-      line-height: 1.02;
+      line-height: 1.05;
       min-width: 0;
     }
     .brand-pill{
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 24px;
+      height: 26px;
       padding: 0 12px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,.18);
-      background: rgba(255,255,255,.46);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.84), 0 10px 20px rgba(0,0,0,.06);
+      background: rgba(255,255,255,.40);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .13em;
-      font-size: 11px; /* ✅ 줄임 */
-      color: rgba(66,55,41,.74);
+      letter-spacing: .12em;
+      font-size: 12px;
+      color: rgba(66,55,41,.70);
       white-space: nowrap;
       width: fit-content;
     }
     .topbar.is-compact .brand-pill{
-      height: 22px;
+      height: 24px;
       padding: 0 10px;
-      font-size: 10px;
-      letter-spacing: .12em;
+      font-size: 11px;
+      letter-spacing: .10em;
     }
-
     .brand-big{
       font-family: var(--serif);
-      font-size: 22px;  /* ✅ 줄임 */
+      font-size: 20px;
       font-weight: 900;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       color: rgba(31,27,22,.96);
-      text-shadow: 0 1px 0 rgba(255,255,255,.62);
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 250px; /* ✅ 오른쪽 영역 확보 */
     }
     .topbar.is-compact .brand-big{
-      font-size: 19px;
-      letter-spacing: .15em;
-      max-width: 230px;
+      font-size: 17px;
+      letter-spacing: .12em;
     }
 
-    /* 오른쪽: てぃりーと + 주의사항 (전체 축소 & 폭 제한) */
+    /* ✅ 오른쪽 "てぃりーと" + 등록번호(위) */
     .treat-area{
-      padding-top: 12px;
-      text-align: right;
-      user-select: none;
-      min-width: 150px;
-      max-width: 170px;  /* ✅ 520 안에서 안정 */
+      display: grid;
+      justify-items: end;
+      align-content: center;
+      gap: 4px;
       flex: 0 0 auto;
+      min-width: 0;
     }
-    .topbar.is-compact .treat-area{ padding-top: 10px; max-width: 160px; }
-
+    .treat-regno{
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: 10px;          /* ✅ 520 안쪽 수납 */
+      color: rgba(31,27,22,.78);
+      white-space: nowrap;
+      line-height: 1;
+      opacity: .95;
+    }
     .treat-title{
       font-family: var(--serif);
       font-weight: 900;
-      font-size: 26px;   /* ✅ 크게 줄임 */
-      letter-spacing: .08em;
-      color: rgba(0,0,0,.92);
-      line-height: 1.05;
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      letter-spacing: .10em;
+      font-size: 24px;          /* ✅ 너무 커서 넘치던 문제 해결 */
+      color: rgba(31,27,22,.92);
       white-space: nowrap;
+      line-height: 1.02;
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-    .topbar.is-compact .treat-title{ font-size: 22px; }
+    .topbar.is-compact .treat-title{ font-size: 20px; }
+    .topbar.is-compact .treat-regno{ font-size: 9px; }
 
-    .treat-note{
-      margin-top: 6px;
+    @media (max-width: 420px){
+      .treat-regno{ font-size: 9px; }
+      .treat-title{ font-size: 20px; }
+      .brand-big{ font-size: 18px; }
+    }
+    @media (max-width: 360px){
+      .treat-title{ font-size: 18px; letter-spacing:.08em; }
+      .brand-big{ font-size: 17px; }
+    }
+
+    /* (아래는 기존 코드 그대로 유지: 안쓰는 헤더 버튼 스타일 등도 그대로 둠) */
+    .header-actions{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .header-meta{
+      display: block;
       font-family: var(--sans);
-      font-weight: 700;
-      font-size: 9.5px;  /* ✅ 줄임 */
-      color: rgba(31,27,22,.76);
-      letter-spacing: .01em;
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-      line-height: 1.25;
-      white-space: normal;
-      opacity: .98;
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: 7px;
+      color: rgba(31,27,22,.88);
+      white-space: nowrap;
+      line-height: 1;
+      opacity: .95;
+      text-align: right;
     }
-    .topbar.is-compact .treat-note{
-      margin-top: 5px;
-      font-size: 9px;
-      line-height: 1.22;
+    @media (max-width: 420px){
+      .header-meta{ display:none; }
     }
+    .header-actions-col{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .hbtn{
+      border: 1px solid rgba(0,0,0,.14);
+      background: rgba(255,255,255,.40);
+      color: rgba(31,27,22,.90);
+      border-radius: 999px;
+      height: 44px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: .12em;
+      font-weight: 900;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      user-select: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .hbtn:hover{
+      transform: translateY(-0.5px);
+      background: rgba(255,255,255,.54);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .hbtn.primary{
+      background: rgba(183,161,138,.96);
+      color: #fff;
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      text-shadow: none;
+    }
+    .hbtn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    }
+    .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
-    /* 작은 화면에서 더 안전하게 */
-    @media (max-width: 390px){
-      .topbar-inner{ padding: 0 12px; gap: 8px; }
-      .brand-big{ font-size: 20px; letter-spacing: .14em; max-width: 210px; }
-      .treat-area{ max-width: 150px; }
-      .treat-title{ font-size: 24px; }
-      .treat-note{ font-size: 9px; }
-      .brand-logo{ width: 48px; height: 48px; }
-    }
-    @media (max-width: 350px){
-      .brand-big{ font-size: 18px; max-width: 190px; }
-      .treat-area{ max-width: 140px; }
-      .treat-title{ font-size: 22px; }
-    }
-
-    /* ========================= 페이지 공통 ========================= */
     .page{
       position: relative;
       z-index: 1;
@@ -774,6 +805,7 @@
       border-radius: 999px;
     }
 
+    /* ✅ "처음 사진처럼": 1 위, 2/3 아래 겹치기 */
     .perk-stage{
       position: relative;
       margin-top: 10px;
@@ -814,6 +846,9 @@
       right: 12px; top: 120px;
       z-index: 2;
     }
+
+    .perk-circle.c2{ transform: translateX(0); }
+    .perk-circle.c3{ transform: translateX(0); }
 
     @media (max-width: 420px){
       .perk-stage{ height: 310px; }
@@ -1221,12 +1256,11 @@
 <body>
   <div class="ornament-bg"></div>
 
+  <!-- ✅ 헤더: 여기만 변경 -->
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
-      <div class="topbar-meta">法人登録番号 8040005021344</div>
-
       <a class="brand" href="#" aria-label="ヘッダー">
-        <span class="brand-logo" aria-hidden="true">
+        <span class="brand-mark" aria-hidden="true">
           <img src="Logo-1.png" alt="" />
         </span>
         <span class="brand-text" aria-label="法人名">
@@ -1236,8 +1270,8 @@
       </a>
 
       <div class="treat-area" aria-label="てぃりーと">
+        <div class="treat-regno">法人登録番号 8040005021344</div>
         <div class="treat-title">てぃりーと</div>
-        <div class="treat-note">※てぃりーとは福祉大国スウェーデン語の信頼が由来です</div>
       </div>
     </div>
   </header>
@@ -1286,7 +1320,6 @@
         </div>
       </section>
 
-      <!-- ✅ 이하 기존 작업물 그대로 -->
       <section class="details" id="details">
 
         <article class="panel orn-fill" id="panel-guarantee">
@@ -1486,7 +1519,7 @@
                     <div class="fee-item orn-fill">
                       <div class="fee-left">
                         <div class="fee-name">土日祝日料金</div>
-                        <div class="fee-sub">1시간あたり</div>
+                        <div class="fee-sub">1時間あたり</div>
                       </div>
                       <div class="fee-price">＋1,000円</div>
                     </div>
@@ -1524,6 +1557,7 @@
           </div>
         </article>
 
+        <!-- ✅ 入会特典: 'ご利用の流れ' 바로 위 -->
         <article class="panel orn-fill" id="panel-perks">
           <div class="panel-head orn-fill">
             <div class="panel-title-tag common">入会特典</div>
@@ -1581,49 +1615,47 @@
           </div>
           <div class="panel-body">
             <div class="panel-inner">
-              <div class="flowx" aria-label="ご利用の流れ">
-                <div class="flow-box orn-fill">
-                  <div class="flow-steps">
-                    <div class="flow-step orn-fill">
-                      <div class="flow-top">
-                        <div class="flow-stepno">STEP 1</div>
-                        <div class="flow-stepname">ご面談</div>
-                      </div>
-                      <div class="flow-desc orn-fill">対面にてご心配事をお伺いし、お客様に最適なご支援をご提案いたします</div>
+              <div class="flow-box orn-fill" aria-label="ご利用の流れ">
+                <div class="flow-steps">
+                  <div class="flow-step orn-fill">
+                    <div class="flow-top">
+                      <div class="flow-stepno">STEP 1</div>
+                      <div class="flow-stepname">ご面談</div>
                     </div>
+                    <div class="flow-desc orn-fill">対面にてご心配事をお伺いし、お客様に最適なご支援をご提案いたします</div>
+                  </div>
 
-                    <div class="flow-step orn-fill">
-                      <div class="flow-top">
-                        <div class="flow-stepno">STEP 2</div>
-                        <div class="flow-stepname">事前確認</div>
-                      </div>
-                      <div class="flow-desc orn-fill">ご契約にあたり必要な意思確認等を行います</div>
+                  <div class="flow-step orn-fill">
+                    <div class="flow-top">
+                      <div class="flow-stepno">STEP 2</div>
+                      <div class="flow-stepname">事前確認</div>
                     </div>
+                    <div class="flow-desc orn-fill">ご契約にあたり必要な意思確認等を行います</div>
+                  </div>
 
-                    <div class="flow-step orn-fill">
-                      <div class="flow-top">
-                        <div class="flow-stepno">STEP 3</div>
-                        <div class="flow-stepname">ご契約</div>
-                      </div>
-                      <div class="flow-desc orn-fill">ご支援内容に基づきご契約手続きを行います</div>
+                  <div class="flow-step orn-fill">
+                    <div class="flow-top">
+                      <div class="flow-stepno">STEP 3</div>
+                      <div class="flow-stepname">ご契約</div>
                     </div>
+                    <div class="flow-desc orn-fill">ご支援内容に基づきご契約手続きを行います</div>
+                  </div>
 
-                    <div class="flow-step orn-fill">
-                      <div class="flow-top">
-                        <div class="flow-stepno">STEP 4</div>
-                        <div class="flow-stepname">お支払い</div>
-                      </div>
-                      <div class="flow-desc orn-fill">お見積り書をご確認後、銀行振込にてお支払いをお願いいたします</div>
+                  <div class="flow-step orn-fill">
+                    <div class="flow-top">
+                      <div class="flow-stepno">STEP 4</div>
+                      <div class="flow-stepname">お支払い</div>
                     </div>
+                    <div class="flow-desc orn-fill">お見積り書をご確認後、銀行振込にてお支払いをお願いいたします</div>
+                  </div>
 
-                    <div class="flow-step orn-fill">
-                      <div class="flow-top">
-                        <div class="flow-stepno">STEP 5</div>
-                        <div class="flow-stepname">ご支援開始</div>
-                      </div>
-                      <div class="flow-desc orn-fill">困った時はいつでもご相談下さい
+                  <div class="flow-step orn-fill">
+                    <div class="flow-top">
+                      <div class="flow-stepno">STEP 5</div>
+                      <div class="flow-stepname">ご支援開始</div>
+                    </div>
+                    <div class="flow-desc orn-fill">困った時はいつでもご相談下さい
 末永く安心してお過ごし下さい</div>
-                    </div>
                   </div>
                 </div>
               </div>

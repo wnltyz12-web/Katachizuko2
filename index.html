@@ -82,7 +82,7 @@
 
     html{
       scroll-behavior: smooth;
-      scroll-padding-top: 88px;
+      scroll-padding-top: 110px;
     }
 
     /* ========================= ✅ 전체 배경 오나먼트 ========================= */
@@ -143,234 +143,252 @@
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ========================= ✅ 헤더 (사진2 느낌) ========================= */
+    /* ========================= ✅ 헤더 (요청 이미지 느낌) ========================= */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 50;
-      height: 78px;
+      height: 96px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, #efe8df 0%, #e3d8cb 100%);
+      background:
+        radial-gradient(120px 90px at 50% 60%, rgba(255,255,255,.32), rgba(255,255,255,0) 70%),
+        linear-gradient(180deg, #efe7dc 0%, #e1d4c5 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      box-shadow: 0 12px 26px rgba(0,0,0,.08);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       transition: height .22s ease, box-shadow .22s ease;
     }
     .topbar.is-compact{
-      height: 64px;
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+      height: 78px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.07);
     }
+
     .topbar-inner{
       width: 100%;
-      max-width: var(--mobile-max);
-      padding: 0 14px;
+      max-width: 980px;                 /* ✅ 헤더만 넓게 */
+      padding: 0 18px;
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 10px;
+      gap: 18px;
+      position: relative;
+    }
+
+    /* ✅ 상단 중앙의 법인등록번호 */
+    .topbar-meta-center{
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: 11px;
+      color: rgba(31,27,22,.86);
+      white-space: nowrap;
+      opacity: .95;
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+      pointer-events: none;
+    }
+    .topbar.is-compact .topbar-meta-center{
+      top: 6px;
+      font-size: 10px;
+    }
+    @media (max-width: 680px){
+      .topbar-inner{ max-width: var(--mobile-max); }
+      .topbar-meta-center{ display:none; } /* ✅ 모바일은 깔끔하게 숨김 */
     }
 
     .brand{
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       min-width: 0;
     }
 
-    /* ✅ 로고를 사용자가 준 이미지로 교체 (Logo-1.png) */
+    /* ✅ 로고: 사용자가 준 Logo-1.png */
     .brand-logo{
-      width: 56px;
-      height: 56px;
+      width: 70px;
+      height: 70px;
       flex: 0 0 auto;
       display: grid;
       place-items: center;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
-      opacity: .98;
+      filter: drop-shadow(0 10px 16px rgba(0,0,0,.10));
     }
     .brand-logo img{
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: contain;
+      display: block;
     }
     .topbar.is-compact .brand-logo{
-      width: 48px;
-      height: 48px;
-      transform: translateY(-.5px);
+      width: 58px;
+      height: 58px;
     }
 
     .brand-text{
       display: grid;
-      justify-items: start;
-      gap: 6px;
-      line-height: 1.05;
+      gap: 8px;
+      line-height: 1.02;
       min-width: 0;
-      padding-top: 2px;
     }
 
     .brand-pill{
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 26px;
-      padding: 0 12px;
+      height: 28px;
+      padding: 0 16px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,.18);
-      background: rgba(255,255,255,.38);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.74);
+      background: rgba(255,255,255,.40);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.80),
+        0 8px 16px rgba(0,0,0,.06);
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .12em;
-      font-size: 12px;
-      color: rgba(66,55,41,.70);
+      letter-spacing: .14em;
+      font-size: 13px;
+      color: rgba(66,55,41,.72);
       white-space: nowrap;
       width: fit-content;
     }
     .topbar.is-compact .brand-pill{
       height: 24px;
-      padding: 0 10px;
+      padding: 0 12px;
       font-size: 11px;
-      letter-spacing: .10em;
+      letter-spacing: .12em;
     }
 
     .brand-big{
       font-family: var(--serif);
-      font-size: 19px;
+      font-size: 28px;
       font-weight: 900;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       color: rgba(31,27,22,.96);
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      text-shadow: 0 1px 0 rgba(255,255,255,.60);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .topbar.is-compact .brand-big{
-      font-size: 16px;
-      letter-spacing: .12em;
+      font-size: 22px;
+      letter-spacing: .14em;
+    }
+    @media (max-width: 520px){
+      .brand-big{ font-size: 22px; }
+      .topbar.is-compact .brand-big{ font-size: 18px; }
+      .brand-pill{ height: 24px; font-size: 11px; padding: 0 12px; }
+      .brand-logo{ width: 58px; height: 58px; }
     }
 
-    .header-actions{
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      flex: 0 0 auto;
-    }
-    .header-actions-col{
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-    }
-
-    /* ✅ "~(늘임표) 제거" 버전: ↩ てぃりーと ↩ */
-    .tagline{
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
-      font-size: 13px;
-      line-height: 1;
-      white-space: nowrap;
-      user-select: none;
-      opacity: .95;
-      transform: translateY(1px);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-    .tagline .arrow{
-      color: rgba(66,55,41,.55);
-      font-size: 13px;
-      transform: translateY(-1px);
-    }
-    .tagline .word{
-      background: linear-gradient(90deg, rgba(54,109,160,.95), rgba(201,112,74,.98));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: .16em;
-    }
-    .topbar.is-compact .tagline{
-      font-size: 12px;
-      letter-spacing: .10em;
-      transform: translateY(0px);
-    }
-
-    /* ✅ 문의 버튼 안쪽에 "てぃりーと" 넣을 스타일 */
-    .hbtn-mini{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .16em;
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.34);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .header-meta{
-      display: block;
-      font-family: var(--sans);
-      font-weight: 800;
-      letter-spacing: .06em;
-      font-size: 7px;
-      color: rgba(31,27,22,.88);
-      white-space: nowrap;
-      line-height: 1;
-      opacity: .95;
-      text-align: right;
-    }
-    @media (max-width: 420px){
-      .header-meta{ display:none; }
-      .tagline{ display:none; }
-      .hbtn-mini{ display:none; }
-    }
-
-    .hbtn{
-      border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.40);
-      color: rgba(31,27,22,.90);
-      border-radius: 999px;
-      height: 44px;
-      padding: 0 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    /* ✅ 오른쪽 큰 캡슐: "てぃりーと" + 작은 설명 */
+    .treat-pill{
       text-decoration: none;
-      font-size: 14px;
-      letter-spacing: .12em;
-      font-weight: 900;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
-      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-      user-select: none;
-      white-space: nowrap;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 360px;
+      height: 78px;
+      border-radius: 999px;
+      background:
+        radial-gradient(140px 90px at 30% 30%, rgba(255,255,255,.30), rgba(255,255,255,0) 70%),
+        linear-gradient(180deg, rgba(198,178,158,.92) 0%, rgba(172,150,129,.92) 100%);
+      border: 1px solid rgba(0,0,0,.12);
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.30),
+        0 14px 30px rgba(0,0,0,.12);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(2px);
+      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
       cursor: pointer;
+      user-select: none;
     }
-    .hbtn:hover{
-      transform: translateY(-0.5px);
-      background: rgba(255,255,255,.54);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.72);
+    .treat-pill:hover{
+      transform: translateY(1px);
+      filter: saturate(1.03);
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.32),
+        0 16px 34px rgba(0,0,0,.14);
     }
-    .hbtn.primary{
-      background: rgba(183,161,138,.96);
-      color: #fff;
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 10px 22px rgba(0,0,0,.08);
-      text-shadow: none;
+    .treat-pill::after{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 55% 40%, rgba(255,255,255,.14), rgba(255,255,255,0) 60%);
+      pointer-events:none;
+      opacity: .9;
     }
-    .hbtn.primary:hover{
-      background: rgba(183,161,138,1);
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    .treat-title{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .18em;
+      font-size: 34px;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 2px 0 rgba(0,0,0,.10);
+      line-height: 1;
+    }
+    .treat-note{
+      position: absolute;
+      right: 18px;
+      bottom: 10px;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 10px;
+      color: rgba(31,27,22,.78);
+      letter-spacing: .02em;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      opacity: .95;
+    }
+    .topbar.is-compact .treat-pill{
+      width: 300px;
+      height: 64px;
+    }
+    .topbar.is-compact .treat-title{
+      font-size: 28px;
+    }
+    .topbar.is-compact .treat-note{
+      bottom: 8px;
+      right: 16px;
+      font-size: 9px;
     }
 
+    @media (max-width: 860px){
+      .treat-pill{ width: 320px; }
+      .treat-title{ font-size: 30px; }
+    }
+    @media (max-width: 520px){
+      .topbar{ height: 92px; }
+      .topbar.is-compact{ height: 74px; }
+      .topbar-inner{
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px 14px 12px;
+      }
+      .brand{ justify-content: flex-start; }
+      .treat-pill{
+        width: 100%;
+        height: 62px;
+        transform: none;
+      }
+      .treat-title{ font-size: 26px; }
+      .treat-note{
+        right: 14px;
+        bottom: 8px;
+        font-size: 9px;
+        max-width: calc(100% - 28px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    /* ========================= (이 아래는 기존 작업물 그대로) ========================= */
     .page{
       position: relative;
       z-index: 1;
@@ -1262,42 +1280,28 @@
 <body>
   <div class="ornament-bg"></div>
 
+  <!-- ✅ 맨 윗부분(헤더)만 교체 -->
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
+      <div class="topbar-meta-center">法人登録番号 8040005021344</div>
 
       <a class="brand" href="#" aria-label="ヘッダー">
-        <!-- ✅ 로고 교체: Logo-1.png -->
         <span class="brand-logo" aria-hidden="true">
           <img src="Logo-1.png" alt="" />
         </span>
-
         <span class="brand-text" aria-label="法人名">
           <span class="brand-pill">一般社団法人</span>
           <span class="brand-big">福祉介護機構</span>
         </span>
       </a>
 
-      <div></div><!-- 가운데 여백 -->
+      <div></div>
 
-      <div class="header-actions">
-        <div class="header-actions-col">
-          <div class="header-meta">法人登録番号 8040005021344</div>
-
-          <!-- ✅ 테이리-토: "~" 제거 -->
-          <div class="tagline" aria-label="タグライン">
-            <span class="arrow">↩</span>
-            <span class="word">てぃりーと</span>
-            <span class="arrow">↩</span>
-          </div>
-
-          <!-- ✅ お問い合わせ 버튼: 아이콘 삭제 + 테이리-토 넣기 -->
-          <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
-            <span class="hbtn-mini" aria-hidden="true">てぃりーと</span>
-            お問い合わせ
-          </a>
-        </div>
-      </div>
-
+      <!-- ✅ 오른쪽 캡슐: 문의로 스크롤 -->
+      <a class="treat-pill" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
+        <div class="treat-title">てぃりーと</div>
+        <div class="treat-note">※てぃりーとは福祉大国スウェーデン語の信頼が由来です</div>
+      </a>
     </div>
   </header>
 

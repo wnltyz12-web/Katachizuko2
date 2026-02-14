@@ -646,8 +646,8 @@
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
       position: relative;
-      padding-left: 56px;
-      padding-right: 56px;
+      padding-left: 0;   /* ✅ B-1/B-2 삭제로 여백 제거 */
+      padding-right: 0;  /* ✅ */
     }
     .fee-sep-title{
       width: 100%;
@@ -680,6 +680,7 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
+    /* (B-1/B-2 제거했지만, 아래 스타일은 다른 곳에 영향 없어서 그대로 둠) */
     .fee-code{
       font-family: var(--sans);
       font-weight: 800;
@@ -724,21 +725,20 @@
     }
 
     /* ========================= ✅ 入会特典 (2중 박스: 카드 + 아이템) ========================= */
-    /* 기존 perk-wrap(추가 테두리) 제거용: 내용은 그대로 쓰고, 외곽은 카드(orn-fill)가 담당 */
     .perk-wrap{
-      padding: 0;                 /* ✅ 외곽 패딩 제거 */
-      border: none;               /* ✅ 테두리 제거 */
-      box-shadow: none;           /* ✅ 그림자 제거 */
-      border-radius: 0;           /* ✅ 라운드 제거 */
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
       background: transparent;
     }
     .perk-wrap.orn-fill::before,
     .perk-wrap.orn-fill::after{
-      content: none !important;   /* ✅ 내부 오나먼트 레이어 제거 */
+      content: none !important;
     }
 
     .perk-list{
-      margin-top: 0;              /* ✅ 카드 안쪽에서 바로 시작 */
+      margin-top: 0;
       display: grid;
       gap: 10px;
     }
@@ -1317,13 +1317,12 @@
                   </div>
                 </div>
 
+                <!-- ✅ B-1 / B-2 텍스트(코드) 삭제 완료 -->
                 <div class="card orn-fill" style="padding-bottom:10px;">
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
 
                     <div class="fee-sep-block">
-                      <span class="fee-code">B-1</span>
-
                       <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
                         <div class="fee-sep-title">
                           <span class="dots">・・・</span>
@@ -1352,7 +1351,6 @@
                   </div>
 
                   <div class="fee-sep" aria-label="同行支援の説明">
-                    <span class="fee-code">B-2</span>
                     <div class="fee-sep-title">
                       <span class="dots">・・・</span>
                       <span>同行支援</span>
@@ -1435,7 +1433,6 @@
           </div>
         </article>
 
-        <!-- ✅ 入会特典: 2중 구조 = (패널 -> 카드) + (특전 아이템 박스) -->
         <article class="panel orn-fill" id="panel-perks">
           <div class="panel-head orn-fill">
             <div class="panel-title-tag common">入会特典</div>
@@ -1443,9 +1440,7 @@
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-                <!-- ✅ 여기 card(바깥 박스) 1개만 유지 -->
                 <div class="card orn-fill">
-                  <!-- ✅ perk-wrap은 이제 '래퍼'만, 테두리/그림자 없음 -->
                   <div class="perk-wrap" aria-label="入会特典">
                     <div class="perk-list" aria-label="特典リスト">
                       <div class="perk-item orn-fill">
@@ -1658,4 +1653,3 @@
   </script>
 </body>
 </html>
-

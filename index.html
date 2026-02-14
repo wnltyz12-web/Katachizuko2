@@ -212,30 +212,31 @@
       line-height: 1.05;
       min-width: 0;
     }
+
+    /* ✅ 여기만 수정: "一般社団法人" 동그란 버튼(필) 제거 */
     .brand-pill{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 26px;
-      padding: 0 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,.18);
-      background: rgba(255,255,255,.40);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      display: inline;
+      height: auto;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      background: transparent;
+      box-shadow: none;
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
       font-size: 12px;
       color: rgba(66,55,41,.70);
       white-space: nowrap;
-      width: fit-content;
+      width: auto;
     }
     .topbar.is-compact .brand-pill{
-      height: 24px;
-      padding: 0 10px;
+      height: auto;
+      padding: 0;
       font-size: 11px;
       letter-spacing: .10em;
     }
+
     .brand-big{
       font-family: var(--serif);
       font-size: 20px;
@@ -646,8 +647,8 @@
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
       position: relative;
-      padding-left: 0;   /* ✅ B-1/B-2 삭제로 여백 제거 */
-      padding-right: 0;  /* ✅ */
+      padding-left: 0;
+      padding-right: 0;
     }
     .fee-sep-title{
       width: 100%;
@@ -680,7 +681,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* (B-1/B-2 제거했지만, 아래 스타일은 다른 곳에 영향 없어서 그대로 둠) */
     .fee-code{
       font-family: var(--sans);
       font-weight: 800;
@@ -1653,8 +1653,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-

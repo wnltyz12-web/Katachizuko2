@@ -27,10 +27,13 @@
       --btn-guarantee: #968444;
       --btn-support: #497790;
 
+      /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
+      /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
       --mobile-max: 520px;
+
       --shadow2: 0 10px 26px rgba(0,0,0,.14);
 
       --orn-size: 360px 360px;
@@ -51,6 +54,7 @@
 
       --panel-pad: 16px;
       --cards-gap: 12px;
+
       --card-pad-y: 14px;
       --card-pad-x: 14px;
 
@@ -73,21 +77,33 @@
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
-    @media (min-width: 900px){ body{ zoom: 1.5; } }
 
-    html{ scroll-behavior: smooth; scroll-padding-top: 88px; }
+    @media (min-width: 900px){
+      body{ zoom: 1.5; }
+    }
 
+    html{
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    /* ========================= ✅ 전체 배경 오나먼트 ========================= */
     .ornament-bg{
-      position: fixed; inset: 0; z-index: 0;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
       background-color: var(--bg);
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
     }
-    @media (min-width: 900px){ .ornament-bg{ background-size: var(--orn-size-lg); } }
+    @media (min-width: 900px){
+      .ornament-bg{ background-size: var(--orn-size-lg); }
+    }
     .ornament-bg::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       pointer-events:none;
       background: linear-gradient(
         to bottom,
@@ -98,6 +114,7 @@
       );
     }
 
+    /* ========================= ✅ 공용: 박스 오나먼트 ========================= */
     .orn-fill{
       position: relative;
       overflow: hidden;
@@ -106,7 +123,8 @@
     }
     .orn-fill::before{
       content:"";
-      position:absolute; inset:-70px;
+      position:absolute;
+      inset:-70px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
@@ -117,17 +135,25 @@
     }
     .orn-fill::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       background: var(--mist);
       pointer-events:none;
       z-index: -1;
     }
-    @media (min-width: 900px){ .orn-fill::before{ background-size: var(--orn-size-lg); } }
+    @media (min-width: 900px){
+      .orn-fill::before{ background-size: var(--orn-size-lg); }
+    }
 
+    /* ========================= ✅ 헤더 ========================= */
     .topbar{
-      position: sticky; top: 0; z-index: 50;
+      position: sticky;
+      top: 0;
+      z-index: 50;
       height: 78px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
@@ -135,25 +161,32 @@
       -webkit-backdrop-filter: blur(6px);
       transition: height .22s ease, box-shadow .22s ease;
     }
-    .topbar.is-compact{ height: 64px; box-shadow: 0 8px 18px rgba(0,0,0,.06); }
-
+    .topbar.is-compact{
+      height: 64px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
     .topbar-inner{
       width: 100%;
       max-width: var(--mobile-max);
       padding: 0 16px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
     }
-
     .brand{
-      display: inline-flex; align-items: center; gap: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
       min-width: 0;
     }
-
     .brand-mark{
-      width: 44px; height: 44px; border-radius: 999px;
-      display: grid; place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
       border: 1.5px solid rgba(0,0,0,.76);
       background: rgba(255,255,255,.36);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
@@ -161,8 +194,18 @@
       transition: width .22s ease, height .22s ease, transform .22s ease;
       overflow: hidden;
     }
-    .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
-    .brand-mark img{ width: 100%; height: 100%; display: block; object-fit: contain; padding: 6px; }
+    .topbar.is-compact .brand-mark{
+      width: 38px;
+      height: 38px;
+      transform: translateY(-.5px);
+    }
+    .brand-mark img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      padding: 6px;
+    }
     .topbar.is-compact .brand-mark img{ padding: 5px; }
 
     .brand-text{
@@ -171,7 +214,6 @@
       line-height: 1.05;
       min-width: 0;
     }
-
     .brand-pill{
       display: inline-flex;
       align-items: center;
@@ -182,7 +224,6 @@
       border: 1px solid rgba(0,0,0,.18);
       background: rgba(255,255,255,.34);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
-
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
@@ -197,7 +238,6 @@
       font-size: 11px;
       letter-spacing: .10em;
     }
-
     .brand-big{
       font-family: var(--serif);
       font-size: 18px;
@@ -209,10 +249,16 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .topbar.is-compact .brand-big{ font-size: 16px; letter-spacing: .12em; }
-
-    .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
-
+    .topbar.is-compact .brand-big{
+      font-size: 16px;
+      letter-spacing: .12em;
+    }
+    .header-actions{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
     .header-meta{
       display: block;
       font-family: var(--sans);
@@ -228,14 +274,12 @@
     @media (max-width: 420px){
       .header-meta{ display:none; }
     }
-
     .header-actions-col{
       display: inline-flex;
       flex-direction: column;
       align-items: flex-end;
       gap: 6px;
     }
-
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
@@ -243,7 +287,9 @@
       border-radius: 999px;
       height: 44px;
       padding: 0 16px;
-      display: inline-flex; align-items: center; gap: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
       font-size: 14px;
       letter-spacing: .12em;
@@ -266,13 +312,31 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
       text-shadow: none;
     }
-    .hbtn.primary:hover{ background: rgba(183,161,138,1); box-shadow: 0 12px 26px rgba(0,0,0,.10); }
+    .hbtn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    }
     .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
-    .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
-    .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
+    .page{
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .container{
+      width: 100%;
+      max-width: var(--mobile-max);
+      padding: 18px 16px 170px;
+    }
 
-    .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
+    /* ========================= 히어로 ========================= */
+    .hero{
+      margin-top: 18px;
+      padding: 6px 0 0;
+      text-align: center;
+    }
     .hero-title{
       font-family: var(--serif);
       letter-spacing: .10em;
@@ -281,10 +345,15 @@
       font-size: 16px;
       line-height: 1.95;
     }
-
-    .hero-label-wrap{ margin-top: 12px; display: grid; place-items: center; }
+    .hero-label-wrap{
+      margin-top: 12px;
+      display: grid;
+      place-items: center;
+    }
     .hero-label{
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 7px 14px;
       border-radius: 6px;
       border: 2px solid rgba(155,122,52,.72);
@@ -298,13 +367,24 @@
       -webkit-backdrop-filter: blur(6px);
       user-select: none;
     }
-
-    .hero-cta{ margin-top: 18px; display: flex; justify-content: center; }
-    .hero-cta-row{ display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; }
-
+    .hero-cta{
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-cta-row{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+    }
     .cta-btn{
-      appearance: none; border: none; cursor: pointer;
-      width: 180px; height: 52px;
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      width: 180px;
+      height: 52px;
       background: #b7a18a;
       color: #ffffff;
       border-radius: 14px;
@@ -313,15 +393,24 @@
       font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
-    .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
+    .cta-btn:hover{
+      transform: translateY(-0.5px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.17);
+      filter: saturate(1.04);
+    }
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
 
     @media (max-width: 520px){
-      .cta-btn{ width: calc((100% - 14px) / 2); font-size: 17px; }
+      .cta-btn{
+        width: calc((100% - 14px) / 2);
+        font-size: 17px;
+      }
     }
 
     .slogan-text{
@@ -338,30 +427,81 @@
       white-space: pre-line;
     }
 
+    /* ========================= 일러스트 ========================= */
     .illus-wrap{ margin-top: 18px; }
-    .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
-    .illus-img{ width: 100%; height: auto; display: block; background: transparent; }
-
-    .illus-brand{ margin-top: 4px; padding: 6px 10px; width: 100%; text-align: center; display: grid; gap: 4px; }
-    .illus-brand .corp-line-1{ font-family: var(--sans); font-weight: 700; font-size: 11px; letter-spacing: .06em; color: rgba(66,55,41,.58); }
+    .illus-inner{
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .illus-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      background: transparent;
+    }
+    .illus-brand{
+      margin-top: 4px;
+      padding: 6px 10px;
+      width: 100%;
+      text-align: center;
+      display: grid;
+      gap: 4px;
+    }
+    .illus-brand .corp-line-1{
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: rgba(66,55,41,.58);
+    }
     .illus-brand .corp-line-2{
-      font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: .10em;
-      color: rgba(66,55,41,.72); text-shadow: 0 1px 0 rgba(255,255,255,.65);
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .10em;
+      color: rgba(66,55,41,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .illus-brand .corp-line-2::before,
     .illus-brand .corp-line-2::after{
-      content:""; width: 18px; height: 1px;
+      content:"";
+      width: 18px;
+      height: 1px;
       background: rgba(155,122,52,.42);
       box-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-
-    .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
-    .diamond-sep .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
-    .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
+    .diamond-sep{
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      opacity: .92;
+    }
+    .diamond-sep .line{
+      height: 1px;
+      flex: 1;
+      background: rgba(66,55,41,.18);
+    }
+    .diamond-sep .dia{
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      border: 1.5px solid rgba(155,122,52,.65);
+      background: rgba(255,255,255,.60);
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    }
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
+    /* ========================= 패널/카드 ========================= */
     .panel{
       border-radius: var(--r-18);
       border: 1px solid rgba(0,0,0,.06);
@@ -384,15 +524,12 @@
       align-items: center;
       justify-content: center;
       padding: 0 14px;
-
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: var(--title-letter);
       font-size: 16px;
-
       border: 1px solid rgba(0,0,0,.10);
       color: #fff;
-
       box-shadow: 0 10px 22px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20);
       user-select: none;
     }
@@ -401,6 +538,7 @@
     .panel-title-tag.flow{ background: var(--btn-flow); }
     .panel-title-tag.common{ background: var(--btn-common); }
 
+    /* ✅ 변경: 料金表 헤더(2줄) 전용 — 폰트/박스 크기 줄임 */
     .panel-title-tag.stacked{
       height: auto;
       padding: 10px 14px;
@@ -422,9 +560,23 @@
       line-height: 1.2;
     }
 
-    .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
-    .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
+    .panel-sub{
+      margin-top: 0px;
+      font-family: var(--sans);
+      font-size: var(--fs-12);
+      color: var(--ink-4);
+      letter-spacing: .06em;
+      line-height: 1.78;
+      padding: 0 6px;
+      font-weight: 600;
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      text-align: center;
+      white-space: pre-line;
+    }
 
+    .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
+
+    .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
     .card{
       border-radius: var(--r-14);
       border: 1px solid rgba(0,0,0,.07);
@@ -443,7 +595,6 @@
       text-align: left;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
-
     .card p, .card .lead{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
@@ -457,8 +608,8 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
+    /* ========================= 料金표 내부 ========================= */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
-
     .fee-item{
       display: grid;
       grid-template-columns: 1fr auto;
@@ -474,7 +625,6 @@
       inset: -60px;
       transform: scale(1.06);
     }
-
     .fee-name{
       font-size: var(--fs-14);
       font-weight: 800;
@@ -493,7 +643,6 @@
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.72);
     }
-
     .fee-meta{
       margin-top: 8px;
       text-align: center;
@@ -507,13 +656,31 @@
     }
     .fee-meta strong{ font-weight: 900; color: var(--ink-2); }
 
+    /* ✅ A-1/A-2 위치용 (사진처럼 왼쪽 고정) */
     .fee-sep{
       margin: 12px 0 10px;
       text-align: center;
       color: var(--ink-4);
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
+
+      position: relative;
+      padding-left: 56px; /* ← 왼쪽에 A-1, A-2 자리 확보 */
     }
+    .fee-code{
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .08em;
+      color: rgba(66,55,41,.58);
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      white-space: nowrap;
+    }
+
     .fee-sep-title{
       display: inline-flex;
       align-items: center;
@@ -543,7 +710,6 @@
       white-space: pre-line;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
-
     .fee-left{
       display: grid;
       grid-template-columns: 1fr auto;
@@ -564,6 +730,7 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
+    /* ========================= ご利用の流れ ========================= */
     .flow-box{
       border-radius: 18px;
       border: 1px solid rgba(0,0,0,.07);
@@ -571,7 +738,12 @@
     }
     .flow-box.orn-fill::before{ opacity: var(--orn-opacity-card); inset: -70px; }
 
-    .flow-steps{ display: grid; gap: 12px; padding: 12px; padding-top: 10px; }
+    .flow-steps{
+      display: grid;
+      gap: 12px;
+      padding: 12px;
+      padding-top: 10px;
+    }
     .flow-step{
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.08);
@@ -655,9 +827,14 @@
     }
     .flow-desc.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
     @media (max-width: 520px){
-      .flow-desc{ font-size: 12.5px; letter-spacing: 0; padding: 10px 10px; }
+      .flow-desc{
+        font-size: 12.5px;
+        letter-spacing: 0;
+        padding: 10px 10px;
+      }
     }
 
+    /* ========================= 문의 + (상세 연락처 박스 포함) ========================= */
     .contact-actions{ display: grid; gap: 10px; margin-top: 0; }
     .contact-btn{
       display: inline-flex;
@@ -694,7 +871,6 @@
       background: rgba(183,161,138,1);
       box-shadow: 0 16px 38px rgba(0,0,0,.12);
     }
-
     .contact-grid{ display: grid; gap: 10px; margin-top: 10px; }
 
     .kv{
@@ -795,14 +971,12 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
       line-height: 1.35;
     }
-
     .contact-info-sep{
       height: 1px;
       margin: 12px 6px;
       background: rgba(66,55,41,.14);
       box-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-
     .contact-info-block{ padding: 2px 6px; display: grid; gap: 4px; }
     .contact-info-bname{
       font-family: var(--serif);
@@ -830,6 +1004,7 @@
     }
     .contact-info-line a:hover{ border-bottom-color: rgba(66,55,41,.55); }
 
+    /* ========================= ごあいさつ ========================= */
     .greet-wrap{ padding: 16px 16px 18px; }
     .greet-top{ display: grid; place-items: center; gap: 0px; text-align: center; }
     .greet-portrait{
@@ -844,7 +1019,8 @@
     }
     .greet-portrait::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       pointer-events:none;
       background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
       opacity: .9;
@@ -904,7 +1080,6 @@
         <span class="brand-mark" aria-hidden="true">
           <img src="Logo.png" alt="" />
         </span>
-
         <span class="brand-text" aria-label="法人名">
           <span class="brand-pill">一般社団法人</span>
           <span class="brand-big">福祉介護機構</span>
@@ -914,7 +1089,6 @@
       <div class="header-actions">
         <div class="header-actions-col">
           <div class="header-meta">法人登録番号 8040005021344</div>
-
           <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 6h16v12H4z"></path>
@@ -940,28 +1114,24 @@
 
         <div class="hero-cta">
           <div class="hero-cta-row">
-            <button class="cta-btn guarantee" type="button"
-              onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+            <button class="cta-btn guarantee" type="button" onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
               身元保証
             </button>
-
-            <button class="cta-btn support" type="button"
-              onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+            <button class="cta-btn support" type="button" onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
               生活支援
             </button>
           </div>
         </div>
 
         <div class="slogan-text" aria-label="理念">
-皆さまの想いをかなえるために
-私たちが一生涯のご支援をお約束致します
+          皆さまの想いをかなえるために
+          私たちが一生涯のご支援をお約束致します
         </div>
       </section>
 
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illust5.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
-
           <div class="illus-brand" aria-label="法人情報">
             <div class="corp-line-1">法人登録番号：8040005021344</div>
             <div class="corp-line-2">一般社団法人　福祉介護機構</div>
@@ -981,11 +1151,9 @@
           <div class="panel-head orn-fill">
             <div class="panel-title-tag guarantee">身元保証プラン</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-
                 <div class="card orn-fill">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
@@ -1006,7 +1174,6 @@
                   <h3>死後事務手続き代行</h3>
                   <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
                 </div>
-
               </div>
             </div>
           </div>
@@ -1016,21 +1183,17 @@
           <div class="panel-head orn-fill">
             <div class="panel-title-tag support">生活支援プラン</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-
                 <div class="card orn-fill">
                   <h3>訪問支援</h3>
                   <p>ご訪問しての身の回りのお手伝い、買物代行などの日常生活支援を承ります。</p>
                 </div>
-
                 <div class="card orn-fill">
                   <h3>同行支援</h3>
                   <p>車両を使用しての買物・通院・役所等の外出同行支援を承ります。</p>
                 </div>
-
               </div>
             </div>
           </div>
@@ -1104,13 +1267,11 @@
                 <div class="card orn-fill" style="padding-bottom:10px;">
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
-<div style="font-size:12px; font-family:var(--sans); font-weight:800; letter-spacing:.08em; color:var(--ink-3); margin:10px 0 2px 2px;">
-  B-1
-</div>
+
+                    <!-- ✅ 방문지원: A-1 (사진 위치처럼 왼쪽) -->
                     <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
-                      <!-- ✅ 가운데 정렬 유지 + 코드(B-1)만 왼쪽에 예쁘게 -->
-                      <div class="fee-sep-title" style="position:relative; width:100%; justify-content:center;">
-                        <span style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-family: var(--sans); font-weight:800; font-size:12px; letter-spacing:.08em; color: var(--ink-4);">B-1</span>
+                      <span class="fee-code">A-1</span>
+                      <div class="fee-sep-title">
                         <span class="dots">・・・</span>
                         <span>訪問支援</span>
                         <span class="dots">・・・</span>
@@ -1135,10 +1296,10 @@
                     </div>
                   </div>
 
+                  <!-- ✅ 동행지원: A-2 (사진 위치처럼 왼쪽) -->
                   <div class="fee-sep" aria-label="同行支援の説明">
-                    <!-- ✅ 가운데 정렬 유지 + 코드(B-2)만 왼쪽에 예쁘게 -->
-                    <div class="fee-sep-title" style="position:relative; width:100%; justify-content:center;">
-                      <span style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-family: var(--sans); font-weight:800; font-size:12px; letter-spacing:.08em; color: var(--ink-4);">B-2</span>
+                    <span class="fee-code">A-2</span>
+                    <div class="fee-sep-title">
                       <span class="dots">・・・</span>
                       <span>同行支援</span>
                       <span class="dots">・・・</span>
@@ -1172,7 +1333,6 @@
                       </div>
                       <div class="fee-price">500円</div>
                     </div>
-
                     <div class="fee-item orn-fill">
                       <div class="fee-left">
                         <div class="fee-name">スタッフ移動費</div>
@@ -1180,7 +1340,6 @@
                       </div>
                       <div class="fee-price">20円</div>
                     </div>
-
                     <div class="fee-item orn-fill">
                       <div class="fee-left">
                         <div class="fee-name">土日祝日料金</div>
@@ -1193,7 +1352,6 @@
 
                 <div class="card orn-fill">
                   <h3>キャンセルポリシー</h3>
-
                   <div class="fee-list" style="gap:8px;">
                     <div class="fee-item orn-fill" style="padding:12px 12px; align-items:start;">
                       <div style="display:grid; gap:4px; align-content:start;">
@@ -1227,7 +1385,6 @@
           <div class="panel-head orn-fill">
             <div class="panel-title-tag flow">ご利用の流れ</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="flow-box orn-fill" aria-label="ご利用の流れ">
@@ -1287,13 +1444,11 @@
             <div class="panel-inner">
               <div class="cards">
                 <div class="card orn-fill">
-
                   <div class="contact-actions">
                     <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する（無料）">
                       <span aria-hidden="true">☎</span>
                       電話で相談する（無料）
                     </a>
-
                     <a class="contact-btn" href="mailto:info@example.com" aria-label="メールで相談する">
                       <span aria-hidden="true">✉</span>
                       メールで相談する
@@ -1365,14 +1520,15 @@
             <div class="panel-inner">
               <div class="cards">
                 <div class="card greet-wrap orn-fill" aria-label="ごあいさつ">
-
                   <div class="greet-top">
                     <div class="greet-portrait" aria-label="写真">
                       <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
                     </div>
                   </div>
 
-                  <div class="greet-body orn-fill">国内航空会社で客室乗務員として接客を学んだ後、身内の介護を機に高齢者の方々と関わる仕事をして参りました。あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。どうぞよろしくお願いいたします。</div>
+                  <div class="greet-body orn-fill">
+                    国内航空会社で客室乗務員として接客を学んだ後、身内の介護を機に高齢者の方々と関わる仕事をして参りました。あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。どうぞよろしくお願いいたします。
+                  </div>
 
                   <div class="greet-footer" aria-label="署名">
                     <div class="greet-chip">
@@ -1380,7 +1536,6 @@
                       <span class="name">片岡千鶴子</span>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -1388,16 +1543,17 @@
         </article>
 
       </section>
-
     </div>
   </main>
 
   <script>
     const topbarEl = document.getElementById('topbar');
     let ticking = false;
+
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
+
       window.requestAnimationFrame(() => {
         const y = window.scrollY || 0;
         if (y > 12) topbarEl.classList.add('is-compact');
@@ -1405,6 +1561,7 @@
         ticking = false;
       });
     };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
@@ -1418,4 +1575,3 @@
   </script>
 </body>
 </html>
-

@@ -612,6 +612,67 @@
     }
 
     /* =========================
+       ✅ B-1 / B-2 (사진처럼)
+    ========================= */
+    .bblock{ margin-top: 12px; }
+    .bhead{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: center;
+      margin: 6px 0 8px;
+    }
+    .bcode{
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1;
+      letter-spacing: .02em;
+      color: #e25555;  /* ✅ 사진처럼 레드(고정) */
+      text-shadow: 0 1px 0 rgba(255,255,255,.75);
+    }
+    .btitlewrap{ display: grid; gap: 6px; min-width: 0; }
+    .btitleline{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .bdots{
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .35em;
+      color: rgba(66,55,41,.46);
+      white-space: nowrap;
+    }
+    .btitle{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .14em;
+      color: var(--ink-1);
+      font-size: 18px;
+      white-space: nowrap;
+    }
+    .bdesc{
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--ink-4);
+      letter-spacing: .02em;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+    .bmeta{
+      margin-top: 0;
+      text-align: left; /* ✅ 사진처럼 왼쪽 정렬 */
+    }
+    .bfees{ margin-top: 10px; gap: 12px; } /* ✅ 박스 간격 살짝 넓힘 */
+    @media (max-width: 520px){
+      .bcode{ font-size: 46px; }
+      .btitle{ font-size: 17px; }
+    }
+
+    /* =========================
        ご利用の流れ
     ========================= */
     .flow-box{
@@ -1157,61 +1218,69 @@
                   </div>
                 </div>
 
-                <!-- ✅ 생활지원(B-1/B-2) : A-1과 동일한 폰트/색/크기/스타일(= fee-name 구조) -->
+                <!-- ✅ 여기: B-1 / B-2를 사진처럼 변경 -->
                 <div class="card orn-fill" style="padding-bottom:10px;">
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
                   </div>
 
                   <!-- B-1 -->
-                  <div class="fee-list" style="margin-top:10px;">
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">B-1　訪問支援</div></div>
-                      <div class="fee-price"></div>
+                  <div class="bblock">
+                    <div class="bhead">
+                      <div class="bcode">B-1</div>
+                      <div class="btitlewrap">
+                        <div class="btitleline">
+                          <span class="bdots">・・・</span>
+                          <span class="btitle">訪問支援</span>
+                          <span class="bdots">・・・</span>
+                        </div>
+                        <div class="fee-meta bmeta">※<strong>会員</strong>／非会員すべて同じ金額です</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="fee-meta">※<strong>会員</strong>／非会員すべて同じ金額です</div>
-
-                  <div class="fee-list" style="margin-top:10px; margin-bottom:0;">
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">日中（9:00〜18:00）</div></div>
-                      <div class="fee-price">4,000円／1時間</div>
-                    </div>
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
-                      <div class="fee-price">5,000円／1時間</div>
-                    </div>
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
-                      <div class="fee-price">6,000円／1時間</div>
+                    <div class="fee-list bfees" style="margin-top:0;">
+                      <div class="fee-item orn-fill">
+                        <div><div class="fee-name">日中（9:00〜18:00）</div></div>
+                        <div class="fee-price">4,000円／1時間</div>
+                      </div>
+                      <div class="fee-item orn-fill">
+                        <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
+                        <div class="fee-price">5,000円／1時間</div>
+                      </div>
+                      <div class="fee-item orn-fill">
+                        <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
+                        <div class="fee-price">6,000円／1時間</div>
+                      </div>
                     </div>
                   </div>
 
                   <!-- B-2 -->
-                  <div class="fee-list" style="margin-top:16px;">
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">B-2　同行支援</div></div>
-                      <div class="fee-price"></div>
+                  <div class="bblock" style="margin-top:18px;">
+                    <div class="bhead">
+                      <div class="bcode">B-2</div>
+                      <div class="btitlewrap">
+                        <div class="btitleline">
+                          <span class="bdots">・・・</span>
+                          <span class="btitle">同行支援</span>
+                          <span class="bdots">・・・</span>
+                        </div>
+                        <div class="bdesc">車両を使用しての通院・買物・役所等の外出同行支援</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="fee-sep" aria-label="同行支援の説明" style="margin:10px 0 10px;">
-                    <div class="fee-sep-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
-                  </div>
-
-                  <div class="fee-list" style="margin-top:0; margin-bottom:0;">
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">日中（9:00〜18:00）</div></div>
-                      <div class="fee-price">6,000円／1時間</div>
-                    </div>
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
-                      <div class="fee-price">7,000円／1時間</div>
-                    </div>
-                    <div class="fee-item orn-fill">
-                      <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
-                      <div class="fee-price">8,000円／1時間</div>
+                    <div class="fee-list bfees" style="margin-top:0;">
+                      <div class="fee-item orn-fill">
+                        <div><div class="fee-name">日中（9:00〜18:00）</div></div>
+                        <div class="fee-price">6,000円／1時間</div>
+                      </div>
+                      <div class="fee-item orn-fill">
+                        <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
+                        <div class="fee-price">7,000円／1時間</div>
+                      </div>
+                      <div class="fee-item orn-fill">
+                        <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
+                        <div class="fee-price">8,000円／1時間</div>
+                      </div>
                     </div>
                   </div>
                 </div>

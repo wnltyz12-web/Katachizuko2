@@ -775,7 +775,7 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* ========================= ✅ 入会特典 (기존 원형 스타일 유지하되, 아래에서 "나열형" 신규 스타일 추가) ========================= */
+    /* ========================= ✅ 入会特典 (나열형) ========================= */
     .perk-wrap{
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.07);
@@ -784,35 +784,6 @@
     }
     .perk-wrap.orn-fill::before{ opacity: var(--orn-opacity-card); inset:-70px; }
 
-    .perk-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:flex-start;
-      gap:10px;
-      padding: 2px 2px 10px;
-    }
-    .perk-title{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .12em;
-      font-size: 16px;
-      color: var(--ink-1);
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
-      position: relative;
-      padding-bottom: 6px;
-    }
-    .perk-title::after{
-      content:"";
-      position:absolute;
-      left:0; right:0;
-      bottom:0;
-      height:2px;
-      background: rgba(155,122,52,.55);
-      box-shadow: 0 1px 0 rgba(255,255,255,.65);
-      border-radius: 999px;
-    }
-
-    /* ✅ 신규: 1,2,3 나열형 박스 디자인 */
     .perk-list{
       margin-top: 10px;
       display: grid;
@@ -830,24 +801,24 @@
     }
     .perk-item.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
 
+    /* ✅ 동그라미 안에 1/2/3 */
     .perk-badge{
-      height: 34px;
-      padding: 0 12px;
+      width: 36px;
+      height: 36px;
       border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(155,122,52,.36);
-      background: rgba(255,255,255,.38);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(155,122,52,.38);
+      background: rgba(255,255,255,.40);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.80);
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .12em;
+      letter-spacing: .02em;
       color: rgba(96,84,64,.92);
-      font-size: 12px;
-      white-space: nowrap;
+      font-size: 14px;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
       margin-top: 2px;
+      flex: 0 0 auto;
     }
     .perk-textline{
       font-family: var(--serif);
@@ -1520,6 +1491,7 @@
         <!-- ✅ 入会特典: 'ご利用の流れ' 바로 위 -->
         <article class="panel orn-fill" id="panel-perks">
           <div class="panel-head orn-fill">
+            <!-- ✅ 갈색 버튼만 유지 -->
             <div class="panel-title-tag common">入会特典</div>
           </div>
           <div class="panel-body">
@@ -1527,14 +1499,11 @@
               <div class="cards">
                 <div class="card orn-fill">
                   <div class="perk-wrap orn-fill" aria-label="入会特典">
-                    <div class="perk-head">
-                      <div class="perk-title">入会特典</div>
-                    </div>
+                    <!-- ✅ 특전1 바로 위에 있던 "入会特典" 텍스트(제목) 삭제됨 -->
 
-                    <!-- ✅ 여기만 변경: 1,2,3 나열형 박스 -->
                     <div class="perk-list" aria-label="特典リスト">
                       <div class="perk-item orn-fill">
-                        <div class="perk-badge">特典 1</div>
+                        <div class="perk-badge">1</div>
                         <div class="perk-textline">身元保証プラン
 〜とも〜の料金が
 全て半額でご利用
@@ -1542,14 +1511,14 @@
                       </div>
 
                       <div class="perk-item orn-fill">
-                        <div class="perk-badge">特典 2</div>
+                        <div class="perk-badge">2</div>
                         <div class="perk-textline">月に一度以上の
 ご訪問やご相談が
 可能です</div>
                       </div>
 
                       <div class="perk-item orn-fill">
-                        <div class="perk-badge">特典 3</div>
+                        <div class="perk-badge">3</div>
                         <div class="perk-textline">一生涯の
 身元保証・緊急時対応
 を承ります</div>

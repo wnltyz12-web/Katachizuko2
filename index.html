@@ -213,7 +213,7 @@
       min-width: 0;
     }
 
-    /* ✅ 여기만 수정: "一般社団法人" 동그란 버튼(필) 제거 */
+    /* ✅ "一般社団法人" 동그란 버튼 제거 */
     .brand-pill{
       display: inline;
       height: auto;
@@ -274,30 +274,42 @@
       opacity: .95;
       margin-top: 0;
     }
-/* 기존 .treat-title 부분을 아래로 교체 */
 
-.treat-title{
-  font-family: var(--serif);
-  font-weight: 900;
-  letter-spacing: .10em;
-  font-size: 16px;              /* ✅ 28px → 16px 로 줄임 (福祉介護機構(20px)보다 작게) */
-  color: rgba(31,27,22,.92);
-  white-space: nowrap;
-  line-height: 1.05;
-  text-shadow: 0 1px 0 rgba(255,255,255,.55);
-  margin-top: 0;
-}
+    /* ✅ てぃりーと: 福祉介護機構보다 작게 */
+    .treat-title{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .10em;
+      font-size: 16px;
+      color: rgba(31,27,22,.92);
+      white-space: nowrap;
+      line-height: 1.05;
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
+      margin-top: 0;
+    }
+    .topbar.is-compact .treat-title{
+      font-size: 14px;
+    }
+    @media (max-width: 420px){
+      .treat-title{ font-size: 15px; }
+    }
+    @media (max-width: 360px){
+      .treat-title{ font-size: 14px; letter-spacing:.08em; }
+    }
 
-.topbar.is-compact .treat-title{
-  font-size: 14px;              /* ✅ 컴팩트 상태도 더 작게 */
-}
-
-@media (max-width: 420px){
-  .treat-title{ font-size: 15px; }
-}
-@media (max-width: 360px){
-  .treat-title{ font-size: 14px; letter-spacing:.08em; }
-}
+    /* ✅ てぃりーと 아래 서브문구 */
+    .treat-sub{
+      font-family: var(--sans);
+      font-size: 7px;
+      letter-spacing: .04em;
+      color: rgba(31,27,22,.65);
+      white-space: nowrap;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .topbar.is-compact .treat-sub{
+      font-size: 6px;
+    }
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
     .header-meta{
@@ -1152,20 +1164,6 @@
         <div class="treat-sub">※福祉大国スウェーデンの信頼が由来です</div>
       </div>
     </div>
-
-    .treat-sub{
-  font-family: var(--sans);
-  font-size: 7px;          /* 엄청 작게 */
-  letter-spacing: .04em;
-  color: rgba(31,27,22,.65);
-  white-space: nowrap;
-  line-height: 1;
-  margin-top: 2px;
-}
-
-.topbar.is-compact .treat-sub{
-  font-size: 6px;          /* 스크롤 시 더 작게 */
-}
   </header>
 
   <main class="page">
@@ -1667,5 +1665,3 @@
   </script>
 </body>
 </html>
-
-

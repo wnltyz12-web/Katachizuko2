@@ -29,7 +29,6 @@
 
       /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
-
       /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
@@ -54,6 +53,7 @@
 
       --panel-pad: 16px;
       --cards-gap: 12px;
+
       --card-pad-y: 14px;
       --card-pad-x: 14px;
 
@@ -76,24 +76,33 @@
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
-    @media (min-width: 900px){ body{ zoom: 1.5; } }
 
-    html{ scroll-behavior: smooth; scroll-padding-top: 88px; }
+    @media (min-width: 900px){
+      body{ zoom: 1.5; }
+    }
 
-    /* =========================
-       ✅ 전체 배경 오나먼트
-    ========================= */
+    html{
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    /* ========================= ✅ 전체 배경 오나먼트 ========================= */
     .ornament-bg{
-      position: fixed; inset: 0; z-index: 0;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
       background-color: var(--bg);
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
     }
-    @media (min-width: 900px){ .ornament-bg{ background-size: var(--orn-size-lg); } }
+    @media (min-width: 900px){
+      .ornament-bg{ background-size: var(--orn-size-lg); }
+    }
     .ornament-bg::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       pointer-events:none;
       background: linear-gradient(
         to bottom,
@@ -104,9 +113,7 @@
       );
     }
 
-    /* =========================
-       ✅ 공용: 박스 오나먼트
-    ========================= */
+    /* ========================= ✅ 공용: 박스 오나먼트 ========================= */
     .orn-fill{
       position: relative;
       overflow: hidden;
@@ -115,7 +122,8 @@
     }
     .orn-fill::before{
       content:"";
-      position:absolute; inset:-70px;
+      position:absolute;
+      inset:-70px;
       background-image: url("ornament.png");
       background-repeat: repeat;
       background-size: var(--orn-size);
@@ -126,20 +134,25 @@
     }
     .orn-fill::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       background: var(--mist);
       pointer-events:none;
       z-index: -1;
     }
-    @media (min-width: 900px){ .orn-fill::before{ background-size: var(--orn-size-lg); } }
+    @media (min-width: 900px){
+      .orn-fill::before{ background-size: var(--orn-size-lg); }
+    }
 
-    /* =========================
-       ✅ 헤더
-    ========================= */
+    /* ========================= ✅ 헤더 ========================= */
     .topbar{
-      position: sticky; top: 0; z-index: 50;
+      position: sticky;
+      top: 0;
+      z-index: 50;
       height: 78px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
@@ -147,25 +160,32 @@
       -webkit-backdrop-filter: blur(6px);
       transition: height .22s ease, box-shadow .22s ease;
     }
-    .topbar.is-compact{ height: 64px; box-shadow: 0 8px 18px rgba(0,0,0,.06); }
-
+    .topbar.is-compact{
+      height: 64px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
     .topbar-inner{
       width: 100%;
       max-width: var(--mobile-max);
       padding: 0 16px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
     }
-
     .brand{
-      display: inline-flex; align-items: center; gap: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
       min-width: 0;
     }
-
     .brand-mark{
-      width: 44px; height: 44px; border-radius: 999px;
-      display: grid; place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
       border: 1.5px solid rgba(0,0,0,.76);
       background: rgba(255,255,255,.36);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
@@ -173,8 +193,18 @@
       transition: width .22s ease, height .22s ease, transform .22s ease;
       overflow: hidden;
     }
-    .topbar.is-compact .brand-mark{ width: 38px; height: 38px; transform: translateY(-.5px); }
-    .brand-mark img{ width: 100%; height: 100%; display: block; object-fit: contain; padding: 6px; }
+    .topbar.is-compact .brand-mark{
+      width: 38px;
+      height: 38px;
+      transform: translateY(-.5px);
+    }
+    .brand-mark img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      padding: 6px;
+    }
     .topbar.is-compact .brand-mark img{ padding: 5px; }
 
     .brand-text{
@@ -183,7 +213,6 @@
       line-height: 1.05;
       min-width: 0;
     }
-
     .brand-pill{
       display: inline-flex;
       align-items: center;
@@ -194,7 +223,6 @@
       border: 1px solid rgba(0,0,0,.18);
       background: rgba(255,255,255,.34);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
-
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
@@ -209,7 +237,6 @@
       font-size: 11px;
       letter-spacing: .10em;
     }
-
     .brand-big{
       font-family: var(--serif);
       font-size: 18px;
@@ -221,10 +248,17 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .topbar.is-compact .brand-big{ font-size: 16px; letter-spacing: .12em; }
+    .topbar.is-compact .brand-big{
+      font-size: 16px;
+      letter-spacing: .12em;
+    }
 
-    .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
-
+    .header-actions{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
     .header-meta{
       display: block;
       font-family: var(--sans);
@@ -240,14 +274,12 @@
     @media (max-width: 420px){
       .header-meta{ display:none; }
     }
-
     .header-actions-col{
       display: inline-flex;
       flex-direction: column;
       align-items: flex-end;
       gap: 6px;
     }
-
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
@@ -255,7 +287,9 @@
       border-radius: 999px;
       height: 44px;
       padding: 0 16px;
-      display: inline-flex; align-items: center; gap: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
       font-size: 14px;
       letter-spacing: .12em;
@@ -278,16 +312,31 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
       text-shadow: none;
     }
-    .hbtn.primary:hover{ background: rgba(183,161,138,1); box-shadow: 0 12px 26px rgba(0,0,0,.10); }
+    .hbtn.primary:hover{
+      background: rgba(183,161,138,1);
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    }
     .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
-    .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
-    .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
+    .page{
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .container{
+      width: 100%;
+      max-width: var(--mobile-max);
+      padding: 18px 16px 170px;
+    }
 
-    /* =========================
-       히어로
-    ========================= */
-    .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
+    /* ========================= 히어로 ========================= */
+    .hero{
+      margin-top: 18px;
+      padding: 6px 0 0;
+      text-align: center;
+    }
     .hero-title{
       font-family: var(--serif);
       letter-spacing: .10em;
@@ -296,10 +345,15 @@
       font-size: 16px;
       line-height: 1.95;
     }
-
-    .hero-label-wrap{ margin-top: 12px; display: grid; place-items: center; }
+    .hero-label-wrap{
+      margin-top: 12px;
+      display: grid;
+      place-items: center;
+    }
     .hero-label{
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 7px 14px;
       border-radius: 6px;
       border: 2px solid rgba(155,122,52,.72);
@@ -313,13 +367,24 @@
       -webkit-backdrop-filter: blur(6px);
       user-select: none;
     }
-
-    .hero-cta{ margin-top: 18px; display: flex; justify-content: center; }
-    .hero-cta-row{ display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%; }
-
+    .hero-cta{
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-cta-row{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+    }
     .cta-btn{
-      appearance: none; border: none; cursor: pointer;
-      width: 180px; height: 52px;
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      width: 180px;
+      height: 52px;
       background: #b7a18a;
       color: #ffffff;
       border-radius: 14px;
@@ -328,17 +393,24 @@
       font-family: var(--serif);
       font-size: 18px;
       font-weight: 900;
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
     }
-    .cta-btn:hover{ transform: translateY(-0.5px); box-shadow: 0 14px 34px rgba(0,0,0,.17); filter: saturate(1.04); }
+    .cta-btn:hover{
+      transform: translateY(-0.5px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.17);
+      filter: saturate(1.04);
+    }
     .cta-btn.guarantee{ background: var(--btn-guarantee); }
     .cta-btn.support{ background: var(--btn-support); }
-
     @media (max-width: 520px){
-      .cta-btn{ width: calc((100% - 14px) / 2); font-size: 17px; }
+      .cta-btn{
+        width: calc((100% - 14px) / 2);
+        font-size: 17px;
+      }
     }
-
     .slogan-text{
       margin-top: 14px;
       padding: 8px 10px;
@@ -353,36 +425,81 @@
       white-space: pre-line;
     }
 
-    /* =========================
-       일러스트
-    ========================= */
+    /* ========================= 일러스트 ========================= */
     .illus-wrap{ margin-top: 18px; }
-    .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
-    .illus-img{ width: 100%; height: auto; display: block; background: transparent; }
-
-    .illus-brand{ margin-top: 4px; padding: 6px 10px; width: 100%; text-align: center; display: grid; gap: 4px; }
-    .illus-brand .corp-line-1{ font-family: var(--sans); font-weight: 700; font-size: 11px; letter-spacing: .06em; color: rgba(66,55,41,.58); }
+    .illus-inner{
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .illus-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      background: transparent;
+    }
+    .illus-brand{
+      margin-top: 4px;
+      padding: 6px 10px;
+      width: 100%;
+      text-align: center;
+      display: grid;
+      gap: 4px;
+    }
+    .illus-brand .corp-line-1{
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: rgba(66,55,41,.58);
+    }
     .illus-brand .corp-line-2{
-      font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: .10em;
-      color: rgba(66,55,41,.72); text-shadow: 0 1px 0 rgba(255,255,255,.65);
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .10em;
+      color: rgba(66,55,41,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .illus-brand .corp-line-2::before,
     .illus-brand .corp-line-2::after{
-      content:""; width: 18px; height: 1px;
+      content:"";
+      width: 18px;
+      height: 1px;
       background: rgba(155,122,52,.42);
       box-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-
-    .diamond-sep{ width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 14px; opacity: .92; }
-    .diamond-sep .line{ height: 1px; flex: 1; background: rgba(66,55,41,.18); }
-    .diamond-sep .dia{ width: 10px; height: 10px; transform: rotate(45deg); border: 1.5px solid rgba(155,122,52,.65); background: rgba(255,255,255,.60); box-shadow: 0 4px 10px rgba(0,0,0,.05); }
+    .diamond-sep{
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      opacity: .92;
+    }
+    .diamond-sep .line{
+      height: 1px;
+      flex: 1;
+      background: rgba(66,55,41,.18);
+    }
+    .diamond-sep .dia{
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      border: 1.5px solid rgba(155,122,52,.65);
+      background: rgba(255,255,255,.60);
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    }
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
-    /* =========================
-       패널/카드
-    ========================= */
+    /* ========================= 패널/카드 ========================= */
     .panel{
       border-radius: var(--r-18);
       border: 1px solid rgba(0,0,0,.06);
@@ -405,15 +522,12 @@
       align-items: center;
       justify-content: center;
       padding: 0 14px;
-
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: var(--title-letter);
       font-size: 16px;
-
       border: 1px solid rgba(0,0,0,.10);
       color: #fff;
-
       box-shadow: 0 10px 22px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20);
       user-select: none;
     }
@@ -465,7 +579,6 @@
       text-align: center;
       white-space: pre-line;
     }
-
     .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
     .cards{ display: grid; gap: var(--cards-gap); margin-top: 10px; }
 
@@ -487,7 +600,6 @@
       text-align: left;
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
-
     .card p, .card .lead{
       font-family: var(--sans);
       font-size: calc(var(--fs-15) - 1px);
@@ -501,11 +613,12 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
-    /* =========================
-       料金표 내부
-    ========================= */
-    .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
-
+    /* ========================= 料金표 내부 ========================= */
+    .fee-list{
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
     .fee-item{
       display: grid;
       grid-template-columns: 1fr auto;
@@ -521,7 +634,6 @@
       inset: -60px;
       transform: scale(1.06);
     }
-
     .fee-name{
       font-size: var(--fs-14);
       font-weight: 800;
@@ -540,7 +652,6 @@
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.72);
     }
-
     .fee-meta{
       margin-top: 8px;
       text-align: center;
@@ -611,70 +722,131 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* =========================
-       ✅ B-1 / B-2 (사진처럼)
-    ========================= */
-    .bblock{ margin-top: 12px; }
-    .bhead{
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 14px;
-      align-items: center;
-      margin: 6px 0 8px;
+    /* ========================= ✅ (NEW) 生活支援プラン 表（스크린샷 스타일） ========================= */
+    .support-price-wrap{
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+      overflow: hidden;
     }
-    .bcode{
+    .support-price-wrap.orn-fill::before{ opacity: var(--orn-opacity-card); inset: -70px; }
+
+    .support-price-head{
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      background: var(--btn-support);
+      color: #fff;
+      border-bottom: 1px solid rgba(0,0,0,.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+    }
+    .support-price-title{
       font-family: var(--serif);
       font-weight: 900;
-      font-size: 52px;
-      line-height: 1;
-      letter-spacing: .02em;
-      color: #e25555;  /* ✅ 사진처럼 레드(고정) */
-      text-shadow: 0 1px 0 rgba(255,255,255,.75);
-    }
-    .btitlewrap{ display: grid; gap: 6px; min-width: 0; }
-    .btitleline{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .bdots{
-      font-family: var(--sans);
-      font-weight: 800;
-      letter-spacing: .35em;
-      color: rgba(66,55,41,.46);
+      letter-spacing: .12em;
+      font-size: 16px;
+      text-shadow: 0 1px 0 rgba(0,0,0,.12);
       white-space: nowrap;
-    }
-    .btitle{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .14em;
-      color: var(--ink-1);
-      font-size: 18px;
-      white-space: nowrap;
-    }
-    .bdesc{
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 1.55;
-      color: var(--ink-4);
-      letter-spacing: .02em;
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-    .bmeta{
-      margin-top: 0;
-      text-align: left; /* ✅ 사진처럼 왼쪽 정렬 */
-    }
-    .bfees{ margin-top: 10px; gap: 12px; } /* ✅ 박스 간격 살짝 넓힘 */
-    @media (max-width: 520px){
-      .bcode{ font-size: 46px; }
-      .btitle{ font-size: 17px; }
     }
 
-    /* =========================
-       ご利用の流れ
-    ========================= */
+    .support-price-body{
+      padding: 14px 12px 12px;
+      text-align: center;
+    }
+
+    .sp-sec-title{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .12em;
+      font-size: 18px;
+      color: var(--ink-1);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      margin-top: 2px;
+    }
+    .sp-note{
+      margin-top: 6px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: var(--ink-4);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+    }
+
+    .sp-rows{
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .sp-row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+    }
+    .sp-row.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
+    .sp-left{
+      font-family: var(--sans);
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .02em;
+      color: var(--ink-2);
+      text-align: left;
+      white-space: nowrap;
+    }
+    .sp-right{
+      font-family: var(--sans);
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .02em;
+      color: var(--ink-1);
+      white-space: nowrap;
+    }
+
+    .sp-sep{
+      margin: 14px 0 10px;
+      text-align: center;
+    }
+    .sp-sep-title{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .12em;
+      color: var(--ink-1);
+      font-size: 18px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+    }
+    .sp-sep-title .dots{
+      color: rgba(66,55,41,.46);
+      font-family: var(--sans);
+      letter-spacing: .35em;
+      font-weight: 900;
+      font-size: 12px;
+      transform: translateY(1px);
+    }
+    .sp-desc{
+      margin-top: 6px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      color: var(--ink-4);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      line-height: 1.55;
+    }
+
+    /* ========================= ご利用の流れ ========================= */
     .flow-box{
       border-radius: 18px;
       border: 1px solid rgba(0,0,0,.07);
@@ -682,7 +854,12 @@
     }
     .flow-box.orn-fill::before{ opacity: var(--orn-opacity-card); inset: -70px; }
 
-    .flow-steps{ display: grid; gap: 12px; padding: 12px; padding-top: 10px; }
+    .flow-steps{
+      display: grid;
+      gap: 12px;
+      padding: 12px;
+      padding-top: 10px;
+    }
     .flow-step{
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,.08);
@@ -694,7 +871,9 @@
     .flow-step::after{
       content:"";
       position:absolute;
-      left: 0; top: 0; bottom: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 4px;
       background: linear-gradient(180deg, rgba(155,122,52,.55), rgba(155,122,52,.10));
       opacity: .9;
@@ -766,13 +945,16 @@
     }
     .flow-desc.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-60px; }
     @media (max-width: 520px){
-      .flow-desc{ font-size: 12.5px; letter-spacing: 0; padding: 10px 10px; }
+      .flow-desc{
+        font-size: 12.5px;
+        letter-spacing: 0;
+        padding: 10px 10px;
+      }
     }
 
-    /* =========================
-       문의 + (상세 연락처 박스 포함)
-    ========================= */
+    /* ========================= 문의 + (상세 연락처 박스 포함) ========================= */
     .contact-actions{ display: grid; gap: 10px; margin-top: 0; }
+
     .contact-btn{
       display: inline-flex;
       align-items: center;
@@ -810,7 +992,6 @@
     }
 
     .contact-grid{ display: grid; gap: 10px; margin-top: 10px; }
-
     .kv{
       display: grid;
       grid-template-columns: 86px 1fr;
@@ -909,14 +1090,12 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
       line-height: 1.35;
     }
-
     .contact-info-sep{
       height: 1px;
       margin: 12px 6px;
       background: rgba(66,55,41,.14);
       box-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-
     .contact-info-block{ padding: 2px 6px; display: grid; gap: 4px; }
     .contact-info-bname{
       font-family: var(--serif);
@@ -944,11 +1123,10 @@
     }
     .contact-info-line a:hover{ border-bottom-color: rgba(66,55,41,.55); }
 
-    /* =========================
-       ごあいさつ
-    ========================= */
+    /* ========================= ごあいさつ ========================= */
     .greet-wrap{ padding: 16px 16px 18px; }
     .greet-top{ display: grid; place-items: center; gap: 0px; text-align: center; }
+
     .greet-portrait{
       width: 178px;
       height: 178px;
@@ -961,7 +1139,8 @@
     }
     .greet-portrait::after{
       content:"";
-      position:absolute; inset:0;
+      position:absolute;
+      inset:0;
       pointer-events:none;
       background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
       opacity: .9;
@@ -973,6 +1152,7 @@
       display: block;
       transform: translateY(0px);
     }
+
     .greet-body{
       margin-top: 14px;
       padding: 12px 12px;
@@ -989,6 +1169,7 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
     .greet-body.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-70px; }
+
     .greet-footer{ margin-top: 10px; display: flex; justify-content: flex-end; }
     .greet-chip{ display:flex; align-items:baseline; justify-content:flex-end; gap:10px; margin-top:6px; }
     .greet-chip .role{
@@ -1021,7 +1202,6 @@
         <span class="brand-mark" aria-hidden="true">
           <img src="Logo.png" alt="" />
         </span>
-
         <span class="brand-text" aria-label="法人名">
           <span class="brand-pill">一般社団法人</span>
           <span class="brand-big">福祉介護機構</span>
@@ -1031,7 +1211,6 @@
       <div class="header-actions">
         <div class="header-actions-col">
           <div class="header-meta">法人登録番号 8040005021344</div>
-
           <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 6h16v12H4z"></path>
@@ -1057,13 +1236,10 @@
 
         <div class="hero-cta">
           <div class="hero-cta-row">
-            <button class="cta-btn guarantee" type="button"
-              onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
+            <button class="cta-btn guarantee" type="button" onclick="document.getElementById('panel-guarantee').scrollIntoView({behavior:'smooth',block:'start'})">
               身元保証
             </button>
-
-            <button class="cta-btn support" type="button"
-              onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
+            <button class="cta-btn support" type="button" onclick="document.getElementById('panel-support').scrollIntoView({behavior:'smooth',block:'start'})">
               生活支援
             </button>
           </div>
@@ -1078,16 +1254,13 @@
       <section class="illus-wrap" id="why">
         <div class="illus-inner">
           <img class="illus-img" src="illust5.png" alt="死後事務・連絡・手続きなどの不安を表すイラスト" />
-
           <div class="illus-brand" aria-label="法人情報">
             <div class="corp-line-1">法人登録番号：8040005021344</div>
             <div class="corp-line-2">一般社団法人　福祉介護機構</div>
           </div>
 
           <div class="diamond-sep" aria-hidden="true">
-            <div class="line"></div>
-            <div class="dia"></div>
-            <div class="line"></div>
+            <div class="line"></div><div class="dia"></div><div class="line"></div>
           </div>
         </div>
       </section>
@@ -1098,11 +1271,9 @@
           <div class="panel-head orn-fill">
             <div class="panel-title-tag guarantee">身元保証プラン</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-
                 <div class="card orn-fill">
                   <h3>身元保証人代行</h3>
                   <div class="lead">施設入居時に必要となる保証人を承ります</div>
@@ -1123,7 +1294,6 @@
                   <h3>死後事務手続き代行</h3>
                   <p>お亡くなりになられた後の細かな各種手続きを承ります。事前のご希望通りに円滑に進むようご支援いたします。</p>
                 </div>
-
               </div>
             </div>
           </div>
@@ -1133,21 +1303,17 @@
           <div class="panel-head orn-fill">
             <div class="panel-title-tag support">生活支援プラン</div>
           </div>
-
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-
                 <div class="card orn-fill">
                   <h3>訪問支援</h3>
                   <p>ご訪問しての身の回りのお手伝い、買物代行などの日常生活支援を承ります。</p>
                 </div>
-
                 <div class="card orn-fill">
                   <h3>同行支援</h3>
                   <p>車両を使用しての買物・通院・役所等の外出同行支援を承ります。</p>
                 </div>
-
               </div>
             </div>
           </div>
@@ -1218,68 +1384,54 @@
                   </div>
                 </div>
 
-                <!-- ✅ 여기: B-1 / B-2를 사진처럼 변경 -->
-                <div class="card orn-fill" style="padding-bottom:10px;">
-                  <div style="display:grid; gap:0;">
-                    <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
-                  </div>
+                <!-- ✅ 여기(生活支援プラン 요금표) 스크린샷처럼 변경 -->
+                <div class="card orn-fill" style="padding: 12px;">
+                  <div class="support-price-wrap orn-fill" aria-label="生活支援プラン 料金（訪問支援・同行支援）">
+                    <div class="support-price-head">
+                      <div class="support-price-title">生活支援プラン</div>
+                    </div>
 
-                  <!-- B-1 -->
-                  <div class="bblock">
-                    <div class="bhead">
-                      <div class="bcode">B-1</div>
-                      <div class="btitlewrap">
-                        <div class="btitleline">
-                          <span class="bdots">・・・</span>
-                          <span class="btitle">訪問支援</span>
-                          <span class="bdots">・・・</span>
+                    <div class="support-price-body">
+                      <div class="sp-sec-title">訪問支援</div>
+                      <div class="sp-note">※会員／非会員すべて同じ金額です</div>
+
+                      <div class="sp-rows" aria-label="訪問支援 料金">
+                        <div class="sp-row orn-fill">
+                          <div class="sp-left">日中（9:00〜18:00）</div>
+                          <div class="sp-right">4,000円／1時間</div>
                         </div>
-                        <div class="fee-meta bmeta">※<strong>会員</strong>／非会員すべて同じ金額です</div>
-                      </div>
-                    </div>
-
-                    <div class="fee-list bfees" style="margin-top:0;">
-                      <div class="fee-item orn-fill">
-                        <div><div class="fee-name">日中（9:00〜18:00）</div></div>
-                        <div class="fee-price">4,000円／1時間</div>
-                      </div>
-                      <div class="fee-item orn-fill">
-                        <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
-                        <div class="fee-price">5,000円／1時間</div>
-                      </div>
-                      <div class="fee-item orn-fill">
-                        <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
-                        <div class="fee-price">6,000円／1時間</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- B-2 -->
-                  <div class="bblock" style="margin-top:18px;">
-                    <div class="bhead">
-                      <div class="bcode">B-2</div>
-                      <div class="btitlewrap">
-                        <div class="btitleline">
-                          <span class="bdots">・・・</span>
-                          <span class="btitle">同行支援</span>
-                          <span class="bdots">・・・</span>
+                        <div class="sp-row orn-fill">
+                          <div class="sp-left">夜間（18:00〜9:00）</div>
+                          <div class="sp-right">5,000円／1時間</div>
                         </div>
-                        <div class="bdesc">車両を使用しての通院・買物・役所等の外出同行支援</div>
+                        <div class="sp-row orn-fill">
+                          <div class="sp-left">深夜帯（22:00〜7:00）</div>
+                          <div class="sp-right">6,000円／1時間</div>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="fee-list bfees" style="margin-top:0;">
-                      <div class="fee-item orn-fill">
-                        <div><div class="fee-name">日中（9:00〜18:00）</div></div>
-                        <div class="fee-price">6,000円／1時間</div>
+                      <div class="sp-sep" aria-hidden="true">
+                        <div class="sp-sep-title">
+                          <span class="dots">・・・</span>
+                          <span>同行支援</span>
+                          <span class="dots">・・・</span>
+                        </div>
+                        <div class="sp-desc">車両を使用しての通院・買物・役所等の外出同行支援</div>
                       </div>
-                      <div class="fee-item orn-fill">
-                        <div><div class="fee-name">夜間（18:00〜9:00）</div></div>
-                        <div class="fee-price">7,000円／1時間</div>
-                      </div>
-                      <div class="fee-item orn-fill">
-                        <div><div class="fee-name">深夜帯（22:00〜7:00）</div></div>
-                        <div class="fee-price">8,000円／1時間</div>
+
+                      <div class="sp-rows" aria-label="同行支援 料金" style="margin-top: 10px;">
+                        <div class="sp-row orn-fill">
+                          <div class="sp-left">日中（9:00〜18:00）</div>
+                          <div class="sp-right">6,000円／1時間</div>
+                        </div>
+                        <div class="sp-row orn-fill">
+                          <div class="sp-left">夜間（18:00〜9:00）</div>
+                          <div class="sp-right">7,000円／1時間</div>
+                        </div>
+                        <div class="sp-row orn-fill">
+                          <div class="sp-left">深夜帯（22:00〜7:00）</div>
+                          <div class="sp-right">8,000円／1時間</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1316,7 +1468,6 @@
 
                 <div class="card orn-fill">
                   <h3>キャンセルポリシー</h3>
-
                   <div class="fee-list" style="gap:8px;">
                     <div class="fee-item orn-fill" style="padding:12px 12px; align-items:start;">
                       <div style="display:grid; gap:4px; align-content:start;">
@@ -1355,6 +1506,7 @@
             <div class="panel-inner">
               <div class="flow-box orn-fill" aria-label="ご利用の流れ">
                 <div class="flow-steps">
+
                   <div class="flow-step orn-fill">
                     <div class="flow-top">
                       <div class="flow-stepno">STEP 1</div>
@@ -1395,6 +1547,7 @@
                     <div class="flow-desc orn-fill">困った時はいつでもご相談下さい
 末永く安心してお過ごし下さい</div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -1409,14 +1562,13 @@
           <div class="panel-body">
             <div class="panel-inner">
               <div class="cards">
-                <div class="card orn-fill">
 
+                <div class="card orn-fill">
                   <div class="contact-actions">
                     <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する（無料）">
                       <span aria-hidden="true">☎</span>
                       電話で相談する（無料）
                     </a>
-
                     <a class="contact-btn" href="mailto:info@example.com" aria-label="メールで相談する">
                       <span aria-hidden="true">✉</span>
                       メールで相談する
@@ -1472,8 +1624,8 @@
                       <div class="contact-info-line">HP：<span style="color: var(--ink-4); font-weight:800;">（準備中）</span></div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
             </div>
           </div>
@@ -1488,14 +1640,15 @@
             <div class="panel-inner">
               <div class="cards">
                 <div class="card greet-wrap orn-fill" aria-label="ごあいさつ">
-
                   <div class="greet-top">
                     <div class="greet-portrait" aria-label="写真">
                       <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
                     </div>
                   </div>
 
-                  <div class="greet-body orn-fill">国内航空会社で客室乗務員として接客を学んだ後、身内の介護を機に高齢者の方々と関わる仕事をして参りました。あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。どうぞよろしくお願いいたします。</div>
+                  <div class="greet-body orn-fill">
+国内航空会社で客室乗務員として接客を学んだ後、身内の介護を機に高齢者の方々と関わる仕事をして参りました。あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。どうぞよろしくお願いいたします。
+                  </div>
 
                   <div class="greet-footer" aria-label="署名">
                     <div class="greet-chip">
@@ -1503,7 +1656,6 @@
                       <span class="name">片岡千鶴子</span>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -1511,16 +1663,17 @@
         </article>
 
       </section>
-
     </div>
   </main>
 
   <script>
     const topbarEl = document.getElementById('topbar');
     let ticking = false;
+
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
+
       window.requestAnimationFrame(() => {
         const y = window.scrollY || 0;
         if (y > 12) topbarEl.classList.add('is-compact');
@@ -1528,6 +1681,7 @@
         ticking = false;
       });
     };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 

@@ -274,31 +274,30 @@
       opacity: .95;
       margin-top: 0;
     }
-    .treat-title{
-      font-family: var(--serif);
-      font-weight: 900;
-      letter-spacing: .10em;
-      font-size: 28px;
-      color: rgba(31,27,22,.92);
-      white-space: nowrap;
-      line-height: 1.0;
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
-      margin-top: 0;
-    }
+/* 기존 .treat-title 부분을 아래로 교체 */
 
-    .topbar.is-compact .treat-area{ gap: 5px; padding-top: 1px; padding-bottom: 1px; }
-    .topbar.is-compact .treat-regno{ font-size: 9px; }
-    .topbar.is-compact .treat-title{ font-size: 22px; }
+.treat-title{
+  font-family: var(--serif);
+  font-weight: 900;
+  letter-spacing: .10em;
+  font-size: 16px;              /* ✅ 28px → 16px 로 줄임 (福祉介護機構(20px)보다 작게) */
+  color: rgba(31,27,22,.92);
+  white-space: nowrap;
+  line-height: 1.05;
+  text-shadow: 0 1px 0 rgba(255,255,255,.55);
+  margin-top: 0;
+}
 
-    @media (max-width: 420px){
-      .treat-regno{ font-size: 9px; }
-      .treat-title{ font-size: 24px; }
-      .brand-big{ font-size: 18px; }
-    }
-    @media (max-width: 360px){
-      .treat-title{ font-size: 22px; letter-spacing:.08em; }
-      .brand-big{ font-size: 17px; }
-    }
+.topbar.is-compact .treat-title{
+  font-size: 14px;              /* ✅ 컴팩트 상태도 더 작게 */
+}
+
+@media (max-width: 420px){
+  .treat-title{ font-size: 15px; }
+}
+@media (max-width: 360px){
+  .treat-title{ font-size: 14px; letter-spacing:.08em; }
+}
 
     .header-actions{ display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
     .header-meta{
@@ -1653,3 +1652,4 @@
   </script>
 </body>
 </html>
+

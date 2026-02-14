@@ -27,10 +27,7 @@
       --btn-guarantee: #968444;
       --btn-support: #497790;
 
-      /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
-
-      /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
       --mobile-max: 520px;
@@ -80,9 +77,6 @@
 
     html{ scroll-behavior: smooth; scroll-padding-top: 88px; }
 
-    /* =========================
-       ✅ 전체 배경 오나먼트
-    ========================= */
     .ornament-bg{
       position: fixed; inset: 0; z-index: 0;
       background-color: var(--bg);
@@ -104,9 +98,6 @@
       );
     }
 
-    /* =========================
-       ✅ 공용: 박스 오나먼트
-    ========================= */
     .orn-fill{
       position: relative;
       overflow: hidden;
@@ -133,9 +124,6 @@
     }
     @media (min-width: 900px){ .orn-fill::before{ background-size: var(--orn-size-lg); } }
 
-    /* =========================
-       ✅ 헤더
-    ========================= */
     .topbar{
       position: sticky; top: 0; z-index: 50;
       height: 78px;
@@ -284,9 +272,6 @@
     .page{ position: relative; z-index: 1; min-height: 100vh; display: flex; justify-content: center; }
     .container{ width: 100%; max-width: var(--mobile-max); padding: 18px 16px 170px; }
 
-    /* =========================
-       히어로
-    ========================= */
     .hero{ margin-top: 18px; padding: 6px 0 0; text-align: center; }
     .hero-title{
       font-family: var(--serif);
@@ -353,9 +338,6 @@
       white-space: pre-line;
     }
 
-    /* =========================
-       일러스트
-    ========================= */
     .illus-wrap{ margin-top: 18px; }
     .illus-inner{ display: grid; place-items: center; gap: 12px; text-align: center; }
     .illus-img{ width: 100%; height: auto; display: block; background: transparent; }
@@ -380,9 +362,6 @@
 
     .details{ margin-top: 18px; display: grid; gap: 14px; }
 
-    /* =========================
-       패널/카드
-    ========================= */
     .panel{
       border-radius: var(--r-18);
       border: 1px solid rgba(0,0,0,.06);
@@ -422,48 +401,25 @@
     .panel-title-tag.flow{ background: var(--btn-flow); }
     .panel-title-tag.common{ background: var(--btn-common); }
 
-    /* ✅ 변경: 料金表 헤더(2줄) 전용 — 폰트/박스 크기 줄임 */
     .panel-title-tag.stacked{
-      height: auto;                 /* 박스 높이 자동 */
-      padding: 10px 14px;           /* 박스 크기 줄임 */
+      height: auto;
+      padding: 10px 14px;
       flex-direction: column;
       gap: 6px;
       line-height: 1.15;
     }
     .panel-title-tag.stacked .tag-main{
-      font-size: 16px;              /* 다른 박스(기본 16px)와 동일 */
+      font-size: 16px;
       letter-spacing: var(--title-letter);
       font-weight: 900;
     }
     .panel-title-tag.stacked .tag-sub{
       font-family: var(--sans);
-      font-size: 12px;              /* ✅ 더 작게 */
+      font-size: 12px;
       letter-spacing: .08em;
       font-weight: 800;
       opacity: .98;
       line-height: 1.2;
-    }
-
-    .panel-title{
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: var(--title-letter);
-      color: var(--ink-1);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-    .panel-sub{
-      margin-top: 0px;
-      font-family: var(--sans);
-      font-size: var(--fs-12);
-      color: var(--ink-4);
-      letter-spacing: .06em;
-      line-height: 1.78;
-      padding: 0 6px;
-      font-weight: 600;
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
-      text-align: center;
-      white-space: pre-line;
     }
 
     .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
@@ -501,9 +457,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
     }
 
-    /* =========================
-       料金표 내부
-    ========================= */
     .fee-list{ display: grid; gap: 10px; margin-top: 6px; }
 
     .fee-item{
@@ -611,9 +564,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* =========================
-       ご利用の流れ
-    ========================= */
     .flow-box{
       border-radius: 18px;
       border: 1px solid rgba(0,0,0,.07);
@@ -708,9 +658,6 @@
       .flow-desc{ font-size: 12.5px; letter-spacing: 0; padding: 10px 10px; }
     }
 
-    /* =========================
-       문의 + (상세 연락처 박스 포함)
-    ========================= */
     .contact-actions{ display: grid; gap: 10px; margin-top: 0; }
     .contact-btn{
       display: inline-flex;
@@ -883,9 +830,6 @@
     }
     .contact-info-line a:hover{ border-bottom-color: rgba(66,55,41,.55); }
 
-    /* =========================
-       ごあいさつ
-    ========================= */
     .greet-wrap{ padding: 16px 16px 18px; }
     .greet-top{ display: grid; place-items: center; gap: 0px; text-align: center; }
     .greet-portrait{
@@ -1094,7 +1038,6 @@
 
         <article class="panel orn-fill" id="panel-price">
           <div class="panel-head orn-fill">
-            <!-- ✅ 변경: 料金表 + 入会金・月会費（非課税） 를 같은 박스(2줄)로 + 폰트/박스 크기 줄임 -->
             <div class="panel-title-tag common stacked">
               <span class="tag-main">料金表</span>
               <span class="tag-sub">入会金・月会費（非課税）</span>
@@ -1163,9 +1106,9 @@
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
 
                     <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
-                      <div class="fee-sep-title">
-                        <!-- ✅ 여기: A-1 텍스트만 삽입 -->
-                        <span style="min-width:40px; text-align:left; font-family: var(--sans); font-weight:800; font-size:12px; letter-spacing:.08em; color: var(--ink-4);">A-1</span>
+                      <!-- ✅ 가운데 정렬 유지 + 코드(B-1)만 왼쪽에 예쁘게 -->
+                      <div class="fee-sep-title" style="position:relative; width:100%; justify-content:center;">
+                        <span style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-family: var(--sans); font-weight:800; font-size:12px; letter-spacing:.08em; color: var(--ink-4);">B-1</span>
                         <span class="dots">・・・</span>
                         <span>訪問支援</span>
                         <span class="dots">・・・</span>
@@ -1191,9 +1134,9 @@
                   </div>
 
                   <div class="fee-sep" aria-label="同行支援の説明">
-                    <div class="fee-sep-title">
-                      <!-- ✅ 여기: A-2 텍스트만 삽입 -->
-                      <span style="min-width:40px; text-align:left; font-family: var(--sans); font-weight:800; font-size:12px; letter-spacing:.08em; color: var(--ink-4);">A-2</span>
+                    <!-- ✅ 가운데 정렬 유지 + 코드(B-2)만 왼쪽에 예쁘게 -->
+                    <div class="fee-sep-title" style="position:relative; width:100%; justify-content:center;">
+                      <span style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-family: var(--sans); font-weight:800; font-size:12px; letter-spacing:.08em; color: var(--ink-4);">B-2</span>
                       <span class="dots">・・・</span>
                       <span>同行支援</span>
                       <span class="dots">・・・</span>

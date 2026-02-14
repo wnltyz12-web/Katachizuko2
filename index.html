@@ -143,17 +143,17 @@
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ========================= ✅ 헤더 (본문 520폭 기준으로 정렬) ========================= */
+    /* ========================= ✅ 헤더 (수정: てぃりーと "버튼" 제거 + 정렬 개선) ========================= */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 50;
-      height: 86px;
+      height: 92px;
       display: flex;
       align-items: center;
       justify-content: center;
       background:
-        radial-gradient(120px 90px at 50% 60%, rgba(255,255,255,.26), rgba(255,255,255,0) 70%),
+        radial-gradient(140px 90px at 50% 60%, rgba(255,255,255,.26), rgba(255,255,255,0) 70%),
         linear-gradient(180deg, #efe7dc 0%, #e1d4c5 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 12px 26px rgba(0,0,0,.08);
@@ -162,7 +162,7 @@
       transition: height .22s ease, box-shadow .22s ease;
     }
     .topbar.is-compact{
-      height: 70px;
+      height: 74px;
       box-shadow: 0 10px 22px rgba(0,0,0,.07);
     }
 
@@ -177,10 +177,12 @@
       position: relative;
     }
 
+    /* ✅ 등록번호: 위 가운데로 (겹침 방지) */
     .topbar-meta{
       position: absolute;
       top: 8px;
-      right: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: var(--sans);
       font-weight: 800;
       letter-spacing: .06em;
@@ -202,7 +204,9 @@
       gap: 12px;
       text-decoration: none;
       min-width: 0;
+      padding-top: 10px; /* meta랑 간섭 방지 */
     }
+    .topbar.is-compact .brand{ padding-top: 8px; }
 
     .brand-logo{
       width: 58px;
@@ -218,10 +222,7 @@
       object-fit: contain;
       display: block;
     }
-    .topbar.is-compact .brand-logo{
-      width: 50px;
-      height: 50px;
-    }
+    .topbar.is-compact .brand-logo{ width: 50px; height: 50px; }
 
     .brand-text{
       display: grid;
@@ -247,11 +248,7 @@
       white-space: nowrap;
       width: fit-content;
     }
-    .topbar.is-compact .brand-pill{
-      height: 22px;
-      padding: 0 10px;
-      font-size: 10px;
-    }
+    .topbar.is-compact .brand-pill{ height: 22px; padding: 0 10px; font-size: 10px; }
 
     .brand-big{
       font-family: var(--serif);
@@ -264,35 +261,28 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .topbar.is-compact .brand-big{
-      font-size: 19px;
-    }
+    .topbar.is-compact .brand-big{ font-size: 19px; }
 
-    .treat-pill{
-      text-decoration: none;
+    /* ✅ てぃりーと: "버튼(링크)" 제거하고 장식 패널로 */
+    .treat-panel{
       display: grid;
       align-content: center;
       justify-items: center;
-      width: 220px;
-      height: 58px;
+      width: 230px;
+      height: 62px;
       border-radius: 999px;
       background:
-        radial-gradient(140px 90px at 30% 30%, rgba(255,255,255,.28), rgba(255,255,255,0) 70%),
+        radial-gradient(160px 95px at 30% 30%, rgba(255,255,255,.28), rgba(255,255,255,0) 70%),
         linear-gradient(180deg, rgba(198,178,158,.92) 0%, rgba(172,150,129,.92) 100%);
       border: 1px solid rgba(0,0,0,.12);
       box-shadow: inset 0 2px 0 rgba(255,255,255,.30), 0 12px 26px rgba(0,0,0,.12);
       position: relative;
       overflow: hidden;
-      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
-      cursor: pointer;
       user-select: none;
+      padding: 10px 14px 10px;
+      padding-top: 16px; /* meta 아래 공간 */
     }
-    .treat-pill:hover{
-      transform: translateY(-0.5px);
-      filter: saturate(1.03);
-      box-shadow: inset 0 2px 0 rgba(255,255,255,.32), 0 14px 30px rgba(0,0,0,.14);
-    }
-    .treat-pill::after{
+    .treat-panel::after{
       content:"";
       position:absolute;
       inset:-40px;
@@ -308,34 +298,40 @@
       font-size: 22px;
       color: rgba(255,255,255,.94);
       text-shadow: 0 2px 0 rgba(0,0,0,.10);
-      line-height: 1;
+      line-height: 1.05;
     }
+
+    /* ✅ 설명글: 잘리지 않게 2줄 래핑 */
     .treat-note{
-      position: absolute;
-      right: 14px;
-      bottom: 8px;
+      margin-top: 6px;
       font-family: var(--sans);
       font-weight: 700;
-      font-size: 9px;
+      font-size: 9.5px;
       color: rgba(31,27,22,.78);
       letter-spacing: .02em;
-      white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
       opacity: .95;
-      max-width: calc(100% - 28px);
+      text-align: center;
+      line-height: 1.25;
+      max-width: 210px;
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    .topbar.is-compact .treat-pill{
-      width: 205px;
-      height: 52px;
+    .topbar.is-compact .treat-panel{
+      width: 212px;
+      height: 54px;
+      padding-top: 14px;
     }
     .topbar.is-compact .treat-title{ font-size: 20px; }
-    .topbar.is-compact .treat-note{ bottom: 7px; font-size: 8.5px; }
+    .topbar.is-compact .treat-note{ margin-top: 5px; font-size: 9px; max-width: 198px; }
 
     @media (max-width: 420px){
-      .treat-pill{ width: 190px; }
+      .treat-panel{ width: 210px; }
+      .treat-note{ max-width: 192px; }
     }
 
     /* ========================= 기존 섹션 ========================= */
@@ -1245,10 +1241,11 @@
         </span>
       </a>
 
-      <a class="treat-pill" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
+      <!-- ✅ 버튼(링크) 제거: 그냥 장식 패널 -->
+      <div class="treat-panel" aria-label="てぃりーと">
         <div class="treat-title">てぃりーと</div>
         <div class="treat-note">※てぃりーとは福祉大国スウェーデン語の信頼が由来です</div>
-      </a>
+      </div>
     </div>
   </header>
 
@@ -1600,181 +1597,4 @@
                     <div class="flow-desc orn-fill">対面にてご心配事をお伺いし、お客様に最適なご支援をご提案いたします</div>
                   </div>
 
-                  <div class="flow-step orn-fill">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 2</div>
-                      <div class="flow-stepname">事前確認</div>
-                    </div>
-                    <div class="flow-desc orn-fill">ご契約にあたり必要な意思確認等を行います</div>
-                  </div>
-
-                  <div class="flow-step orn-fill">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 3</div>
-                      <div class="flow-stepname">ご契約</div>
-                    </div>
-                    <div class="flow-desc orn-fill">ご支援内容に基づきご契約手続きを行います</div>
-                  </div>
-
-                  <div class="flow-step orn-fill">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 4</div>
-                      <div class="flow-stepname">お支払い</div>
-                    </div>
-                    <div class="flow-desc orn-fill">お見積り書をご確認後、銀行振込にてお支払いをお願いいたします</div>
-                  </div>
-
-                  <div class="flow-step orn-fill">
-                    <div class="flow-top">
-                      <div class="flow-stepno">STEP 5</div>
-                      <div class="flow-stepname">ご支援開始</div>
-                    </div>
-                    <div class="flow-desc orn-fill">困った時はいつでもご相談下さい
-末永く安心してお過ごし下さい</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel orn-fill" id="panel-contact">
-          <div class="panel-head orn-fill">
-            <div class="panel-title-tag common">お問い合わせ</div>
-          </div>
-
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-                <div class="card orn-fill">
-                  <div class="contact-actions">
-                    <a class="contact-btn primary" href="tel:000-0000-0000" aria-label="電話で相談する（無料）">
-                      <span aria-hidden="true">☎</span>
-                      電話で相談する（無料）
-                    </a>
-                    <a class="contact-btn" href="mailto:info@example.com" aria-label="メールで相談する">
-                      <span aria-hidden="true">✉</span>
-                      メールで相談する
-                    </a>
-                  </div>
-
-                  <div class="contact-grid">
-                    <div class="kv orn-fill">
-                      <div class="k">対応地域</div>
-                      <div class="v">松戸市、柏市、流山市、白井市、鎌ヶ谷市、市川市　(応相談)</div>
-                    </div>
-                    <div class="kv orn-fill">
-                      <div class="k">受付時間</div>
-                      <div class="v">9:00〜18:00（土日祝夜間対応いたします）</div>
-                    </div>
-                  </div>
-
-                  <div class="pill-row" aria-label="安心の約束">
-                    <div class="pill">秘密厳守</div>
-                    <div class="pill">相談無料</div>
-                  </div>
-
-                  <p class="contact-note" style="text-align:center; color: var(--ink-4); font-size: 12px; font-family: var(--sans);">
-                    ※緊急時や状況により折り返しとなる場合がございます。<br class="tight-br" />
-                    まずはお気軽にご相談ください。
-                  </p>
-
-                  <div class="contact-info-box orn-fill" aria-label="法人連絡先（詳細）">
-                    <div class="contact-info-head orn-fill">
-                      <div class="contact-info-org">一般社団法人　福祉介護機構</div>
-                      <div class="contact-info-reg">（法人登録番号：8040005021344）</div>
-                    </div>
-
-                    <div class="contact-info-block">
-                      <div class="contact-info-bname">● 松戸本部</div>
-                      <div class="contact-info-line">〒270-2203　千葉県松戸市六高台5−78−706</div>
-                      <div class="contact-info-line">TEL：<a href="tel:0473834526">047−383−4526</a>　<br>FAX：047−413−0489</div>
-                      <div class="contact-info-line">携帯電話：<a href="tel:08034623481">080−3462−3481</a><br>（土日夜間対応致します）</div>
-                    </div>
-
-                    <div class="contact-info-sep" aria-hidden="true"></div>
-
-                    <div class="contact-info-block">
-                      <div class="contact-info-bname">● 江戸川支部</div>
-                      <div class="contact-info-line">〒133−0061　東京都江戸川区篠崎町7−2−16−301</div>
-                      <div class="contact-info-line">携帯電話：<a href="tel:09024848862">090−2484−8862</a></div>
-                    </div>
-
-                    <div class="contact-info-sep" aria-hidden="true"></div>
-
-                    <div class="contact-info-block">
-                      <div class="contact-info-line">MAIL：<a href="mailto:fukusikaigo.kikou@gmail.com">fukusikaigo.kikou@gmail.com</a></div>
-                      <div class="contact-info-line">HP：<span style="color: var(--ink-4); font-weight:800;">（準備中）</span></div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="panel orn-fill" id="panel-greeting">
-          <div class="panel-head orn-fill">
-            <div class="panel-title-tag common">ごあいさつ</div>
-          </div>
-
-          <div class="panel-body">
-            <div class="panel-inner">
-              <div class="cards">
-                <div class="card greet-wrap orn-fill" aria-label="ごあいさつ">
-                  <div class="greet-top">
-                    <div class="greet-portrait" aria-label="写真">
-                      <img src="Photo_01.jpg" alt="ごあいさつ 写真" />
-                    </div>
-                  </div>
-
-                  <div class="greet-body orn-fill">
-                    国内航空会社で客室乗務員として接客を学んだ後、身内の介護を機に高齢者の方々と関わる仕事をして参りました。あらゆるタイプの施設勤務経験の中で、昨今の少子高齢化の弊害を目の当たりにしてきました。その思いを活かして介護福祉士の目線から高齢者終身サポート問題の一端を担えるように努力・誠実・継続をモットーに真摯な気持ちでご支援して参りたいと思います。どうぞよろしくお願いいたします。
-                  </div>
-
-                  <div class="greet-footer" aria-label="署名">
-                    <div class="greet-chip">
-                      <span class="role">代表理事</span>
-                      <span class="name">片岡千鶴子</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </section>
-    </div>
-  </main>
-
-  <script>
-    const topbarEl = document.getElementById('topbar');
-    let ticking = false;
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY || 0;
-        if (y > 12) topbarEl.classList.add('is-compact');
-        else topbarEl.classList.remove('is-compact');
-        ticking = false;
-      });
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    const contactBtn = document.getElementById('btn-contact');
-    if(contactBtn){
-      contactBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('panel-contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
-  </script>
-</body>
-</html>
+                  <div

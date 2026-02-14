@@ -538,7 +538,7 @@
     .panel-title-tag.flow{ background: var(--btn-flow); }
     .panel-title-tag.common{ background: var(--btn-common); }
 
-    /* ✅ 변경: 料金表 헤더(2줄) 전용 — 폰트/박스 크기 줄임 */
+    /* ✅ 변경: 料金表 헤더(2줄) 전용 */
     .panel-title-tag.stacked{
       height: auto;
       padding: 10px 14px;
@@ -558,20 +558,6 @@
       font-weight: 800;
       opacity: .98;
       line-height: 1.2;
-    }
-
-    .panel-sub{
-      margin-top: 0px;
-      font-family: var(--sans);
-      font-size: var(--fs-12);
-      color: var(--ink-4);
-      letter-spacing: .06em;
-      line-height: 1.78;
-      padding: 0 6px;
-      font-weight: 600;
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
-      text-align: center;
-      white-space: pre-line;
     }
 
     .panel-inner{ padding: var(--panel-pad) var(--panel-pad) 20px; }
@@ -656,7 +642,7 @@
     }
     .fee-meta strong{ font-weight: 900; color: var(--ink-2); }
 
-    /* ✅ A-1/A-2 위치용 (사진처럼 왼쪽 고정) */
+    /* ✅ 타이틀 (・・・訪問支援・・・ / ・・・同行支援・・・) 진짜 가운데 정렬 */
     .fee-sep{
       margin: 12px 0 10px;
       text-align: center;
@@ -665,23 +651,11 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
 
       position: relative;
-      padding-left: 56px; /* ← 왼쪽에 A-1, A-2 자리 확보 */
+      padding-left: 56px;
+      padding-right: 56px; /* ✅ 오른쪽도 동일 공간 확보 */
     }
-    .fee-code{
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--serif);
-      font-weight: 900;
-      font-size: 14px;
-      letter-spacing: .08em;
-      color: rgba(66,55,41,.58);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-      white-space: nowrap;
-    }
-
     .fee-sep-title{
+      width: 100%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -710,6 +684,37 @@
       white-space: pre-line;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
+
+    /* ✅ A-1/A-2 폰트: 네 페이지 폰트(var(--sans))로 */
+    .fee-code{
+      font-family: var(--sans);
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-size: 14px;
+      color: rgba(66,55,41,.58);
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    /* ✅ A-2는 fee-sep 안에서 왼쪽 고정 (기존처럼 유지) */
+    .fee-sep > .fee-code{
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* ✅ A-1 전용: '訪問支援 타이틀 + ※회원/비회원' 덩어리의 세로 중앙 */
+    .fee-sep-block{
+      position: relative;
+    }
+    .fee-sep-block > .fee-code{
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .fee-left{
       display: grid;
       grid-template-columns: 1fr auto;
@@ -1268,17 +1273,20 @@
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
 
-                    <!-- ✅ 방문지원: A-1 (사진 위치처럼 왼쪽) -->
-                    <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
+                    <!-- ✅ A-1: 訪問支援 타이틀 + ※会員/非会員 블록의 세로 중앙에 고정 -->
+                    <div class="fee-sep-block">
                       <span class="fee-code">A-1</span>
-                      <div class="fee-sep-title">
-                        <span class="dots">・・・</span>
-                        <span>訪問支援</span>
-                        <span class="dots">・・・</span>
-                      </div>
-                    </div>
 
-                    <div class="fee-meta" style="margin-top:0;">※<strong>会員</strong>／非会員すべて同じ金額です</div>
+                      <div class="fee-sep" aria-label="訪問支援の説明" style="margin:10px 0 8px;">
+                        <div class="fee-sep-title">
+                          <span class="dots">・・・</span>
+                          <span>訪問支援</span>
+                          <span class="dots">・・・</span>
+                        </div>
+                      </div>
+
+                      <div class="fee-meta" style="margin-top:0;">※<strong>会員</strong>／非会員すべて同じ金額です</div>
+                    </div>
                   </div>
 
                   <div class="fee-list" style="margin-top:10px; margin-bottom:0;">
@@ -1296,7 +1304,7 @@
                     </div>
                   </div>
 
-                  <!-- ✅ 동행지원: A-2 (사진 위치처럼 왼쪽) -->
+                  <!-- ✅ A-2: 위치 그대로 + 타이틀 가운데 정렬 -->
                   <div class="fee-sep" aria-label="同行支援の説明">
                     <span class="fee-code">A-2</span>
                     <div class="fee-sep-title">

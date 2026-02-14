@@ -143,7 +143,7 @@
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ========================= ✅ 헤더 (두번째 사진 느낌으로 수정) ========================= */
+    /* ========================= ✅ 헤더 (사진2 느낌) ========================= */
     .topbar{
       position: sticky;
       top: 0;
@@ -181,8 +181,8 @@
       min-width: 0;
     }
 
-    /* ✅ 두번째 사진의 "3개의 원 로고" */
-    .brand-circles{
+    /* ✅ 로고를 사용자가 준 이미지로 교체 (Logo-1.png) */
+    .brand-logo{
       width: 56px;
       height: 56px;
       flex: 0 0 auto;
@@ -191,12 +191,17 @@
       filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
       opacity: .98;
     }
-    .topbar.is-compact .brand-circles{
+    .brand-logo img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .topbar.is-compact .brand-logo{
       width: 48px;
       height: 48px;
       transform: translateY(-.5px);
     }
-    .brand-circles svg{ width: 100%; height: 100%; display:block; }
 
     .brand-text{
       display: grid;
@@ -207,7 +212,6 @@
       padding-top: 2px;
     }
 
-    /* ✅ 작은 라운드 박스 "一般社団法人" */
     .brand-pill{
       display: inline-flex;
       align-items: center;
@@ -233,7 +237,6 @@
       letter-spacing: .10em;
     }
 
-    /* ✅ 큰 타이틀 "福祉介護機構" */
     .brand-big{
       font-family: var(--serif);
       font-size: 19px;
@@ -250,7 +253,6 @@
       letter-spacing: .12em;
     }
 
-    /* ✅ 오른쪽 "～てぃりーと～" 느낌 */
     .header-actions{
       display: inline-flex;
       align-items: center;
@@ -265,13 +267,14 @@
       gap: 6px;
     }
 
+    /* ✅ "~(늘임표) 제거" 버전: ↩ てぃりーと ↩ */
     .tagline{
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .10em;
+      letter-spacing: .12em;
       font-size: 13px;
       line-height: 1;
       white-space: nowrap;
@@ -285,20 +288,32 @@
       font-size: 13px;
       transform: translateY(-1px);
     }
-    .tagline .wave{
-      color: rgba(54,109,160,.95);
-    }
     .tagline .word{
       background: linear-gradient(90deg, rgba(54,109,160,.95), rgba(201,112,74,.98));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
     }
     .topbar.is-compact .tagline{
       font-size: 12px;
-      letter-spacing: .08em;
+      letter-spacing: .10em;
       transform: translateY(0px);
+    }
+
+    /* ✅ 문의 버튼 안쪽에 "てぃりーと" 넣을 스타일 */
+    .hbtn-mini{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .16em;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.34);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .header-meta{
@@ -315,7 +330,8 @@
     }
     @media (max-width: 420px){
       .header-meta{ display:none; }
-      .tagline{ display:none; } /* 좁으면 깔끔하게 */
+      .tagline{ display:none; }
+      .hbtn-mini{ display:none; }
     }
 
     .hbtn{
@@ -324,7 +340,7 @@
       color: rgba(31,27,22,.90);
       border-radius: 999px;
       height: 44px;
-      padding: 0 16px;
+      padding: 0 14px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -354,7 +370,6 @@
       background: rgba(183,161,138,1);
       box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
-    .hbtn .ico{ width: 20px; height: 20px; display: inline-block; }
 
     .page{
       position: relative;
@@ -1251,16 +1266,9 @@
     <div class="topbar-inner">
 
       <a class="brand" href="#" aria-label="ヘッダー">
-        <!-- ✅ 두번째 사진의 3원 로고 (그대로 느낌) -->
-        <span class="brand-circles" aria-hidden="true">
-          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- 왼쪽 파랑 -->
-            <circle cx="42" cy="70" r="22" stroke="#1f63b8" stroke-width="10" />
-            <!-- 가운데 주황 -->
-            <circle cx="60" cy="58" r="22" stroke="#d59a27" stroke-width="10" />
-            <!-- 오른쪽 파랑 -->
-            <circle cx="78" cy="46" r="22" stroke="#1f63b8" stroke-width="10" />
-          </svg>
+        <!-- ✅ 로고 교체: Logo-1.png -->
+        <span class="brand-logo" aria-hidden="true">
+          <img src="Logo-1.png" alt="" />
         </span>
 
         <span class="brand-text" aria-label="法人名">
@@ -1269,24 +1277,22 @@
         </span>
       </a>
 
-      <div></div><!-- 가운데 여백용 (grid 3컬럼) -->
+      <div></div><!-- 가운데 여백 -->
 
       <div class="header-actions">
         <div class="header-actions-col">
           <div class="header-meta">法人登録番号 8040005021344</div>
 
-          <!-- ✅ "~てぃりーと~" 데코 -->
+          <!-- ✅ 테이리-토: "~" 제거 -->
           <div class="tagline" aria-label="タグライン">
             <span class="arrow">↩</span>
-            <span class="wave">〜</span><span class="word">てぃりーと</span><span class="wave">〜</span>
+            <span class="word">てぃりーと</span>
             <span class="arrow">↩</span>
           </div>
 
+          <!-- ✅ お問い合わせ 버튼: 아이콘 삭제 + 테이리-토 넣기 -->
           <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
-            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 6h16v12H4z"></path>
-              <path d="M22 6l-10 7L2 6"></path>
-            </svg>
+            <span class="hbtn-mini" aria-hidden="true">てぃりーと</span>
             お問い合わせ
           </a>
         </div>

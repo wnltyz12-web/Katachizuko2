@@ -723,23 +723,23 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* ========================= ✅ 入会特典 (겹치는 3원 레이아웃) ========================= */
-    .perk-wrap{
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,.07);
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-      padding: 14px 14px 16px;
+    /* ========================= ✅ 入会特典 (디자인 완전 교체: 한눈에) ========================= */
+    .perk-showcase{
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      padding: 14px 14px 14px;
     }
-    .perk-wrap.orn-fill::before{ opacity: var(--orn-opacity-card); inset:-70px; }
+    .perk-showcase.orn-fill::before{ opacity: var(--orn-opacity-card); inset:-70px; }
 
-    .perk-head{
+    .perk-headline{
       display:flex;
       align-items:flex-end;
-      justify-content:flex-start;
-      gap:10px;
+      justify-content: space-between;
+      gap: 12px;
       padding: 2px 2px 10px;
     }
-    .perk-title{
+    .perk-h-title{
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
@@ -748,8 +748,9 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
       position: relative;
       padding-bottom: 6px;
+      white-space: nowrap;
     }
-    .perk-title::after{
+    .perk-h-title::after{
       content:"";
       position:absolute;
       left:0; right:0;
@@ -760,113 +761,123 @@
       border-radius: 999px;
     }
 
-    /* ✅ "처음 사진처럼": 1 위, 2/3 아래 겹치기 */
-    .perk-stage{
-      position: relative;
-      margin-top: 10px;
-      height: 330px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+    .perk-h-sub{
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-4);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      white-space: nowrap;
+      opacity: .95;
+      margin-bottom: 2px;
     }
 
-    .perk-circle{
-      position: absolute;
-      border-radius: 999px;
-      border: 2px solid rgba(66,55,41,.55);
-      background: rgba(255,255,255,.12);
+    /* ✅ 한눈에: 2열 + 마지막 1개는 전체폭 */
+    .perk-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .perk-item{
+      position: relative;
+      border-radius: 18px;
+      border: 2px solid rgba(66,55,41,.45);
+      background: rgba(255,255,255,.18);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 10px 20px rgba(0,0,0,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 10px 22px rgba(0,0,0,.05);
+      padding: 16px 14px 14px;
+      min-height: 140px;
+      overflow: hidden;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+    .perk-item.orn-fill::before{ opacity: var(--orn-opacity-inner); inset:-70px; }
+
+    .perk-item.is-wide{ grid-column: 1 / -1; min-height: 132px; }
+
+    .perk-badge{
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
       display: grid;
       place-items: center;
-      text-align: center;
-      padding: 16px 18px;
-      overflow: hidden;
-    }
-
-    .perk-circle.c1{
-      width: 210px; height: 210px;
-      left: 50%; top: 0;
-      transform: translateX(-50%);
-      z-index: 3;
-    }
-    .perk-circle.c2{
-      width: 210px; height: 210px;
-      left: 12px; top: 120px;
-      z-index: 2;
-    }
-    .perk-circle.c3{
-      width: 210px; height: 210px;
-      right: 12px; top: 120px;
-      z-index: 2;
-    }
-
-    .perk-circle.c2{ transform: translateX(0); }
-    .perk-circle.c3{ transform: translateX(0); }
-
-    @media (max-width: 420px){
-      .perk-stage{ height: 310px; }
-      .perk-circle.c1,
-      .perk-circle.c2,
-      .perk-circle.c3{
-        width: 190px; height: 190px;
-        padding: 14px 14px;
-      }
-      .perk-circle.c2{ left: 6px; top: 120px; }
-      .perk-circle.c3{ right: 6px; top: 120px; }
-    }
-    @media (max-width: 360px){
-      .perk-stage{ height: 300px; }
-      .perk-circle.c1,
-      .perk-circle.c2,
-      .perk-circle.c3{
-        width: 176px; height: 176px;
-        padding: 12px 12px;
-      }
-      .perk-circle.c2{ left: 2px; top: 120px; }
-      .perk-circle.c3{ right: 2px; top: 120px; }
-    }
-
-    .perk-no{
+      border: 1px solid rgba(155,122,52,.28);
+      background: rgba(183,161,138,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.78);
       font-family: var(--serif);
       font-weight: 900;
-      font-size: 24px;
-      letter-spacing: .06em;
       color: var(--ink-1);
-      line-height: 1;
-      margin-bottom: 10px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
-    }
-
-    /* ✅ 여기만 수정: 줄바꿈(강제) 없애고, 스타일/사이즈 통일 */
-    .perk-text{
-      font-family: var(--serif);
-      font-weight: 800;
-      font-size: 13px;            /* 통일 */
+      font-size: 18px;
       letter-spacing: .06em;
-      line-height: 1.65;
-      color: rgba(45,37,28,.88);
-      text-shadow: 0 1px 0 rgba(255,255,255,.70);
-      white-space: normal;        /* ✅ pre-line 제거 */
-      overflow-wrap: anywhere;
-      word-break: keep-all;
-      max-width: none;            /* ✅ 제한 제거 */
-    }
-    @media (max-width: 360px){
-      .perk-no{ font-size: 22px; margin-bottom: 8px; }
-      .perk-text{ font-size: 12px; }
     }
 
-    .perk-bottom{
-      margin-top: 10px;
-      text-align: center;
+    .perk-textbox{
+      padding-left: 56px; /* badge 공간 */
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+    .perk-main{
       font-family: var(--serif);
       font-weight: 900;
-      letter-spacing: .18em;
-      color: rgba(66,55,41,.78);
+      letter-spacing: .10em;
       font-size: 14px;
+      color: var(--ink-1);
       text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+    .perk-desc{
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: rgba(45,37,28,.86);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      white-space: pre-line;
+    }
+
+    .perk-footerline{
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .perk-pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(66,55,41,.16);
+      background: rgba(255,255,255,.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: .10em;
+      color: rgba(96,84,64,.92);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+      user-select: none;
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+    }
+
+    /* ✅ 아주 좁은 폰에서도 한눈에 유지 (2열 유지하되 글자만 살짝) */
+    @media (max-width: 380px){
+      .perk-item{ padding: 14px 12px 12px; min-height: 136px; }
+      .perk-badge{ width: 40px; height: 40px; font-size: 17px; }
+      .perk-textbox{ padding-left: 52px; }
+      .perk-main{ font-size: 13px; letter-spacing: .08em; }
+      .perk-desc{ font-size: 12px; }
     }
 
     /* ========================= ご利用の流れ ========================= */
@@ -1521,7 +1532,7 @@
           </div>
         </article>
 
-        <!-- ✅ 入会特典 -->
+        <!-- ✅ 入会特典: "한눈에" 디자인으로 교체 -->
         <article class="panel orn-fill" id="panel-perks">
           <div class="panel-head orn-fill">
             <div class="panel-title-tag common">入会特典</div>
@@ -1530,36 +1541,48 @@
             <div class="panel-inner">
               <div class="cards">
                 <div class="card orn-fill">
-                  <div class="perk-wrap orn-fill" aria-label="入会特典">
-                    <div class="perk-head">
-                      <div class="perk-title">入会特典</div>
+
+                  <div class="perk-showcase orn-fill" aria-label="入会特典">
+                    <div class="perk-headline">
+                      <div class="perk-h-title">入会特典</div>
+                      <div class="perk-h-sub">3つのメリットを一目で</div>
                     </div>
 
-                    <div class="perk-stage" aria-label="特典サークル">
-                      <div class="perk-circle c1">
-                        <div>
-                          <div class="perk-no">1</div>
-                          <div class="perk-text">身元保証プラン〜とも〜の料金が全て半額でご利用頂けます</div>
+                    <div class="perk-grid" aria-label="特典一覧">
+                      <div class="perk-item orn-fill">
+                        <div class="perk-badge">1</div>
+                        <div class="perk-textbox">
+                          <div class="perk-main">身元保証プラン</div>
+                          <div class="perk-desc">〜とも〜の料金が
+全て半額でご利用頂けます</div>
                         </div>
                       </div>
 
-                      <div class="perk-circle c2">
-                        <div>
-                          <div class="perk-no">2</div>
-                          <div class="perk-text">月に一度以上ご訪問やご相談が可能です</div>
+                      <div class="perk-item orn-fill">
+                        <div class="perk-badge">2</div>
+                        <div class="perk-textbox">
+                          <div class="perk-main">月に一度以上</div>
+                          <div class="perk-desc">ご訪問やご相談が
+可能です</div>
                         </div>
                       </div>
 
-                      <div class="perk-circle c3">
-                        <div>
-                          <div class="perk-no">3</div>
-                          <div class="perk-text">一生涯のサポート身元保証・緊急時対応を承ります</div>
+                      <div class="perk-item orn-fill is-wide">
+                        <div class="perk-badge">3</div>
+                        <div class="perk-textbox">
+                          <div class="perk-main">一生涯のサポート</div>
+                          <div class="perk-desc">身元保証・緊急時対応
+を承ります</div>
                         </div>
                       </div>
                     </div>
 
-                    <div class="perk-bottom">秘密厳守・相談無料</div>
+                    <div class="perk-footerline" aria-label="安心の約束">
+                      <div class="perk-pill">秘密厳守</div>
+                      <div class="perk-pill">相談無料</div>
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>

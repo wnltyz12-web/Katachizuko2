@@ -143,7 +143,7 @@
       .orn-fill::before{ background-size: var(--orn-size-lg); }
     }
 
-    /* ========================= ✅ 헤더 ========================= */
+    /* ========================= ✅ 헤더 (두번째 사진 느낌으로 수정) ========================= */
     .topbar{
       position: sticky;
       top: 0;
@@ -152,7 +152,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, #e6ddd2 0%, #ded4c8 100%);
+      background: linear-gradient(180deg, #efe8df 0%, #e3d8cb 100%);
       border-bottom: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 22px rgba(0,0,0,.06);
       backdrop-filter: blur(6px);
@@ -166,12 +166,13 @@
     .topbar-inner{
       width: 100%;
       max-width: var(--mobile-max);
-      padding: 0 16px;
-      display: flex;
+      padding: 0 14px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
+
     .brand{
       display: inline-flex;
       align-items: center;
@@ -179,39 +180,34 @@
       text-decoration: none;
       min-width: 0;
     }
-    .brand-mark{
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
+
+    /* ✅ 두번째 사진의 "3개의 원 로고" */
+    .brand-circles{
+      width: 56px;
+      height: 56px;
+      flex: 0 0 auto;
       display: grid;
       place-items: center;
-      border: 1.5px solid rgba(0,0,0,.76);
-      background: rgba(255,255,255,.36);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.62);
-      flex: 0 0 auto;
-      transition: width .22s ease, height .22s ease, transform .22s ease;
-      overflow: hidden;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.10));
+      opacity: .98;
     }
-    .topbar.is-compact .brand-mark{
-      width: 38px;
-      height: 38px;
+    .topbar.is-compact .brand-circles{
+      width: 48px;
+      height: 48px;
       transform: translateY(-.5px);
     }
-    .brand-mark img{
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      padding: 6px;
-    }
-    .topbar.is-compact .brand-mark img{ padding: 5px; }
+    .brand-circles svg{ width: 100%; height: 100%; display:block; }
 
     .brand-text{
       display: grid;
+      justify-items: start;
       gap: 6px;
       line-height: 1.05;
       min-width: 0;
+      padding-top: 2px;
     }
+
+    /* ✅ 작은 라운드 박스 "一般社団法人" */
     .brand-pill{
       display: inline-flex;
       align-items: center;
@@ -220,8 +216,8 @@
       padding: 0 12px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,.18);
-      background: rgba(255,255,255,.34);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      background: rgba(255,255,255,.38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.74);
       font-family: var(--serif);
       font-weight: 900;
       letter-spacing: .12em;
@@ -236,9 +232,11 @@
       font-size: 11px;
       letter-spacing: .10em;
     }
+
+    /* ✅ 큰 타이틀 "福祉介護機構" */
     .brand-big{
       font-family: var(--serif);
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 900;
       letter-spacing: .14em;
       color: rgba(31,27,22,.96);
@@ -251,12 +249,58 @@
       font-size: 16px;
       letter-spacing: .12em;
     }
+
+    /* ✅ 오른쪽 "～てぃりーと～" 느낌 */
     .header-actions{
       display: inline-flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 10px;
       flex: 0 0 auto;
     }
+    .header-actions-col{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .tagline{
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .10em;
+      font-size: 13px;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+      opacity: .95;
+      transform: translateY(1px);
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+    .tagline .arrow{
+      color: rgba(66,55,41,.55);
+      font-size: 13px;
+      transform: translateY(-1px);
+    }
+    .tagline .wave{
+      color: rgba(54,109,160,.95);
+    }
+    .tagline .word{
+      background: linear-gradient(90deg, rgba(54,109,160,.95), rgba(201,112,74,.98));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: .14em;
+    }
+    .topbar.is-compact .tagline{
+      font-size: 12px;
+      letter-spacing: .08em;
+      transform: translateY(0px);
+    }
+
     .header-meta{
       display: block;
       font-family: var(--sans);
@@ -271,13 +315,9 @@
     }
     @media (max-width: 420px){
       .header-meta{ display:none; }
+      .tagline{ display:none; } /* 좁으면 깔끔하게 */
     }
-    .header-actions-col{
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-    }
+
     .hbtn{
       border: 1px solid rgba(0,0,0,.14);
       background: rgba(255,255,255,.40);
@@ -760,11 +800,10 @@
       border-radius: 999px;
     }
 
-    /* ✅ "처음 사진처럼": 1 위, 2/3 아래 겹치기 */
     .perk-stage{
       position: relative;
       margin-top: 10px;
-      height: 330px;           /* ✅ 안전 높이 */
+      height: 330px;
       max-width: 520px;
       margin-left: auto;
       margin-right: auto;
@@ -802,11 +841,6 @@
       z-index: 2;
     }
 
-    /* ✅ 살짝 겹치게 */
-    .perk-circle.c2{ transform: translateX(0); }
-    .perk-circle.c3{ transform: translateX(0); }
-
-    /* ✅ 모바일(좁을 때)에서도 안짤리게 축소 */
     @media (max-width: 420px){
       .perk-stage{ height: 310px; }
       .perk-circle.c1,
@@ -1215,19 +1249,39 @@
 
   <header class="topbar" id="topbar">
     <div class="topbar-inner">
+
       <a class="brand" href="#" aria-label="ヘッダー">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="Logo.png" alt="" />
+        <!-- ✅ 두번째 사진의 3원 로고 (그대로 느낌) -->
+        <span class="brand-circles" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- 왼쪽 파랑 -->
+            <circle cx="42" cy="70" r="22" stroke="#1f63b8" stroke-width="10" />
+            <!-- 가운데 주황 -->
+            <circle cx="60" cy="58" r="22" stroke="#d59a27" stroke-width="10" />
+            <!-- 오른쪽 파랑 -->
+            <circle cx="78" cy="46" r="22" stroke="#1f63b8" stroke-width="10" />
+          </svg>
         </span>
+
         <span class="brand-text" aria-label="法人名">
           <span class="brand-pill">一般社団法人</span>
           <span class="brand-big">福祉介護機構</span>
         </span>
       </a>
 
+      <div></div><!-- 가운데 여백용 (grid 3컬럼) -->
+
       <div class="header-actions">
         <div class="header-actions-col">
           <div class="header-meta">法人登録番号 8040005021344</div>
+
+          <!-- ✅ "~てぃりーと~" 데코 -->
+          <div class="tagline" aria-label="タグライン">
+            <span class="arrow">↩</span>
+            <span class="wave">〜</span><span class="word">てぃりーと</span><span class="wave">〜</span>
+            <span class="arrow">↩</span>
+          </div>
+
           <a class="hbtn primary" href="#panel-contact" id="btn-contact" aria-label="お問い合わせへ">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 6h16v12H4z"></path>
@@ -1237,6 +1291,7 @@
           </a>
         </div>
       </div>
+
     </div>
   </header>
 

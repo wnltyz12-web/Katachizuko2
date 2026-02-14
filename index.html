@@ -27,9 +27,7 @@
       --btn-guarantee: #968444;
       --btn-support: #497790;
 
-      /* ✅ ご利用の流れ 타이틀 컬러 */
       --btn-flow: #b7a18a;
-      /* ✅ 공통 타이틀(料金表/お問い合わせ/ごあいさつ)도 flow와 같은 컬러로 */
       --btn-common: #b7a18a;
 
       --mobile-max: 520px;
@@ -538,7 +536,6 @@
     .panel-title-tag.flow{ background: var(--btn-flow); }
     .panel-title-tag.common{ background: var(--btn-common); }
 
-    /* ✅ 변경: 料金表 헤더(2줄) 전용 */
     .panel-title-tag.stacked{
       height: auto;
       padding: 10px 14px;
@@ -642,17 +639,15 @@
     }
     .fee-meta strong{ font-weight: 900; color: var(--ink-2); }
 
-    /* ✅ 타이틀 (・・・訪問支援・・・ / ・・・同行支援・・・) 진짜 가운데 정렬 */
     .fee-sep{
       margin: 12px 0 10px;
       text-align: center;
       color: var(--ink-4);
       font-family: var(--sans);
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
-
       position: relative;
       padding-left: 56px;
-      padding-right: 56px; /* ✅ 오른쪽도 동일 공간 확보 */
+      padding-right: 56px;
     }
     .fee-sep-title{
       width: 100%;
@@ -685,7 +680,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
 
-    /* ✅ A-1/A-2 폰트: 네 페이지 폰트(var(--sans))로 */
     .fee-code{
       font-family: var(--sans);
       font-weight: 800;
@@ -695,19 +689,13 @@
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
     }
-
-    /* ✅ A-2는 fee-sep 안에서 왼쪽 고정 (기존처럼 유지) */
     .fee-sep > .fee-code{
       position: absolute;
       left: 12px;
       top: 50%;
       transform: translateY(-50%);
     }
-
-    /* ✅ A-1 전용: '訪問支援 타이틀 + ※회원/비회원' 덩어리의 세로 중앙 */
-    .fee-sep-block{
-      position: relative;
-    }
+    .fee-sep-block{ position: relative; }
     .fee-sep-block > .fee-code{
       position: absolute;
       left: 12px;
@@ -733,6 +721,139 @@
       font-weight: 600;
       line-height: 1.35;
       text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    /* ========================= ✅ 入会特典 (추가) ========================= */
+    .perk-wrap{
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.07);
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+      padding: 14px 14px 16px;
+    }
+    .perk-wrap.orn-fill::before{ opacity: var(--orn-opacity-card); inset:-70px; }
+
+    .perk-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+      gap:10px;
+      padding: 2px 2px 10px;
+    }
+    .perk-title{
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .12em;
+      font-size: 16px;
+      color: var(--ink-1);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      position: relative;
+      padding-bottom: 6px;
+    }
+    .perk-title::after{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      bottom:0;
+      height:2px;
+      background: rgba(155,122,52,.55);
+      box-shadow: 0 1px 0 rgba(255,255,255,.65);
+      border-radius: 999px;
+    }
+
+    .perk-circles{
+      position: relative;
+      margin-top: 8px;
+      padding: 4px 0 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .perk-row{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      padding: 6px 0 0;
+    }
+
+    .perk-circle{
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      border: 2px solid rgba(66,55,41,.55);
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 10px 20px rgba(0,0,0,.06);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 14px 14px;
+      position: relative;
+    }
+    .perk-circle:nth-child(1){
+      transform: translateY(-8px);
+      z-index: 3;
+    }
+    .perk-circle:nth-child(2){
+      margin-right: -28px;
+      transform: translate(-18px, 20px);
+      z-index: 2;
+      opacity: .98;
+    }
+    .perk-circle:nth-child(3){
+      margin-left: -28px;
+      transform: translate(18px, 20px);
+      z-index: 2;
+      opacity: .98;
+    }
+
+    .perk-no{
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: .06em;
+      color: var(--ink-1);
+      line-height: 1;
+      margin-bottom: 6px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+    }
+    .perk-text{
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: .06em;
+      line-height: 1.55;
+      color: rgba(45,37,28,.88);
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+      white-space: pre-line;
+    }
+
+    .perk-bottom{
+      margin-top: 16px;
+      text-align: center;
+      font-family: var(--serif);
+      font-weight: 900;
+      letter-spacing: .18em;
+      color: rgba(66,55,41,.78);
+      font-size: 14px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.70);
+    }
+
+    @media (max-width: 520px){
+      .perk-circle{ width: 160px; height: 160px; }
+      .perk-circle:nth-child(2){ transform: translate(-16px, 22px); }
+      .perk-circle:nth-child(3){ transform: translate(16px, 22px); }
+      .perk-text{ font-size: 12px; }
+    }
+    @media (max-width: 380px){
+      .perk-circle{ width: 148px; height: 148px; padding: 12px; }
+      .perk-no{ font-size: 20px; }
+      .perk-text{ font-size: 11.5px; }
+      .perk-circle:nth-child(2){ margin-right:-22px; transform: translate(-14px, 24px); }
+      .perk-circle:nth-child(3){ margin-left:-22px;  transform: translate(14px, 24px); }
     }
 
     /* ========================= ご利用の流れ ========================= */
@@ -1273,7 +1394,6 @@
                   <div style="display:grid; gap:0;">
                     <div class="panel-title-tag support" style="margin:0;">生活支援プラン</div>
 
-                    <!-- ✅ A-1: 訪問支援 타이틀 + ※会員/非会員 블록의 세로 중앙에 고정 -->
                     <div class="fee-sep-block">
                       <span class="fee-code">B-1</span>
 
@@ -1304,7 +1424,6 @@
                     </div>
                   </div>
 
-                  <!-- ✅ A-2: 위치 그대로 + 타이틀 가운데 정렬 -->
                   <div class="fee-sep" aria-label="同行支援の説明">
                     <span class="fee-code">B-2</span>
                     <div class="fee-sep-title">
@@ -1384,6 +1503,60 @@
                   </div>
                 </div>
 
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ✅ 入会特典: 'ご利用の流れ' 바로 위에 삽입 -->
+        <article class="panel orn-fill" id="panel-perks">
+          <div class="panel-head orn-fill">
+            <div class="panel-title-tag common">入会特典</div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-inner">
+              <div class="cards">
+                <div class="card orn-fill">
+                  <div class="perk-wrap orn-fill" aria-label="入会特典">
+                    <div class="perk-head">
+                      <div class="perk-title">入会特典</div>
+                    </div>
+
+                    <div class="perk-circles">
+                      <div class="perk-row">
+                        <div class="perk-circle">
+                          <div>
+                            <div class="perk-no">1</div>
+                            <div class="perk-text">身元保証プラン
+〜とも〜の料金が
+全て半額でご利用
+頂けます</div>
+                          </div>
+                        </div>
+
+                        <div class="perk-circle">
+                          <div>
+                            <div class="perk-no">2</div>
+                            <div class="perk-text">月に一度以上の
+ご訪問やご相談が
+可能です</div>
+                          </div>
+                        </div>
+
+                        <div class="perk-circle">
+                          <div>
+                            <div class="perk-no">3</div>
+                            <div class="perk-text">一生涯の
+身元保証・緊急時対応
+を承ります</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="perk-bottom">秘密厳守・相談無料</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1583,4 +1756,3 @@
   </script>
 </body>
 </html>
-

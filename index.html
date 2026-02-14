@@ -1149,8 +1149,23 @@
       <div class="treat-area" aria-label="てぃりーと">
         <div class="treat-regno">法人登録番号 8040005021344</div>
         <div class="treat-title">てぃりーと</div>
+        <div class="treat-sub">※福祉大国スウェーデンの信頼が由来です</div>
       </div>
     </div>
+
+    .treat-sub{
+  font-family: var(--sans);
+  font-size: 7px;          /* 엄청 작게 */
+  letter-spacing: .04em;
+  color: rgba(31,27,22,.65);
+  white-space: nowrap;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.topbar.is-compact .treat-sub{
+  font-size: 6px;          /* 스크롤 시 더 작게 */
+}
   </header>
 
   <main class="page">
@@ -1652,4 +1667,5 @@
   </script>
 </body>
 </html>
+
 

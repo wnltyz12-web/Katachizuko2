@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fukusikaigokikou.com/sitemap.xml
